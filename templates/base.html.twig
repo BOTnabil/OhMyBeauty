@@ -6,12 +6,69 @@
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         {% block stylesheets %}
         {% endblock %}
-
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/c94beabf6d.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         {% block javascripts %}
             {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+        <header>
+            <a href="#" id="openBtn">
+                <span class="bruger-icon">
+                    <span><i class="fa-solid fa-bars fa-2xl" style="color: #000000;"></i></span>
+                </span>
+            </a>
+            <img src="img/logo-light.png" class="logoNav" alt="image logo Oh My Beauty">
+            <div id="mySidenav" class="sidenav">
+                <a id="closeBtn" href="#" class="close">x</a>
+                <ul>
+                    <li><a href="#">Accueil</a></li>
+                    <li><a href="#">À propos</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <nav id="myLinks">
+                <a href="#">Accueil</a>
+                <a href="#">À propos</a>
+                <a href="#">Services</a>
+                <a href="#">Contact</a>
+            </nav>
+            <div class="user">
+                <a href="#"><i class="fa-regular fa-user fa-xl" style="color: #000000;"></i></a>
+            </div>
+        </header>
+        <main>
+            <section class="home">
+                <img src="img/h5-revolution-img-1.jpg" class="fond1" alt="fond d'institut avec logo oh my beauty">
+                <p class="citation">BIENVENUE CHEZ OH MY BEAUTY, L'INSTITUT QUI SAIT PRENDRE SOIN DE VOUS</p>
+                </section>
+            <section class="tradition1">
+                <div class="boxLeftTop">
+                    <h1>UN SAVOIR FAIRE</h1>
+                    <h2>Un mot d'ordre : "qualifié"</h2>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur et natus 
+                    consectetur iste sunt, commodi quis veritatis laboriosam ex? </p>
+                    <a href="">EN SAVOIR PLUS</a>
+                </div>
+                <img src="img/h5-holder-image-1.png" class="logoBeerTradition" alt="tonneau 'best beer tradition for you'">
+    
+            </section>
+            <section class="tradition2">
+                <img src="img/h5-holder-image-2.png" class="logoPubStory" alt="image chope de bierre">
+                <div class="boxRightBot">
+                    <h1>NOTRE HISTOIRE</h1>
+                    <h2>Oh My Beauty, un rêve devenu réalité</h2>
+                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur et natus 
+                    consectetur iste sunt, commodi quis veritatis laboriosam ex?</p>
+                    <a href="">EN SAVOIR PLUS</a>
+                </div>
+            </section>
+            {% endblock %}
     </body>
 </html>
