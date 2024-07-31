@@ -1,0 +1,653 @@
+                                /* VARIABLES */
+:root {
+    --beige : #d8bc80;
+    --font : "Oswald", sans-serif;
+    --gris : #797979;
+}
+                                /* GENERAL */
+*{  margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+
+html{
+    font-size: 20px;
+}
+
+a{  color: rgb(235, 235, 235);
+    text-decoration: none;
+    font-family: var(--font);
+    font-weight: 100;
+}
+                                /* HEADER */
+
+#openBtn{
+    display: none;
+}
+
+.sidenav{
+    display: none;
+}
+                
+header {
+    z-index: 2;
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    padding: 0;
+    position: sticky;
+}
+
+.logoNav{
+    margin-left: 15px;
+    margin-top: 20px;
+    object-fit: cover;
+    height: 50%;
+}
+
+nav{
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    text-align: center;
+    font-size:  25PX;
+}
+
+nav a{
+    margin-right: 20px;
+    margin-left: 20px;
+    color: #0e0e0e;
+}
+
+.user{
+    margin-top: 25px;
+    text-align: center;
+    
+    width: 20%;
+}
+
+
+                    /* MAIN */
+                /* SECTION LOGO */
+
+.fond1 {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+
+
+.citation{
+    color: white;
+    background-color: var(--beige);
+    font-family: var(--font);
+    font-weight: 300;
+    text-align: center;
+    font-size: 50PX;
+    padding-left: 10%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-right: 10%;
+}
+
+                    /* SECTION TRADITION 1 */
+.tradition1{
+    display: flex;
+}
+.boxLeftTop{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 8vw;
+    text-align: center;
+    max-width: 40%;
+}
+
+.boxLeftTop h1{
+    font-family: var(--font);
+    font-weight: 400;
+    font-size: 5vw;
+}
+
+.boxLeftTop h2{
+    font-style: italic;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.boxLeftTop p{
+    margin-top: 4%;
+    font-weight: 300;
+    color: var(--gris);
+    font-family: var(--font);
+    font-size: clamp(0.5rem, 30% + 1.7vw, 20rem);
+}
+
+.boxLeftTop a{
+    display: inline-block;
+    margin-top: 3vw;
+    background-color: var(--beige);
+    padding: 2% 4% 2% 4%;
+    font-size: clamp(0.5rem, 30% + 1.7vw, 20rem);
+    border-radius: 10px;
+    transition:.3s;
+}
+
+.boxLeftTop a:hover{
+    background-color: #a08253;
+}
+
+.logoBeerTradition{
+    display: flex;
+    width: 50%;
+    height: 50%;
+}
+
+                        /* SECTION TRADITION 2 */
+.tradition2{
+    display: flex;
+}
+.boxRightBot{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 8vw;
+    text-align: center;
+    max-width: 40%;
+}
+
+.boxRightBot h1{
+    font-family: var(--font);
+    font-weight: 400;
+    font-size: 5vw;
+    
+}
+
+.boxRightBot h2{
+    font-style: italic;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.boxRightBot p{
+    margin-top: 4%;
+    vertical-align: center;
+    color: var(--gris);
+    font-family: var(--font);
+    font-size: clamp(1rem, 30% + 1.7vw, 20rem);
+    font-weight: 300;
+}
+
+.boxRightBot a{
+    transition:.3s;
+    display: inline-block;
+    margin-top: 3vw;
+    background-color: var(--beige);
+    padding: 2% 4% 2% 4%;
+    font-size: clamp(0.5rem, 30% + 1.7vw, 20rem);
+    border-radius: 10px;
+}
+
+.boxRightBot a:hover{
+    background-color: #749db1;
+}
+
+.logoPubStory{
+    display: flex;
+    width: 50%;
+    height: 50%;
+}
+
+                                    /* SECTION GALERIE */
+
+.galerie {
+    position: relative;
+    display: flex;
+    background-color: var(--beige);
+}
+
+.link1-4{
+    overflow:hidden;
+    width: 100%;
+}
+
+.plus1 {
+    position: absolute;
+    width: 6vw;
+    filter: invert();
+    left: 9.6vw;
+    top: 37%;
+    transition: 0.5s ease;
+    opacity: 0;
+}
+
+.plus2 {
+    position: absolute;
+    width: 6vw;
+    filter: invert();
+    left: 33.5vw;
+    top: 37%;
+    transition: 0.5s ease;
+    opacity: 0;
+}
+
+.plus3 {
+    position: absolute;
+    width: 6vw;
+    filter: invert();
+    left: 58.5vw;
+    top: 37%;
+    transition: 0.5s ease;
+    opacity: 0;
+}
+
+.plus4 {
+    position: absolute;
+    width: 6vw;
+    filter: invert();
+    left: 83vw;
+    top: 37%;
+    transition: 0.5s ease;
+    opacity: 0;
+}
+
+.link1-4:hover .plus1{
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.link1-4:hover .plus2{
+    opacity: 1;
+    transform: rotate(90deg);
+}
+.link1-4:hover .plus3{
+    opacity: 1;
+    transform: rotate(90deg);
+}
+.link1-4:hover .plus4{
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.galerie img{ 
+    max-width: 100%;
+    height: auto;
+}
+
+.img1-4{
+    transition: 0.5s ease;
+    width: 100%;
+}
+
+.link1-4:hover .img1-4{
+    transform: scale(1.1);
+    opacity: 0.3;
+    filter: grayscale(1);
+}
+
+                                /* SECTION SERVICES */
+
+.services {
+    display: inline-flex;
+    max-width: 100%;
+    height: auto;
+    margin-top: 7%;
+    margin-bottom: 7%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.services img{
+    mix-blend-mode: darken;
+    max-width: 100%;
+    height: auto;
+    margin-left: ;
+}
+
+.services h2{
+    transition: .3s;
+    font-family: var(--font);
+    font-size: 25px;
+    text-align: center;
+    margin-top: 7%;
+}
+
+.services p {
+    color: var(--gris);
+    font-family: var(--font);
+    font-size: 25px;
+    font-weight: 300;
+    text-align: center;
+    line-height: 45px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.imgBox1{
+    margin-left: 36%;
+    margin-right: 30%;
+    display: inline-block;
+    mask:url(../img/h5-icon-1.png) center/contain no-repeat;
+    background: url(../img/h5-icon-1.png) center/contain no-repeat;
+    background-blend-mode: darken;
+}
+
+.imgBox2{
+    margin-left: 36%;
+    margin-right: 30%;
+    display: inline-block;
+    mask:url(../img/h5-icon-2.png) center/contain no-repeat;
+    background: url(../img/h5-icon-2.png) center/contain no-repeat;
+    background-blend-mode: darken;
+}
+
+.imgBox3{
+    margin-left: 36%;
+    margin-right: 32%;
+    display: inline-block;
+    mask:url(../img/h5-icon-3.png) center/contain no-repeat;
+    background: url(../img/h5-icon-3.png) center/contain no-repeat;
+    background-blend-mode: darken;
+}
+
+.imgBox4{
+    margin-left: 36%;
+    margin-right: 32%;
+    display: inline-block;
+    mask:url(../img/h5-icon-4.png) center/contain no-repeat;
+    background: url(../img/h5-icon-4.png) center/contain no-repeat;
+    background-position: center;
+    background-blend-mode: darken;
+}
+
+.box1:hover .imgBox1{ 
+    background: linear-gradient(180deg, white, #dda95a)
+}
+
+.box2:hover .imgBox2{ 
+    background: linear-gradient(180deg, white, #dda95a)
+}
+
+.box3:hover .imgBox3{ 
+    background: linear-gradient(180deg, white, #dda95a)
+}
+
+.box4:hover .imgBox4{ 
+    background: linear-gradient(180deg, white, #dda95a)
+}
+
+.box1:hover .h2_1{
+    color: var(--beige);
+}
+
+.box2:hover .h2_2{
+    color: var(--beige);
+}
+
+.box3:hover .h2_3{
+    color: var(--beige);
+}
+
+.box4:hover .h2_4{
+    color: var(--beige);
+}
+
+                                /* SECTION PARALLAXE */
+
+.parallaxe{
+    color:white;
+    background-image: url("../img/h5-parallax-img-2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
+    max-width: 100%;
+    height: auto;
+    padding-top: 6%;
+    padding-bottom: 7%;
+}
+
+.parallaxe p{
+    margin-top: 0.5%;
+    font-style: italic;
+    font-weight: 200;
+    font-size: 20px;
+    text-align: center;
+    
+}
+
+.parallaxe h2{
+    font-family: var(--font);
+    font-weight: 400;
+    font-size: 4vw;
+    text-align: center;
+}
+                                /* SECTION MAP */
+
+
+.sectionMap{
+    position: relative;
+}
+
+.map{
+    overflow:hidden;
+    position:relative;
+    height: 50vw;
+    background-color: #0e0e0e;
+}
+
+.sectionMap img{
+    height: auto;
+    max-width: 60px;
+}
+
+.sectionMap a{
+    z-index: 1;
+    display: inline-block;
+    position: absolute; 
+    margin-left: auto; 
+    margin-right: auto; 
+    left: 49%;
+    top: 45%;
+}
+
+.map iframe{
+    filter: grayscale(1) invert();
+    pointer-events: none;
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+    mask: linear-gradient(transparent, black, transparent);
+}
+
+                            /* SECTION FOOTER */
+
+footer{
+    background-color: #0e0e0e;  
+}
+
+footer img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    padding-top: 4%;
+    padding-bottom: 5%;
+}
+                                                /* RESPONSIVE */
+@media only screen and (max-width: 768px) {
+
+    #openBtn{
+        display: table-header-group;
+        margin-left: 5vw;
+        margin-right: 9vw;
+        margin-top: 25px;
+        
+    }
+
+    .sidenav{
+        display: block;
+        height: 100%;
+        width: 250px;
+        position: fixed;
+        z-index: 1;
+        top: 0PX;
+        left: -250px;
+        background-color: rgb(255, 255, 255);
+        padding-top: 60px;
+        transition: left 0.5s ease;
+    }
+
+    .logoNav{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .sidenav li{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 20PX;
+        list-style-type: none
+    }
+
+    .sidenav.active{
+        left: 0;
+    }
+
+    .sidenav .close{
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+    }
+
+    .burger-icon span {
+        display: block;
+        width: 35px;
+        height: 5px;
+        background-color: black;
+        margin: 6px 0;
+    }
+
+    #myLinks{
+        display: none;
+    }
+
+    .logoBar{
+        max-width: 35%;
+        left: 33%;
+    }
+
+    .citation{
+        font-size: clamp(20px, 100% + 1.7vw, 40rem);
+    }
+
+    .tradition1{
+        display:block;
+    }
+
+    .boxLeftTop{
+        max-width: 100%;
+        margin-bottom: 8vw;
+        font-size: clamp(2.5rem, 30% + 1.7vw, 20rem);
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .logoBeerTradition{
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 8vw;
+    }
+
+    .tradition2{
+        display:table;
+    }
+
+    .logoPubStory{
+        display:table-footer-group;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin-top: 8vw;
+    }
+
+    .boxRightBot{
+        display:table-header-group;
+        max-width: 100%;
+        font-size: clamp(2.5rem, 30% + 1.7vw, 20rem);
+    }
+
+    .services{
+        display: inline-block;
+    }
+
+    .services h2{
+        margin-top: 4%;
+    }
+
+    .imgBox1{
+        margin-left: 42%;
+    }
+
+    .imgBox2{
+        margin-left: 42%;
+    }
+
+    .imgBox3{
+        margin-left: 42%;
+    }
+
+    .imgBox4{
+        margin-left: 42%;
+    }
+
+    .galerie{
+        flex-direction: column;
+    }
+
+    .link1-4{
+        overflow: hidden;
+    }
+
+    .img1-4{
+        width: 100%;
+    }
+
+    .plus1 {
+        width: 20vw;
+        left: 40%;
+        top: 37vw;
+    }
+
+    .plus2 {
+        width: 20vw;
+        left: 40%;
+        top: 135vw;
+    }
+
+    .plus3 {
+        width: 20vw;
+        left: 40%;
+        top: 230vw;
+    }
+
+    .plus4 {
+        width: 20vw;
+        left: 40%;
+        top: 330vw;
+    }
+
+    .map{
+        height: 100vw;
+    }
+    
+    
+}
