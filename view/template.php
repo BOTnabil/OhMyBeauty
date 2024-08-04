@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="./public/css/style.css?<?php echo time(); ?>" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
@@ -19,20 +19,20 @@
                 <span><i class="fa-solid fa-bars fa-2xl" style="color: #000000;"></i></span>
             </span>
         </a>
-        <img src="./public/img/logo-light.png" class="logoNav" alt="image logo Oh My Beauty">
+        <img src="./public/img/logo_header.png" class="logoNav" alt="image logo Oh My Beauty">
         <div id="mySidenav" class="sidenav">
             <a id="closeBtn" href="#" class="close">x</a>
             <ul>
                 <li><a href="#">Accueil</a></li>
-                <li><a href="#">À propos</a></li>
                 <li><a href="#">Services</a></li>
+                <li><a href="#">À propos</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </div>
         <nav id="myLinks">
             <a href="#">Accueil</a>
-            <a href="#">À propos</a>
             <a href="#">Services</a>
+            <a href="#">À propos</a>
             <a href="#">Contact</a>
         </nav>
         <div class="user">
@@ -48,7 +48,7 @@
         </main>
     </div>
     <footer>
-        <img src="./public/img/footer-logo.png" alt="logo revolver">
+        <img src="./public/img/" alt="logo ohmybeauty">
     </footer>
 </body>
 </html>

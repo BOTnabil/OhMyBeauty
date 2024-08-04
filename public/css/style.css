@@ -1,8 +1,8 @@
                                 /* VARIABLES */
 :root {
-    --beige : #d8bc80;
+    --beige : #222222;
     --font : "Oswald", sans-serif;
-    --gris : #797979;
+    --gris : #161616;
 }
                                 /* GENERAL */
 *{  margin: 0;
@@ -93,6 +93,93 @@ nav a{
     padding-top: 3%;
     padding-bottom: 3%;
     padding-right: 10%;
+}
+
+                                    /* SECTION GALERIE */
+
+.galerie {
+    position: relative;
+    display: flex;
+    background-color: var(--beige);
+}
+
+.link1-4{
+    overflow:hidden;
+    width: 100%;
+}
+
+.plus1 {
+    position: absolute;
+    width: 6vw;
+    filter: invert();
+    left: 9.6vw;
+    top: 37%;
+    transition: 0.5s ease;
+    opacity: 0;
+}
+
+.plus2 {
+    position: absolute;
+    width: 6vw;
+    filter: invert();
+    left: 33.5vw;
+    top: 37%;
+    transition: 0.5s ease;
+    opacity: 0;
+}
+
+.plus3 {
+    position: absolute;
+    width: 6vw;
+    filter: invert();
+    left: 58.5vw;
+    top: 37%;
+    transition: 0.5s ease;
+    opacity: 0;
+}
+
+.plus4 {
+    position: absolute;
+    width: 6vw;
+    filter: invert();
+    left: 83vw;
+    top: 37%;
+    transition: 0.5s ease;
+    opacity: 0;
+}
+
+.link1-4:hover .plus1{
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.link1-4:hover .plus2{
+    opacity: 1;
+    transform: rotate(90deg);
+}
+.link1-4:hover .plus3{
+    opacity: 1;
+    transform: rotate(90deg);
+}
+.link1-4:hover .plus4{
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.galerie img{ 
+    max-width: 100%;
+    height: auto;
+}
+
+.img1-4{
+    transition: 0.5s ease;
+    width: 100%;
+}
+
+.link1-4:hover .img1-4{
+    transform: scale(1.1);
+    opacity: 0.3;
+    filter: grayscale(1);
 }
 
                     /* SECTION TRADITION 1 */
@@ -192,7 +279,7 @@ nav a{
 }
 
 .boxRightBot a:hover{
-    background-color: #749db1;
+    background-color: #631658;
 }
 
 .logoPubStory{
@@ -201,205 +288,12 @@ nav a{
     height: 50%;
 }
 
-                                    /* SECTION GALERIE */
-
-.galerie {
-    position: relative;
-    display: flex;
-    background-color: var(--beige);
-}
-
-.link1-4{
-    overflow:hidden;
-    width: 100%;
-}
-
-.plus1 {
-    position: absolute;
-    width: 6vw;
-    filter: invert();
-    left: 9.6vw;
-    top: 37%;
-    transition: 0.5s ease;
-    opacity: 0;
-}
-
-.plus2 {
-    position: absolute;
-    width: 6vw;
-    filter: invert();
-    left: 33.5vw;
-    top: 37%;
-    transition: 0.5s ease;
-    opacity: 0;
-}
-
-.plus3 {
-    position: absolute;
-    width: 6vw;
-    filter: invert();
-    left: 58.5vw;
-    top: 37%;
-    transition: 0.5s ease;
-    opacity: 0;
-}
-
-.plus4 {
-    position: absolute;
-    width: 6vw;
-    filter: invert();
-    left: 83vw;
-    top: 37%;
-    transition: 0.5s ease;
-    opacity: 0;
-}
-
-.link1-4:hover .plus1{
-    opacity: 1;
-    transform: rotate(90deg);
-}
-
-.link1-4:hover .plus2{
-    opacity: 1;
-    transform: rotate(90deg);
-}
-.link1-4:hover .plus3{
-    opacity: 1;
-    transform: rotate(90deg);
-}
-.link1-4:hover .plus4{
-    opacity: 1;
-    transform: rotate(90deg);
-}
-
-.galerie img{ 
-    max-width: 100%;
-    height: auto;
-}
-
-.img1-4{
-    transition: 0.5s ease;
-    width: 100%;
-}
-
-.link1-4:hover .img1-4{
-    transform: scale(1.1);
-    opacity: 0.3;
-    filter: grayscale(1);
-}
-
-                                /* SECTION SERVICES */
-
-.services {
-    display: inline-flex;
-    max-width: 100%;
-    height: auto;
-    margin-top: 7%;
-    margin-bottom: 7%;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-.services img{
-    mix-blend-mode: darken;
-    max-width: 100%;
-    height: auto;
-    margin-left: ;
-}
-
-.services h2{
-    transition: .3s;
-    font-family: var(--font);
-    font-size: 25px;
-    text-align: center;
-    margin-top: 7%;
-}
-
-.services p {
-    color: var(--gris);
-    font-family: var(--font);
-    font-size: 25px;
-    font-weight: 300;
-    text-align: center;
-    line-height: 45px;
-    margin-left: 5%;
-    margin-right: 5%;
-}
-
-.imgBox1{
-    margin-left: 36%;
-    margin-right: 30%;
-    display: inline-block;
-    mask:url(../img/h5-icon-1.png) center/contain no-repeat;
-    background: url(../img/h5-icon-1.png) center/contain no-repeat;
-    background-blend-mode: darken;
-}
-
-.imgBox2{
-    margin-left: 36%;
-    margin-right: 30%;
-    display: inline-block;
-    mask:url(../img/h5-icon-2.png) center/contain no-repeat;
-    background: url(../img/h5-icon-2.png) center/contain no-repeat;
-    background-blend-mode: darken;
-}
-
-.imgBox3{
-    margin-left: 36%;
-    margin-right: 32%;
-    display: inline-block;
-    mask:url(../img/h5-icon-3.png) center/contain no-repeat;
-    background: url(../img/h5-icon-3.png) center/contain no-repeat;
-    background-blend-mode: darken;
-}
-
-.imgBox4{
-    margin-left: 36%;
-    margin-right: 32%;
-    display: inline-block;
-    mask:url(../img/h5-icon-4.png) center/contain no-repeat;
-    background: url(../img/h5-icon-4.png) center/contain no-repeat;
-    background-position: center;
-    background-blend-mode: darken;
-}
-
-.box1:hover .imgBox1{ 
-    background: linear-gradient(180deg, white, #dda95a)
-}
-
-.box2:hover .imgBox2{ 
-    background: linear-gradient(180deg, white, #dda95a)
-}
-
-.box3:hover .imgBox3{ 
-    background: linear-gradient(180deg, white, #dda95a)
-}
-
-.box4:hover .imgBox4{ 
-    background: linear-gradient(180deg, white, #dda95a)
-}
-
-.box1:hover .h2_1{
-    color: var(--beige);
-}
-
-.box2:hover .h2_2{
-    color: var(--beige);
-}
-
-.box3:hover .h2_3{
-    color: var(--beige);
-}
-
-.box4:hover .h2_4{
-    color: var(--beige);
-}
 
                                 /* SECTION PARALLAXE */
 
 .parallaxe{
     color:white;
-    background-image: url("../img/h5-parallax-img-2.jpg");
+    background-image: url("../img/parallax.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-attachment:fixed;
