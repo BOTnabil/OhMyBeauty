@@ -1,7 +1,7 @@
 <?php
 
 namespace Controller; 
-use Model\Connect;
+use App\Connect;
 
 class HomeController {
 
