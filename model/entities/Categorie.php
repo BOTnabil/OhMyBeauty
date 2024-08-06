@@ -22,4 +22,8 @@ class Categorie {
         $this->designation = $designation;
         return $this;
     }
+
+    public function __toString() {
+        return $this->designation;
+    }
 }

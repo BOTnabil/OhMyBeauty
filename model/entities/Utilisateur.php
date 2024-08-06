@@ -66,4 +66,12 @@ class Utilisateur {
         $this->role = $role;
         return $this;
     }
+    // Check le role de l'utilisateur
+    public function hasRole($role) {
+        return $this->role === $role;
+    }
+
+    public function __toString() {
+        return $this->prenom." ".$this->nom;
+    }
 }
