@@ -1,6 +1,7 @@
 <?php 
 ob_start(); 
 ?>
+
 <section class="home">
     <img src="./public/img/banniere.jpg" class="fond1" alt="fond d'institut avec logo oh my beauty">
     <p class="citation">BIENVENUE CHEZ OH MY BEAUTY, L'INSTITUT QUI SAIT PRENDRE SOIN DE VOUS</p>
@@ -19,7 +20,7 @@ ob_start();
         <h2>Un mot d'ordre : "qualifié"</h2>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur et natus 
         consectetur iste sunt, commodi quis veritatis laboriosam ex? </p>
-        <a href="">EN SAVOIR PLUS</a>
+        <a href="index.php?action=aPropos">EN SAVOIR PLUS</a>
     </div>
     <img src="./public/img/a_propos_1.png" class="imgOMBaPropos1" alt="">
 </section>
@@ -31,7 +32,7 @@ ob_start();
         <h2>Oh My Beauty, un rêve devenu réalité</h2>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur et natus 
         consectetur iste sunt, commodi quis veritatis laboriosam ex?</p>
-        <a href="">EN SAVOIR PLUS</a>
+        <a href="index.php?action=aPropos">EN SAVOIR PLUS</a>
     </div>
 </section>
 

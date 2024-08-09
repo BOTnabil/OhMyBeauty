@@ -12,7 +12,7 @@ $id = (isset($_GET["id"])) ? $_GET["id"] : null;
 
 if(isset($_GET["action"])){
     switch ($_GET["action"]) {
-        // case "" : $ctrlHome->(); break;
+        case "aPropos" : $ctrlHome->aPropos(); break;
     } 
 } else {
     // Si aucun paramètre "action" n'est défini, afficher la vue par défaut

@@ -25,14 +25,14 @@
             <ul>
                 <li><a href="#">Accueil</a></li>
                 <li><a href="#">Services</a></li>
-                <li><a href="#">À propos</a></li>
+                <li><a href="index.php?action=aPropos">À propos</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </div>
         <nav id="myLinks">
             <a href="#">Accueil</a>
             <a href="#">Services</a>
-            <a href="#">À propos</a>
+            <a href="index.php?action=aPropos">À propos</a>
             <a href="#">Contact</a>
         </nav>
         <div class="user">
