@@ -4,8 +4,11 @@ ob_start();
 
 <section id="team">
 
-<h2>We're dynamic team of talented people of <br> innovative & marketing expert</h2>
-<p class="titre-team">To achieve this, it would be necessary to have uniform grammar, pronunciation <br>  and more common words. If several languages of the resulting language</p>
+<h2>OH MY BEAUTY ? <br> UN RÊVE DEVENU REALITE</h2>
+<p class="titre-team">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur et natus consectetur iste sunt <br>  
+Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur et natus consectetur iste sunt Lorem ipsum dolor, sit amet <br> 
+consectetur adipisicing elit. Rem nostrum tempore, debitis officiis repellat obcaecati quasi necessitatibus pariatur fuga atque, <br> 
+cupiditate reiciendis maiores a nihil eos ex expedita modi cumque!</p>
     <div class="equipe">
         <div class="cards-2">    
             <strong>54 etablissements</strong> <br> <p>ouverts en France</p>
@@ -46,29 +49,30 @@ ob_start();
 </section>
 
 <section id="features">
-    <h2>Products Features</h2>
-    <p class="titre">It is a long established fact that a reader will be of a page when <br> established fact looking at its layout</p>
+    <div class="containerFeatures">
+        <h2>NOS VALEURS ET PRINCIPES</h2>
+        <p class="titre">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur et natus consectetur iste sunt</p>
+    </div>
     <div id="container">
         <div class="cards-1">
-            <i class="fa-solid fa-globe"></i>
+            <i class="fa-solid fa-crown"></i>
             <div class="cards-1-text">
-                <h3>Digital Design</h3>
-                <p>Some quick example text to build on the card title and make up the bulk of the card the platform. </p>
+                <h3>Excellence</h3>
+                <p>Offrir des soins de haute qualité en utilisant des produits et des techniques de pointe.</p>
             </div>
         </div>
         <div class="cards-1">
-            <i class="fa-solid fa-brush"></i>
+            <i class="fa-solid fa-face-smile"></i>
                 <div class="cards-1-text">
-                    <h3>Unlimited Colors</h3>
-                    <p>Credibly brand stanaads compliant user exteible services College Anibh ocean euismad tincidunt laoreet </p>
+                    <h3>Bien-être</h3>
+                    <p>Mettre le bien-être du client au cœur des services favorisant le repos et la détente.</p>
                 </div>
         </div>
-
         <div class="cards-1">
-            <i class="fa-solid fa-chess"></i>
+            <i class="fa-solid fa-tree"></i>
                 <div class="cards-1-text">
-                    <h3>Strategy Solutions</h3>
-                    <p>Seperated they live in Bookmarks grove right at the coast of the Semantics, a large ocean regelialia. </p>
+                    <h3>Éthique</h3>
+                    <p>S'engager à utiliser des produits respectueux de l'environnement, non testés sur les animaux.</p>
                 </div>
         </div>
     </div>

@@ -12,6 +12,7 @@ $id = (isset($_GET["id"])) ? $_GET["id"] : null;
 
 if(isset($_GET["action"])){
     switch ($_GET["action"]) {
+        case "defaultView" : $ctrlHome->defaultView(); break;
         case "aPropos" : $ctrlHome->aPropos(); break;
     } 
 } else {

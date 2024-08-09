@@ -3,7 +3,7 @@
 =================================================================
  */
 :root {
-    --noir : #222222;
+    --noir : #161616;
     --font : "Oswald", sans-serif;
     --gris : #494949;
 }
@@ -42,7 +42,7 @@ a{  color: rgb(235, 235, 235);
 header {
     z-index: 2;
     display: flex;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--noir);
     top: 0;
     left: 0;
     width: 100%;
@@ -70,7 +70,7 @@ nav{
 header a{
     margin-right: 20px;
     margin-left: 20px;
-    color: #0e0e0e;
+    color: #ffffff;
 }
 
 .user{
@@ -252,7 +252,7 @@ header a{
 }
 
  /*=================================================================
-========================= A PROPOS ================================
+========================= A PROPOS 2 ================================
 =================================================================
  */
 .aPropos2{
@@ -424,8 +424,8 @@ footer img{
     margin-left: auto;
     margin-right: auto;
     height: auto;
-    padding-top: 4%;
-    padding-bottom: 5%;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 
@@ -442,17 +442,28 @@ footer img{
  }
 
 #features h2 {
+    font-family: var(--font);
+    font-weight: 300;
     display: flex;
     padding-bottom: 10px;
     justify-content: center;
     text-align: justify;
+    color: rgb(255, 255, 255);
 }
 
 .titre {
+    font-family: var(--font);
+    font-weight: 300;
     justify-content: center;
     text-align: center;
-    color: var(--gris);
-    opacity: 0.7;
+    color: rgb(218, 218, 218);
+}
+
+.containerFeatures{
+    background-color: var(--noir);
+    padding-top: 40px;
+    padding-bottom: 50px;
+    margin-bottom: 30px;
 }
 
 #container {
@@ -461,8 +472,6 @@ footer img{
     justify-content: center;
     align-items: center;
     gap: 30px;
-    padding-top: 100px;
-
 }
 
 
@@ -477,7 +486,7 @@ footer img{
     flex-wrap: wrap;
     overflow: hidden;
     gap: 20px;
-    background-image: radial-gradient(var(--gris), var(--noir) 90%);
+    background-image: radial-gradient(var(--gris), var(--noir) 70%);
     width: 400px;
     height: 350px;
     border-radius: 10px;
@@ -495,8 +504,8 @@ footer img{
 }
 
 .cards-1 h3 {
-    
-   padding-bottom: 10px;
+    font-family: var(--font);
+    padding-bottom: 10px;
     font-size: 25px;
     font-weight: 500;
     color: white;
@@ -504,11 +513,10 @@ footer img{
 }
 
 .cards-1 p {
-
-    font-size: 14px;
+    font-family: var(--font);
+    font-size: 17px;
     color: white;
     font-weight: 300;
-
 }
 
 .cards-1-text {
@@ -529,37 +537,43 @@ footer img{
  #team {
     min-height: 71vh;
     padding-top: 30px;
+    background-image: url("../img/parallax2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
  }
 
  #team h2 {
-    
+    font-family: var(--font);
     text-align: center;
     justify-content: justify;
     padding-bottom: 20px;
+    color: white;
 
  }
 
  .titre-team {
-   
+    font-family: var(--font);
     justify-content: center;
     text-align: center;
-    color: grey;
-    opacity: 0.7;
+    color: white;
+    font-weight: 300;
     padding-bottom: 50px;
  }
 
 .equipe {
+    color: white;
     display: flex;
     justify-content: space-evenly;
     padding-top: 20px;
     text-align: center; 
-   
+    font-family: var(--font);
 }
 
 .cards-2 p {
     padding-bottom: 30px;
     opacity: 0.7;
-  
 }
 
 
@@ -584,14 +598,11 @@ footer img{
 }
 
 .cards-2-header img {
-    /* display: block; */
-     transition: 0.5s;
-     width: 100%;
-     height: 100%;
-     object-fit: cover;
+    transition: 0.5s;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     filter: grayscale(1);
-
- 
 }
 
 .cards-2:hover .cards-2-header img {
@@ -644,7 +655,7 @@ footer img{
         z-index: 1;
         top: 0PX;
         left: -250px;
-        background-color: rgb(255, 255, 255);
+        background-color: var(--noir);
         padding-top: 60px;
         transition: left 0.5s ease;
     }
@@ -677,7 +688,7 @@ footer img{
         display: block;
         width: 35px;
         height: 5px;
-        background-color: black;
+        background-color: rgb(0, 0, 0);
         margin: 6px 0;
     }
 

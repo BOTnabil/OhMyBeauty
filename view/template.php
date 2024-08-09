@@ -16,27 +16,27 @@
     <header>
         <a href="#" id="openBtn">
             <span class="bruger-icon">
-                <span><i class="fa-solid fa-bars fa-2xl" style="color: #000000;"></i></span>
+                <span><i class="fa-solid fa-bars fa-2xl" style="color: #ffffff;"></i></span>
             </span>
         </a>
         <img src="./public/img/logo_header.png" class="logoNav" alt="image logo Oh My Beauty">
         <div id="mySidenav" class="sidenav">
             <a id="closeBtn" href="#" class="close">x</a>
             <ul>
-                <li><a href="#">Accueil</a></li>
+                <li><a href="index.php?action=defaultView">Accueil</a></li>
                 <li><a href="#">Services</a></li>
                 <li><a href="index.php?action=aPropos">À propos</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
         </div>
         <nav id="myLinks">
-            <a href="#">Accueil</a>
+            <a href="index.php?action=defaultView">Accueil</a>
             <a href="#">Services</a>
             <a href="index.php?action=aPropos">À propos</a>
             <a href="#">Contact</a>
         </nav>
         <div class="user">
-            <a href="#"><i class="fa-regular fa-user fa-xl" style="color: #000000;"></i></a>
+            <a href="#"><i class="fa-regular fa-user fa-xl" style="color: #ffffff;"></i></a>
         </div>
     </header>
 
@@ -48,7 +48,7 @@
         </main>
     </div>
     <footer>
-        <img src="./public/img/" alt="logo ohmybeauty">
+        <img src="./public/img/logo_footer.png" alt="logo ohmybeauty">
     </footer>
 </body>
 </html>
