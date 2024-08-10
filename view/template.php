@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -15,13 +19,12 @@
 <body>
     <header>
         <a href="#" id="openBtn">
-            <span class="bruger-icon">
+            <span class="burger-icon">
                 <span><i class="fa-solid fa-bars fa-2xl" style="color: #ffffff;"></i></span>
             </span>
         </a>
         <img src="./public/img/logo_header.png" class="logoNav" alt="image logo Oh My Beauty">
         <div id="mySidenav" class="sidenav">
-            <a id="closeBtn" href="#" class="close">x</a>
             <ul>
                 <li><a href="index.php?action=defaultView">Accueil</a></li>
                 <li><a href="#">Services</a></li>
@@ -37,6 +40,43 @@
         </nav>
         <div class="user">
             <a href="#"><i class="fa-regular fa-user fa-xl" style="color: #ffffff;"></i></a>
+        </div>
+
+        <!-- Menu utilisateur -->
+        <div class="user-menu">
+            <?php
+                // si l'utilisateur est connecté 
+                if (isset($_SESSION['user_id'])){
+                    ?>
+                    <div class="user-menu-item">
+                        <h3 class="toggle-form"><a href="index.php?action=logout">Se déconnecter</a></h3>
+                    </div>
+                    <?php
+                } else {
+                    ?>
+                    <div class="user-menu-item">
+                        <h3 class="toggle-form">S'inscrire</h3>
+                        <form class="user-form" action="index.php?action=register" method="POST">
+                            <input type="text" name="nom" placeholder="Nom">
+                            <input type="text" name="prenom" placeholder="Prénom">
+                            <input type="email" name="email" placeholder="Email">
+                            <input type="password" name="motDePasse1" placeholder="Mot de passe">
+                            <input type="password" name="motDePasse2" placeholder="Confirmez le mot de passe">
+                            <input type="submit" name="submit" value="S'inscrire">
+                        </form>
+                    </div>
+
+                    <div class="user-menu-item">
+                        <h3 class="toggle-form">Se connecter</h3>
+                        <form class="user-form" action="index.php?action=login" method="POST">
+                            <input type="email" name="email" placeholder="Email">
+                            <input type="password" name="motDePasse" placeholder="Mot de passe">
+                            <input type="submit" name="submit" value="Se connecter">
+                        </form>
+                    </div>
+                <?php
+                }
+            ?>
         </div>
     </header>
 

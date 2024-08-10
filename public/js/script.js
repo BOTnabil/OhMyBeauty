@@ -1,14 +1,21 @@
 var sidenav = document.getElementById("mySidenav");
 var openBtn = document.getElementById("openBtn");
-var closeBtn = document.getElementById("closeBtn");
+var userMenu = document.querySelector(".user-menu");
+var userIcon = document.querySelector(".user i");
+var formToggles = document.querySelectorAll(".toggle-form");
 
-openBtn.onclick = openNav;
-closeBtn.onclick = closeNav;
+openBtn.onclick = function() {
+    sidenav.classList.toggle("active");
+};
 
-function openNav(){
-    sidenav.classList.add("active");
-}
+userIcon.onclick = function() {
+    userMenu.classList.toggle("active");
+};
 
-function closeNav(){
-    sidenav.classList.remove("active");
-}
+// Ajouter un événement de clic pour chaque section
+formToggles.forEach(function(toggle) {
+    toggle.addEventListener("click", function() {
+        var form = this.nextElementSibling;
+        form.style.display = (form.style.display === "block") ? "none" : "block";
+    });
+});

@@ -52,6 +52,7 @@ header {
 }
 
 .logoNav{
+    z-index: 2; /* Pour le garder au-dessus du sidenav */
     margin-left: 15px;
     margin-top: 20px;
     object-fit: cover;
@@ -78,6 +79,71 @@ header a{
     text-align: center;
     
     width: 20%;
+}
+
+/* Style pour le menu utilisateur */
+.user i{
+    position: fixed;
+    top: 38px;
+    z-index: 2; /* Assure que l'icône utilisateur est au-dessus du menu utilisateur */
+    right: 50px;
+}
+
+.user-menu {
+    display: block;
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    z-index: 1;
+    top: 0px;
+    right: -300px;
+    background-color: var(--noir);
+    padding-top: 60px;
+    transition: right 0.5s ease;
+    overflow-y: auto;
+}
+
+.user-menu.active {
+    right: 0;
+}
+
+.user-menu h3 {
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    margin: 0;
+    font-family: var(--font);
+    font-weight: 300;
+}
+
+.user-form {
+    display: none; /* Formulaires cachés par défaut */
+    padding: 20px;
+    color: white;
+}
+
+.user-menu input[type="text"],
+.user-menu input[type="email"],
+.user-menu input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.user-menu input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #ffffff;
+    color: var(--noir);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.user-menu-item {
+    border-bottom: 1px solid #444;
 }
 
 
@@ -643,14 +709,15 @@ footer img{
         display: table-header-group;
         margin-left: 5vw;
         margin-right: 9vw;
-        margin-top: 25px;
-        
+        margin-top: 15px;
+        position: relative;
+        z-index: 2; /* Pour le garder au-dessus du sidenav */
     }
 
     .sidenav{
         display: block;
         height: 100%;
-        width: 250px;
+        width: 150px;
         position: fixed;
         z-index: 1;
         top: 0PX;
@@ -699,7 +766,7 @@ footer img{
     .citation{
         font-size: clamp(20px, 100% + 1.7vw, 40rem);
     }
-
+    
     .aPropos1{
         display:block;
     }
