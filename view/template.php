@@ -29,14 +29,14 @@ session_start();
                 <li><a href="index.php?action=defaultView">Accueil</a></li>
                 <li><a href="#">Services</a></li>
                 <li><a href="index.php?action=aPropos">À propos</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="index.php?action=contact">Contact</a></li>
             </ul>
         </div>
         <nav id="myLinks">
             <a href="index.php?action=defaultView">Accueil</a>
             <a href="#">Services</a>
             <a href="index.php?action=aPropos">À propos</a>
-            <a href="#">Contact</a>
+            <a href="index.php?action=contact">Contact</a>
         </nav>
         <div class="user">
             <a href="#"><i class="fa-regular fa-user fa-xl" style="color: #ffffff;"></i></a>

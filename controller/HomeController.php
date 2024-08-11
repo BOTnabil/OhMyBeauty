@@ -13,4 +13,32 @@ class HomeController {
         // Charger et afficher la vue a propos
         require 'view/aPropos.php';
     }
+    public function contact() {
+        // Charger et afficher la vue a propos
+        require 'view/Contact.php';
+    }
+
+    public function contactSubmit() {
+        if ($_SERVER["REQUEST_METHOD"] === "POST") {
+            $nom = filter_input(INPUT_POST, 'nom');
+            $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+            $message = filter_input(INPUT_POST, 'message');
+    
+            if ($nom && $email && $message) {
+                $to = "assatour.nabil@gmail.com"; // Remplacez par votre adresse e-mail
+                $subject = "Nouveau message de $nom";
+                $body = "Nom: $nom\nEmail: $email\n\nMessage:\n$message";
+                $headers = "From: $email";
+    
+                if (mail($to, $subject, $body, $headers)) {
+                    echo "";
+                } else {
+                    echo "";
+                }
+            } else {
+                echo "";
+            }
+            require 'view/Contact.php';
+        }
+    }
 }

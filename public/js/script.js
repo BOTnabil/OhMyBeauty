@@ -19,3 +19,5 @@ formToggles.forEach(function(toggle) {
         form.style.display = (form.style.display === "block") ? "none" : "block";
     });
 });
+
+// Afficher notification mail
