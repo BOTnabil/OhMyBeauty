@@ -27,14 +27,14 @@ session_start();
         <div id="mySidenav" class="sidenav">
             <ul>
                 <li><a href="index.php?action=defaultView">Accueil</a></li>
-                <li><a href="#">Services</a></li>
+                <li><a href="index.php?action=services">Services</a></li>
                 <li><a href="index.php?action=aPropos">À propos</a></li>
                 <li><a href="index.php?action=contact">Contact</a></li>
             </ul>
         </div>
         <nav id="myLinks">
             <a href="index.php?action=defaultView">Accueil</a>
-            <a href="#">Services</a>
+            <a href="index.php?action=services">Services</a>
             <a href="index.php?action=aPropos">À propos</a>
             <a href="index.php?action=contact">Contact</a>
         </nav>

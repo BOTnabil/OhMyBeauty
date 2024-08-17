@@ -962,4 +962,51 @@ textarea{
     background-color: var(--gris);
 }
 
-/* Responsive */
+/* Service view */
+
+.services-container {
+    font-family: var(--font);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.category {
+    margin-bottom: 30px;
+}
+
+.service {
+
+    font-weight: 300;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.service-details h3 {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+.service-details p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.service-actions button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.service-actions button:hover {
+    background-color: #333;
+}

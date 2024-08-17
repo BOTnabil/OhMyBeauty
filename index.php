@@ -17,6 +17,7 @@ if(isset($_GET["action"])){
         // Changement de views
         case "defaultView" : $ctrlHome->defaultView(); break;
         case "aPropos" : $ctrlHome->aPropos(); break;
+        case "services" : $ctrlHome->services(); break;
         case "contact" : $ctrlHome->contact(); break;
         // Envoie de mail
         case "contactSubmit": $ctrlHome->contactSubmit(); break;

@@ -11,11 +11,16 @@ class HomeController {
 
     public function aPropos() {
         // Charger et afficher la vue a propos
-        require 'view/aPropos.php';
+        require 'view/aProposView.php';
     }
     public function contact() {
-        // Charger et afficher la vue a propos
-        require 'view/Contact.php';
+        // Charger et afficher la vue contact
+        require 'view/contactView.php';
+    }
+
+    public function services() {
+        // Charger et afficher la vue service
+        require 'view/servicesView.php';
     }
 
     public function contactSubmit() {
@@ -38,7 +43,7 @@ class HomeController {
             } else {
                 echo "";
             }
-            require 'view/Contact.php';
+            require 'view/contactView.php';
         }
     }
 }
