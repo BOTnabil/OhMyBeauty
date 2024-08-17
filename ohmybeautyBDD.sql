@@ -59,7 +59,9 @@ CREATE TABLE IF NOT EXISTS `prestation` (
   `idPrestation` int NOT NULL AUTO_INCREMENT,
   `designation` varchar(50) NOT NULL,
   `prix` decimal(15,2) NOT NULL,
+  `duree` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT ' ',
   `idCategorie` int NOT NULL,
+  `description` varchar(255) NOT NULL DEFAULT ' ',
   PRIMARY KEY (`idPrestation`),
   KEY `idCategorie` (`idCategorie`),
   CONSTRAINT `prestation_ibfk_1` FOREIGN KEY (`idCategorie`) REFERENCES `categorie` (`idCategorie`)
