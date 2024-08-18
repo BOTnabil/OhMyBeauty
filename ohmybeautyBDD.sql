@@ -26,7 +26,13 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   PRIMARY KEY (`idCategorie`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Les données exportées n'étaient pas sélectionnées.
+-- Listage des données de la table ohmybeauty.categorie : ~4 rows (environ)
+DELETE FROM `categorie`;
+INSERT INTO `categorie` (`idCategorie`, `designation`) VALUES
+	(1, 'CILS'),
+	(2, 'CAPILAIRE'),
+	(3, 'SOIN DU VISAGE'),
+	(4, 'ONGLERIE');
 
 -- Listage de la structure de table ohmybeauty. commande
 CREATE TABLE IF NOT EXISTS `commande` (
@@ -39,7 +45,8 @@ CREATE TABLE IF NOT EXISTS `commande` (
   CONSTRAINT `commande_ibfk_1` FOREIGN KEY (`idUtilisateur`) REFERENCES `utilisateur` (`idUtilisateur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Les données exportées n'étaient pas sélectionnées.
+-- Listage des données de la table ohmybeauty.commande : ~0 rows (environ)
+DELETE FROM `commande`;
 
 -- Listage de la structure de table ohmybeauty. contenir
 CREATE TABLE IF NOT EXISTS `contenir` (
@@ -52,7 +59,8 @@ CREATE TABLE IF NOT EXISTS `contenir` (
   CONSTRAINT `contenir_ibfk_2` FOREIGN KEY (`idProduit`) REFERENCES `produit` (`idProduit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Les données exportées n'étaient pas sélectionnées.
+-- Listage des données de la table ohmybeauty.contenir : ~0 rows (environ)
+DELETE FROM `contenir`;
 
 -- Listage de la structure de table ohmybeauty. prestation
 CREATE TABLE IF NOT EXISTS `prestation` (
@@ -67,7 +75,29 @@ CREATE TABLE IF NOT EXISTS `prestation` (
   CONSTRAINT `prestation_ibfk_1` FOREIGN KEY (`idCategorie`) REFERENCES `categorie` (`idCategorie`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Les données exportées n'étaient pas sélectionnées.
+-- Listage des données de la table ohmybeauty.prestation : ~20 rows (environ)
+DELETE FROM `prestation`;
+INSERT INTO `prestation` (`idPrestation`, `designation`, `prix`, `duree`, `idCategorie`, `description`) VALUES
+	(1, 'Réhaussement', 35.00, '45min', 1, 'test description'),
+	(2, 'Extension pose naturelle', 50.00, '45min', 1, 'test description'),
+	(3, 'Extension pose mixte', 60.00, '45min', 1, 'test description'),
+	(4, 'Remplissage naturel', 30.00, '45min', 1, 'test description'),
+	(5, 'Remplissage mixte', 35.00, '', 1, ' '),
+	(6, 'Dépose', 10.00, '', 1, ' '),
+	(7, 'Lissage brésilien', 90.00, '', 2, ' '),
+	(8, 'Lissage Tanin', 100.00, '', 2, ' '),
+	(9, 'Lissage nano-indien', 130.00, '', 2, ' '),
+	(10, 'Soin botox', 50.00, '', 2, ' '),
+	(11, 'Soin basique', 45.00, '', 3, ' '),
+	(12, 'Soin hydrafacial', 70.00, '', 3, ' '),
+	(13, 'Dermaplaning', 70.00, '', 3, ' '),
+	(14, 'Microneedling', 80.00, '', 3, ' '),
+	(15, 'Soins spécifiques', 50.00, '', 3, ' '),
+	(16, 'Pose naturelle gel', 35.00, '', 4, ' '),
+	(17, 'Pose couleurs gel', 35.00, '', 4, ' '),
+	(18, 'Pose french gel', 35.00, '', 4, ' '),
+	(19, 'Pose nails art', 35.00, '', 4, ' '),
+	(20, 'Remplissage nails art', 30.00, '', 4, ' ');
 
 -- Listage de la structure de table ohmybeauty. produit
 CREATE TABLE IF NOT EXISTS `produit` (
@@ -81,7 +111,8 @@ CREATE TABLE IF NOT EXISTS `produit` (
   CONSTRAINT `produit_ibfk_1` FOREIGN KEY (`idCategorie`) REFERENCES `categorie` (`idCategorie`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Les données exportées n'étaient pas sélectionnées.
+-- Listage des données de la table ohmybeauty.produit : ~0 rows (environ)
+DELETE FROM `produit`;
 
 -- Listage de la structure de table ohmybeauty. reservation
 CREATE TABLE IF NOT EXISTS `reservation` (
@@ -94,7 +125,8 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`idPrestation`) REFERENCES `prestation` (`idPrestation`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Les données exportées n'étaient pas sélectionnées.
+-- Listage des données de la table ohmybeauty.reservation : ~0 rows (environ)
+DELETE FROM `reservation`;
 
 -- Listage de la structure de table ohmybeauty. utilisateur
 CREATE TABLE IF NOT EXISTS `utilisateur` (
@@ -107,7 +139,10 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   PRIMARY KEY (`idUtilisateur`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Les données exportées n'étaient pas sélectionnées.
+-- Listage des données de la table ohmybeauty.utilisateur : ~0 rows (environ)
+DELETE FROM `utilisateur`;
+INSERT INTO `utilisateur` (`idUtilisateur`, `nom`, `prenom`, `email`, `motDePasse`, `role`) VALUES
+	(1, 'Nabil', 'Assatour', 'assatour.nabil@gmail.com', '$2y$10$lmhrwZ9L74IoWPEiU.UjuOu41klSUxVfMMcWiCVtQ5jccA20I3DDm', 'user');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
