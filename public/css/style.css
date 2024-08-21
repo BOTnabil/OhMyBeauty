@@ -147,15 +147,28 @@ header a{
 
 
  /*=========================MAIN PAGE========================================
-========================= LOGO ================================
+========================= HOME ================================
 =================================================================
  */
 
-.fond1 {
-    width: 100%;
+.slider {
+    position: relative;
     max-width: 100%;
-    height: auto;
-  }
+    overflow: hidden;
+    height: 100vh;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 1s; /* Animation de fondu */
+    opacity: 0; /* Caché par défaut */
+}
+
+.active-slide {
+    opacity: 1; /* Visible uniquement lorsque actif */
+}
 
 
 .citation{
@@ -927,7 +940,9 @@ textarea{
 }
 
 /* Champs de saisie */
-.wrapperContact input[type="text"], input[type="email"], textarea {
+.wrapperContact input[type="text"], 
+.wrapperContact input[type="email"], 
+.wrapperContact textarea {
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
@@ -940,7 +955,9 @@ textarea{
 }
 
 /* Focus sur les champs */
-.wrapperContact input[type="text"]:focus, input[type="email"]:focus, textarea:focus {
+.wrapperContact input[type="text"]:focus, 
+.wrapperContact input[type="email"]:focus,
+.wrapperContact textarea:focus {
     border-color: #d8d8d8;
     outline: none;
 }
