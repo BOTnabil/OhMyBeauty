@@ -23,6 +23,11 @@ class HomeController {
         require 'view/servicesView.php';
     }
 
+    public function shop() {
+        // Charger et afficher la vue service
+        require 'view/shopView.php';
+    }
+
     public function contactSubmit() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $nom = filter_input(INPUT_POST, 'nom');

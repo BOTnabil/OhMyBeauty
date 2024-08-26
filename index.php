@@ -19,6 +19,7 @@ if(isset($_GET["action"])){
         case "aPropos" : $ctrlHome->aPropos(); break;
         case "services" : $ctrlHome->services(); break;
         case "contact" : $ctrlHome->contact(); break;
+        case "shop" : $ctrlHome->shop(); break;
         // Envoie de mail
         case "contactSubmit": $ctrlHome->contactSubmit(); break;
         // Security

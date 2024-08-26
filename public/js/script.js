@@ -43,7 +43,7 @@ function showSlides() {
     slides[slideIndex - 1].style.opacity = 1; // Définir l'opacité à 1 pour le slide actuel
     slides[slideIndex - 1].className += " active-slide"; // Ajouter la classe active-slide
 
-    setTimeout(showSlides, 1000); // Changer le slide toutes les 5 secondes
+    setTimeout(showSlides, 7000); // Changer le slide toutes les 5 secondes
 }
 
 document.addEventListener('DOMContentLoaded', function() {

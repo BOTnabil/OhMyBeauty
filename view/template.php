@@ -28,6 +28,7 @@ session_start();
             <ul>
                 <li><a href="index.php?action=defaultView">Accueil</a></li>
                 <li><a href="index.php?action=services">Services</a></li>
+                <li><a href="index.php?action=shop">Shop</a></li>
                 <li><a href="index.php?action=aPropos">À propos</a></li>
                 <li><a href="index.php?action=contact">Contact</a></li>
             </ul>
@@ -35,6 +36,7 @@ session_start();
         <nav id="myLinks">
             <a href="index.php?action=defaultView">Accueil</a>
             <a href="index.php?action=services">Services</a>
+            <a href="index.php?action=shop">Shop</a>
             <a href="index.php?action=aPropos">À propos</a>
             <a href="index.php?action=contact">Contact</a>
         </nav>
