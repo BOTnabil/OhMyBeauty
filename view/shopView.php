@@ -13,33 +13,7 @@ $categoriesWithProduits = $produitManager->getAllCategoriesWithProduits();
 
 ?>
 
-<div class="shop-container">
-    <div class="services-container">
-        <?php foreach ($categoriesWithProduits as $categorieNom => $produits) { ?>
-            <div class="category">
-                <h2><?= $categorieNom; ?></h2>
-                <div class="services-list">
-                    <?php foreach ($produits as $produit) { ?>
-                        <div class="service">
-                            <div class="service-details">
-                                <h3><?= $produit["designation"]; ?></h3>
-                                <span><?= $produit["prix"]; ?> €</span>
-                            </div>
-                            <div class="service-actions">
-                                <form method="get" action="index.php">
-                                    <input type="hidden" name="action" value="add">
-                                    <input type="hidden" name="idProduit" value="<?= $produit['idProduit']; ?>">  <!-- idProduit included here -->
-                                    <button type="submit">Ajouter au panier</button>
-                                </form>
-                            </div>
-                        </div>
-                    <?php } ?>
-                </div>
-            </div>
-        <?php } ?>
-    </div>
-
-    <div class="cart-container">
+<div class="cart-container">
         <h2>Votre Panier</h2>
         <?php if (!empty($_SESSION['products'])) { ?>
             <table>
@@ -88,6 +62,32 @@ $categoriesWithProduits = $produitManager->getAllCategoriesWithProduits();
         <?php } ?>
     </div>
 </div>
+
+<div class="shop-container">
+    <div class="services-container">
+        <?php foreach ($categoriesWithProduits as $categorieNom => $produits) { ?>
+            <div class="category">
+                <h2><?= $categorieNom; ?></h2>
+                <div class="services-list">
+                    <?php foreach ($produits as $produit) { ?>
+                        <div class="service">
+                            <div class="service-details">
+                                <h3><?= $produit["designation"]; ?></h3>
+                                <span><?= $produit["prix"]; ?> €</span>
+                            </div>
+                            <div class="service-actions">
+                                <form method="get" action="index.php">
+                                    <input type="hidden" name="action" value="add">
+                                    <input type="hidden" name="idProduit" value="<?= $produit['idProduit']; ?>">  <!-- idProduit included here -->
+                                    <button type="submit">Ajouter au panier</button>
+                                </form>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+        <?php } ?>
+    </div>
 
 <?php
 $titre = "Shop - Oh My Beauty";

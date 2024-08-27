@@ -5,22 +5,24 @@ namespace Controller;
 session_start();
 
 use Model\Managers\ProduitManager;
+// use Model\Managers\CommandeManager;
 
 class PanierController {
     private $produitManager;
 
     public function __construct() {
         $this->produitManager = new ProduitManager();
+        // $this->commandeManager = new commandeManager();
     }
 
     public function addToCart($idProduit) {
         $productData = $this->produitManager->getProduitById($idProduit);
-// elseif avec add si il existe deja
+
         if ($productData) {
             $name = $productData['designation'];
             $price = $productData['prix'];
-            $qtt = 1;  // Default quantity to 1 when adding to cart
-
+            $qtt = 1;
+            $productExists = false;
             $product = [
                 "id" => $idProduit,
                 "name" => $name,
@@ -29,7 +31,21 @@ class PanierController {
                 "total" => $price * $qtt
             ];
             
-            $_SESSION['products'][] = $product;
+            foreach ($_SESSION['products'] as &$existingProduct) {
+                if ($existingProduct['id'] === $idProduit) {
+                    $existingProduct['qtt'] += $qtt;
+                    $existingProduct['total'] = $existingProduct['price'] * $existingProduct['qtt'];
+                    $productExists = true;
+                    break;
+                }
+            }
+
+            if (!$productExists) {
+                $_SESSION['products'][] = $product;
+            }
+
+            $_SESSION['MAJindex'] = "Article ajouté(s)";
+        
         } 
              header("Location:index.php?action=shop");
     
