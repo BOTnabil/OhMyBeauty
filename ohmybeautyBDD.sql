@@ -104,15 +104,32 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `idProduit` int NOT NULL AUTO_INCREMENT,
   `designation` varchar(50) NOT NULL,
   `prix` decimal(15,2) NOT NULL,
-  `image` varchar(255) NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `idCategorie` int NOT NULL,
   PRIMARY KEY (`idProduit`),
   KEY `idCategorie` (`idCategorie`),
   CONSTRAINT `produit_ibfk_1` FOREIGN KEY (`idCategorie`) REFERENCES `categorie` (`idCategorie`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table ohmybeauty.produit : ~0 rows (environ)
+-- Listage des données de la table ohmybeauty.produit : ~16 rows (environ)
 DELETE FROM `produit`;
+INSERT INTO `produit` (`idProduit`, `designation`, `prix`, `image`, `idCategorie`) VALUES
+	(1, 'Lime à ongles', 4.29, NULL, 4),
+	(2, 'Kit de manucure', 9.50, NULL, 4),
+	(3, 'Kit vernis semi permanent', 24.99, NULL, 4),
+	(4, 'Ponceuse', 49.99, NULL, 4),
+	(5, 'Kit extension de cils', 11.49, NULL, 1),
+	(6, 'Faux cils (10 paires)', 8.99, NULL, 1),
+	(7, 'Sérum croissance', 22.99, NULL, 1),
+	(8, 'Faux cils magnétiques', 9.99, NULL, 1),
+	(9, 'Coffret skin care', 29.95, NULL, 3),
+	(10, 'Serre tête skin care', 2.00, NULL, 3),
+	(11, 'Masque au charbon', 4.50, NULL, 3),
+	(12, 'Masque hydratant', 3.50, NULL, 3),
+	(13, 'Masque réparateur', 12.90, NULL, 2),
+	(14, 'Kit lissage brésilien', 15.90, NULL, 2),
+	(15, 'Bonnet en satin', 7.99, NULL, 2),
+	(16, 'Elastiques (20 pièces)', 4.00, NULL, 2);
 
 -- Listage de la structure de table ohmybeauty. reservation
 CREATE TABLE IF NOT EXISTS `reservation` (
@@ -139,7 +156,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   PRIMARY KEY (`idUtilisateur`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table ohmybeauty.utilisateur : ~0 rows (environ)
+-- Listage des données de la table ohmybeauty.utilisateur : ~1 rows (environ)
 DELETE FROM `utilisateur`;
 INSERT INTO `utilisateur` (`idUtilisateur`, `nom`, `prenom`, `email`, `motDePasse`, `role`) VALUES
 	(1, 'Nabil', 'Assatour', 'assatour.nabil@gmail.com', '$2y$10$lmhrwZ9L74IoWPEiU.UjuOu41klSUxVfMMcWiCVtQ5jccA20I3DDm', 'user');
