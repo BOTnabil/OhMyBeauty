@@ -49,3 +49,5 @@ function showSlides() {
 document.addEventListener('DOMContentLoaded', function() {
     showSlides(); // Appeler showSlides à la fin du chargement de la page
 });
+
+// Gestion panier

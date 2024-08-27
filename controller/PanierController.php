@@ -4,65 +4,68 @@ namespace Controller;
 
 session_start();
 
+use Model\Managers\ProduitManager;
+
 class PanierController {
+    private $produitManager;
 
-    public function gestionPanier() {
+    public function __construct() {
+        $this->produitManager = new ProduitManager();
+    }
 
-        $_SESSION['MAJindex'] = " ";
-        $_SESSION['MAJrecap'] = " ";
+    public function addToCart($idProduit) {
+        $productData = $this->produitManager->getProduitById($idProduit);
+// elseif avec add si il existe deja
+        if ($productData) {
+            $name = $productData['designation'];
+            $price = $productData['prix'];
+            $qtt = 1;  // Default quantity to 1 when adding to cart
 
-        if(isset($_GET['action'])){
-            switch($_GET['action']){
-                case "add":     
-                    if($name && $price && $qtt){
-                        
-                        $product = [
-                            "name" => $name,
-                            "price" => $price,
-                            "qtt" => $qtt,
-                            "total" => $price*$qtt
-                        ];
-                        
-                        $_SESSION['products'][] = $product;
+            $product = [
+                "id" => $idProduit,
+                "name" => $name,
+                "price" => $price,
+                "qtt" => $qtt,
+                "total" => $price * $qtt
+            ];
             
-                        $_SESSION['MAJindex'] = "Article ajouté(s)";
-                    } else {
-                        $_SESSION['MAJindex'] = "Erreur";
-                    } 
-                    break;
-                case "delete": 
-                    if(isset($_GET["id"])){
-                        unset($_SESSION["products"][$_GET["id"]]);
-                    }
-                    $_SESSION['MAJrecap'] = "L'article a bien été supprimé";
-                    header("Location:recap.php");
-                    break;
-                case "clear":
-                    unset($_SESSION["products"]);
-                    header("Location:recap.php");
-                    $_SESSION['MAJrecap'] = "Tout les articles ont été supprimés";
-                    break;
-                case "up-qtt":
-                        if (isset($_GET["id"])) {
-                            if (isset($_SESSION["products"][$_GET["id"]])) {
-                                $_SESSION["products"][$_GET["id"]]["qtt"]++;
-                            }
-                        }
-                    header("Location:recap.php");
-                    break;
-                case "down-qtt":
-                    if (isset($_GET["id"])) {
-                        if (isset($_SESSION["products"][$_GET["id"]]) && $_SESSION["products"][$_GET["id"]]["qtt"]>0) {
-                            $_SESSION["products"][$_GET["id"]]["qtt"]--;
-                        }
-                        if ($_SESSION["products"][$_GET["id"]]["qtt"]==0){
-                            unset($_SESSION["products"][$_GET["id"]]);
-                            $_SESSION['MAJrecap'] = "L'article a bien été supprimé";
-                        }
-                    }
-                    header("Location:recap.php");
-                    break;
+            $_SESSION['products'][] = $product;
+        } 
+             header("Location:index.php?action=shop");
+    
+    } 
+
+    public function removeFromCart($id) {
+        unset($_SESSION['products'][$id]);
+        $_SESSION['MAJrecap'] = "L'article a bien été supprimé";
+        header("Location:index.php?action=shop");
+    }
+
+    public function clearCart() {
+        unset($_SESSION['products']);
+        $_SESSION['MAJrecap'] = "Tous les articles ont été supprimés";
+        header("Location:index.php?action=shop");
+    }
+
+    public function increaseQuantity($id) {
+        if (isset($_SESSION['products'][$id])) {
+            $_SESSION['products'][$id]['qtt']++;
+            $_SESSION['products'][$id]['total'] = $_SESSION['products'][$id]['price'] * $_SESSION['products'][$id]['qtt'];
+        }
+        header("Location:index.php?action=shop");
+    }
+
+    public function decreaseQuantity($id) {
+        if (isset($_SESSION['products'][$id]) && $_SESSION['products'][$id]['qtt'] > 0) {
+            $_SESSION['products'][$id]['qtt']--;
+            $_SESSION['products'][$id]['total'] = $_SESSION['products'][$id]['price'] * $_SESSION['products'][$id]['qtt'];
+            if ($_SESSION['products'][$id]['qtt'] == 0) {
+                unset($_SESSION['products'][$id]);
+                $_SESSION['MAJrecap'] = "L'article a bien été supprimé";
             }
         }
+        header("Location:index.php?action=shop");
+
+        }
+
     }
-}
