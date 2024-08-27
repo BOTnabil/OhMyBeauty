@@ -24,7 +24,7 @@ class ProduitManager {
         return $stmt->fetch(); // Assuming fetch returns a single row or false if not found
     }
 
-    // Méthode pour obtenir tous les produit d'une catégorie spécifique
+    // Méthode pour obtenir tous les produits d'une catégorie spécifique
     public function getProduitsByCategorie($idCategorie) {
         $query = "
             SELECT p.designation, p.prix 
