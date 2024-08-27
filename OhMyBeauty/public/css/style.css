@@ -1,0 +1,1034 @@
+ /*=================================================================
+========================= VARIABLES ================================
+=================================================================
+ */
+:root {
+    --noir : #161616;
+    --font : "Oswald", sans-serif;
+    --gris : #494949;
+}
+ /*=================================================================
+========================= GENERAL ================================
+=================================================================
+ */
+*{  margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+
+html{
+    font-size: 20px;
+}
+
+a{  color: rgb(235, 235, 235);
+    text-decoration: none;
+    font-family: var(--font);
+    font-weight: 100;
+}
+ /*=================================================================
+========================= HEADER ================================
+=================================================================
+ */
+
+#openBtn{
+    display: none;
+}
+
+.sidenav{
+    display: none;
+}
+                
+header {
+    z-index: 2;
+    display: flex;
+    background-color: var(--noir);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    padding: 0;
+    position: sticky;
+}
+
+.logoNav{
+    z-index: 2; /* Pour le garder au-dessus du sidenav */
+    margin-left: 15px;
+    margin-top: 20px;
+    object-fit: cover;
+    height: 50%;
+}
+
+nav{
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    text-align: center;
+    font-size:  20PX;
+}
+
+header a{
+    margin-right: 20px;
+    margin-left: 20px;
+    color: #ffffff;
+}
+
+.user{
+    margin-top: 25px;
+    text-align: center;
+    width: 15%;
+}
+
+/* Style pour le menu utilisateur */
+.user i{
+    position: fixed;
+    top: 38px;
+    z-index: 2; /* Assure que l'icône utilisateur est au-dessus du menu utilisateur */
+    right: 50px;
+}
+
+.user-menu {
+    display: block;
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    z-index: 1;
+    top: 0px;
+    right: -300px;
+    background-color: var(--noir);
+    padding-top: 60px;
+    transition: right 0.5s ease;
+    overflow-y: auto;
+}
+
+.user-menu.active {
+    right: 0;
+}
+
+.user-menu h3 {
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    margin: 0;
+    font-family: var(--font);
+    font-weight: 300;
+}
+
+.user-form {
+    display: none; /* Formulaires cachés par défaut */
+    padding: 20px;
+    color: white;
+}
+
+.user-menu input[type="text"],
+.user-menu input[type="email"],
+.user-menu input[type="password"] {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+.user-menu input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #ffffff;
+    color: var(--noir);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.user-menu-item {
+    border-bottom: 1px solid #444;
+}
+
+
+ /*=========================MAIN PAGE========================================
+========================= HOME ================================
+=================================================================
+ */
+
+.slider {
+    position: relative;
+    max-width: 100%;
+    height: 35vw;
+    overflow: hidden;
+}
+
+.slide {
+   
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity 1s; /* Animation de fondu */
+    opacity: 0; /* Caché par défaut */
+}
+
+.active-slide {
+    opacity: 1; /* Visible uniquement lorsque actif */
+}
+
+
+.citation{
+    color: white;
+    background-color: var(--noir);
+    font-family: var(--font);
+    font-weight: 300;
+    text-align: center;
+    font-size: 50PX;
+    padding-left: 10%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    padding-right: 10%;
+}
+
+ /*=================================================================
+========================= SERVICES ================================
+=================================================================
+ */
+
+.services {
+    position: relative;
+    display: flex;
+    background-color: var(--noir);
+}
+
+.link1-4{
+    overflow:hidden;
+    width: 100%;
+}
+
+.plus1 {
+    position: absolute;
+    width: 6vw;
+    filter: invert();
+    left: 9.6vw;
+    top: 37%;
+    transition: 0.5s ease;
+    opacity: 0;
+}
+
+.plus2 {
+    position: absolute;
+    width: 6vw;
+    filter: invert();
+    left: 33.5vw;
+    top: 37%;
+    transition: 0.5s ease;
+    opacity: 0;
+}
+
+.plus3 {
+    position: absolute;
+    width: 6vw;
+    filter: invert();
+    left: 58.5vw;
+    top: 37%;
+    transition: 0.5s ease;
+    opacity: 0;
+}
+
+.plus4 {
+    position: absolute;
+    width: 6vw;
+    filter: invert();
+    left: 83vw;
+    top: 37%;
+    transition: 0.5s ease;
+    opacity: 0;
+}
+
+.link1-4:hover .plus1{
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.link1-4:hover .plus2{
+    opacity: 1;
+    transform: rotate(90deg);
+}
+.link1-4:hover .plus3{
+    opacity: 1;
+    transform: rotate(90deg);
+}
+.link1-4:hover .plus4{
+    opacity: 1;
+    transform: rotate(90deg);
+}
+
+.galerie img{ 
+    max-width: 100%;
+    height: auto;
+}
+
+.img1-4{
+    transition: 0.5s ease;
+    width: 100%;
+}
+
+.link1-4:hover .img1-4{
+    transform: scale(1.1);
+    opacity: 0.3;
+    filter: grayscale(1);
+}
+
+ /*=================================================================
+========================= A PROPOS 1 ================================
+=================================================================
+ */
+.aPropos1{
+    display: flex;
+}
+.boxLeftTop{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 8vw;
+    text-align: center;
+    max-width: 40%;
+}
+
+.boxLeftTop h1{
+    font-family: var(--font);
+    font-weight: 400;
+    font-size: 5vw;
+}
+
+.boxLeftTop h2{
+    font-style: italic;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.boxLeftTop p{
+    margin-top: 4%;
+    font-weight: 300;
+    color: var(--gris);
+    font-family: var(--font);
+    font-size: clamp(0.5rem, 30% + 1.7vw, 20rem);
+}
+
+.boxLeftTop a{
+    display: inline-block;
+    margin-top: 3vw;
+    background-color: var(--noir);
+    padding: 2% 4% 2% 4%;
+    font-size: clamp(0.5rem, 30% + 1.7vw, 20rem);
+    border-radius: 10px;
+    transition:.3s;
+}
+
+.boxLeftTop a:hover{
+    background-color: var(--gris);
+}
+
+.imgOMBaPropos1{
+    display: flex;
+    width: 50%;
+    height: 50%;
+}
+
+ /*=================================================================
+========================= A PROPOS 2 ================================
+=================================================================
+ */
+.aPropos2{
+    display: flex;
+}
+.boxRightBot{
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 8vw;
+    text-align: center;
+    max-width: 40%;
+}
+
+.boxRightBot h1{
+    font-family: var(--font);
+    font-weight: 400;
+    font-size: 5vw;
+    
+}
+
+.boxRightBot h2{
+    font-style: italic;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.boxRightBot p{
+    margin-top: 4%;
+    vertical-align: center;
+    color: var(--gris);
+    font-family: var(--font);
+    font-size: clamp(1rem, 30% + 1.7vw, 20rem);
+    font-weight: 300;
+}
+
+.boxRightBot a{
+    transition:.3s;
+    display: inline-block;
+    margin-top: 3vw;
+    background-color: var(--noir);
+    padding: 2% 4% 2% 4%;
+    font-size: clamp(0.5rem, 30% + 1.7vw, 20rem);
+    border-radius: 10px;
+}
+
+.boxRightBot a:hover{
+    background-color: var(--gris);
+}
+
+.imgOMBaPropos2{
+    display: flex;
+    width: 50%;
+    height: 50%;
+}
+
+
+ /*=================================================================
+========================= CONTACT ================================
+=================================================================
+ */
+
+.contact{
+    color:white;
+    background-image: url("../img/parallax.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
+    max-width: 100%;
+    height: auto;
+    padding-top: 6%;
+    padding-bottom: 7%;
+}
+
+.contact p{
+    margin-top: 0.5%;
+    font-style: italic;
+    font-weight: 200;
+    font-size: 20px;
+    text-align: center;
+    
+}
+
+.contact h2{
+    font-family: var(--font);
+    font-weight: 400;
+    font-size: 4vw;
+    text-align: center;
+}
+
+.logos {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 20px;
+    gap: 20px;
+}
+
+.logos-footer {
+    display: flex;
+    color: grey;
+    font-size: 20px;
+    height: 50px;
+    width: 50px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border: 1px grey solid;
+    border-radius: 50%;
+}
+
+.logos-footer a {
+    color: rgb(219, 219, 219);
+    display: flex;
+    text-decoration: none;
+    align-items: center;
+}
+ /*=================================================================
+========================= MAP ================================
+=================================================================
+ */
+
+
+.sectionMap{
+    position: relative;
+}
+
+.map{
+    overflow:hidden;
+    position:relative;
+    height: 50vw;
+    background-color: #0e0e0e;
+}
+
+.sectionMap img{
+    height: auto;
+    max-width: 60px;
+}
+
+.sectionMap a{
+    z-index: 1;
+    display: inline-block;
+    position: absolute; 
+    margin-left: auto; 
+    margin-right: auto; 
+    left: 49%;
+    top: 45%;
+}
+
+.map iframe{
+    filter: grayscale(1) invert();
+    pointer-events: none;
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
+    mask: linear-gradient(transparent, black, transparent);
+}
+
+                            /* SECTION FOOTER */
+
+footer{
+    background-color: #0e0e0e;  
+}
+
+footer img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+
+/* 
+=============================VIEW A PROPOS====================================
+========================= FEATURES ================================
+=================================================================
+ */
+
+
+ #features {
+    margin-bottom: 40px;
+ }
+
+#features h2 {
+    font-family: var(--font);
+    font-weight: 300;
+    display: flex;
+    padding-bottom: 10px;
+    justify-content: center;
+    text-align: justify;
+    color: rgb(255, 255, 255);
+}
+
+.titre {
+    font-family: var(--font);
+    font-weight: 300;
+    justify-content: center;
+    text-align: center;
+    color: rgb(218, 218, 218);
+}
+
+.containerFeatures{
+    background-color: var(--noir);
+    padding-top: 40px;
+    padding-bottom: 50px;
+    margin-bottom: 30px;
+}
+
+#container {
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+
+.cards-1:hover {
+    transform: translateY(-20px);
+}
+
+.cards-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    gap: 20px;
+    background-image: radial-gradient(var(--gris), var(--noir) 70%);
+    width: 400px;
+    height: 350px;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    transition: 0.5s;
+  
+}
+
+.cards-1 i {
+    padding-top: 50px;
+    height: 100px;
+    color: white;
+    font-size: 40px;
+}
+
+.cards-1 h3 {
+    font-family: var(--font);
+    padding-bottom: 10px;
+    font-size: 25px;
+    font-weight: 500;
+    color: white;
+    
+}
+
+.cards-1 p {
+    font-family: var(--font);
+    font-size: 17px;
+    color: white;
+    font-weight: 300;
+}
+
+.cards-1-text {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    padding-bottom: 100px;
+}
+
+
+ /*=================================================================
+========================= MEMBERS ================================
+=================================================================
+ */
+
+
+ #team {
+    min-height: 71vh;
+    padding-top: 30px;
+    background-image: url("../img/parallax2.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment:fixed;
+    background-size: cover;
+ }
+
+ #team h2 {
+    font-family: var(--font);
+    text-align: center;
+    justify-content: justify;
+    padding-bottom: 20px;
+    color: white;
+
+ }
+
+ .titre-team {
+    font-family: var(--font);
+    justify-content: center;
+    text-align: center;
+    color: white;
+    font-weight: 300;
+    padding-bottom: 50px;
+ }
+
+.equipe {
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 20px;
+    text-align: center; 
+    font-family: var(--font);
+}
+
+.cards-2 p {
+    padding-bottom: 30px;
+    opacity: 0.7;
+}
+
+
+.cards-2 strong {
+    font-size: 20px;
+    opacity: 1;
+}
+
+.cards-2 h3 {
+    font-size: 17px;
+    font-weight: 500;
+   
+}
+
+.cards-2-header{
+    position: relative;
+    width: 250px;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 50%;
+   
+}
+
+.cards-2-header img {
+    transition: 0.5s;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(1);
+}
+
+.cards-2:hover .cards-2-header img {
+    transform: scale(1.1);
+}
+
+.cards-2-header img:hover {
+    filter: grayscale(0);
+}
+
+
+.cards-2-header i {
+    display: flex;
+    height: 30px;
+    width: 30px;
+    align-items: center;
+    margin: 5px;
+    padding: 15px 25px 10px 10px;
+    background-color: white;
+    padding-bottom: 20px;
+   border-radius: 50%;
+}
+
+
+.cards-2-header a {
+    text-decoration: none;
+    color: black;
+}
+
+
+ /*=================================================================
+========================= RESPONSIVE MAIN ================================
+=================================================================
+ */
+@media only screen and (max-width: 768px) {
+
+    #openBtn{
+        display: table-header-group;
+        margin-left: 5vw;
+        margin-right: 9vw;
+        margin-top: 15px;
+        position: relative;
+        z-index: 2; /* Pour le garder au-dessus du sidenav */
+    }
+
+    .sidenav{
+        display: block;
+        height: 100%;
+        width: 150px;
+        position: fixed;
+        z-index: 1;
+        top: 0PX;
+        left: -250px;
+        background-color: var(--noir);
+        padding-top: 60px;
+        transition: left 0.5s ease;
+    }
+
+    .logoNav{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+    .sidenav li{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 20PX;
+        list-style-type: none
+    }
+
+    .sidenav.active{
+        left: 0;
+    }
+
+    .sidenav .close{
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+    }
+
+    .burger-icon span {
+        display: block;
+        width: 35px;
+        height: 5px;
+        background-color: rgb(0, 0, 0);
+        margin: 6px 0;
+    }
+
+    #myLinks{
+        display: none;
+    }
+
+    .citation{
+        font-size: clamp(20px, 100% + 1.7vw, 40rem);
+    }
+    
+    .aPropos1{
+        display:block;
+    }
+
+    .boxLeftTop{
+        max-width: 100%;
+        margin-bottom: 8vw;
+        font-size: clamp(2.5rem, 30% + 1.7vw, 20rem);
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .imgOMBaPropos1{
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 8vw;
+    }
+
+    .aPropos2{
+        display:table;
+    }
+
+    .imgOMBaPropos2{
+        display:table-footer-group;
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        margin-top: 8vw;
+    }
+
+    .boxRightBot{
+        display:table-header-group;
+        max-width: 100%;
+        font-size: clamp(2.5rem, 30% + 1.7vw, 20rem);
+    }
+
+    .services{
+        display: inline-block;
+    }
+
+    .services h2{
+        margin-top: 4%;
+    }
+
+    .imgBox1{
+        margin-left: 42%;
+    }
+
+    .imgBox2{
+        margin-left: 42%;
+    }
+
+    .imgBox3{
+        margin-left: 42%;
+    }
+
+    .imgBox4{
+        margin-left: 42%;
+    }
+
+    .services {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .link1-4 {
+        width: 100%;
+        aspect-ratio: 16 / 9; /* Par exemple, pour un ratio 16:9 */
+        overflow: hidden;
+        position: relative;
+    }
+
+    .img1-4 {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Assure que l'image couvre bien le conteneur sans déformation */
+    }
+
+    .plus1, .plus2, .plus3, .plus4 {
+        position: absolute;
+        width: 20vw;
+        left: 40%;
+        top: 18vw;
+    }
+
+    .map{
+        height: 100vw;
+    }
+ 
+    
+     /*=================================================================
+========================= RESPONSIVE A PROPOS ================================
+=================================================================
+ */
+}
+
+@media screen and (max-width: 1259px) {
+
+    .equipe {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cards-2 {
+        margin-top: 30px;
+    }
+    
+    #container {
+        flex-direction: column;
+    }
+}
+
+/*=================================================================
+========================= PAGE CONTACT ================================
+=================================================================
+ */
+textarea{
+    resize: none;
+}
+
+.wrapperContact {
+    font-family: var(--font);
+    background-color: #2c2c2c;
+    color: #e0e0e0;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding-bottom: 50px;
+}
+
+.wrapperContact h1 {
+    padding-top: 5px;
+    font-size: 2.5em;
+    color: #e6e6e6;
+    text-align: center;
+}
+
+/* Conteneur du formulaire */
+.wrapperContact form {
+    background-color: #1e1e1e;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    max-width: 700px;
+    width: 100%;
+}
+
+/* Labels */
+.wrapperContact label {
+    font-size: 1.1em;
+    color: #f2f2f2;
+    display: block;
+    margin-bottom: 8px;
+}
+
+/* Champs de saisie */
+.wrapperContact input[type="text"], 
+.wrapperContact input[type="email"], 
+.wrapperContact textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #444;
+    border-radius: 4px;
+    background-color: #414141;
+    color: #f2f2f2;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+/* Focus sur les champs */
+.wrapperContact input[type="text"]:focus, 
+.wrapperContact input[type="email"]:focus,
+.wrapperContact textarea:focus {
+    border-color: #d8d8d8;
+    outline: none;
+}
+
+/* Bouton de soumission */
+.wrapperContact input[type="submit"] {
+    background-color: var(--noir);
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.wrapperContact input[type="submit"]:hover {
+    background-color: var(--gris);
+}
+
+/* Service view */
+
+.services-container {
+    font-family: var(--font);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.category {
+    margin-bottom: 30px;
+}
+
+.service {
+
+    font-weight: 300;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.service-details h3 {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: 400;
+}
+
+.service-details p {
+    margin: 5px 0;
+    color: #555;
+}
+
+.service-actions button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.service-actions button:hover {
+    background-color: #333;
+}
+
+
+/* TEST */
