@@ -35,7 +35,7 @@ class HomeController {
             $message = filter_input(INPUT_POST, 'message');
     
             if ($nom && $email && $message) {
-                $to = "assatour.nabil@gmail.com"; // Remplacez par votre adresse e-mail
+                $to = "assatour.nabil@gmail.com";
                 $subject = "Nouveau message de $nom";
                 $body = "Nom: $nom\nEmail: $email\n\nMessage:\n$message";
                 $headers = "From: $email";

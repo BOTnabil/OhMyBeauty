@@ -21,7 +21,7 @@ class PrestationManager {
         ";
         $result = $this->db->query($query);
 
-        return $result->fetchAll(); // Assuming fetchAll is a custom method in your database connection class
+        return $result->fetchAll();
     }
 
     // Méthode pour obtenir toutes les catégories avec leurs services
@@ -35,7 +35,7 @@ class PrestationManager {
         $result = $this->db->query($query);
 
         $categories = [];
-        while ($row = $result->fetch()) { // Assuming fetch is a custom method in your database connection class
+        while ($row = $result->fetch()) {
             $categories[$row['categorie_designation']][] = [
                 'designation' => $row['designation'],
                 'description' => $row['description'],

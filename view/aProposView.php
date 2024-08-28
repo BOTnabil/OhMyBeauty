@@ -15,7 +15,7 @@ cupiditate reiciendis maiores a nihil eos ex expedita modi cumque!</p>
                 <div class="cards-2-header">
                     <img src="./public/img/person1.jpeg" alt="Jolyne Cujoh">
                 </div>
-            <h3>Jolyne Cujoh</h3>
+            <h3>Jolyne Q. Joh</h3>
             <p>Gérante</p>
         </div>
 

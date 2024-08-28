@@ -5,14 +5,19 @@ namespace Controller;
 session_start();
 
 use Model\Managers\ProduitManager;
-// use Model\Managers\CommandeManager;
+use Model\Managers\CommandeManager;
+use Model\Managers\ContenirManager;
 
 class PanierController {
     private $produitManager;
+    private $commandeManager;
+    private $contenirManager;
+    
 
     public function __construct() {
         $this->produitManager = new ProduitManager();
-        // $this->commandeManager = new commandeManager();
+        $this->commandeManager = new commandeManager();
+        $this->contenirManager = new contenirManager();
     }
 
     public function addToCart($idProduit) {
@@ -84,4 +89,33 @@ class PanierController {
 
         }
 
+    public function validateCommande() {
+        if (isset($_SESSION['user_id'])) {
+            if (!empty($_SESSION['products'])) {
+                $prixTotal = 0;
+                $idUtilisateur = $_SESSION['user_id'];
+
+                // Prix total
+                foreach ($_SESSION['products'] as $product) {
+                    $prixTotal += $product['total'];
+                }
+
+                // Commande
+                $idCommande = $this->commandeManager->createCommande($prixTotal, $idUtilisateur);
+
+                // Contenir
+                foreach ($_SESSION['products'] as $product) {
+                    $this->contenirManager->addProductToCommande($idCommande, $product['id'], $product['qtt']);
+                }
+
+                // clear
+                unset($_SESSION['products']);
+                $_SESSION['MAJindex'] = "Commande validée avec succès!";
+
+                header("Location:index.php?action=shop");
+            }
+        } else {
+            header("Location:index.php?action=defaultView");
+        }
     }
+}

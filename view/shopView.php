@@ -8,11 +8,11 @@ use Controller\PanierController;
 $produitManager = new ProduitManager();
 $panierController = new PanierController();
 
-// Fetch all categories with their products
+// Fetch all des categories avec leurs produits
 $categoriesWithProduits = $produitManager->getAllCategoriesWithProduits();
-
 ?>
 
+<div class="shop-container">
 <div class="cart-container">
         <h2>Votre Panier</h2>
         <?php if (!empty($_SESSION['products'])) { ?>
@@ -27,16 +27,16 @@ $categoriesWithProduits = $produitManager->getAllCategoriesWithProduits();
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($_SESSION['products'] as $id => $product) { ?>
+                    <?php foreach ($_SESSION['products'] as $index => $product) { ?>
                         <tr>
                             <td><?= $product['name']; ?></td>
                             <td><?= $product['price']; ?> €</td>
                             <td><?= $product['qtt']; ?></td>
                             <td><?= $product['total']; ?> €</td>
                             <td>
-                                <a href="index.php?action=up-qtt&id=<?= $id; ?>">+</a>
-                                <a href="index.php?action=down-qtt&id=<?= $id; ?>">-</a>
-                                <a href="index.php?action=delete&id=<?= $id; ?>">Supprimer</a>
+                                <a href="index.php?action=up-qtt&id=<?= $index; ?>">+</a>
+                                <a href="index.php?action=down-qtt&id=<?= $index; ?>">-</a>
+                                <a href="index.php?action=delete&id=<?= $index; ?>">Supprimer</a>
                             </td>
                         </tr>
                     <?php } ?>
@@ -52,6 +52,10 @@ $categoriesWithProduits = $produitManager->getAllCategoriesWithProduits();
                     echo $totalGeneral . " €";
                 ?>
                 </p>
+                <form method="post" action="index.php?action=validate">
+                    <input type="hidden" name="idUtilisateur" value="1"> <!-- Assuming user ID is 1 for now -->
+                    <button type="submit">Valider la commande</button>
+                </form>
                 <form method="get" action="index.php">
                     <input type="hidden" name="action" value="clear">
                     <button type="submit">Vider le panier</button>
@@ -61,9 +65,6 @@ $categoriesWithProduits = $produitManager->getAllCategoriesWithProduits();
             <p>Votre panier est vide.</p>
         <?php } ?>
     </div>
-</div>
-
-<div class="shop-container">
     <div class="services-container">
         <?php foreach ($categoriesWithProduits as $categorieNom => $produits) { ?>
             <div class="category">
@@ -78,7 +79,7 @@ $categoriesWithProduits = $produitManager->getAllCategoriesWithProduits();
                             <div class="service-actions">
                                 <form method="get" action="index.php">
                                     <input type="hidden" name="action" value="add">
-                                    <input type="hidden" name="idProduit" value="<?= $produit['idProduit']; ?>">  <!-- idProduit included here -->
+                                    <input type="hidden" name="idProduit" value="<?= $produit['idProduit']; ?>">
                                     <button type="submit">Ajouter au panier</button>
                                 </form>
                             </div>
@@ -88,6 +89,7 @@ $categoriesWithProduits = $produitManager->getAllCategoriesWithProduits();
             </div>
         <?php } ?>
     </div>
+</div>
 
 <?php
 $titre = "Shop - Oh My Beauty";

@@ -21,7 +21,7 @@ class ProduitManager {
         $stmt->bindParam(':idProduit', $idProduit, \PDO::PARAM_INT);
         $stmt->execute();
 
-        return $stmt->fetch(); // Assuming fetch returns a single row or false if not found
+        return $stmt->fetch();
     }
 
     // Méthode pour obtenir tous les produits d'une catégorie spécifique
@@ -34,7 +34,7 @@ class ProduitManager {
         ";
         $result = $this->db->query($query);
 
-        return $result->fetchAll(); // Assuming fetchAll is a custom method in your database connection class
+        return $result->fetchAll();
     }
 
     // Méthode pour obtenir toutes les catégories avec leurs produits
@@ -50,7 +50,7 @@ class ProduitManager {
         $categories = [];
         while ($row = $result->fetch()) {
             $categories[$row['categorie_designation']][] = [
-                'idProduit' => $row['idProduit'],  // Ensure idProduit is included here
+                'idProduit' => $row['idProduit'],
                 'designation' => $row['designation'],
                 'prix' => $row['prix']
             ];

@@ -1,12 +1,9 @@
 <?php
-
 namespace Model\Managers;
 
 use App\Connect;
 
 class CommandeManager {
-
-    // mettre ici la requete sql qui va créer les données de la commande et de contenir dans la BDD
     
     private $db;
 
@@ -14,13 +11,17 @@ class CommandeManager {
         $this->db = Connect::seConnecter(); // Initialisation de la connexion à la base de données
     }
 
-    // Méthode pour obtenir tous les services d'une catégorie spécifique
-    public function test() {
+    // Méthode
+    public function createCommande($prixTotal, $idUtilisateur) {
         $query = "
-           
+            INSERT INTO commande (dateCommande, prixTotal, idUtilisateur) 
+            VALUES (NOW(), :prixTotal, :idUtilisateur)
         ";
-        $result = $this->db->query($query);
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':prixTotal', $prixTotal);
+        $stmt->bindParam(':idUtilisateur', $idUtilisateur);
+        $stmt->execute();
 
-        return $result->fetchAll();
+        return $this->db->lastInsertId(); // Return le nouvel ID
     }
 }

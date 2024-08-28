@@ -52,6 +52,11 @@ if(isset($_GET["action"])){
                 $ctrlPanier->decreaseQuantity($_GET['id']);
             }
             break;
+        case 'validate':
+            if (isset($_POST['idUtilisateur'])) { 
+                $ctrlPanier->validateCommande($_POST['idUtilisateur']);
+            }
+            break;
     } 
 } else {
     // Si aucun paramètre "action" n'est défini, afficher la vue par défaut
