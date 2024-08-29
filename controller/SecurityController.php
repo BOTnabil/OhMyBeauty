@@ -45,6 +45,7 @@ class SecurityController {
                     session_start();
                     $_SESSION['user_id'] = $utilisateur['idUtilisateur'];
                     $_SESSION['user_email'] = $utilisateur['email'];
+                    $_SESSION['user_name'] = $utilisateur['prenom']." ".$utilisateur['nom'];
                     header("Location: index.php?action=defaultView");
                 } else {
                     // Rediriger ou afficher un message d'erreur si les informations sont incorrectes

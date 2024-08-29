@@ -24,8 +24,13 @@ class HomeController {
     }
 
     public function shop() {
-        // Charger et afficher la vue service
+        // Charger et afficher la vue shop
         require 'view/shopView.php';
+    }
+
+    public function recap() {
+        // Charger et afficher la vue recap
+        require "view/recapUtilisateurView.php";
     }
 
     public function contactSubmit() {
@@ -50,5 +55,9 @@ class HomeController {
             }
             require 'view/contactView.php';
         }
+    }
+
+    function generateReceiptPDF($commandeDetails) {
+    
     }
 }

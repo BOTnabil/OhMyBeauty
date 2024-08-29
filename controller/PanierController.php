@@ -49,7 +49,7 @@ class PanierController {
                 $_SESSION['products'][] = $product;
             }
 
-            $_SESSION['MAJindex'] = "Article ajouté(s)";
+            $_SESSION['MAJtxt'] = "Article ajouté(s)";
         
         } 
              header("Location:index.php?action=shop");
@@ -58,13 +58,13 @@ class PanierController {
 
     public function removeFromCart($id) {
         unset($_SESSION['products'][$id]);
-        $_SESSION['MAJrecap'] = "L'article a bien été supprimé";
+        $_SESSION['MAJtxt'] = "L'article a bien été supprimé";
         header("Location:index.php?action=shop");
     }
 
     public function clearCart() {
         unset($_SESSION['products']);
-        $_SESSION['MAJrecap'] = "Tous les articles ont été supprimés";
+        $_SESSION['MAJtxt'] = "Tous les articles ont été supprimés";
         header("Location:index.php?action=shop");
     }
 
@@ -82,7 +82,7 @@ class PanierController {
             $_SESSION['products'][$id]['total'] = $_SESSION['products'][$id]['price'] * $_SESSION['products'][$id]['qtt'];
             if ($_SESSION['products'][$id]['qtt'] == 0) {
                 unset($_SESSION['products'][$id]);
-                $_SESSION['MAJrecap'] = "L'article a bien été supprimé";
+                $_SESSION['MAJtxt'] = "L'article a bien été supprimé";
             }
         }
         header("Location:index.php?action=shop");
@@ -110,12 +110,12 @@ class PanierController {
 
                 // clear
                 unset($_SESSION['products']);
-                $_SESSION['MAJindex'] = "Commande validée avec succès!";
+                $_SESSION['MAJtxt'] = "Commande validée avec succès!";
 
-                header("Location:index.php?action=shop");
+                header("Location:index.php?action=recap");
             }
         } else {
-            header("Location:index.php?action=defaultView");
+            $_SESSION['MAJtxt'] = "Une erreur est survenue";
         }
     }
 }

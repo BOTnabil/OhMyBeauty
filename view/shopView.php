@@ -63,8 +63,13 @@ $categoriesWithProduits = $produitManager->getAllCategoriesWithProduits();
             </div>
         <?php } else { ?>
             <p>Votre panier est vide.</p>
-        <?php } ?>
+        <?php } 
+        if (empty($_SESSION['MAJtxt'])) {
+            $_SESSION['MAJtxt'] = " ";
+        }
+        echo $_SESSION['MAJtxt'];?>
     </div>
+
     <div class="services-container">
         <?php foreach ($categoriesWithProduits as $categorieNom => $produits) { ?>
             <div class="category">

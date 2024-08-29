@@ -32,7 +32,7 @@ $categoriesWithServices = $prestationManager->getAllCategoriesWithServices();
     <?php } ?>
 </div>
 
-    <?php
+<?php
 $titre = "Services - Oh My Beauty";
 $contenu = ob_get_clean();
 require "template.php";

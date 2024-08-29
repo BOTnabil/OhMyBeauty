@@ -3,6 +3,7 @@
 use Controller\HomeController;
 use Controller\SecurityController;
 use Controller\PanierController;
+use Model\Managers\CommandeManager;
 
 spl_autoload_register(function($class_name){
     include $class_name . '.php';
@@ -11,6 +12,7 @@ spl_autoload_register(function($class_name){
 $ctrlHome = new HomeController();
 $ctrlSecurity = new SecurityController();
 $ctrlPanier = new PanierController();
+$commandeManager = new CommandeManager();
 
 $id = isset($_GET["id"]) ? $_GET["id"] : null;
 
@@ -22,6 +24,7 @@ if(isset($_GET["action"])){
         case "services" : $ctrlHome->services(); break;
         case "contact" : $ctrlHome->contact(); break;
         case "shop" : $ctrlHome->shop(); break;
+        case "recap": $ctrlHome->recap(); break;
         // Envoie de mail
         case "contactSubmit": $ctrlHome->contactSubmit(); break;
         // Security
@@ -57,6 +60,13 @@ if(isset($_GET["action"])){
                 $ctrlPanier->validateCommande($_POST['idUtilisateur']);
             }
             break;
+        case 'downloadReceipt':
+            if (isset($_GET['idCommande'])) {
+                $commandeDetails = $commandeManager->getCommandeDetails($_GET['idCommande']);
+                $ctrlHome->generateReceiptPDF($commandeDetails);
+            }
+            break;
+        //
     } 
 } else {
     // Si aucun paramètre "action" n'est défini, afficher la vue par défaut
