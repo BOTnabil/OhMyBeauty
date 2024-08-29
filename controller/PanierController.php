@@ -58,7 +58,7 @@ class PanierController {
 
     public function removeFromCart($id) {
         unset($_SESSION['products'][$id]);
-        $_SESSION['MAJtxt'] = "L'article a bien été supprimé";
+        $_SESSION['MAJrecap'] = "L'article a bien été supprimé";
         header("Location:index.php?action=shop");
     }
 
@@ -112,7 +112,7 @@ class PanierController {
                 unset($_SESSION['products']);
                 $_SESSION['MAJtxt'] = "Commande validée avec succès!";
 
-                header("Location:index.php?action=recap");
+                header("Location:index.php?action=shop");
             }
         } else {
             $_SESSION['MAJtxt'] = "Une erreur est survenue";

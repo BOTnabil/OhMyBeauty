@@ -33,7 +33,7 @@ class CommandeManager {
             ORDER BY dateCommande DESC
         ";
         $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':idUtilisateur', $idUtilisateur, \PDO::PARAM_INT);
+        $stmt->bindParam(':idUtilisateur', $idUtilisateur);
         $stmt->execute();
 
         return $stmt->fetchAll();
@@ -47,7 +47,7 @@ class CommandeManager {
             WHERE c.idCommande = :idCommande
         ";
         $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':idCommande', $idCommande, \PDO::PARAM_INT);
+        $stmt->bindParam(':idCommande', $idCommande);
         $stmt->execute();
 
         return $stmt->fetchAll();

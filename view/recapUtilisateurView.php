@@ -41,7 +41,7 @@ $commandes = $commandeManager->getCommandesByUtilisateur($idUtilisateur);
 <?php } ?>
 
 <?php
-$titre = "Coin utilisateur - Oh My Beauty";
+$titre = "Espace utilisateur - Oh My Beauty";
 $contenu = ob_get_clean();
 require "template.php";
 ?>

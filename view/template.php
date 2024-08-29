@@ -54,6 +54,7 @@
                     ?>
                     <div class="user-menu-item">
                         <h3 class="toggle-form"><a href="index.php?action=logout">Se déconnecter</a></h3>
+                        <h3 class="toggle-form"><a href="index.php?action=recap">Votre espace</a></h3>
                     </div>
                     <?php
                 } else {
