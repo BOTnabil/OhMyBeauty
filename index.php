@@ -68,19 +68,10 @@ if(isset($_GET["action"])){
                 $ctrlHome->generateReceiptPDF($commandeDetails);
             }
             break;
-        // reservation
+        // Reservation
         case 'reservation': $ctrlReservation->Reservation(); break;
-        case 'chooseTimeSlot':
-            if (isset($_POST['idPrestation']) && isset($_POST['datePrestation'])) {
-                $idPrestation = $_POST['idPrestation'];
-                $datePrestation = $_POST['datePrestation'];
-
-                // Récupérer les créneaux horaires déjà réservés pour cette prestation et cette date
-                $reservedSlots = $reservationManager->getReservedSlotsByDate($idPrestation, $datePrestation);
-
-                require "chooseTimeSlotView.php"; // Page pour afficher les créneaux horaires
-            }
-            break;
+        case 'chooseTimeSlot': $ctrlReservation->ChooseTimeSlot(); break;
+        case 'cancelReservation': $ctrlReservation->CancelReservation(); break;
     } 
 } else {
     // Si aucun paramètre "action" n'est défini, afficher la vue par défaut

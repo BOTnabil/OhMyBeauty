@@ -12,7 +12,7 @@ class ReservationManager {
     }
 
     public function createReservation($idUtilisateur, $idPrestation, $datePrestation) {
-        // Vérification si la date/heure est déjà réservée
+        // Vérification si la date/heure est déjà réservée dddddddddddddddddddddd
         if ($this->isSlotReserved($idPrestation, $datePrestation)) {
             throw new \Exception("Cette date et heure sont déjà réservées.");
         }
@@ -79,12 +79,23 @@ class ReservationManager {
             JOIN prestation p ON r.idPrestation = p.idPrestation
             JOIN categorie c ON p.idCategorie = c.idCategorie
             WHERE r.idUtilisateur = :idUtilisateur
-            ORDER BY r.datePrestation DESC
+            ORDER BY r.datePrestation
         ";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':idUtilisateur', $idUtilisateur, \PDO::PARAM_INT);
         $stmt->execute();
     
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    // Méthode pour annuler une réservation
+    public function cancelReservation($idPrestation) {
+        $query = "
+            DELETE FROM reservation 
+            WHERE idPrestation = :idPrestation
+        ";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':idPrestation', $idPrestation, \PDO::PARAM_INT);
+        $stmt->execute();
     }
 }

@@ -14,7 +14,7 @@ $availableSlots = array_diff($timeSlots, array_column($reservedSlots, 'timeSlot'
 
 <h2>Choisir un créneau horaire pour le <?= date('d/m/Y', strtotime($datePrestation)); ?></h2>
 
-<form method="post" action="index.php?action=reserve">
+<form method="post" action="index.php?action=reservation">
     <input type="hidden" name="idPrestation" value="<?= htmlspecialchars($idPrestation); ?>">
     <input type="hidden" name="datePrestation" value="<?= htmlspecialchars($datePrestation); ?>">
     

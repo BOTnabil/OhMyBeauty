@@ -58,6 +58,7 @@ $reservations = $reservationManager->getReservationsByUtilisateur($idUtilisateur
                 <th>Catégorie</th>
                 <th>Durée</th>
                 <th>Prix</th>
+                <th>Action</th> <!-- Nouvelle colonne pour l'action -->
             </tr>
         </thead>
         <tbody>
@@ -68,6 +69,12 @@ $reservations = $reservationManager->getReservationsByUtilisateur($idUtilisateur
                     <td><?= htmlspecialchars($reservation['categorie']); ?></td>
                     <td><?= htmlspecialchars($reservation['duree']); ?></td>
                     <td><?= htmlspecialchars($reservation['prix']); ?> €</td>
+                    <td>
+                        <form method="post" action="index.php?action=cancelReservation">
+                            <input type="hidden" name="idPrestation" value="<?= $reservation['idPrestation']; ?>">
+                            <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir annuler cette réservation ?');">Annuler</button>
+                        </form>
+                    </td>
                 </tr>
             <?php } ?>
         </tbody>
@@ -78,5 +85,5 @@ $reservations = $reservationManager->getReservationsByUtilisateur($idUtilisateur
 
 <?php
 $contenu = ob_get_clean();
-$titre = "Récapitulatif des commandes et rendez-vous";
+$titre = "Récapitulatif des commandes et rendez-vous - Oh My beauty";
 require "template.php";
