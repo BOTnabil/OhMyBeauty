@@ -3,11 +3,14 @@
 ob_start(); 
 
 use Model\Managers\PrestationManager;
+use Model\Managers\ReservationManager;
 
 $prestationManager = new PrestationManager();
+$reservationManager = new ReservationManager();
 
 // Récupération de toutes les catégories avec leurs services
 $categoriesWithServices = $prestationManager->getAllCategoriesWithServices();
+
 ?>
 
 <div class="services-container">
@@ -23,7 +26,12 @@ $categoriesWithServices = $prestationManager->getAllCategoriesWithServices();
                             <span><?= $service["duree"]; ?> • <?= $service["prix"]; ?> €</span>
                         </div>
                         <div class="service-actions">
-                            <button>Choisir</button>
+                            <form method="post" action="index.php?action=chooseTimeSlot">
+                                <input type="hidden" name="idPrestation" value="<?= $service['idPrestation']; ?>">
+                                <label for="datePrestation">Choisir une date :</label>
+                                <input type="date" name="datePrestation" required min="<?= date('Y-m-d'); ?>">
+                                <button type="submit">Valider la date</button>
+                            </form>
                         </div>
                     </div>
                 <?php } ?>
@@ -32,8 +40,8 @@ $categoriesWithServices = $prestationManager->getAllCategoriesWithServices();
     <?php } ?>
 </div>
 
+
 <?php
 $titre = "Services - Oh My Beauty";
 $contenu = ob_get_clean();
 require "template.php";
-?>

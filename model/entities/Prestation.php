@@ -18,56 +18,127 @@ class Prestation {
         $this->description = $description;
     }
 
-    public function getIdPrestation() {
-        return $this->idPrestation;
-    }
-
-    public function getDesignation() {
+    public function __toString() {
         return $this->designation;
     }
 
-    public function getPrix() {
-        return $this->prix;
-    }
-
-    public function getIdCategorie() {
-        return $this->idCategorie;
-    }
-
-    public function getDuree() {
-        return $this->duree;
-    }
-
-    public function getDescription() {
+    /**
+     * Get the value of description
+     */ 
+    public function getDescription()
+    {
         return $this->description;
     }
 
-    public function setDesignation($designation) {
-        $this->designation = $designation;
-        return $this;
-    }
-
-    public function setPrix($prix) {
-        $this->prix = $prix;
-        return $this;
-    }
-
-    public function setIdCategorie($idCategorie) {
-        $this->idCategorie = $idCategorie;
-        return $this;
-    }
-
-    public function setDuree($duree) {
-        $this->duree = $duree;
-        return $this;
-    }
-    
-    public function setDescription($description) {
+    /**
+     * Set the value of description
+     *
+     * @return  self
+     */ 
+    public function setDescription($description)
+    {
         $this->description = $description;
+
         return $this;
     }
 
-    public function __toString() {
+    /**
+     * Get the value of duree
+     */ 
+    public function getDuree()
+    {
+        return $this->duree;
+    }
+
+    /**
+     * Set the value of duree
+     *
+     * @return  self
+     */ 
+    public function setDuree($duree)
+    {
+        $this->duree = $duree;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idCategorie
+     */ 
+    public function getIdCategorie()
+    {
+        return $this->idCategorie;
+    }
+
+    /**
+     * Set the value of idCategorie
+     *
+     * @return  self
+     */ 
+    public function setIdCategorie($idCategorie)
+    {
+        $this->idCategorie = $idCategorie;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of prix
+     */ 
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+
+    /**
+     * Set the value of prix
+     *
+     * @return  self
+     */ 
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of designation
+     */ 
+    public function getDesignation()
+    {
         return $this->designation;
+    }
+
+    /**
+     * Set the value of designation
+     *
+     * @return  self
+     */ 
+    public function setDesignation($designation)
+    {
+        $this->designation = $designation;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idPrestation
+     */ 
+    public function getIdPrestation()
+    {
+        return $this->idPrestation;
+    }
+
+    /**
+     * Set the value of idPrestation
+     *
+     * @return  self
+     */ 
+    public function setIdPrestation($idPrestation)
+    {
+        $this->idPrestation = $idPrestation;
+
+        return $this;
     }
 }

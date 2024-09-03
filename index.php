@@ -3,6 +3,7 @@
 use Controller\HomeController;
 use Controller\SecurityController;
 use Controller\PanierController;
+use Controller\ReservationController;
 use Model\Managers\CommandeManager;
 
 spl_autoload_register(function($class_name){
@@ -12,6 +13,7 @@ spl_autoload_register(function($class_name){
 $ctrlHome = new HomeController();
 $ctrlSecurity = new SecurityController();
 $ctrlPanier = new PanierController();
+$ctrlReservation = new ReservationController();
 $commandeManager = new CommandeManager();
 
 $id = isset($_GET["id"]) ? $_GET["id"] : null;
@@ -66,7 +68,19 @@ if(isset($_GET["action"])){
                 $ctrlHome->generateReceiptPDF($commandeDetails);
             }
             break;
-        //
+        // reservation
+        case 'reservation': $ctrlReservation->Reservation(); break;
+        case 'chooseTimeSlot':
+            if (isset($_POST['idPrestation']) && isset($_POST['datePrestation'])) {
+                $idPrestation = $_POST['idPrestation'];
+                $datePrestation = $_POST['datePrestation'];
+
+                // Récupérer les créneaux horaires déjà réservés pour cette prestation et cette date
+                $reservedSlots = $reservationManager->getReservedSlotsByDate($idPrestation, $datePrestation);
+
+                require "chooseTimeSlotView.php"; // Page pour afficher les créneaux horaires
+            }
+            break;
     } 
 } else {
     // Si aucun paramètre "action" n'est défini, afficher la vue par défaut

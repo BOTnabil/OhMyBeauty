@@ -11,23 +11,10 @@ class PrestationManager {
         $this->db = Connect::seConnecter(); // Initialisation de la connexion à la base de données
     }
 
-    // Méthode pour obtenir tous les services d'une catégorie spécifique
-    public function getServicesByCategorie($idCategorie) {
-        $query = "
-            SELECT p.designation, p.description, p.duree, p.prix 
-            FROM prestation p
-            INNER JOIN categorie c ON c.idCategorie = p.idCategorie
-            WHERE c.idCategorie = $idCategorie
-        ";
-        $result = $this->db->query($query);
-
-        return $result->fetchAll();
-    }
-
     // Méthode pour obtenir toutes les catégories avec leurs services
     public function getAllCategoriesWithServices() {
         $query = "
-            SELECT c.idCategorie, c.designation AS categorie_designation, p.designation, p.description, p.duree, p.prix 
+            SELECT c.idCategorie, c.designation AS categorie_designation, p.idPrestation, p.designation, p.description, p.duree, p.prix 
             FROM categorie c
             LEFT JOIN prestation p ON c.idCategorie = p.idCategorie
             ORDER BY c.designation, p.designation
@@ -37,6 +24,7 @@ class PrestationManager {
         $categories = [];
         while ($row = $result->fetch()) {
             $categories[$row['categorie_designation']][] = [
+                'idPrestation' => $row['idPrestation'],
                 'designation' => $row['designation'],
                 'description' => $row['description'],
                 'duree' => $row['duree'],

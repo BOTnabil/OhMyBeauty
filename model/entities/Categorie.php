@@ -9,21 +9,47 @@ class Categorie {
         $this->idCategorie = $idCategorie;
         $this->designation = $designation;
     }
-
-    public function getIdCategorie() {
-        return $this->idCategorie;
-    }
-
-    public function getDesignation() {
+    public function __toString() {
         return $this->designation;
     }
 
-    public function setDesignation($designation) {
+    /**
+     * Get the value of designation
+     */ 
+    public function getDesignation()
+    {
+        return $this->designation;
+    }
+
+    /**
+     * Set the value of designation
+     *
+     * @return  self
+     */ 
+    public function setDesignation($designation)
+    {
         $this->designation = $designation;
+
         return $this;
     }
 
-    public function __toString() {
-        return $this->designation;
+    /**
+     * Get the value of idCategorie
+     */ 
+    public function getIdCategorie()
+    {
+        return $this->idCategorie;
+    }
+
+    /**
+     * Set the value of idCategorie
+     *
+     * @return  self
+     */ 
+    public function setIdCategorie($idCategorie)
+    {
+        $this->idCategorie = $idCategorie;
+
+        return $this;
     }
 }

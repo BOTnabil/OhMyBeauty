@@ -12,30 +12,63 @@ class Contenir {
         $this->quantite = $quantite;
     }
 
-    public function getIdCommande() {
-        return $this->idCommande;
-    }
-
-    public function getIdProduit() {
-        return $this->idProduit;
-    }
-
-    public function getQuantite() {
+    /**
+     * Get the value of quantite
+     */ 
+    public function getQuantite()
+    {
         return $this->quantite;
     }
 
-    public function setIdCommande($idCommande) {
-        $this->idCommande = $idCommande;
-        return $this;
-    }
-
-    public function setIdProduit($idProduit) {
-        $this->idProduit = $idProduit;
-        return $this;
-    }
-
-    public function setQuantite($quantite) {
+    /**
+     * Set the value of quantite
+     *
+     * @return  self
+     */ 
+    public function setQuantite($quantite)
+    {
         $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idProduit
+     */ 
+    public function getIdProduit()
+    {
+        return $this->idProduit;
+    }
+
+    /**
+     * Set the value of idProduit
+     *
+     * @return  self
+     */ 
+    public function setIdProduit($idProduit)
+    {
+        $this->idProduit = $idProduit;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idCommande
+     */ 
+    public function getIdCommande()
+    {
+        return $this->idCommande;
+    }
+
+    /**
+     * Set the value of idCommande
+     *
+     * @return  self
+     */ 
+    public function setIdCommande($idCommande)
+    {
+        $this->idCommande = $idCommande;
+
         return $this;
     }
 }

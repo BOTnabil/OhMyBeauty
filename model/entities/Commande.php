@@ -14,34 +14,83 @@ class Commande {
         $this->idUtilisateur = $idUtilisateur;
     }
 
-    public function getIdCommande() {
-        return $this->idCommande;
-    }
-
-    public function getDateCommande() {
-        return $this->dateCommande;
-    }
-
-    public function getPrixTotal() {
-        return $this->prixTotal;
-    }
-
-    public function getIdUtilisteur() {
+    /**
+     * Get the value of idUtilisateur
+     */ 
+    public function getIdUtilisateur()
+    {
         return $this->idUtilisateur;
     }
 
-    public function setDateCommande($dateCommande) {
-        $this->dateCommande = $dateCommande;
-        return $this;
-    }
-
-    public function setPrixTotal($prixTotal) {
-        $this->prixTotal = $prixTotal;
-        return $this;
-    }
-
-    public function setIdUtilisateur($idUtilisateur) {
+    /**
+     * Set the value of idUtilisateur
+     *
+     * @return  self
+     */ 
+    public function setIdUtilisateur($idUtilisateur)
+    {
         $this->idUtilisateur = $idUtilisateur;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of prixTotal
+     */ 
+    public function getPrixTotal()
+    {
+        return $this->prixTotal;
+    }
+
+    /**
+     * Set the value of prixTotal
+     *
+     * @return  self
+     */ 
+    public function setPrixTotal($prixTotal)
+    {
+        $this->prixTotal = $prixTotal;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of dateCommande
+     */ 
+    public function getDateCommande()
+    {
+        return $this->dateCommande;
+    }
+
+    /**
+     * Set the value of dateCommande
+     *
+     * @return  self
+     */ 
+    public function setDateCommande($dateCommande)
+    {
+        $this->dateCommande = $dateCommande;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idCommande
+     */ 
+    public function getIdCommande()
+    {
+        return $this->idCommande;
+    }
+
+    /**
+     * Set the value of idCommande
+     *
+     * @return  self
+     */ 
+    public function setIdCommande($idCommande)
+    {
+        $this->idCommande = $idCommande;
+
         return $this;
     }
 }

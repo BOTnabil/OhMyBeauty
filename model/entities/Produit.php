@@ -16,47 +16,107 @@ class Produit {
         $this->idCategorie = $idCategorie;
     }
 
-    public function getIdProduit() {
+    public function __toString() {
+        return $this->designation;
+    }
+
+    /**
+     * Get the value of idProduit
+     */ 
+    public function getIdProduit()
+    {
         return $this->idProduit;
     }
 
-    public function getDesignation() {
+    /**
+     * Set the value of idProduit
+     *
+     * @return  self
+     */ 
+    public function setIdProduit($idProduit)
+    {
+        $this->idProduit = $idProduit;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of designation
+     */ 
+    public function getDesignation()
+    {
         return $this->designation;
     }
 
-    public function getPrix() {
+    /**
+     * Set the value of designation
+     *
+     * @return  self
+     */ 
+    public function setDesignation($designation)
+    {
+        $this->designation = $designation;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of prix
+     */ 
+    public function getPrix()
+    {
         return $this->prix;
     }
 
-    public function getImage() {
+    /**
+     * Set the value of prix
+     *
+     * @return  self
+     */ 
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of image
+     */ 
+    public function getImage()
+    {
         return $this->image;
     }
 
-    public function getIdCategorie() {
+    /**
+     * Set the value of image
+     *
+     * @return  self
+     */ 
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of idCategorie
+     */ 
+    public function getIdCategorie()
+    {
         return $this->idCategorie;
     }
 
-    public function setDesignation($designation) {
-        $this->designation = $designation;
-        return $this;
-    }
-
-    public function setPrix($prix) {
-        $this->prix = $prix;
-        return $this;
-    }
-
-    public function setImage($image) {
-        $this->image = $image;
-        return $this;
-    }
-
-    public function setIdCategorie($idCategorie) {
+    /**
+     * Set the value of idCategorie
+     *
+     * @return  self
+     */ 
+    public function setIdCategorie($idCategorie)
+    {
         $this->idCategorie = $idCategorie;
-        return $this;
-    }
 
-    public function __toString() {
-        return $this->designation;
+        return $this;
     }
 }
