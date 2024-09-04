@@ -8,9 +8,10 @@ $timeSlots = [
 ];
 
 // Récupérer les heures réservées sous forme d'un tableau simple
-$reservedSlots = array_map(function($slot) {
-    return substr($slot['timeSlot'], 0, 5);  // Prend seulement les 5 premiers caractères ("HH:MM")
-}, $reservedSlots);
+$reservedSlots = array_map( 
+    function($slot) {
+        return substr($slot['timeSlot'], 0, 5);  // Prend seulement les 5 premiers caractères ("HH:MM")
+    }, $reservedSlots);
 
 // Filtrer les créneaux horaires pour retirer ceux qui sont déjà réservés
 $availableSlots = array_diff($timeSlots, $reservedSlots);
