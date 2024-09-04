@@ -1,17 +1,17 @@
 <?php
 
-use Controller\HomeController;
-use Controller\SecurityController;
+use Controller\AccueilController;
+use Controller\SecuriteController;
 use Controller\PanierController;
 use Controller\ReservationController;
 use Model\Managers\CommandeManager;
 
-spl_autoload_register(function($class_name){
-    include $class_name . '.php';
+spl_autoload_register(function($nom_classe){
+    include $nom_classe . '.php';
 });
 
-$ctrlHome = new HomeController();
-$ctrlSecurity = new SecurityController();
+$ctrlAccueil = new AccueilController();
+$ctrlSecurite = new SecuriteController();
 $ctrlPanier = new PanierController();
 $ctrlReservation = new ReservationController();
 $commandeManager = new CommandeManager();
@@ -20,60 +20,60 @@ $id = isset($_GET["id"]) ? $_GET["id"] : null;
 
 if(isset($_GET["action"])){
     switch ($_GET["action"]) {
-        // Changement de views
-        case "defaultView" : $ctrlHome->defaultView(); break;
-        case "aPropos" : $ctrlHome->aPropos(); break;
-        case "services" : $ctrlHome->services(); break;
-        case "contact" : $ctrlHome->contact(); break;
-        case "shop" : $ctrlHome->shop(); break;
-        case "recap": $ctrlHome->recap(); break;
-        // Envoie de mail
-        case "contactSubmit": $ctrlHome->contactSubmit(); break;
-        // Security
-        case "logout": $ctrlSecurity->logout(); break;
-        case "register": $ctrlSecurity->register(); break;
-        case "login": $ctrlSecurity->login(); break;
+        // Changement de vues
+        case "vueParDefaut" : $ctrlAccueil->afficherParDefaut(); break;
+        case "aPropos" : $ctrlAccueil->afficherAPropos(); break;
+        case "prestations" : $ctrlAccueil->afficherPrestations(); break;
+        case "contact" : $ctrlAccueil->afficherContact(); break;
+        case "boutique" : $ctrlAccueil->afficherBoutique(); break;
+        case "recap": $ctrlAccueil->afficherRecap(); break;
+        // Envoi de mail
+        case "envoyerContact": $ctrlAccueil->envoyerContact(); break;
+        // Sécurité
+        case "deconnexion": $ctrlSecurite->deconnexion(); break;
+        case "inscription": $ctrlSecurite->inscription(); break;
+        case "connexion": $ctrlSecurite->connexion(); break;
         // Panier
-        case 'add':
+        case 'ajouterAuPanier':
             if (isset($_GET['idProduit'])) {
-                $ctrlPanier->addToCart($_GET['idProduit']);
+                $ctrlPanier->ajouterAuPanier($_GET['idProduit']);
             }
             break;
-        case 'delete':
+        case 'supprimerDuPanier':
             if (isset($_GET['id'])) {
-                $ctrlPanier->removeFromCart($_GET['id']);
+                $ctrlPanier->supprimerDuPanier($_GET['id']);
             }
             break;
-        case 'clear':
-            $ctrlPanier->clearCart();
+        case 'viderPanier':
+            $ctrlPanier->viderPanier();
             break;
-        case 'up-qtt':
+        case 'augmenterQttProduit':
             if (isset($_GET['id'])) {
-                $ctrlPanier->increaseQuantity($_GET['id']);
+                $ctrlPanier->augmenterQttProduit($_GET['id']);
             }
             break;
-        case 'down-qtt':
+        case 'diminuerQttProduit':
             if (isset($_GET['id'])) {
-                $ctrlPanier->decreaseQuantity($_GET['id']);
+                $ctrlPanier->diminuerQttProduit($_GET['id']);
             }
             break;
-        case 'validate':
+        case 'validerCommande':
             if (isset($_POST['idUtilisateur'])) { 
-                $ctrlPanier->validateCommande($_POST['idUtilisateur']);
+                $ctrlPanier->validerCommande($_POST['idUtilisateur']);
             }
             break;
-        case 'downloadReceipt':
+        case 'telechargerRecu':
             if (isset($_GET['idCommande'])) {
-                $commandeDetails = $commandeManager->getCommandeDetails($_GET['idCommande']);
-                $ctrlHome->generateReceiptPDF($commandeDetails);
+                $detailsCommande = $commandeManager->obtenirDetailsCommande($_GET['idCommande']);
+                $ctrlAccueil->genererRecuPDF($detailsCommande);
             }
             break;
-        // Reservation
+        // Réservation
         case 'reservation': $ctrlReservation->Reservation(); break;
-        case 'chooseTimeSlot': $ctrlReservation->ChooseTimeSlot(); break;
-        case 'cancelReservation': $ctrlReservation->CancelReservation(); break;
+        case 'choisirCreneau': $ctrlReservation->choisirCreneau(); break;
+        case 'annulerReservation': $ctrlReservation->AnnulerReservation(); break;
     } 
 } else {
     // Si aucun paramètre "action" n'est défini, afficher la vue par défaut
-    $ctrlHome->defaultView();
+    $ctrlAccueil->afficherParDefaut();
 }

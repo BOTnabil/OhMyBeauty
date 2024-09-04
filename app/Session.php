@@ -4,11 +4,11 @@ namespace App;
 class Session{
 
     public static function setUser($user){
-        $_SESSION["user"] = $user;
+        $_SESSION["utilisateur"] = $user;
     }
 
     public static function getUser(){
-        return (isset($_SESSION['user'])) ? $_SESSION['user'] : false;
+        return (isset($_SESSION['utilisateur'])) ? $_SESSION['utilisateur'] : false;
     }
 
     public static function isAdmin(){

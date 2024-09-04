@@ -5,22 +5,23 @@ use App\Connect;
 
 class UtilisateurManager{
     
-    // Se connecter a la BDD
+    // Se connecter à la base de données
     private $db;
 
     public function __construct() {
         $this->db = Connect::seConnecter();
     }
 
-    public function createUtilisateur($nom, $prenom, $email, $motDePasse, $role) {
+    // Créer un nouvel utilisateur
+    public function creerUtilisateur($nom, $prenom, $email, $motDePasse, $role) {
         $stmt = $this->db->prepare('
         INSERT INTO Utilisateur (nom, prenom, email, motDePasse, role) 
         VALUES (:nom, :prenom, :email, :motDePasse, :role)');
         return $stmt->execute(['nom' => $nom, 'prenom' => $prenom, 'email' => $email, 'motDePasse' => $motDePasse, 'role' => $role]);
     }
 
-    // Cherche si l'utilisateur existe deja
-    public function checkUserExists($email) {
+    // Vérifier si l'utilisateur existe déjà
+    public function verifierUtilisateurExistant($email) {
         $stmt = $this->db->prepare('
         SELECT COUNT(*) 
         FROM Utilisateur 
@@ -29,7 +30,8 @@ class UtilisateurManager{
         return $stmt->fetchColumn() > 0;
     }
 
-    public function getUtilisateurByEmail($email) {
+    // Obtenir un utilisateur par son adresse email
+    public function obtenirUtilisateurParEmail($email) {
         $stmt = $this->db->prepare('
         SELECT * 
         FROM Utilisateur 

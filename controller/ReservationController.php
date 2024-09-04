@@ -16,14 +16,14 @@ class ReservationController {
     }
 
     public function Reservation() {
-        // Reservation seulement si connecté
+        // Réservation seulement si l'utilisateur est connecté
         if (isset($_SESSION['user_id'])) {
-            if (isset($_POST['idPrestation']) && isset($_POST['datePrestation']) && isset($_POST['timeSlot'])) {
+            if (isset($_POST['idPrestation']) && isset($_POST['datePrestation']) && isset($_POST['creneauHoraire'])) {
                 $idUtilisateur = $_SESSION['user_id'];  // ID de l'utilisateur connecté, récupéré depuis la session
                 $idPrestation = $_POST['idPrestation'];
-                $datePrestation = $_POST['datePrestation'] . ' ' . $_POST['timeSlot'] . ':00';  // Combine la date et l'heure
+                $datePrestation = $_POST['datePrestation'] . ' ' . $_POST['creneauHoraire'] . ':00';  // Combine la date et l'heure
 
-                $this->reservationManager->createReservation($idUtilisateur, $idPrestation, $datePrestation);
+                $this->reservationManager->creerReservation($idUtilisateur, $idPrestation, $datePrestation);
                 $_SESSION['MAJindex'] = "Réservation effectuée avec succès!";
                 
                 header("Location:index.php?action=recap");
@@ -31,23 +31,23 @@ class ReservationController {
         }
     }
 
-    public function ChooseTimeSlot() {
+    public function choisirCreneau() {
         if (isset($_POST['idPrestation']) && isset($_POST['datePrestation'])) {
             $idPrestation = $_POST['idPrestation'];
             $datePrestation = $_POST['datePrestation'];
 
             // Utilisation de la méthode pour récupérer les créneaux horaires réservés
-            $reservedSlots = $this->reservationManager->getReservedSlotsByDate($idPrestation, $datePrestation);
+            $creneauxReserves = $this->reservationManager->obtenirCreneauxReservesParDate($idPrestation, $datePrestation);
 
-            require "view/chooseTimeSlotView.php"; // Page pour afficher les créneaux horaires disponibles
+            require "view/vueChoisirCreneau.php"; // Page pour afficher les créneaux horaires disponibles
         }
     }
 
-    public function CancelReservation() {
+    public function annulerReservation() {
         if (isset($_POST['idPrestation'])) {
             $idPrestation = $_POST['idPrestation'];
 
-            $this->reservationManager->cancelReservation($idPrestation);
+            $this->reservationManager->annulerReservation($idPrestation);
             $_SESSION['MAJindex'] = "Réservation annulée avec succès!";
             
             header("Location:index.php?action=recap");

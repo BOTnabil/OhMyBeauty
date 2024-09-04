@@ -11,36 +11,38 @@ class ReservationManager {
         $this->db = Connect::seConnecter(); // Initialisation de la connexion à la base de données
     }
 
-    public function createReservation($idUtilisateur, $idPrestation, $datePrestation) {
-        $query = "
+    // Méthode pour créer une nouvelle réservation
+    public function creerReservation($idUtilisateur, $idPrestation, $datePrestation) {
+        $requete = "
             INSERT INTO reservation (idUtilisateur, idPrestation, datePrestation) 
             VALUES (:idUtilisateur, :idPrestation, :datePrestation)
         ";
-        $stmt = $this->db->prepare($query);
+        $stmt = $this->db->prepare($requete);
         $stmt->bindParam(':idUtilisateur', $idUtilisateur, \PDO::PARAM_INT);
         $stmt->bindParam(':idPrestation', $idPrestation, \PDO::PARAM_INT);
         $stmt->bindParam(':datePrestation', $datePrestation, \PDO::PARAM_STR);
         $stmt->execute();
     }
 
-    public function getReservedSlotsByDate($idPrestation, $datePrestation) {
-        $query = "
-            SELECT TIME(datePrestation) as timeSlot 
+    // Méthode pour récupérer les créneaux horaires réservés à une date donnée
+    public function obtenirCreneauxReservesParDate($idPrestation, $datePrestation) {
+        $requete = "
+            SELECT TIME(datePrestation) as creneauHoraire 
             FROM reservation 
             WHERE idPrestation = :idPrestation 
             AND DATE(datePrestation) = :datePrestation
         ";
-        $stmt = $this->db->prepare($query);
+        $stmt = $this->db->prepare($requete);
         $stmt->bindParam(':idPrestation', $idPrestation, \PDO::PARAM_INT);
         $stmt->bindParam(':datePrestation', $datePrestation, \PDO::PARAM_STR);
         $stmt->execute();
     
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);  // Renvoie les heures sous forme de tableau associatif
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);  // Renvoie les créneaux sous forme de tableau associatif
     }    
 
     // Méthode pour récupérer les réservations d'un utilisateur spécifique
-    public function getReservationsByUtilisateur($idUtilisateur) {
-        $query = "
+    public function obtenirReservationsParUtilisateur($idUtilisateur) {
+        $requete = "
             SELECT r.idPrestation, r.datePrestation, p.designation, p.prix, p.duree, c.designation AS categorie
             FROM reservation r
             JOIN prestation p ON r.idPrestation = p.idPrestation
@@ -48,7 +50,7 @@ class ReservationManager {
             WHERE r.idUtilisateur = :idUtilisateur
             ORDER BY r.datePrestation
         ";
-        $stmt = $this->db->prepare($query);
+        $stmt = $this->db->prepare($requete);
         $stmt->bindParam(':idUtilisateur', $idUtilisateur, \PDO::PARAM_INT);
         $stmt->execute();
     
@@ -56,12 +58,12 @@ class ReservationManager {
     }
 
     // Méthode pour annuler une réservation
-    public function cancelReservation($idPrestation) {
-        $query = "
+    public function annulerReservation($idPrestation) {
+        $requete = "
             DELETE FROM reservation 
             WHERE idPrestation = :idPrestation
         ";
-        $stmt = $this->db->prepare($query);
+        $stmt = $this->db->prepare($requete);
         $stmt->bindParam(':idPrestation', $idPrestation, \PDO::PARAM_INT);
         $stmt->execute();
     }

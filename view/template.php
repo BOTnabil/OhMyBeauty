@@ -28,17 +28,17 @@
         <img src="./public/img/logo_header.png" class="logoNav" alt="image logo Oh My Beauty">
         <div id="mySidenav" class="sidenav">
             <ul>
-                <li><a href="index.php?action=defaultView">Accueil</a></li>
-                <li><a href="index.php?action=services">Services</a></li>
-                <li><a href="index.php?action=shop">Shop</a></li>
+                <li><a href="index.php?action=vueParDefaut">Accueil</a></li>
+                <li><a href="index.php?action=prestations">Prestations</a></li>
+                <li><a href="index.php?action=boutique">Boutique</a></li>
                 <li><a href="index.php?action=aPropos">À propos</a></li>
                 <li><a href="index.php?action=contact">Contact</a></li>
             </ul>
         </div>
         <nav id="myLinks">
-            <a href="index.php?action=defaultView">Accueil</a>
-            <a href="index.php?action=services">Services</a>
-            <a href="index.php?action=shop">Shop</a>
+            <a href="index.php?action=vueParDefaut">Accueil</a>
+            <a href="index.php?action=prestations">Prestations</a>
+            <a href="index.php?action=boutique">Boutique</a>
             <a href="index.php?action=aPropos">À propos</a>
             <a href="index.php?action=contact">Contact</a>
         </nav>
@@ -50,10 +50,10 @@
         <div class="user-menu">
             <?php
                 // si l'utilisateur est connecté 
-                if (isset($_SESSION['user_id'])){
+                if (isset($_SESSION['user_id'])) {
                     ?>
                     <div class="user-menu-item">
-                        <h3 class="toggle-form"><a href="index.php?action=logout">Se déconnecter</a></h3>
+                        <h3 class="toggle-form"><a href="index.php?action=deconnexion">Se déconnecter</a></h3>
                         <h3 class="toggle-form"><a href="index.php?action=recap">Votre espace</a></h3>
                     </div>
                     <?php
@@ -61,7 +61,7 @@
                     ?>
                     <div class="user-menu-item">
                         <h3 class="toggle-form">S'inscrire</h3>
-                        <form class="user-form" action="index.php?action=register" method="POST">
+                        <form class="user-form" action="index.php?action=inscription" method="POST">
                             <input type="text" name="nom" placeholder="Nom">
                             <input type="text" name="prenom" placeholder="Prénom">
                             <input type="email" name="email" placeholder="Email">
@@ -73,7 +73,7 @@
 
                     <div class="user-menu-item">
                         <h3 class="toggle-form">Se connecter</h3>
-                        <form class="user-form" action="index.php?action=login" method="POST">
+                        <form class="user-form" action="index.php?action=connexion" method="POST">
                             <input type="email" name="email" placeholder="Email">
                             <input type="password" name="motDePasse" placeholder="Mot de passe">
                             <input type="submit" name="submit" value="Se connecter">

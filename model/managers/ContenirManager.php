@@ -12,12 +12,12 @@ class ContenirManager {
     }
 
     // Méthodes
-    public function addProductToCommande($idCommande, $idProduit, $quantite) {
-        $query = "
+    public function ajouterProduitACommande($idCommande, $idProduit, $quantite) {
+        $requete = "
             INSERT INTO contenir (idCommande, idProduit, quantite) 
             VALUES (:idCommande, :idProduit, :quantite)
         ";
-        $stmt = $this->db->prepare($query);
+        $stmt = $this->db->prepare($requete);
         $stmt->bindParam(':idCommande', $idCommande);
         $stmt->bindParam(':idProduit', $idProduit);
         $stmt->bindParam(':quantite', $quantite);
