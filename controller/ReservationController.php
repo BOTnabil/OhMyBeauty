@@ -21,12 +21,8 @@ class ReservationController {
             $idPrestation = $_POST['idPrestation'];
             $datePrestation = $_POST['datePrestation'] . ' ' . $_POST['timeSlot'] . ':00';  // Combine la date et l'heure
 
-            try {
-                $this->reservationManager->createReservation($idUtilisateur, $idPrestation, $datePrestation);
-                $_SESSION['MAJindex'] = "Réservation effectuée avec succès!";
-            } catch (Exception $e) {
-                $_SESSION['MAJindex'] = $e->getMessage();
-            }
+            $this->reservationManager->createReservation($idUtilisateur, $idPrestation, $datePrestation);
+            $_SESSION['MAJindex'] = "Réservation effectuée avec succès!";
             
             header("Location:index.php?action=recap");
         }
@@ -37,10 +33,10 @@ class ReservationController {
             $idPrestation = $_POST['idPrestation'];
             $datePrestation = $_POST['datePrestation'];
 
-            // Récupérer les créneaux horaires déjà réservés pour cette prestation et cette date
+            // Utilisation de la méthode pour récupérer les créneaux horaires réservés
             $reservedSlots = $this->reservationManager->getReservedSlotsByDate($idPrestation, $datePrestation);
 
-            require "view/chooseTimeSlotView.php"; // Page pour afficher les créneaux horaires
+            require "view/chooseTimeSlotView.php"; // Page pour afficher les créneaux horaires disponibles
         }
     }
 
@@ -48,12 +44,8 @@ class ReservationController {
         if (isset($_POST['idPrestation'])) {
             $idPrestation = $_POST['idPrestation'];
 
-            try {
-                $this->reservationManager->cancelReservation($idPrestation);
-                $_SESSION['MAJindex'] = "Réservation annulée avec succès!";
-            } catch (Exception $e) {
-                $_SESSION['MAJindex'] = $e->getMessage();
-            }
+            $this->reservationManager->cancelReservation($idPrestation);
+            $_SESSION['MAJindex'] = "Réservation annulée avec succès!";
             
             header("Location:index.php?action=recap");
         }

@@ -12,11 +12,6 @@ class ReservationManager {
     }
 
     public function createReservation($idUtilisateur, $idPrestation, $datePrestation) {
-        // Vérification si la date/heure est déjà réservée dddddddddddddddddddddd
-        if ($this->isSlotReserved($idPrestation, $datePrestation)) {
-            throw new \Exception("Cette date et heure sont déjà réservées.");
-        }
-
         $query = "
             INSERT INTO reservation (idUtilisateur, idPrestation, datePrestation) 
             VALUES (:idUtilisateur, :idPrestation, :datePrestation)
@@ -28,48 +23,20 @@ class ReservationManager {
         $stmt->execute();
     }
 
-    public function isSlotReserved($idPrestation, $datePrestation) {
-        $query = "
-            SELECT COUNT(*) 
-            FROM reservation 
-            WHERE idPrestation = :idPrestation 
-              AND datePrestation = :datePrestation
-        ";
-        $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':idPrestation', $idPrestation, \PDO::PARAM_INT);
-        $stmt->bindParam(':datePrestation', $datePrestation, \PDO::PARAM_STR);
-        $stmt->execute();
-
-        return $stmt->fetchColumn() > 0;
-    }
-
-    public function getReservedSlotsByPrestation($idPrestation) {
-        $query = "
-            SELECT datePrestation 
-            FROM reservation 
-            WHERE idPrestation = :idPrestation
-        ";
-        $stmt = $this->db->prepare($query);
-        $stmt->bindParam(':idPrestation', $idPrestation, \PDO::PARAM_INT);
-        $stmt->execute();
-
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    }
-
     public function getReservedSlotsByDate($idPrestation, $datePrestation) {
         $query = "
             SELECT TIME(datePrestation) as timeSlot 
             FROM reservation 
             WHERE idPrestation = :idPrestation 
-              AND DATE(datePrestation) = :datePrestation
+            AND DATE(datePrestation) = :datePrestation
         ";
         $stmt = $this->db->prepare($query);
         $stmt->bindParam(':idPrestation', $idPrestation, \PDO::PARAM_INT);
         $stmt->bindParam(':datePrestation', $datePrestation, \PDO::PARAM_STR);
         $stmt->execute();
     
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
-    }
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);  // Renvoie les heures sous forme de tableau associatif
+    }    
 
     // Méthode pour récupérer les réservations d'un utilisateur spécifique
     public function getReservationsByUtilisateur($idUtilisateur) {
