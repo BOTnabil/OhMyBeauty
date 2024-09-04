@@ -59,7 +59,7 @@ if(isset($_GET["action"])){
             break;
         case 'validerCommande':
             if (isset($_POST['idUtilisateur'])) { 
-                $ctrlPanier->validerCommande($_POST['idUtilisateur']);
+                $ctrlPanier->validerCommande();
             }
             break;
         case 'telechargerRecu':
@@ -69,9 +69,9 @@ if(isset($_GET["action"])){
             }
             break;
         // Réservation
-        case 'reservation': $ctrlReservation->Reservation(); break;
+        case 'reserver': $ctrlReservation->reserver(); break;
         case 'choisirCreneau': $ctrlReservation->choisirCreneau(); break;
-        case 'annulerReservation': $ctrlReservation->AnnulerReservation(); break;
+        case 'annulerReservation': $ctrlReservation->annulerReservation(); break;
     } 
 } else {
     // Si aucun paramètre "action" n'est défini, afficher la vue par défaut

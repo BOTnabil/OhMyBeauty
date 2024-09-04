@@ -21,13 +21,13 @@ $creneauxDisponibles = array_diff($creneauxHoraires, $creneauxReserves);
 <h2>Choisir un créneau horaire pour le <?= date('d/m/Y', strtotime($datePrestation)); ?></h2>
 
 <?php if (!empty($creneauxDisponibles)) { ?>
-    <form method="post" action="index.php?action=reservation">
+    <form method="post" action="index.php?action=reserver">
         <input type="hidden" name="idPrestation" value="<?= htmlspecialchars($idPrestation); ?>">
         <input type="hidden" name="datePrestation" value="<?= htmlspecialchars($datePrestation); ?>">
         
         <div class="boutons-creneau-horaire">
             <?php foreach ($creneauxDisponibles as $creneau) { ?>
-                <button type="submit" name="timeSlot" value="<?= $creneau; ?>"><?= $creneau; ?></button>
+                <button type="submit" name="creneauHoraire" value="<?= $creneau; ?>"><?= $creneau; ?></button>
             <?php } ?>
         </div>
     </form>

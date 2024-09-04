@@ -15,17 +15,18 @@ class ReservationController {
         $this->reservationManager = new ReservationManager();
     }
 
-    public function Reservation() {
+    public function reserver() {
         // Réservation seulement si l'utilisateur est connecté
         if (isset($_SESSION['user_id'])) {
             if (isset($_POST['idPrestation']) && isset($_POST['datePrestation']) && isset($_POST['creneauHoraire'])) {
+                var_dump("ok");
                 $idUtilisateur = $_SESSION['user_id'];  // ID de l'utilisateur connecté, récupéré depuis la session
                 $idPrestation = $_POST['idPrestation'];
                 $datePrestation = $_POST['datePrestation'] . ' ' . $_POST['creneauHoraire'] . ':00';  // Combine la date et l'heure
 
                 $this->reservationManager->creerReservation($idUtilisateur, $idPrestation, $datePrestation);
                 $_SESSION['MAJindex'] = "Réservation effectuée avec succès!";
-                
+                var_dump('ok');
                 header("Location:index.php?action=recap");
             }
         }
