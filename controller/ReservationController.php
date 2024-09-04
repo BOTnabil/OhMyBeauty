@@ -16,15 +16,18 @@ class ReservationController {
     }
 
     public function Reservation() {
-        if (isset($_POST['idPrestation']) && isset($_POST['datePrestation']) && isset($_POST['timeSlot'])) {
-            $idUtilisateur = $_SESSION['user_id'];  // ID de l'utilisateur connecté, récupéré depuis la session
-            $idPrestation = $_POST['idPrestation'];
-            $datePrestation = $_POST['datePrestation'] . ' ' . $_POST['timeSlot'] . ':00';  // Combine la date et l'heure
+        // Reservation seulement si connecté
+        if (isset($_SESSION['user_id'])) {
+            if (isset($_POST['idPrestation']) && isset($_POST['datePrestation']) && isset($_POST['timeSlot'])) {
+                $idUtilisateur = $_SESSION['user_id'];  // ID de l'utilisateur connecté, récupéré depuis la session
+                $idPrestation = $_POST['idPrestation'];
+                $datePrestation = $_POST['datePrestation'] . ' ' . $_POST['timeSlot'] . ':00';  // Combine la date et l'heure
 
-            $this->reservationManager->createReservation($idUtilisateur, $idPrestation, $datePrestation);
-            $_SESSION['MAJindex'] = "Réservation effectuée avec succès!";
-            
-            header("Location:index.php?action=recap");
+                $this->reservationManager->createReservation($idUtilisateur, $idPrestation, $datePrestation);
+                $_SESSION['MAJindex'] = "Réservation effectuée avec succès!";
+                
+                header("Location:index.php?action=recap");
+            }
         }
     }
 
