@@ -28,14 +28,14 @@ class ReservationController {
                 if ($this->reservationManager->verifierReservationExistante($idUtilisateur, $idPrestation)) {
                     $_SESSION['erreur'] = "Vous avez déjà une réservation pour cette prestation dans le futur.";
                     header("Location:index.php?action=prestations");
-                    exit;
+                    die;
                 }
 
                 // Vérifier si l'utilisateur a déjà une réservation à ce créneau
                 if ($this->reservationManager->verifierReservationPourCreneau($idUtilisateur, $datePrestation)) {
                     $_SESSION['erreur'] = "Vous avez déjà une réservation à ce créneau horaire.";
                     header("Location:index.php?action=prestations");
-                    exit;
+                    die;
                 }
 
                 // Créer la nouvelle réservation si aucune réservation similaire n'existe
