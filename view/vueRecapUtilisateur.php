@@ -4,9 +4,14 @@ ob_start();
 
 use Model\Managers\CommandeManager;
 use Model\Managers\ReservationManager;
+use Controller\ReservationController;
 
 $commandeManager = new CommandeManager();
 $reservationManager = new ReservationManager();
+$reservationController = new ReservationController();
+
+// Supprimer les réservations passées avant d'afficher les données
+$reservationController->supprimerReservationsPassees();
 
 // Récupération de l'ID de l'utilisateur depuis la session
 $idUtilisateur = $_SESSION['user_id']; 
@@ -58,11 +63,21 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($idUtilis
                 <th>Catégorie</th>
                 <th>Durée</th>
                 <th>Prix</th>
-                <th>Action</th> <!-- Nouvelle colonne pour l'action -->
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($reservations as $reservation) { ?>
+            <?php 
+
+            if (isset($_SESSION['MAJrdv'])) {
+                echo '<p class="rdv">' . $_SESSION['MAJrdv'] . '</p>';
+                unset($_SESSION['MAJrdv']); // Supprimer la MAJ après l'affichage
+            }
+
+            foreach ($reservations as $reservation) { 
+                // Appel de la méthode estAnnulable pour vérifier si la réservation peut être annulée
+                $estAnnulable = $reservationController->estAnnulable($reservation['datePrestation']);
+                ?>
                 <tr>
                     <td><?= date('d/m/Y H:i', strtotime($reservation['datePrestation'])); ?></td>
                     <td><?= htmlspecialchars($reservation['designation']); ?></td>
@@ -70,10 +85,14 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($idUtilis
                     <td><?= htmlspecialchars($reservation['duree']); ?></td>
                     <td><?= htmlspecialchars($reservation['prix']); ?> €</td>
                     <td>
-                        <form method="post" action="index.php?action=annulerReservation">
-                            <input type="hidden" name="idPrestation" value="<?= $reservation['idPrestation']; ?>">
-                            <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir annuler cette réservation ?');">Annuler</button>
-                        </form>
+                        <?php if ($estAnnulable) { ?>
+                            <form method="post" action="index.php?action=annulerReservation">
+                                <input type="hidden" name="idPrestation" value="<?= $reservation['idPrestation']; ?>">
+                                <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir annuler cette réservation ?');">Annuler</button>
+                            </form>
+                        <?php } else { ?>
+                            <span>Non annulable</span>
+                        <?php } ?>
                     </td>
                 </tr>
             <?php } ?>

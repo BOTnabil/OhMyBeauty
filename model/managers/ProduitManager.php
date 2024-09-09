@@ -19,7 +19,7 @@ class ProduitManager {
             WHERE idProduit = :idProduit
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':idProduit', $idProduit);
+        $stmt->bindParam(':idProduit', $idProduit, \PDO::PARAM_INT);
         $stmt->execute();
 
         return $stmt->fetch();

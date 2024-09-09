@@ -18,9 +18,9 @@ class ContenirManager {
             VALUES (:idCommande, :idProduit, :quantite)
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':idCommande', $idCommande);
-        $stmt->bindParam(':idProduit', $idProduit);
-        $stmt->bindParam(':quantite', $quantite);
+        $stmt->bindParam(':idCommande', $idCommande, \PDO::PARAM_INT);
+        $stmt->bindParam(':idProduit', $idProduit, \PDO::PARAM_INT);
+        $stmt->bindParam(':quantite', $quantite, \PDO::PARAM_INT);
         $stmt->execute();
     }
 }

@@ -64,10 +64,13 @@ $categoriesAvecProduits = $produitManager->obtenirToutesCategoriesAvecProduits()
         <?php } else { ?>
             <p>Votre panier est vide.</p>
         <?php } 
-        if (empty($_SESSION['MAJtxt'])) {
-            $_SESSION['MAJtxt'] = " ";
+
+        if (empty($_SESSION['MAJpanier'])) {
+            $_SESSION['MAJpanier'] = " ";
         }
-        echo $_SESSION['MAJtxt'];?>
+        
+        echo $_SESSION['MAJpanier'];?>
+
     </div>
 
     <div class="prestations-container">

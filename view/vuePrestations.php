@@ -11,6 +11,11 @@ $reservationManager = new ReservationManager();
 // Récupération de toutes les catégories avec leurs prestations
 $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPrestations();
 
+if (isset($_SESSION['erreur'])) {
+    echo '<p class="erreur">' . $_SESSION['erreur'] . '</p>';
+    unset($_SESSION['erreur']); // Supprimer l'erreur après l'affichage
+}
+
 ?>
 
 <div class="prestations-container">

@@ -18,8 +18,8 @@ class CommandeManager {
             VALUES (NOW(), :prixTotal, :idUtilisateur)
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':prixTotal', $prixTotal);
-        $stmt->bindParam(':idUtilisateur', $idUtilisateur);
+        $stmt->bindParam(':prixTotal', $prixTotal, \PDO::PARAM_INT);
+        $stmt->bindParam(':idUtilisateur', $idUtilisateur, \PDO::PARAM_INT);
         $stmt->execute();
 
         return $this->db->lastInsertId(); // Retourne l'ID de la nouvelle commande
@@ -34,7 +34,7 @@ class CommandeManager {
             ORDER BY dateCommande DESC
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':idUtilisateur', $idUtilisateur);
+        $stmt->bindParam(':idUtilisateur', $idUtilisateur, \PDO::PARAM_INT);
         $stmt->execute();
 
         return $stmt->fetchAll();
@@ -49,7 +49,7 @@ class CommandeManager {
             WHERE c.idCommande = :idCommande
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':idCommande', $idCommande);
+        $stmt->bindParam(':idCommande', $idCommande, \PDO::PARAM_INT);
         $stmt->execute();
 
         return $stmt->fetchAll();

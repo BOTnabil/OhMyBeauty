@@ -67,4 +67,44 @@ class ReservationManager {
         $stmt->bindParam(':idPrestation', $idPrestation, \PDO::PARAM_INT);
         $stmt->execute();
     }
+
+    public function verifierReservationExistante($idUtilisateur, $idPrestation) {
+        $requete = "
+            SELECT COUNT(*) 
+            FROM reservation 
+            WHERE idUtilisateur = :idUtilisateur 
+            AND idPrestation = :idPrestation 
+            AND datePrestation >= NOW()
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':idUtilisateur', $idUtilisateur);
+        $stmt->bindParam(':idPrestation', $idPrestation);
+        $stmt->execute();
+        return $stmt->fetchColumn() > 0;
+    }
+
+    // Méthode pour vérifier si l'utilisateur a déjà une réservation pour ce créneau
+    public function verifierReservationPourCreneau($idUtilisateur, $datePrestation) {
+        $requete = "
+            SELECT COUNT(*) 
+            FROM reservation 
+            WHERE idUtilisateur = :idUtilisateur 
+            AND datePrestation = :datePrestation
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':idUtilisateur', $idUtilisateur);
+        $stmt->bindParam(':datePrestation', $datePrestation);
+        $stmt->execute();
+        return $stmt->fetchColumn() > 0;
+    }
+
+    // Supprimer automatiquement les réservations passées
+    public function supprimerReservationsPassees() {
+        $requete = "
+            DELETE FROM reservation 
+            WHERE datePrestation < NOW()
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->execute();
+    }
 }
