@@ -65,11 +65,11 @@ $categoriesAvecProduits = $produitManager->obtenirToutesCategoriesAvecProduits()
             <p>Votre panier est vide.</p>
         <?php } 
 
-        if (empty($_SESSION['MAJpanier'])) {
-            $_SESSION['MAJpanier'] = " ";
-        }
-        
-        echo $_SESSION['MAJpanier'];?>
+            if (isset($_SESSION['MAJpanier'])) {
+                echo '<p class="MAJpanier">' . $_SESSION['MAJpanier'] . '</p>';
+                unset($_SESSION['MAJpanier']); // Supprimer la MAJ après l'affichage
+            }
+        ?>
 
     </div>
 
