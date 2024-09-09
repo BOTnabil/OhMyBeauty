@@ -30,8 +30,8 @@ $heureActuelle = date('H:i');
 
 if (!empty($creneauxDisponibles)) { ?>
     <form method="post" action="index.php?action=reserver">
-        <input type="hidden" name="idPrestation" value="<?= htmlspecialchars($idPrestation); ?>">
-        <input type="hidden" name="datePrestation" value="<?= htmlspecialchars($datePrestation); ?>">
+        <input type="hidden" name="idPrestation" value="<?= $idPrestation; ?>">
+        <input type="hidden" name="datePrestation" value="<?= $datePrestation; ?>">
         
         <div class="boutons-creneau-horaire">
             <?php foreach ($creneauxDisponibles as $creneau) { 

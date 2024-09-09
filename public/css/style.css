@@ -21,7 +21,7 @@ html{
     font-size: 20px;
 }
 
-a{  color: rgb(235, 235, 235);
+a{  color: rgb(0, 0, 0);
     text-decoration: none;
     font-family: var(--font);
     font-weight: 100;
@@ -983,18 +983,18 @@ textarea{
 
 /* Service view */
 
-.services-container {
+.prestations-container {
     font-family: var(--font);
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
 }
 
-.category {
+.categorie {
     margin-bottom: 30px;
 }
 
-.service {
+.prestation {
 
     font-weight: 300;
     display: flex;
@@ -1006,18 +1006,18 @@ textarea{
     margin-bottom: 10px;
 }
 
-.service-details h3 {
+.details-prestation h3 {
     margin: 0;
     font-size: 1.2em;
     font-weight: 400;
 }
 
-.service-details p {
+.details-prestation p {
     margin: 5px 0;
     color: #555;
 }
 
-.service-actions button {
+.actions-prestation button {
     background-color: #000;
     color: #fff;
     border: none;
@@ -1026,7 +1026,7 @@ textarea{
     cursor: pointer;
 }
 
-.service-actions button:hover {
+.actions-prestation button:hover {
     background-color: #333;
 }
 

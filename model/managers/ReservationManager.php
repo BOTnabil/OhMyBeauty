@@ -77,8 +77,8 @@ class ReservationManager {
             AND datePrestation >= NOW()
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':idUtilisateur', $idUtilisateur);
-        $stmt->bindParam(':idPrestation', $idPrestation);
+        $stmt->bindParam(':idUtilisateur', $idUtilisateur, \PDO::PARAM_INT);
+        $stmt->bindParam(':idPrestation', $idPrestation, \PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchColumn() > 0;
     }
