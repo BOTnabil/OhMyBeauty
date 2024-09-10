@@ -24,20 +24,6 @@ class ReservationController {
                 $idPrestation = $_POST['idPrestation'];
                 $datePrestation = $_POST['datePrestation'] . ' ' . $_POST['creneauHoraire'] . ':00';  // Combine la date et l'heure
 
-                // Vérifier si l'utilisateur a déjà réservé cette prestation dans le futur
-                if ($this->reservationManager->verifierReservationExistante($idUtilisateur, $idPrestation)) {
-                    $_SESSION['erreur'] = "Vous avez déjà une réservation pour cette prestation dans le futur.";
-                    header("Location:index.php?action=prestations");
-                    die;
-                }
-
-                // Vérifier si l'utilisateur a déjà une réservation à ce créneau
-                if ($this->reservationManager->verifierReservationPourCreneau($idUtilisateur, $datePrestation)) {
-                    $_SESSION['erreur'] = "Vous avez déjà une réservation à ce créneau horaire.";
-                    header("Location:index.php?action=prestations");
-                    die;
-                }
-
                 // Créer la nouvelle réservation si aucune réservation similaire n'existe
                 $this->reservationManager->creerReservation($idUtilisateur, $idPrestation, $datePrestation);
                 $_SESSION['MAJrdv'] = "Réservation effectuée avec succès!";

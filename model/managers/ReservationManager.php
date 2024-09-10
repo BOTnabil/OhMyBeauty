@@ -57,6 +57,19 @@ class ReservationManager {
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    // Méthode pour récupérer tous les créneaux réservés par l'utilisateur
+    public function obtenirCreneauxReservesUtilisateur($idUtilisateur) {
+        $requete = "
+            SELECT datePrestation 
+            FROM reservation 
+            WHERE idUtilisateur = :idUtilisateur
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':idUtilisateur', $idUtilisateur, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_COLUMN);
+    }
+
     // Méthode pour annuler une réservation
     public function annulerReservation($idPrestation) {
         $requete = "
@@ -79,21 +92,6 @@ class ReservationManager {
         $stmt = $this->db->prepare($requete);
         $stmt->bindParam(':idUtilisateur', $idUtilisateur, \PDO::PARAM_INT);
         $stmt->bindParam(':idPrestation', $idPrestation, \PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchColumn() > 0;
-    }
-
-    // Méthode pour vérifier si l'utilisateur a déjà une réservation pour ce créneau
-    public function verifierReservationPourCreneau($idUtilisateur, $datePrestation) {
-        $requete = "
-            SELECT COUNT(*) 
-            FROM reservation 
-            WHERE idUtilisateur = :idUtilisateur 
-            AND datePrestation = :datePrestation
-        ";
-        $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':idUtilisateur', $idUtilisateur);
-        $stmt->bindParam(':datePrestation', $datePrestation);
         $stmt->execute();
         return $stmt->fetchColumn() > 0;
     }
