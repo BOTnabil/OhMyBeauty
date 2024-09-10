@@ -18,7 +18,7 @@ class CommandeManager {
             VALUES (NOW(), :prixTotal, :idUtilisateur)
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':prixTotal', $prixTotal, \PDO::PARAM_INT);
+        $stmt->bindParam(':prixTotal', $prixTotal);
         $stmt->bindParam(':idUtilisateur', $idUtilisateur, \PDO::PARAM_INT);
         $stmt->execute();
 

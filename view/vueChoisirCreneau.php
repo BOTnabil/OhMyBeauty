@@ -44,8 +44,7 @@ if (!empty($creneauxDisponibles)) { ?>
                 // Si la date de prestation est aujourd'hui, comparer les heures
                 if ($datePrestation == $dateActuelle && $creneau <= $heureActuelle) {
                     continue; // Ne pas afficher les créneaux déjà passés
-                }
-            ?>
+                } ?>
                 <button type="submit" name="creneauHoraire" value="<?= $creneau; ?>"><?= $creneau; ?></button>
             <?php } ?>
         </div>

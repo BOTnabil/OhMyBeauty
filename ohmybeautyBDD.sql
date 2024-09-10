@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `dateCommande` date NOT NULL,
   `prixTotal` decimal(15,2) NOT NULL,
   `idUtilisateur` int NOT NULL,
+  `infos` varchar(255) NOT NULL,
   PRIMARY KEY (`idCommande`),
   KEY `idUtilisateur` (`idUtilisateur`),
   CONSTRAINT `commande_ibfk_1` FOREIGN KEY (`idUtilisateur`) REFERENCES `utilisateur` (`idUtilisateur`)
@@ -50,10 +51,11 @@ DELETE FROM `commande`;
 
 -- Listage de la structure de table ohmybeauty. contenir
 CREATE TABLE IF NOT EXISTS `contenir` (
-  `idCommande` int NOT NULL,
-  `idProduit` int NOT NULL,
+  `idContenir` int NOT NULL AUTO_INCREMENT,
+  `idCommande` int,
+  `idProduit` int,
   `quantite` int NOT NULL,
-  PRIMARY KEY (`idCommande`,`idProduit`),
+  PRIMARY KEY (`idContenir`),
   KEY `idProduit` (`idProduit`),
   CONSTRAINT `contenir_ibfk_1` FOREIGN KEY (`idCommande`) REFERENCES `commande` (`idCommande`),
   CONSTRAINT `contenir_ibfk_2` FOREIGN KEY (`idProduit`) REFERENCES `produit` (`idProduit`)
@@ -133,10 +135,12 @@ INSERT INTO `produit` (`idProduit`, `designation`, `prix`, `image`, `idCategorie
 
 -- Listage de la structure de table ohmybeauty. reservation
 CREATE TABLE IF NOT EXISTS `reservation` (
-  `idUtilisateur` int NOT NULL,
-  `idPrestation` int NOT NULL,
+  `idReservation` int NOT NULL AUTO_INCREMENT,
+  `idUtilisateur` int,
+  `idPrestation` int,
   `datePrestation` datetime NOT NULL,
-  PRIMARY KEY (`idUtilisateur`,`idPrestation`),
+  `infos` varchar(255) NOT NULL,
+  PRIMARY KEY (`idReservation`),
   KEY `idPrestation` (`idPrestation`),
   CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`idUtilisateur`) REFERENCES `utilisateur` (`idUtilisateur`),
   CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`idPrestation`) REFERENCES `prestation` (`idPrestation`)

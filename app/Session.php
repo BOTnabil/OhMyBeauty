@@ -11,8 +11,8 @@ class Session{
         return (isset($_SESSION['utilisateur'])) ? $_SESSION['utilisateur'] : false;
     }
 
-    public static function isAdmin(){
-        if(self::getUser() && self::getUser()->hasRole("ADMIN")){
+    public static function estAdmin(){
+        if(self::getUser() && self::getUser()->possedeRole("ADMIN")){
             return true;
         }
         return false;

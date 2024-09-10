@@ -146,4 +146,8 @@ class Utilisateur {
 
         return $this;
     }
+
+    public function possedeRole($role) {
+        return $this->role === $role;
+    }
 }
