@@ -31,14 +31,19 @@ class ReservationController {
             }
         }
     }
+    
     public function choisirCreneau() {
         if (isset($_POST['idPrestation']) && isset($_POST['datePrestation'])) {
             $idPrestation = $_POST['idPrestation'];
             $datePrestation = $_POST['datePrestation'];
-
-            // Utilisation de la méthode pour récupérer les créneaux horaires réservés
+            $idUtilisateur = $_SESSION['user_id'];
+    
+            // Récupérer les créneaux réservés par tous les utilisateurs
             $creneauxReserves = $this->reservationManager->obtenirCreneauxReservesParDate($idPrestation, $datePrestation);
-
+    
+            // Récupérer les créneaux réservés par l'utilisateur lui-même à cette date
+            $creneauxReservesUtilisateur = $this->reservationManager->obtenirCreneauxReservesUtilisateurParDate($idUtilisateur, $datePrestation);
+    
             require "view/vueChoisirCreneau.php"; // Page pour afficher les créneaux horaires disponibles
         }
     }

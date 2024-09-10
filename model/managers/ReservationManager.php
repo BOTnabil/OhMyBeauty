@@ -105,4 +105,18 @@ class ReservationManager {
         $stmt = $this->db->prepare($requete);
         $stmt->execute();
     }
+
+    public function obtenirCreneauxReservesUtilisateurParDate($idUtilisateur, $datePrestation) {
+        $requete = "
+            SELECT TIME(datePrestation) as creneauHoraire 
+            FROM reservation 
+            WHERE idUtilisateur = :idUtilisateur 
+            AND DATE(datePrestation) = :datePrestation
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':idUtilisateur', $idUtilisateur, \PDO::PARAM_INT);
+        $stmt->bindParam(':datePrestation', $datePrestation, \PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);  // Renvoie les créneaux sous forme de tableau associatif
+    }
 }
