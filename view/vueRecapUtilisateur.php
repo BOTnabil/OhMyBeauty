@@ -42,7 +42,13 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($idUtilis
                     <td><?= $commande['dateCommande']; ?></td>
                     <td><?= $commande['prixTotal']; ?> €</td>
                     <td>
-                        <a href="index.php?action=downloadReceipt&idCommande=<?= $commande['idCommande']; ?>">Télécharger le reçu</a>
+                        <a href="javascript:void(0);" class="voir-details" data-id="<?= $commande['idCommande']; ?>">Voir les détails</a>
+                    </td>
+                </tr>
+                <!-- Détails masqués au départ, seront affichés via le JS -->
+                <tr class="details-commande" id="details-commande-<?= $commande['idCommande']; ?>" style="display:none;">
+                    <td colspan="3">
+                        <p><strong>Détails de la commande :</strong> <?= nl2br(htmlspecialchars($commande['infosCommande'] ?? 'Aucun détail disponible.')); ?></p>
                     </td>
                 </tr>
             <?php } ?>

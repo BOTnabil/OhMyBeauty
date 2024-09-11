@@ -93,20 +93,22 @@ class PanierController {
             if (!empty($_SESSION['products'])) {
                 $prixTotal = 0;
                 $idUtilisateur = $_SESSION['user_id'];
-
-                // Calcul du prix total
+    
+                // Calcul du prix total et génération des informations de la commande
+                $infosCommande = $this->genererInfosCommandeTexte($_SESSION['products']);
+                
                 foreach ($_SESSION['products'] as $produit) {
                     $prixTotal += $produit['total'];
                 }
-
-                // Créer la commande
-                $idCommande = $this->commandeManager->creerCommande($prixTotal, $idUtilisateur);
-
+    
+                // Créer la commande avec infosCommande initialisé
+                $idCommande = $this->commandeManager->creerCommande($prixTotal, $idUtilisateur, $infosCommande);
+    
                 // Ajouter les produits dans la commande
                 foreach ($_SESSION['products'] as $produit) {
                     $this->contenirManager->ajouterProduitACommande($idCommande, $produit['id'], $produit['qtt']);
                 }
-
+    
                 // Vider le panier
                 unset($_SESSION['products']);
                 $_SESSION['MAJpanier'] = "Commande validée avec succès!";
@@ -115,6 +117,27 @@ class PanierController {
             }
         } else {
             $_SESSION['MAJpanier'] = "Une erreur est survenue";
+        }
+    }    
+
+    // génere les informations sur la commande sous forme de texte
+    private function genererInfosCommandeTexte($produits) {
+        $infos = '';
+        foreach ($produits as $produit) {
+            $infos .= $produit['nom'] . " (Quantité: " . $produit['qtt'] . ", Prix unitaire: " . $produit['prix'] . " €), ";
+        }
+        return rtrim($infos, ', ');  // Supprimer la dernière virgule
+    }
+
+    public function voirDetailsCommande() {
+        if (isset($_GET['idCommande'])) {
+            $idCommande = $_GET['idCommande'];
+    
+            // Récupérer les informations de la commande, y compris infosCommande
+            $commandeDetails = $this->commandeManager->obtenirDetailsCommande($idCommande);
+    
+            // Charger la vue avec les informations de la commande
+            require 'view/recapUtilisateurView.php';
         }
     }
 }

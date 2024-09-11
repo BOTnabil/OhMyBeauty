@@ -50,4 +50,21 @@ document.addEventListener('DOMContentLoaded', function() {
     showSlides(); // Appeler showSlides à la fin du chargement de la page
 });
 
-// Gestion panier
+// deroulantCommande
+document.addEventListener('DOMContentLoaded', function () {
+    const detailsLinks = document.querySelectorAll('.voir-details');
+    
+    detailsLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            const commandeId = this.getAttribute('data-id');
+            const detailsRow = document.getElementById('details-commande-' + commandeId);
+            
+            // Toggle l'affichage des détails de la commande
+            if (detailsRow.style.display === 'none') {
+                detailsRow.style.display = 'table-row'; // Afficher les détails
+            } else {
+                detailsRow.style.display = 'none'; // Masquer les détails
+            }
+        });
+    });
+});
