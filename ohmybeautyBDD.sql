@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `dateCommande` date NOT NULL,
   `prixTotal` decimal(15,2) NOT NULL,
   `idUtilisateur` int NOT NULL,
-  `infos` varchar(255) NOT NULL,
+  `infosCommande` varchar(255) NOT NULL,
   PRIMARY KEY (`idCommande`),
   KEY `idUtilisateur` (`idUtilisateur`),
   CONSTRAINT `commande_ibfk_1` FOREIGN KEY (`idUtilisateur`) REFERENCES `utilisateur` (`idUtilisateur`)
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   `idUtilisateur` int,
   `idPrestation` int,
   `datePrestation` datetime NOT NULL,
-  `infos` varchar(255) NOT NULL,
+  `infosReservation` varchar(255) NOT NULL,
   PRIMARY KEY (`idReservation`),
   KEY `idPrestation` (`idPrestation`),
   CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`idUtilisateur`) REFERENCES `utilisateur` (`idUtilisateur`),

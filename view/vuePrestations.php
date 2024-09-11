@@ -16,7 +16,10 @@ if (isset($_SESSION['erreur'])) {
     unset($_SESSION['erreur']); // Supprimer l'erreur après l'affichage
 }
 
-?>
+if (!isset($_SESSION['user_id'])) { ?>
+    <p>Veuillez vous connecter afin de pouvoir réserver</p>
+<?php } ?>
+
 
 <div class="prestations-container">
     <?php foreach ($categoriesAvecPrestations as $categorieNom => $prestations) { ?>
@@ -33,16 +36,18 @@ if (isset($_SESSION['erreur'])) {
                         <div class="actions-prestation">
                             <?php             
                             // Vérifier si l'utilisateur a déjà réservé cette prestation dans le futur
-                            if ($reservationManager->verifierReservationExistante($_SESSION['user_id'], $prestation['idPrestation'])) { ?>
-                                <p>Préstation déjà réservée</p> 
-                            <?php } else { ?>
-                                <form method="post" action="index.php?action=choisirCreneau">
-                                    <input type="hidden" name="idPrestation" value="<?= $prestation['idPrestation']; ?>">
-                                    <label for="datePrestation">Choisir une date :</label>
-                                    <input type="date" name="datePrestation" required min="<?= date('Y-m-d'); ?>">
-                                    <button type="submit">Valider la date</button>
-                                </form>
-                            <?php } ?>
+                            if (isset($_SESSION['user_id'])) {  
+                                if ($reservationManager->verifierReservationExistante($_SESSION['user_id'], $prestation['idPrestation'])) { ?>
+                                    <p>Préstation déjà réservée</p> 
+                                <?php } else { ?>
+                                    <form method="post" action="index.php?action=choisirCreneau">
+                                        <input type="hidden" name="idPrestation" value="<?= $prestation['idPrestation']; ?>">
+                                        <label for="datePrestation">Choisir une date :</label>
+                                        <input type="date" name="datePrestation" required min="<?= date('Y-m-d'); ?>">
+                                        <button type="submit">Valider la date</button>
+                                    </form>
+                                <?php }
+                            } ?>
                         </div>
                     </div>
                 <?php } ?>

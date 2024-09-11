@@ -6,12 +6,34 @@ class Commande {
     private $dateCommande;
     private $prixTotal;
     private $idUtilisateur;
+    private $infosCommande;
 
     public function __construct($idCommande, $dateCommande, $prixTotal, $idUtilisateur) {
         $this->idCommande = $idCommande;
         $this->dateCommande = $dateCommande;
         $this->prixTotal = $prixTotal;
         $this->idUtilisateur = $idUtilisateur;
+        $this->infosCommande = $infosCommande;
+    }
+
+    /**
+     * Get the value of infosCommande
+     */ 
+    public function getInfosCommande()
+    {
+        return $this->infosCommande;
+    }
+
+    /**
+     * Set the value of infosCommande
+     *
+     * @return  self
+     */ 
+    public function setInfosCommande($infosCommande)
+    {
+        $this->infosCommande = $infosCommande;
+
+        return $this;
     }
 
     /**
