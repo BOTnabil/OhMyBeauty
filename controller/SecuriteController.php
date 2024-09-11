@@ -43,9 +43,11 @@ class SecuriteController {
                 if ($utilisateur && password_verify($motDePasse, $utilisateur['motDePasse'])) {
                     // Lancer une session et stocker les informations de l'utilisateur
                     session_start();
+                    $_SESSION['user'] = $utilisateur;
                     $_SESSION['user_id'] = $utilisateur['idUtilisateur'];
                     $_SESSION['user_email'] = $utilisateur['email'];
                     $_SESSION['user_name'] = $utilisateur['prenom']." ".$utilisateur['nom'];
+                    $_SESSION['user_role'] = $utilisateur['role'];
                     header("Location: index.php?action=vueParDefaut");
                 } else {
                     // Rediriger ou afficher un message d'erreur si les informations sont incorrectes

@@ -12,15 +12,16 @@ class ReservationManager {
     }
 
     // Méthode pour créer une nouvelle réservation
-    public function creerReservation($idUtilisateur, $idPrestation, $datePrestation) {
+    public function creerReservation($idUtilisateur, $idPrestation, $datePrestation, $infosReservation) {
         $requete = "
-            INSERT INTO reservation (idUtilisateur, idPrestation, datePrestation) 
-            VALUES (:idUtilisateur, :idPrestation, :datePrestation)
+            INSERT INTO reservation (idUtilisateur, idPrestation, datePrestation, infosReservation) 
+            VALUES (:idUtilisateur, :idPrestation, :datePrestation, :infosReservation)
         ";
         $stmt = $this->db->prepare($requete);
         $stmt->bindParam(':idUtilisateur', $idUtilisateur, \PDO::PARAM_INT);
         $stmt->bindParam(':idPrestation', $idPrestation, \PDO::PARAM_INT);
         $stmt->bindParam(':datePrestation', $datePrestation, \PDO::PARAM_STR);
+        $stmt->bindParam(':infosReservation', $infosReservation, \PDO::PARAM_STR);
         $stmt->execute();
     }
 

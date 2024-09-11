@@ -34,6 +34,7 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($idUtilis
                 <th>Date</th>
                 <th>Prix Total</th>
                 <th>Action</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -44,11 +45,8 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($idUtilis
                     <td>
                         <a href="javascript:void(0);" class="voir-details" data-id="<?= $commande['idCommande']; ?>">Voir les détails</a>
                     </td>
-                </tr>
-                <!-- Détails masqués au départ, seront affichés via le JS -->
-                <tr class="details-commande" id="details-commande-<?= $commande['idCommande']; ?>" style="display:none;">
-                    <td colspan="3">
-                        <p><strong>Détails de la commande :</strong> <?= nl2br(htmlspecialchars($commande['infosCommande'] ?? 'Aucun détail disponible.')); ?></p>
+                    <td class="details-commande" id="details-commande-<?= $commande['idCommande']; ?>" style="display:none;">
+                        <p><strong>Détails de la commande :<br></strong> <?= $commande['infosCommande'] ?? 'Aucun détail disponible.'; ?></p>
                     </td>
                 </tr>
             <?php } ?>

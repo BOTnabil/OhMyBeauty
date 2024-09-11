@@ -23,11 +23,20 @@ class ReservationController {
                 $idUtilisateur = $_SESSION['user_id'];  // ID de l'utilisateur connecté
                 $idPrestation = $_POST['idPrestation'];
                 $datePrestation = $_POST['datePrestation'] . ' ' . $_POST['creneauHoraire'] . ':00';  // Combine la date et l'heure
-
-                // Créer la nouvelle réservation si aucune réservation similaire n'existe
-                $this->reservationManager->creerReservation($idUtilisateur, $idPrestation, $datePrestation);
+    
+                // Récupérer les informations sur la prestation
+                $prestation = $this->prestationManager->obtenirPrestationParId($idPrestation);
+    
+                // Générer les informations de la réservation
+                $infosReservation = $this->genererInfosReservationTexte($prestation, $_POST['datePrestation'], $_POST['creneauHoraire']);
+    
+                // Créer la nouvelle réservation avec les infos générées
+                $this->reservationManager->creerReservation($idUtilisateur, $idPrestation, $datePrestation, $infosReservation);
+    
+                // Message de confirmation
                 $_SESSION['MAJrdv'] = "Réservation effectuée avec succès!";
-                header("Location:index.php?action=recap");
+                header("Location: index.php?action=recap");
+                exit;
             }
         }
     }
@@ -73,5 +82,16 @@ class ReservationController {
     public function supprimerReservationsPassees() {
         // Appeler la méthode dans le manager
         $this->reservationManager->supprimerReservationsPassees();
+    }
+
+    private function genererInfosReservationTexte($prestation, $datePrestation, $creneauHoraire) {
+        // Générer le texte pour infosReservation
+        $infos = "Prestation: " . $prestation['designation'] . "\n";
+        $infos .= "Date: " . date('d/m/Y', strtotime($datePrestation)) . "\n";
+        $infos .= "Créneau horaire: " . $creneauHoraire . "\n";
+        $infos .= "Durée: " . $prestation['duree'] . "\n";
+        $infos .= "Prix: " . $prestation['prix'] . " €";
+        
+        return $infos;
     }
 }

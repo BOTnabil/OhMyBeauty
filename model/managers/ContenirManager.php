@@ -23,4 +23,16 @@ class ContenirManager {
         $stmt->bindParam(':quantite', $quantite, \PDO::PARAM_INT);
         $stmt->execute();
     }
+
+    public function supprimerProduitDeContenir($idProduit) {
+        $requete = "
+            UPDATE contenir
+            SET idProduit = NULL
+            WHERE idProduit = :idProduit
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':idProduit', $idProduit, \PDO::PARAM_INT);
+        $stmt->execute();
+    }
+    
 }

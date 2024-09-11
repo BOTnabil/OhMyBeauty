@@ -46,5 +46,16 @@ class ProduitManager {
     
         return $categories;
     }
+
+    public function supprimerProduit($idProduit) {
+        $requete = "
+            DELETE FROM produit 
+            WHERE idProduit = :idProduit
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':idProduit', $idProduit, \PDO::PARAM_INT);
+        $stmt->execute();
+    }
+    
     
 }

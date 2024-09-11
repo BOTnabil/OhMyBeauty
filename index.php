@@ -4,6 +4,7 @@ use Controller\AccueilController;
 use Controller\SecuriteController;
 use Controller\PanierController;
 use Controller\ReservationController;
+use Controller\AdminController;
 use Model\Managers\CommandeManager;
 
 spl_autoload_register(function($nom_classe){
@@ -14,6 +15,7 @@ $ctrlAccueil = new AccueilController();
 $ctrlSecurite = new SecuriteController();
 $ctrlPanier = new PanierController();
 $ctrlReservation = new ReservationController();
+$ctrlAdmin = new AdminController();
 $commandeManager = new CommandeManager();
 
 $id = isset($_GET["id"]) ? $_GET["id"] : null;
@@ -72,6 +74,8 @@ if(isset($_GET["action"])){
         case 'reserver': $ctrlReservation->reserver(); break;
         case 'choisirCreneau': $ctrlReservation->choisirCreneau(); break;
         case 'annulerReservation': $ctrlReservation->annulerReservation(); break;
+        // Admin
+        case 'supprimerProduit': $ctrlAdmin->supprimerProduit(); break;
     } 
 } else {
     // Si aucun paramètre "action" n'est défini, afficher la vue par défaut

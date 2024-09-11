@@ -11,6 +11,20 @@ class PrestationManager {
         $this->db = Connect::seConnecter(); // Initialisation de la connexion à la base de données
     }
 
+    // Méthode pour récupérer une prestation par son ID
+    public function obtenirPrestationParId($idPrestation) {
+        $requete = "
+            SELECT idPrestation, designation, description, duree, prix
+            FROM prestation
+            WHERE idPrestation = :idPrestation
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':idPrestation', $idPrestation, \PDO::PARAM_INT);
+        $stmt->execute();
+
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+
     // Méthode pour obtenir toutes les catégories avec leurs prestations
     public function obtenirToutesCategoriesAvecPrestations() {
         $requete = "

@@ -10,6 +10,8 @@ $panierController = new PanierController();
 
 // Récupérer toutes les catégories avec leurs produits
 $categoriesAvecProduits = $produitManager->obtenirToutesCategoriesAvecProduits();
+var_dump(\App\Session::estAdmin());
+
 ?>
 
 <div class="boutique-container">
@@ -94,6 +96,14 @@ $categoriesAvecProduits = $produitManager->obtenirToutesCategoriesAvecProduits()
                                     <input type="hidden" name="idProduit" value="<?= $produit['idProduit']; ?>">
                                     <button type="submit">Ajouter au panier</button>
                                 </form>
+
+                                <?php if (\App\Session::estAdmin()) { ?>
+                                    <!-- Bouton de suppression visible uniquement pour les admins -->
+                                    <form method="post" action="index.php?action=supprimerProduit">
+                                        <input type="hidden" name="idProduit" value="<?= $produit['idProduit']; ?>">
+                                        <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?');">X</button>
+                                    </form>
+                                <?php } ?>
                             </div>
                         </div>
                     <?php } ?>

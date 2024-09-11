@@ -124,9 +124,15 @@ class PanierController {
     private function genererInfosCommandeTexte($produits) {
         $infos = '';
         foreach ($produits as $produit) {
-            $infos .= $produit['nom'] . " (Quantité: " . $produit['qtt'] . ", Prix unitaire: " . $produit['prix'] . " €), ";
+            $sousTotal = $produit['qtt']*$produit['prix'];
+
+            if ($sousTotal != $produit['prix']) {
+                $infos .= $produit['nom'] . " (Quantité : " . $produit['qtt'] . ", Prix unitaire : " . $produit['prix'] . " €).<br> Sous-total : ". $sousTotal." €.<br>";
+            } else {
+                $infos .= $produit['nom'] . " (Quantité : " . $produit['qtt'] . ", Prix unitaire : " . $produit['prix'] . " €)<br>";
+            }
         }
-        return rtrim($infos, ', ');  // Supprimer la dernière virgule
+        return rtrim($infos, '<br>');  // Supprimer le dernier <br> s'il y en a un
     }
 
     public function voirDetailsCommande() {
