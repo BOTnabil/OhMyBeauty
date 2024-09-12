@@ -53,10 +53,10 @@ header {
 
 .logoNav{
     z-index: 2; /* Pour le garder au-dessus du sidenav */
-    margin-left: 15px;
-    margin-top: 20px;
+    margin-left: 25px;
+    margin-top: 25px;
     object-fit: cover;
-    height: 50%;
+    height: 35%;
 }
 
 nav{

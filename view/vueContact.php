@@ -22,7 +22,7 @@ ob_start();
 
     <div id="notification"></div>
 
-    <form action="index.php?action=envoyerMail" method="POST">
+    <form action="index.php?action=envoyerContact" method="POST">
         <label for="nom">NOM :</label><br>
         <input type="text" id="nom" name="nom" required><br><br>
         

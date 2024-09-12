@@ -19,12 +19,12 @@ ob_start();
 </section>
 
 <section class="aPropos1">
-    <div class="boxLeftTop">
+    <article class="boxLeftTop">
         <h1>UN SAVOIR-FAIRE</h1>
         <h2>Un mot d'ordre : "qualifié"</h2>
         <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur et natus consectetur iste sunt, commodi quis veritatis laboriosam ex?</p>
         <a href="index.php?action=aPropos">EN SAVOIR PLUS</a>
-    </div>
+    </article>
     <img src="./public/img/a_propos_1.png" class="imgOMBaPropos1" alt="Image de présentation">
 </section>
 

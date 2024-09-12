@@ -10,7 +10,6 @@ $panierController = new PanierController();
 
 // Récupérer toutes les catégories avec leurs produits
 $categoriesAvecProduits = $produitManager->obtenirToutesCategoriesAvecProduits();
-var_dump(\App\Session::estAdmin());
 
 ?>
 
