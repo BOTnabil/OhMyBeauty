@@ -14,10 +14,6 @@ class Utilisateur {
         $this->role = $role;
     }
 
-    public function __toString() {
-        return $this->prenom." ".$this->nom;
-    }
-
     /**
      * Get the value of id_utilisateur
      */ 

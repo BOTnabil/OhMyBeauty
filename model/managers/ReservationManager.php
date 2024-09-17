@@ -44,19 +44,18 @@ class ReservationManager {
     // Méthode pour récupérer les réservations d'un utilisateur spécifique
     public function obtenirReservationsParUtilisateur($id_utilisateur) {
         $requete = "
-            SELECT r.id_prestation, r.datePrestation, p.designation, p.prix, p.duree, c.designation AS categorie
+            SELECT r.id_prestation, r.datePrestation, r.infosReservation
             FROM reservation r
-            JOIN prestation p ON r.id_prestation = p.id_prestation
-            JOIN categorie c ON p.id_categorie = c.id_categorie
             WHERE r.id_utilisateur = :id_utilisateur
             ORDER BY r.datePrestation
         ";
         $stmt = $this->db->prepare($requete);
         $stmt->bindParam(':id_utilisateur', $id_utilisateur, \PDO::PARAM_INT);
         $stmt->execute();
-    
+
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
 
     // Méthode pour récupérer tous les créneaux réservés par l'utilisateur
     public function obtenirCreneauxReservesUtilisateur($id_utilisateur) {

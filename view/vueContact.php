@@ -1,5 +1,9 @@
 <?php
-ob_start(); 
+ob_start();
+
+if (!isset($_SESSION['MAJcontact'])) {
+    $_SESSION['MAJcontact'] = "";
+} 
 ?>
 
 <div class="wrapperContact">
@@ -20,23 +24,21 @@ ob_start();
         </div>
     </div>
 
-    <div id="notification"></div>
+    <p> <?php echo $_SESSION['MAJcontact'] ?> </p>
 
-    <form action="index.php?action=envoyerContact" method="POST">
-        <label for="nom">NOM :</label><br>
-        <input type="text" id="nom" name="nom" required><br><br>
-        
+    <form action="index.php?action=envoyerMail" method="POST">
         <label for="email">EMAIL :</label><br>
         <input type="email" id="email" name="email" required><br><br>
-        
+
         <label for="sujet">SUJET :</label><br>
         <input type="text" id="sujet" name="sujet" required><br><br>
-        
+
         <label for="message">MESSAGE :</label><br>
         <textarea id="message" name="message" rows="5" required></textarea><br><br>
-        
+
         <input type="submit" value="Envoyer">
     </form>
+
 
 </div>
 

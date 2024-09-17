@@ -32,7 +32,7 @@ if(isset($_GET["action"])){
         case "inscription": $ctrlAccueil->afficherInscription(); break;
         case "connexion": $ctrlAccueil->afficherConnexion(); break;
         // Envoi de mail
-        case "envoyerContact": $ctrlAccueil->envoyerContact(); break;
+        case "envoyerMail": $ctrlAccueil->envoyerMail(); break;
         // Sécurité
         case "deconnexion": $ctrlSecurite->deconnexion(); break;
         case "inscriptionProcess": $ctrlSecurite->inscription(); break;

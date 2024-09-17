@@ -21,6 +21,8 @@ class ReservationController {
         if (isset($_SESSION['user_id'])) {
             if (isset($_POST['id_prestation']) && isset($_POST['datePrestation']) && isset($_POST['creneauHoraire'])) {
                 $id_utilisateur = $_SESSION['user_id'];  // ID de l'utilisateur connecté
+                $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);    
                 $id_prestation = $_POST['id_prestation'];
                 $datePrestation = $_POST['datePrestation'] . ' ' . $_POST['creneauHoraire'] . ':00';  // Combine la date et l'heure
     
@@ -28,7 +30,7 @@ class ReservationController {
                 $prestation = $this->prestationManager->obtenirPrestationParId($id_prestation);
     
                 // Générer les informations de la réservation
-                $infosReservation = $this->genererInfosReservationTexte($prestation, $_POST['datePrestation'], $_POST['creneauHoraire']);
+                $infosReservation = $this->genererInfosReservationTexte($prestation, $_POST['datePrestation'], $_POST['creneauHoraire'], $nom, $prenom);
     
                 // Créer la nouvelle réservation avec les infos générées
                 $this->reservationManager->creerReservation($id_utilisateur, $id_prestation, $datePrestation, $infosReservation);
@@ -42,6 +44,7 @@ class ReservationController {
             header("Location: index.php?action=connexion");
         }
     }
+    
     
     public function choisirCreneau() {
         if (isset($_SESSION['user_id'])) {
@@ -90,9 +93,10 @@ class ReservationController {
         $this->reservationManager->supprimerReservationsPassees();
     }
 
-    private function genererInfosReservationTexte($prestation, $datePrestation, $creneauHoraire) {
+    private function genererInfosReservationTexte($prestation, $datePrestation, $creneauHoraire, $nom, $prenom) {
         // Générer le texte pour infosReservation
-        $infos = "Prestation: " . $prestation['designation'] . "\n";
+        $infos = "Nom: " . $nom . " " . $prenom . "\n";
+        $infos .= "Prestation: " . $prestation['designation'] . "\n";
         $infos .= "Date: " . date('d/m/Y', strtotime($datePrestation)) . "\n";
         $infos .= "Créneau horaire: " . $creneauHoraire . "\n";
         $infos .= "Durée: " . $prestation['duree'] . "\n";

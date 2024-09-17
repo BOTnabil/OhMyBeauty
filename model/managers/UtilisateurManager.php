@@ -13,14 +13,12 @@ class UtilisateurManager{
     }
 
     // Créer un nouvel utilisateur
-    public function creerUtilisateur($nom, $prenom, $email, $motDePasse, $role) {
+    public function creerUtilisateur($email, $motDePasse, $role) {
         $requete = "
-            INSERT INTO Utilisateur (nom, prenom, email, motDePasse, role) 
-            VALUES (:nom, :prenom, :email, :motDePasse, :role)
+            INSERT INTO Utilisateur (email, motDePasse, role) 
+            VALUES (:email, :motDePasse, :role)
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':nom', $nom, \PDO::PARAM_STR);
-        $stmt->bindParam(':prenom', $prenom, \PDO::PARAM_STR);
         $stmt->bindParam(':email', $email, \PDO::PARAM_STR);
         $stmt->bindParam(':motDePasse', $motDePasse, \PDO::PARAM_STR);
         $stmt->bindParam(':role', $role, \PDO::PARAM_STR);

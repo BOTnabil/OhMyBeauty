@@ -39,6 +39,12 @@ if (!empty($creneauxDisponibles)) { ?>
         <input type="hidden" name="id_prestation" value="<?= $id_prestation; ?>">
         <input type="hidden" name="datePrestation" value="<?= $datePrestation; ?>">
         
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" name="nom" required><br><br>
+    
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" name="prenom" required><br><br>
+    
         <div class="boutons-creneau-horaire">
             <?php foreach ($creneauxDisponibles as $creneau) { 
                 // Si la date de prestation est aujourd'hui, comparer les heures

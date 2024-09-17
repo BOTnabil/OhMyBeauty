@@ -63,9 +63,6 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
             <tr>
                 <th>Date et Heure</th>
                 <th>Prestation</th>
-                <th>Catégorie</th>
-                <th>Durée</th>
-                <th>Prix</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -83,10 +80,7 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
                 ?>
                 <tr>
                     <td><?= date('d/m/Y H:i', strtotime($reservation['datePrestation'])); ?></td>
-                    <td><?= htmlspecialchars($reservation['designation']); ?></td>
-                    <td><?= htmlspecialchars($reservation['categorie']); ?></td>
-                    <td><?= htmlspecialchars($reservation['duree']); ?></td>
-                    <td><?= htmlspecialchars($reservation['prix']); ?> €</td>
+                    <td><?= nl2br(htmlspecialchars($reservation['infosReservation'])); ?></td>
                     <td>
                         <?php if ($estAnnulable) { ?>
                             <form method="post" action="index.php?action=annulerReservation">

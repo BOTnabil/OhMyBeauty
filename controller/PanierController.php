@@ -121,19 +121,19 @@ class PanierController {
         }
     }    
 
-    // génere les informations sur la commande sous forme de texte
+    // génère les informations sur la commande sous forme de texte
     private function genererInfosCommandeTexte($produits) {
         $infos = '';
         foreach ($produits as $produit) {
-            $sousTotal = $produit['qtt']*$produit['prix'];
+            $sousTotal = $produit['qtt'] * $produit['prix'];
 
-            if ($sousTotal != $produit['prix']) {
-                $infos .= $produit['nom'] . " (Quantité : " . $produit['qtt'] . ", Prix unitaire : " . $produit['prix'] . " €).<br> Sous-total : ". $sousTotal." €.<br>";
+            if ($produit['qtt'] > 1) {  // Affiche le sous-total uniquement si la quantité est supérieure à 1
+                $infos .= $produit['nom'] . " (Quantité : " . $produit['qtt'] . ", Prix unitaire : " . $produit['prix'] . " €).<br> Sous-total : " . $sousTotal . " €.<br>";
             } else {
                 $infos .= $produit['nom'] . " (Quantité : " . $produit['qtt'] . ", Prix unitaire : " . $produit['prix'] . " €)<br>";
             }
         }
-        return rtrim($infos, '<br>');  // Supprimer le dernier <br> s'il y en a un
+        return rtrim($infos, '<br>');  // Supprime le dernier <br> s'il y en a un
     }
 
     public function voirDetailsCommande() {
