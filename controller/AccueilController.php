@@ -4,9 +4,9 @@ namespace Controller;
 
 class AccueilController {
 
-    public function afficherParDefaut() {
+    public function afficherHome() {
         // Charger et afficher la vue par défaut
-        require 'view/vueParDefaut.php';
+        require 'view/home.php';
     }
 
     public function afficherAPropos() {
@@ -33,6 +33,17 @@ class AccueilController {
         // Charger et afficher la vue récapitulatif
         require "view/vueRecapUtilisateur.php";
     }
+    
+    public function afficherConnexion() {
+        // Charger et afficher la vue connexion
+        require "view/vueConnexion.php";
+    }
+
+    public function afficherInscription() {
+        // Charger et afficher la vue inscription
+        require "view/vueInscription.php";
+    }
+    
 
     public function envoyerContact() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -52,7 +63,7 @@ class AccueilController {
                     echo ""; // message d'erreur ici
                 }
             } else {
-                echo ""; // d'erreur pour les champs vides
+                echo ""; // erreur pour les champs vides
             }
             require 'view/vueContact.php';
         }

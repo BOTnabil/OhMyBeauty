@@ -12,14 +12,14 @@ class ProduitManager {
     }
 
     // Méthode pour obtenir un produit par son ID
-    public function obtenirProduitParId($idProduit) {
+    public function obtenirProduitParId($id_produit) {
         $requete = "
-            SELECT idProduit, designation, prix 
+            SELECT id_produit, designation, prix 
             FROM produit 
-            WHERE idProduit = :idProduit
+            WHERE id_produit = :id_produit
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':idProduit', $idProduit, \PDO::PARAM_INT);
+        $stmt->bindParam(':id_produit', $id_produit, \PDO::PARAM_INT);
         $stmt->execute();
 
         return $stmt->fetch();
@@ -28,17 +28,17 @@ class ProduitManager {
     // Méthode pour obtenir toutes les catégories avec leurs produits
     public function obtenirToutesCategoriesAvecProduits() {
         $requete = "
-            SELECT c.idCategorie, c.designation AS categorie_designation, p.idProduit, p.designation, p.prix 
+            SELECT c.id_categorie, c.designation AS categorie_designation, p.id_produit, p.designation, p.prix 
             FROM categorie c
-            LEFT JOIN produit p ON c.idCategorie = p.idCategorie
-            ORDER BY c.idCategorie, p.idProduit
+            LEFT JOIN produit p ON c.id_categorie = p.id_categorie
+            ORDER BY c.id_categorie, p.id_produit
         ";
         $resultat = $this->db->query($requete);
     
         $categories = [];
         while ($row = $resultat->fetch()) {
             $categories[$row['categorie_designation']][] = [
-                'idProduit' => $row['idProduit'],
+                'id_produit' => $row['id_produit'],
                 'designation' => $row['designation'],
                 'prix' => $row['prix']
             ];
@@ -47,13 +47,13 @@ class ProduitManager {
         return $categories;
     }
 
-    public function supprimerProduit($idProduit) {
+    public function supprimerProduit($id_produit) {
         $requete = "
             DELETE FROM produit 
-            WHERE idProduit = :idProduit
+            WHERE id_produit = :id_produit
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':idProduit', $idProduit, \PDO::PARAM_INT);
+        $stmt->bindParam(':id_produit', $id_produit, \PDO::PARAM_INT);
         $stmt->execute();
     }
     

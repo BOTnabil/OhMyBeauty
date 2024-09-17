@@ -2,11 +2,11 @@
 namespace Model\Entities;
 
 class Categorie {
-    private $idCategorie;
+    private $id_categorie;
     private $designation;
 
-    public function __construct($idCategorie, $designation) {
-        $this->idCategorie = $idCategorie;
+    public function __construct($id_categorie, $designation) {
+        $this->id_categorie = $id_categorie;
         $this->designation = $designation;
     }
     public function __toString() {
@@ -34,7 +34,7 @@ class Categorie {
     }
 
     /**
-     * Get the value of idCategorie
+     * Get the value of id_categorie
      */ 
     public function getIdCategorie()
     {
@@ -42,13 +42,13 @@ class Categorie {
     }
 
     /**
-     * Set the value of idCategorie
+     * Set the value of id_categorie
      *
      * @return  self
      */ 
-    public function setIdCategorie($idCategorie)
+    public function setIdCategorie($id_categorie)
     {
-        $this->idCategorie = $idCategorie;
+        $this->id_categorie = $id_categorie;
 
         return $this;
     }

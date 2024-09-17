@@ -23,22 +23,24 @@ $id = isset($_GET["id"]) ? $_GET["id"] : null;
 if(isset($_GET["action"])){
     switch ($_GET["action"]) {
         // Changement de vues
-        case "vueParDefaut" : $ctrlAccueil->afficherParDefaut(); break;
+        case "home" : $ctrlAccueil->afficherHome(); break;
         case "aPropos" : $ctrlAccueil->afficherAPropos(); break;
         case "prestations" : $ctrlAccueil->afficherPrestations(); break;
         case "contact" : $ctrlAccueil->afficherContact(); break;
         case "boutique" : $ctrlAccueil->afficherBoutique(); break;
         case "recap": $ctrlAccueil->afficherRecap(); break;
+        case "inscription": $ctrlAccueil->afficherInscription(); break;
+        case "connexion": $ctrlAccueil->afficherConnexion(); break;
         // Envoi de mail
         case "envoyerContact": $ctrlAccueil->envoyerContact(); break;
         // Sécurité
         case "deconnexion": $ctrlSecurite->deconnexion(); break;
-        case "inscription": $ctrlSecurite->inscription(); break;
-        case "connexion": $ctrlSecurite->connexion(); break;
+        case "inscriptionProcess": $ctrlSecurite->inscription(); break;
+        case "connexionProcess": $ctrlSecurite->connexion(); break;
         // Panier
         case 'ajouterAuPanier':
-            if (isset($_GET['idProduit'])) {
-                $ctrlPanier->ajouterAuPanier($_GET['idProduit']);
+            if (isset($_GET['id_produit'])) {
+                $ctrlPanier->ajouterAuPanier($_GET['id_produit']);
             }
             break;
         case 'supprimerDuPanier':
@@ -60,13 +62,13 @@ if(isset($_GET["action"])){
             }
             break;
         case 'validerCommande':
-            if (isset($_POST['idUtilisateur'])) { 
+            if (isset($_POST['id_utilisateur'])) { 
                 $ctrlPanier->validerCommande();
             }
             break;
         case 'telechargerRecu':
-            if (isset($_GET['idCommande'])) {
-                $detailsCommande = $commandeManager->obtenirDetailsCommande($_GET['idCommande']);
+            if (isset($_GET['id_commande'])) {
+                $detailsCommande = $commandeManager->obtenirDetailsCommande($_GET['id_commande']);
                 $ctrlAccueil->genererRecuPDF($detailsCommande);
             }
             break;
@@ -79,5 +81,5 @@ if(isset($_GET["action"])){
     } 
 } else {
     // Si aucun paramètre "action" n'est défini, afficher la vue par défaut
-    $ctrlAccueil->afficherParDefaut();
+    $ctrlAccueil->afficherHome();
 }

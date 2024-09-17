@@ -12,14 +12,14 @@ class PrestationManager {
     }
 
     // Méthode pour récupérer une prestation par son ID
-    public function obtenirPrestationParId($idPrestation) {
+    public function obtenirPrestationParId($id_prestation) {
         $requete = "
-            SELECT idPrestation, designation, description, duree, prix
+            SELECT id_prestation, designation, description, duree, prix
             FROM prestation
-            WHERE idPrestation = :idPrestation
+            WHERE id_prestation = :id_prestation
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':idPrestation', $idPrestation, \PDO::PARAM_INT);
+        $stmt->bindParam(':id_prestation', $id_prestation, \PDO::PARAM_INT);
         $stmt->execute();
 
         return $stmt->fetch(\PDO::FETCH_ASSOC);
@@ -28,9 +28,9 @@ class PrestationManager {
     // Méthode pour obtenir toutes les catégories avec leurs prestations
     public function obtenirToutesCategoriesAvecPrestations() {
         $requete = "
-            SELECT c.idCategorie, c.designation AS categorie_designation, p.idPrestation, p.designation, p.description, p.duree, p.prix 
+            SELECT c.id_categorie, c.designation AS categorie_designation, p.id_prestation, p.designation, p.description, p.duree, p.prix 
             FROM categorie c
-            LEFT JOIN prestation p ON c.idCategorie = p.idCategorie
+            LEFT JOIN prestation p ON c.id_categorie = p.id_categorie
             ORDER BY c.designation, p.designation
         ";
         $resultat = $this->db->query($requete);
@@ -38,7 +38,7 @@ class PrestationManager {
         $categories = [];
         while ($row = $resultat->fetch()) {
             $categories[$row['categorie_designation']][] = [
-                'idPrestation' => $row['idPrestation'],
+                'id_prestation' => $row['id_prestation'],
                 'designation' => $row['designation'],
                 'description' => $row['description'],
                 'duree' => $row['duree'],

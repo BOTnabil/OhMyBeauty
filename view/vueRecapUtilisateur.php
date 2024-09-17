@@ -14,17 +14,16 @@ $reservationController = new ReservationController();
 $reservationController->supprimerReservationsPassees();
 
 // Récupération de l'ID de l'utilisateur depuis la session
-$idUtilisateur = $_SESSION['user_id']; 
-$nomUtilisateur = $_SESSION['user_name'];
+$id_utilisateur = $_SESSION['user_id']; 
 
 // Récupération de toutes les commandes de l'utilisateur
-$commandes = $commandeManager->obtenirCommandesParUtilisateur($idUtilisateur);
+$commandes = $commandeManager->obtenirCommandesParUtilisateur($id_utilisateur);
 
 // Récupération de toutes les réservations de l'utilisateur
-$reservations = $reservationManager->obtenirReservationsParUtilisateur($idUtilisateur);
+$reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utilisateur);
 ?>
 
-<h1>Bonjour, <?= htmlspecialchars($nomUtilisateur); ?> !</h1>
+<h1>Bonjour !</h1>
 <h2>Historique de vos commandes</h2>
 
 <?php if (!empty($commandes)) { ?>
@@ -43,9 +42,9 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($idUtilis
                     <td><?= $commande['dateCommande']; ?></td>
                     <td><?= $commande['prixTotal']; ?> €</td>
                     <td>
-                        <a href="javascript:void(0);" class="voir-details" data-id="<?= $commande['idCommande']; ?>">Voir les détails</a>
+                        <a href="javascript:void(0);" class="voir-details" data-id="<?= $commande['id_commande']; ?>">Voir les détails</a>
                     </td>
-                    <td class="details-commande" id="details-commande-<?= $commande['idCommande']; ?>" style="display:none;">
+                    <td class="details-commande" id="details-commande-<?= $commande['id_commande']; ?>" style="display:none;">
                         <p><strong>Détails de la commande :<br></strong> <?= $commande['infosCommande'] ?? 'Aucun détail disponible.'; ?></p>
                     </td>
                 </tr>
@@ -91,7 +90,7 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($idUtilis
                     <td>
                         <?php if ($estAnnulable) { ?>
                             <form method="post" action="index.php?action=annulerReservation">
-                                <input type="hidden" name="idPrestation" value="<?= $reservation['idPrestation']; ?>">
+                                <input type="hidden" name="id_prestation" value="<?= $reservation['id_prestation']; ?>">
                                 <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir annuler cette réservation ?');">Annuler</button>
                             </form>
                         <?php } else { ?>

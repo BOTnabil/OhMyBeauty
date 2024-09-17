@@ -20,8 +20,8 @@ class PanierController {
         $this->contenirManager = new ContenirManager();
     }
 
-    public function ajouterAuPanier($idProduit) {
-        $productData = $this->produitManager->obtenirProduitParId($idProduit);
+    public function ajouterAuPanier($id_produit) {
+        $productData = $this->produitManager->obtenirProduitParId($id_produit);
 
         if ($productData) {
             $nom = $productData['designation'];
@@ -29,7 +29,7 @@ class PanierController {
             $qtt = 1;
             $produitExiste = false;
             $produit = [
-                "id" => $idProduit,
+                "id" => $id_produit,
                 "nom" => $nom,
                 "prix" => $prix,
                 "qtt" => $qtt,
@@ -37,7 +37,7 @@ class PanierController {
             ];
             
             foreach ($_SESSION['products'] as &$produitExistant) {
-                if ($produitExistant['id'] === $idProduit) {
+                if ($produitExistant['id'] === $id_produit) {
                     $produitExistant['qtt'] += $qtt;
                     $produitExistant['total'] = $produitExistant['prix'] * $produitExistant['qtt'];
                     $produitExiste = true;
@@ -89,10 +89,11 @@ class PanierController {
     }
 
     public function validerCommande() {
+        // Vérification si l'utilisateur est connecté
         if (isset($_SESSION['user_id'])) {
             if (!empty($_SESSION['products'])) {
                 $prixTotal = 0;
-                $idUtilisateur = $_SESSION['user_id'];
+                $id_utilisateur = $_SESSION['user_id'];
     
                 // Calcul du prix total et génération des informations de la commande
                 $infosCommande = $this->genererInfosCommandeTexte($_SESSION['products']);
@@ -102,21 +103,21 @@ class PanierController {
                 }
     
                 // Créer la commande avec infosCommande initialisé
-                $idCommande = $this->commandeManager->creerCommande($prixTotal, $idUtilisateur, $infosCommande);
+                $id_commande = $this->commandeManager->creerCommande($prixTotal, $id_utilisateur, $infosCommande);
     
                 // Ajouter les produits dans la commande
                 foreach ($_SESSION['products'] as $produit) {
-                    $this->contenirManager->ajouterProduitACommande($idCommande, $produit['id'], $produit['qtt']);
+                    $this->contenirManager->ajouterProduitACommande($id_commande, $produit['id'], $produit['qtt']);
                 }
     
                 // Vider le panier
                 unset($_SESSION['products']);
                 $_SESSION['MAJpanier'] = "Commande validée avec succès!";
 
-                header("Location:index.php?action=boutique");
+                header("Location:index.php?action=recap");
             }
         } else {
-            $_SESSION['MAJpanier'] = "Une erreur est survenue";
+            header("Location: index.php?action=connexion");
         }
     }    
 
@@ -136,11 +137,11 @@ class PanierController {
     }
 
     public function voirDetailsCommande() {
-        if (isset($_GET['idCommande'])) {
-            $idCommande = $_GET['idCommande'];
+        if (isset($_GET['id_commande'])) {
+            $id_commande = $_GET['id_commande'];
     
             // Récupérer les informations de la commande, y compris infosCommande
-            $commandeDetails = $this->commandeManager->obtenirDetailsCommande($idCommande);
+            $commandeDetails = $this->commandeManager->obtenirDetailsCommande($id_commande);
     
             // Charger la vue avec les informations de la commande
             require 'view/recapUtilisateurView.php';

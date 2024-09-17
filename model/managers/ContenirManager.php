@@ -12,26 +12,26 @@ class ContenirManager {
     }
 
     // Méthodes
-    public function ajouterProduitACommande($idCommande, $idProduit, $quantite) {
+    public function ajouterProduitACommande($id_commande, $id_produit, $quantite) {
         $requete = "
-            INSERT INTO contenir (idCommande, idProduit, quantite) 
-            VALUES (:idCommande, :idProduit, :quantite)
+            INSERT INTO contenir (id_commande, id_produit, quantite) 
+            VALUES (:id_commande, :id_produit, :quantite)
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':idCommande', $idCommande, \PDO::PARAM_INT);
-        $stmt->bindParam(':idProduit', $idProduit, \PDO::PARAM_INT);
+        $stmt->bindParam(':id_commande', $id_commande, \PDO::PARAM_INT);
+        $stmt->bindParam(':id_produit', $id_produit, \PDO::PARAM_INT);
         $stmt->bindParam(':quantite', $quantite, \PDO::PARAM_INT);
         $stmt->execute();
     }
 
-    public function supprimerProduitDeContenir($idProduit) {
+    public function supprimerProduitDeContenir($id_produit) {
         $requete = "
             UPDATE contenir
-            SET idProduit = NULL
-            WHERE idProduit = :idProduit
+            SET id_produit = NULL
+            WHERE id_produit = :id_produit
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':idProduit', $idProduit, \PDO::PARAM_INT);
+        $stmt->bindParam(':id_produit', $id_produit, \PDO::PARAM_INT);
         $stmt->execute();
     }
     

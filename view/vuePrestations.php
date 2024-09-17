@@ -11,14 +11,7 @@ $reservationManager = new ReservationManager();
 // Récupération de toutes les catégories avec leurs prestations
 $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPrestations();
 
-if (isset($_SESSION['erreur'])) {
-    echo '<p class="erreur">' . $_SESSION['erreur'] . '</p>';
-    unset($_SESSION['erreur']); // Supprimer l'erreur après l'affichage
-}
-
-if (!isset($_SESSION['user_id'])) { ?>
-    <p>Veuillez vous connecter afin de pouvoir réserver</p>
-<?php } ?>
+?>
 
 
 <div class="prestations-container">
@@ -34,20 +27,24 @@ if (!isset($_SESSION['user_id'])) { ?>
                             <span><?= $prestation["duree"]; ?> • <?= $prestation["prix"]; ?> €</span>
                         </div>
                         <div class="actions-prestation">
-                            <?php             
-                            // Vérifier si l'utilisateur a déjà réservé cette prestation dans le futur
-                            if (isset($_SESSION['user_id'])) {  
-                                if ($reservationManager->verifierReservationExistante($_SESSION['user_id'], $prestation['idPrestation'])) { ?>
-                                    <p>Préstation déjà réservée</p> 
-                                <?php } else { ?>
-                                    <form method="post" action="index.php?action=choisirCreneau">
-                                        <input type="hidden" name="idPrestation" value="<?= $prestation['idPrestation']; ?>">
-                                        <label for="datePrestation">Choisir une date :</label>
-                                        <input type="date" name="datePrestation" required min="<?= date('Y-m-d'); ?>">
-                                        <button type="submit">Valider la date</button>
-                                    </form>
-                                <?php }
-                            } ?>
+                            <?php
+                            $aDejaReserve = false;
+                            if (isset($_SESSION['user_id'])) {
+                                $aDejaReserve = $reservationManager->verifierReservationExistante($_SESSION['user_id'], $prestation['id_prestation']);
+                            }
+                            ?>
+                            
+                            <?php if ($aDejaReserve) { ?>
+                                <p>Prestation déjà réservée</p>
+                            <?php } ?>
+
+                            <!-- Afficher le formulaire pour tout le monde -->
+                            <form method="post" action="index.php?action=choisirCreneau">
+                                <input type="hidden" name="id_prestation" value="<?= $prestation['id_prestation']; ?>">
+                                <label for="datePrestation">Choisir une date :</label>
+                                <input type="date" name="datePrestation" required min="<?= date('Y-m-d'); ?>">
+                                <button type="submit">Valider la date</button>
+                            </form>
                         </div>
                     </div>
                 <?php } ?>

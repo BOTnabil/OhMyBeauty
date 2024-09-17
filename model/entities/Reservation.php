@@ -2,16 +2,16 @@
 namespace Model\Entities;
 
 class Reservation {
-    private $idReservation;
-    private $idUtilisateur;
-    private $idPrestation;
+    private $id_reservation;
+    private $id_utilisateur;
+    private $id_prestation;
     private $datePrestation;
     private $infosReservation;
 
-    public function __construct($idReservation, $idUtilisateur, $idPrestation, $datePrestation, $infosReservation) {
-        $this->idReservation = $idReservation;
-        $this->idUtilisateur = $idUtilisateur;
-        $this->idPrestation = $idPrestation;
+    public function __construct($id_reservation, $id_utilisateur, $id_prestation, $datePrestation, $infosReservation) {
+        $this->id_reservation = $id_reservation;
+        $this->id_utilisateur = $id_utilisateur;
+        $this->id_prestation = $id_prestation;
         $this->datePrestation = $datePrestation;
         $this->infosReservation = $infosReservation;
     }
@@ -57,11 +57,11 @@ class Reservation {
     }
 
     /**
-     * Get the value of idPrestation
+     * Get the value of id_prestation
      */ 
     public function getIdPrestation()
     {
-        return $this->idPrestation;
+        return $this->id_prestation;
     }
 
     /**
@@ -69,49 +69,49 @@ class Reservation {
      *
      * @return  self
      */ 
-    public function setIdPrestation($idPrestation)
+    public function setIdPrestation($id_prestation)
     {
-        $this->idPrestation = $idPrestation;
+        $this->id_prestation = $id_prestation;
 
         return $this;
     }
 
     /**
-     * Get the value of idUtilisateur
+     * Get the value of id_utilisateur
      */ 
     public function getIdUtilisateur()
     {
-        return $this->idUtilisateur;
+        return $this->id_utilisateur;
     }
 
     /**
-     * Set the value of idUtilisateur
+     * Set the value of id_utilisateur
      *
      * @return  self
      */ 
-    public function setIdUtilisateur($idUtilisateur)
+    public function setIdUtilisateur($id_utilisateur)
     {
-        $this->idUtilisateur = $idUtilisateur;
+        $this->id_utilisateur = $id_utilisateur;
 
         return $this;
     }
 
     /**
-     * Get the value of idReservation
+     * Get the value of id_reservation
      */ 
     public function getIdReservation()
     {
-        return $this->idReservation;
+        return $this->id_reservation;
     }
 
     /**
-     * Set the value of idReservation
+     * Set the value of id_reservation
      *
      * @return  self
      */ 
-    public function setIdReservation($idReservation)
+    public function setIdReservation($id_reservation)
     {
-        $this->idReservation = $idReservation;
+        $this->id_reservation = $id_reservation;
 
         return $this;
     }

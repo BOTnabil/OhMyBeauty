@@ -28,14 +28,14 @@ class AdminController {
         }
 
         // Récupérer l'ID du produit
-        if (isset($_POST['idProduit'])) {
-            $idProduit = $_POST['idProduit'];
+        if (isset($_POST['id_produit'])) {
+            $id_produit = $_POST['id_produit'];
 
             // Supprimer toutes les lignes contenant ce produit dans la table "contenir"
-            $this->contenirManager->supprimerProduitDeContenir($idProduit);
+            $this->contenirManager->supprimerProduitDeContenir($id_produit);
 
             // Supprimer le produit de la table "produit"
-            $this->produitManager->supprimerProduit($idProduit);
+            $this->produitManager->supprimerProduit($id_produit);
 
             $_SESSION['MAJpanier'] = "Le produit a été supprimé avec succès.";
             header("Location: index.php?action=boutique");

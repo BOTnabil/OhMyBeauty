@@ -21,14 +21,14 @@ USE `ohmybeauty`;
 
 -- Listage de la structure de table ohmybeauty. categorie
 CREATE TABLE IF NOT EXISTS `categorie` (
-  `idCategorie` int NOT NULL AUTO_INCREMENT,
+  `id_categorie` int NOT NULL AUTO_INCREMENT,
   `designation` varchar(50) NOT NULL,
-  PRIMARY KEY (`idCategorie`)
+  PRIMARY KEY (`id_categorie`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table ohmybeauty.categorie : ~4 rows (environ)
 DELETE FROM `categorie`;
-INSERT INTO `categorie` (`idCategorie`, `designation`) VALUES
+INSERT INTO `categorie` (`id_categorie`, `designation`) VALUES
 	(1, 'CILS'),
 	(2, 'CAPILAIRE'),
 	(3, 'SOIN DU VISAGE'),
@@ -36,14 +36,16 @@ INSERT INTO `categorie` (`idCategorie`, `designation`) VALUES
 
 -- Listage de la structure de table ohmybeauty. commande
 CREATE TABLE IF NOT EXISTS `commande` (
-  `idCommande` int NOT NULL AUTO_INCREMENT,
+  `id_commande` int NOT NULL AUTO_INCREMENT,
+  `numeroCommande` int,
   `dateCommande` date NOT NULL,
   `prixTotal` decimal(15,2) NOT NULL,
-  `idUtilisateur` int NOT NULL,
+  `id_utilisateur` int NOT NULL,
   `infosCommande` varchar(255) NOT NULL,
-  PRIMARY KEY (`idCommande`),
-  KEY `idUtilisateur` (`idUtilisateur`),
-  CONSTRAINT `commande_ibfk_1` FOREIGN KEY (`idUtilisateur`) REFERENCES `utilisateur` (`idUtilisateur`)
+  PRIMARY KEY (`id_commande`),
+  UNIQUE KEY (`numeroCommande`),
+  KEY `id_utilisateur` (`id_utilisateur`),
+  CONSTRAINT `commande_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table ohmybeauty.commande : ~0 rows (environ)
@@ -51,14 +53,14 @@ DELETE FROM `commande`;
 
 -- Listage de la structure de table ohmybeauty. contenir
 CREATE TABLE IF NOT EXISTS `contenir` (
-  `idContenir` int NOT NULL AUTO_INCREMENT,
-  `idCommande` int,
-  `idProduit` int,
+  `id_contenir` int NOT NULL AUTO_INCREMENT,
+  `id_commande` int,
+  `id_produit` int,
   `quantite` int NOT NULL,
-  PRIMARY KEY (`idContenir`),
-  KEY `idProduit` (`idProduit`),
-  CONSTRAINT `contenir_ibfk_1` FOREIGN KEY (`idCommande`) REFERENCES `commande` (`idCommande`),
-  CONSTRAINT `contenir_ibfk_2` FOREIGN KEY (`idProduit`) REFERENCES `produit` (`idProduit`)
+  PRIMARY KEY (`id_contenir`),
+  KEY `id_produit` (`id_produit`),
+  CONSTRAINT `contenir_ibfk_1` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id_commande`),
+  CONSTRAINT `contenir_ibfk_2` FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id_produit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table ohmybeauty.contenir : ~0 rows (environ)
@@ -66,20 +68,20 @@ DELETE FROM `contenir`;
 
 -- Listage de la structure de table ohmybeauty. prestation
 CREATE TABLE IF NOT EXISTS `prestation` (
-  `idPrestation` int NOT NULL AUTO_INCREMENT,
+  `id_prestation` int NOT NULL AUTO_INCREMENT,
   `designation` varchar(50) NOT NULL,
   `prix` decimal(15,2) NOT NULL,
   `duree` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT ' ',
-  `idCategorie` int NOT NULL,
+  `id_categorie` int NOT NULL,
   `description` varchar(255) NOT NULL DEFAULT ' ',
-  PRIMARY KEY (`idPrestation`),
-  KEY `idCategorie` (`idCategorie`),
-  CONSTRAINT `prestation_ibfk_1` FOREIGN KEY (`idCategorie`) REFERENCES `categorie` (`idCategorie`)
+  PRIMARY KEY (`id_prestation`),
+  KEY `id_categorie` (`id_categorie`),
+  CONSTRAINT `prestation_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id_categorie`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table ohmybeauty.prestation : ~20 rows (environ)
 DELETE FROM `prestation`;
-INSERT INTO `prestation` (`idPrestation`, `designation`, `prix`, `duree`, `idCategorie`, `description`) VALUES
+INSERT INTO `prestation` (`id_prestation`, `designation`, `prix`, `duree`, `id_categorie`, `description`) VALUES
 	(1, 'Réhaussement', 35.00, '45min', 1, 'test description'),
 	(2, 'Extension pose naturelle', 50.00, '45min', 1, 'test description'),
 	(3, 'Extension pose mixte', 60.00, '45min', 1, 'test description'),
@@ -103,19 +105,19 @@ INSERT INTO `prestation` (`idPrestation`, `designation`, `prix`, `duree`, `idCat
 
 -- Listage de la structure de table ohmybeauty. produit
 CREATE TABLE IF NOT EXISTS `produit` (
-  `idProduit` int NOT NULL AUTO_INCREMENT,
+  `id_produit` int NOT NULL AUTO_INCREMENT,
   `designation` varchar(50) NOT NULL,
   `prix` decimal(15,2) NOT NULL,
   `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `idCategorie` int NOT NULL,
-  PRIMARY KEY (`idProduit`),
-  KEY `idCategorie` (`idCategorie`),
-  CONSTRAINT `produit_ibfk_1` FOREIGN KEY (`idCategorie`) REFERENCES `categorie` (`idCategorie`)
+  `id_categorie` int NOT NULL,
+  PRIMARY KEY (`id_produit`),
+  KEY `id_categorie` (`id_categorie`),
+  CONSTRAINT `produit_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id_categorie`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table ohmybeauty.produit : ~16 rows (environ)
 DELETE FROM `produit`;
-INSERT INTO `produit` (`idProduit`, `designation`, `prix`, `image`, `idCategorie`) VALUES
+INSERT INTO `produit` (`id_produit`, `designation`, `prix`, `image`, `id_categorie`) VALUES
 	(1, 'Lime à ongles', 4.29, NULL, 4),
 	(2, 'Kit de manucure', 9.50, NULL, 4),
 	(3, 'Kit vernis semi permanent', 24.99, NULL, 4),
@@ -135,15 +137,15 @@ INSERT INTO `produit` (`idProduit`, `designation`, `prix`, `image`, `idCategorie
 
 -- Listage de la structure de table ohmybeauty. reservation
 CREATE TABLE IF NOT EXISTS `reservation` (
-  `idReservation` int NOT NULL AUTO_INCREMENT,
-  `idUtilisateur` int,
-  `idPrestation` int,
+  `id_reservation` int NOT NULL AUTO_INCREMENT,
+  `id_utilisateur` int,
+  `id_prestation` int,
   `datePrestation` datetime NOT NULL,
   `infosReservation` varchar(255) NOT NULL,
-  PRIMARY KEY (`idReservation`),
-  KEY `idPrestation` (`idPrestation`),
-  CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`idUtilisateur`) REFERENCES `utilisateur` (`idUtilisateur`),
-  CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`idPrestation`) REFERENCES `prestation` (`idPrestation`)
+  PRIMARY KEY (`id_reservation`),
+  KEY `id_prestation` (`id_prestation`),
+  CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`),
+  CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`id_prestation`) REFERENCES `prestation` (`id_prestation`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table ohmybeauty.reservation : ~0 rows (environ)
@@ -151,19 +153,17 @@ DELETE FROM `reservation`;
 
 -- Listage de la structure de table ohmybeauty. utilisateur
 CREATE TABLE IF NOT EXISTS `utilisateur` (
-  `idUtilisateur` int NOT NULL AUTO_INCREMENT,
-  `nom` varchar(50) NOT NULL,
-  `prenom` varchar(50) NOT NULL,
+  `id_utilisateur` int NOT NULL AUTO_INCREMENT,
   `email` varchar(50) NOT NULL,
   `motDePasse` varchar(255) NOT NULL,
   `role` varchar(50) NOT NULL,
-  PRIMARY KEY (`idUtilisateur`)
+  PRIMARY KEY (`id_utilisateur`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table ohmybeauty.utilisateur : ~1 rows (environ)
 DELETE FROM `utilisateur`;
-INSERT INTO `utilisateur` (`idUtilisateur`, `nom`, `prenom`, `email`, `motDePasse`, `role`) VALUES
-	(1, 'Nabil', 'Assatour', 'assatour.nabil@gmail.com', '$2y$10$lmhrwZ9L74IoWPEiU.UjuOu41klSUxVfMMcWiCVtQ5jccA20I3DDm', 'user');
+INSERT INTO `utilisateur` (`id_utilisateur`, `email`, `motDePasse`, `role`) VALUES
+	(1, 'assatour.nabil@gmail.com', '$2y$10$lmhrwZ9L74IoWPEiU.UjuOu41klSUxVfMMcWiCVtQ5jccA20I3DDm', 'user');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

@@ -25,10 +25,9 @@
                 <span><i class="fa-solid fa-bars fa-2xl" style="color: #ffffff;"></i></span>
             </span>
         </a>
-        <img src="./public/img/logo_header.png" class="logoNav" alt="image logo Oh My Beauty">
+        <a href="index.php?action=home"><img src="./public/img/logo_header.png" class="logoNav" alt="image logo Oh My Beauty"></a>
         <div id="mySidenav" class="sidenav">
             <ul>
-                <li><a href="index.php?action=vueParDefaut">Accueil</a></li>
                 <li><a href="index.php?action=prestations">Prestations</a></li>
                 <li><a href="index.php?action=boutique">Boutique</a></li>
                 <li><a href="index.php?action=aPropos">À propos</a></li>
@@ -36,7 +35,6 @@
             </ul>
         </div>
         <nav id="myLinks">
-            <a href="index.php?action=vueParDefaut">Accueil</a>
             <a href="index.php?action=prestations">Prestations</a>
             <a href="index.php?action=boutique">Boutique</a>
             <a href="index.php?action=aPropos">À propos</a>
@@ -60,24 +58,11 @@
                 } else {
                     ?>
                     <div class="user-menu-item">
-                        <h3 class="toggle-form">S'inscrire</h3>
-                        <form class="user-form" action="index.php?action=inscription" method="POST">
-                            <input type="text" name="nom" placeholder="Nom">
-                            <input type="text" name="prenom" placeholder="Prénom">
-                            <input type="email" name="email" placeholder="Email">
-                            <input type="password" name="motDePasse1" placeholder="Mot de passe">
-                            <input type="password" name="motDePasse2" placeholder="Confirmez le mot de passe">
-                            <input type="submit" name="submit" value="S'inscrire">
-                        </form>
+                        <a href='index.php?action=inscription'>S'inscrire</a>
                     </div>
 
                     <div class="user-menu-item">
-                        <h3 class="toggle-form">Se connecter</h3>
-                        <form class="user-form" action="index.php?action=connexion" method="POST">
-                            <input type="email" name="email" placeholder="Email">
-                            <input type="password" name="motDePasse" placeholder="Mot de passe">
-                            <input type="submit" name="submit" value="Se connecter">
-                        </form>
+                        <a href='index.php?action=connexion'>Se connecter</a>
                     </div>
                 <?php
                 }

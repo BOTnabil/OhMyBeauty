@@ -2,18 +2,18 @@
 namespace Model\Entities;
 
 class Produit {
-    private $idProduit;
+    private $id_produit;
     private $designation;
     private $prix;
     private $image;
-    private $idCategorie;
+    private $id_categorie;
 
-    public function __construct($idProduit, $designation, $prix, $image, $idCategorie) {
-        $this->idProduit = $idProduit;
+    public function __construct($id_produit, $designation, $prix, $image, $id_categorie) {
+        $this->id_produit = $id_produit;
         $this->designation = $designation;
         $this->prix = $prix;
         $this->image = $image;
-        $this->idCategorie = $idCategorie;
+        $this->id_categorie = $id_categorie;
     }
 
     public function __toString() {
@@ -21,21 +21,21 @@ class Produit {
     }
 
     /**
-     * Get the value of idProduit
+     * Get the value of id_produit
      */ 
     public function getIdProduit()
     {
-        return $this->idProduit;
+        return $this->id_produit;
     }
 
     /**
-     * Set the value of idProduit
+     * Set the value of id_produit
      *
      * @return  self
      */ 
-    public function setIdProduit($idProduit)
+    public function setIdProduit($id_produit)
     {
-        $this->idProduit = $idProduit;
+        $this->id_produit = $id_produit;
 
         return $this;
     }
@@ -101,11 +101,11 @@ class Produit {
     }
 
     /**
-     * Get the value of idCategorie
+     * Get the value of id_categorie
      */ 
     public function getIdCategorie()
     {
-        return $this->idCategorie;
+        return $this->id_categorie;
     }
 
     /**
@@ -113,9 +113,9 @@ class Produit {
      *
      * @return  self
      */ 
-    public function setIdCategorie($idCategorie)
+    public function setIdCategorie($id_categorie)
     {
-        $this->idCategorie = $idCategorie;
+        $this->id_categorie = $id_categorie;
 
         return $this;
     }

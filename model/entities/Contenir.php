@@ -2,13 +2,13 @@
 namespace Model\Entities;
 
 class Contenir {
-    private $idCommande;
-    private $idProduit;
+    private $id_commande;
+    private $id_produit;
     private $quantite;
 
-    public function __construct($idCommande, $idProduit, $quantite) {
-        $this->idCommande = $idCommande;
-        $this->idProduit = $idProduit;
+    public function __construct($id_commande, $id_produit, $quantite) {
+        $this->id_commande = $id_commande;
+        $this->id_produit = $id_produit;
         $this->quantite = $quantite;
     }
 
@@ -33,31 +33,31 @@ class Contenir {
     }
 
     /**
-     * Get the value of idProduit
+     * Get the value of id_produit
      */ 
     public function getIdProduit()
     {
-        return $this->idProduit;
+        return $this->id_produit;
     }
 
     /**
-     * Set the value of idProduit
+     * Set the value of id_produit
      *
      * @return  self
      */ 
-    public function setIdProduit($idProduit)
+    public function setIdProduit($id_produit)
     {
-        $this->idProduit = $idProduit;
+        $this->id_produit = $id_produit;
 
         return $this;
     }
 
     /**
-     * Get the value of idCommande
+     * Get the value of id_commande
      */ 
     public function getIdCommande()
     {
-        return $this->idCommande;
+        return $this->id_commande;
     }
 
     /**
@@ -65,9 +65,9 @@ class Contenir {
      *
      * @return  self
      */ 
-    public function setIdCommande($idCommande)
+    public function setIdCommande($id_commande)
     {
-        $this->idCommande = $idCommande;
+        $this->id_commande = $id_commande;
 
         return $this;
     }

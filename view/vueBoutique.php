@@ -53,14 +53,10 @@ $categoriesAvecProduits = $produitManager->obtenirToutesCategoriesAvecProduits()
                     echo $totalGeneral . " €";
                 ?>
                 </p>
-                <?php if (!isset($_SESSION['user_id'])) { ?>
-                        <p>Veuillez vous connecter afin de pouvoir passer commande</p>
-                <?php } else  { ?>
                     <form method="post" action="index.php?action=validerCommande">
-                        <input type="hidden" name="idUtilisateur" value="1"> <!-- Supposons que l'ID de l'utilisateur soit 1 pour l'instant -->
+                        <input type="hidden" name="id_utilisateur" value="1"> <!-- Supposons que l'ID de l'utilisateur soit 1 pour l'instant -->
                         <button type="submit">Valider la commande</button>
                     </form>
-                <?php } ?>
                 <form method="get" action="index.php">
                     <input type="hidden" name="action" value="viderPanier">
                     <button type="submit">Vider le panier</button>
@@ -92,14 +88,14 @@ $categoriesAvecProduits = $produitManager->obtenirToutesCategoriesAvecProduits()
                             <div class="actions-prestation">
                                 <form method="get" action="index.php">
                                     <input type="hidden" name="action" value="ajouterAuPanier">
-                                    <input type="hidden" name="idProduit" value="<?= $produit['idProduit']; ?>">
+                                    <input type="hidden" name="id_produit" value="<?= $produit['id_produit']; ?>">
                                     <button type="submit">Ajouter au panier</button>
                                 </form>
 
                                 <?php if (\App\Session::estAdmin()) { ?>
                                     <!-- Bouton de suppression visible uniquement pour les admins -->
                                     <form method="post" action="index.php?action=supprimerProduit">
-                                        <input type="hidden" name="idProduit" value="<?= $produit['idProduit']; ?>">
+                                        <input type="hidden" name="id_produit" value="<?= $produit['id_produit']; ?>">
                                         <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?');">X</button>
                                     </form>
                                 <?php } ?>

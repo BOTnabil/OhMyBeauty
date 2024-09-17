@@ -2,18 +2,18 @@
 namespace Model\Entities;
 
 class Prestation {
-    private $idPrestation;
+    private $id_prestation;
     private $designation;
     private $prix;
-    private $idCategorie;
+    private $id_categorie;
     private $duree;
     private $description;
 
-    public function __construct($idPrestation, $designation, $prix, $idCategorie, $description, $duree) {
-        $this->idPrestation = $idPrestation;
+    public function __construct($id_prestation, $designation, $prix, $id_categorie, $description, $duree) {
+        $this->id_prestation = $id_prestation;
         $this->designation = $designation;
         $this->prix = $prix;
-        $this->idCategorie = $idCategorie;
+        $this->id_categorie = $id_categorie;
         $this->duree = $duree;
         $this->description = $description;
     }
@@ -63,21 +63,21 @@ class Prestation {
     }
 
     /**
-     * Get the value of idCategorie
+     * Get the value of id_categorie
      */ 
     public function getIdCategorie()
     {
-        return $this->idCategorie;
+        return $this->id_categorie;
     }
 
     /**
-     * Set the value of idCategorie
+     * Set the value of id_categorie
      *
      * @return  self
      */ 
-    public function setIdCategorie($idCategorie)
+    public function setIdCategorie($id_categorie)
     {
-        $this->idCategorie = $idCategorie;
+        $this->id_categorie = $id_categorie;
 
         return $this;
     }
@@ -123,11 +123,11 @@ class Prestation {
     }
 
     /**
-     * Get the value of idPrestation
+     * Get the value of id_prestation
      */ 
     public function getIdPrestation()
     {
-        return $this->idPrestation;
+        return $this->id_prestation;
     }
 
     /**
@@ -135,9 +135,9 @@ class Prestation {
      *
      * @return  self
      */ 
-    public function setIdPrestation($idPrestation)
+    public function setIdPrestation($id_prestation)
     {
-        $this->idPrestation = $idPrestation;
+        $this->id_prestation = $id_prestation;
 
         return $this;
     }

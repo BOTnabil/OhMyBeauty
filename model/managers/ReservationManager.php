@@ -12,29 +12,29 @@ class ReservationManager {
     }
 
     // Méthode pour créer une nouvelle réservation
-    public function creerReservation($idUtilisateur, $idPrestation, $datePrestation, $infosReservation) {
+    public function creerReservation($id_utilisateur, $id_prestation, $datePrestation, $infosReservation) {
         $requete = "
-            INSERT INTO reservation (idUtilisateur, idPrestation, datePrestation, infosReservation) 
-            VALUES (:idUtilisateur, :idPrestation, :datePrestation, :infosReservation)
+            INSERT INTO reservation (id_utilisateur, id_prestation, datePrestation, infosReservation) 
+            VALUES (:id_utilisateur, :id_prestation, :datePrestation, :infosReservation)
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':idUtilisateur', $idUtilisateur, \PDO::PARAM_INT);
-        $stmt->bindParam(':idPrestation', $idPrestation, \PDO::PARAM_INT);
+        $stmt->bindParam(':id_utilisateur', $id_utilisateur, \PDO::PARAM_INT);
+        $stmt->bindParam(':id_prestation', $id_prestation, \PDO::PARAM_INT);
         $stmt->bindParam(':datePrestation', $datePrestation, \PDO::PARAM_STR);
         $stmt->bindParam(':infosReservation', $infosReservation, \PDO::PARAM_STR);
         $stmt->execute();
     }
 
     // Méthode pour récupérer les créneaux horaires réservés à une date donnée
-    public function obtenirCreneauxReservesParDate($idPrestation, $datePrestation) {
+    public function obtenirCreneauxReservesParDate($id_prestation, $datePrestation) {
         $requete = "
             SELECT TIME(datePrestation) as creneauHoraire 
             FROM reservation 
-            WHERE idPrestation = :idPrestation 
+            WHERE id_prestation = :id_prestation 
             AND DATE(datePrestation) = :datePrestation
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':idPrestation', $idPrestation, \PDO::PARAM_INT);
+        $stmt->bindParam(':id_prestation', $id_prestation, \PDO::PARAM_INT);
         $stmt->bindParam(':datePrestation', $datePrestation, \PDO::PARAM_STR);
         $stmt->execute();
     
@@ -42,57 +42,57 @@ class ReservationManager {
     }    
 
     // Méthode pour récupérer les réservations d'un utilisateur spécifique
-    public function obtenirReservationsParUtilisateur($idUtilisateur) {
+    public function obtenirReservationsParUtilisateur($id_utilisateur) {
         $requete = "
-            SELECT r.idPrestation, r.datePrestation, p.designation, p.prix, p.duree, c.designation AS categorie
+            SELECT r.id_prestation, r.datePrestation, p.designation, p.prix, p.duree, c.designation AS categorie
             FROM reservation r
-            JOIN prestation p ON r.idPrestation = p.idPrestation
-            JOIN categorie c ON p.idCategorie = c.idCategorie
-            WHERE r.idUtilisateur = :idUtilisateur
+            JOIN prestation p ON r.id_prestation = p.id_prestation
+            JOIN categorie c ON p.id_categorie = c.id_categorie
+            WHERE r.id_utilisateur = :id_utilisateur
             ORDER BY r.datePrestation
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':idUtilisateur', $idUtilisateur, \PDO::PARAM_INT);
+        $stmt->bindParam(':id_utilisateur', $id_utilisateur, \PDO::PARAM_INT);
         $stmt->execute();
     
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     // Méthode pour récupérer tous les créneaux réservés par l'utilisateur
-    public function obtenirCreneauxReservesUtilisateur($idUtilisateur) {
+    public function obtenirCreneauxReservesUtilisateur($id_utilisateur) {
         $requete = "
             SELECT datePrestation 
             FROM reservation 
-            WHERE idUtilisateur = :idUtilisateur
+            WHERE id_utilisateur = :id_utilisateur
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':idUtilisateur', $idUtilisateur, PDO::PARAM_INT);
+        $stmt->bindParam(':id_utilisateur', $id_utilisateur, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_COLUMN);
     }
 
     // Méthode pour annuler une réservation
-    public function annulerReservation($idPrestation) {
+    public function annulerReservation($id_prestation) {
         $requete = "
             DELETE FROM reservation 
-            WHERE idPrestation = :idPrestation
+            WHERE id_prestation = :id_prestation
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':idPrestation', $idPrestation, \PDO::PARAM_INT);
+        $stmt->bindParam(':id_prestation', $id_prestation, \PDO::PARAM_INT);
         $stmt->execute();
     }
 
-    public function verifierReservationExistante($idUtilisateur, $idPrestation) {
+    public function verifierReservationExistante($id_utilisateur, $id_prestation) {
         $requete = "
             SELECT COUNT(*) 
             FROM reservation 
-            WHERE idUtilisateur = :idUtilisateur 
-            AND idPrestation = :idPrestation 
+            WHERE id_utilisateur = :id_utilisateur 
+            AND id_prestation = :id_prestation 
             AND datePrestation >= NOW()
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':idUtilisateur', $idUtilisateur, \PDO::PARAM_INT);
-        $stmt->bindParam(':idPrestation', $idPrestation, \PDO::PARAM_INT);
+        $stmt->bindParam(':id_utilisateur', $id_utilisateur, \PDO::PARAM_INT);
+        $stmt->bindParam(':id_prestation', $id_prestation, \PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchColumn() > 0;
     }
@@ -107,15 +107,15 @@ class ReservationManager {
         $stmt->execute();
     }
 
-    public function obtenirCreneauxReservesUtilisateurParDate($idUtilisateur, $datePrestation) {
+    public function obtenirCreneauxReservesUtilisateurParDate($id_utilisateur, $datePrestation) {
         $requete = "
             SELECT TIME(datePrestation) as creneauHoraire 
             FROM reservation 
-            WHERE idUtilisateur = :idUtilisateur 
+            WHERE id_utilisateur = :id_utilisateur 
             AND DATE(datePrestation) = :datePrestation
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':idUtilisateur', $idUtilisateur, \PDO::PARAM_INT);
+        $stmt->bindParam(':id_utilisateur', $id_Utilisateur, \PDO::PARAM_INT);
         $stmt->bindParam(':datePrestation', $datePrestation, \PDO::PARAM_STR);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);  // Renvoie les créneaux sous forme de tableau associatif

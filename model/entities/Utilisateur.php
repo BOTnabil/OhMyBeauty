@@ -2,25 +2,16 @@
 namespace Model\Entities;
 
 class Utilisateur {
-    private $idUtilisateur;
-    private $nom;
-    private $prenom;
+    private $id_utilisateur;
     private $email;
     private $motDePasse;
     private $role;
 
-    public function __construct($idUtilisateur, $nom, $prenom, $email, $motDePasse, $role) {
-        $this->idUtilisateur = $idUtilisateur;
-        $this->nom = $nom;
-        $this->prenom = $prenom;
+    public function __construct($id_utilisateur, $email, $motDePasse, $role) {
+        $this->id_utilisateur = $id_utilisateur;
         $this->email = $email;
         $this->motDePasse = $motDePasse;
         $this->role = $role;
-    }
-
-    // Check le role de l'utilisateur
-    public function hasRole($role) {
-        return $this->role === $role;
     }
 
     public function __toString() {
@@ -28,7 +19,7 @@ class Utilisateur {
     }
 
     /**
-     * Get the value of idUtilisateur
+     * Get the value of id_utilisateur
      */ 
     public function getIdUtilisateur()
     {
@@ -36,53 +27,13 @@ class Utilisateur {
     }
 
     /**
-     * Set the value of idUtilisateur
+     * Set the value of id_utilisateur
      *
      * @return  self
      */ 
-    public function setIdUtilisateur($idUtilisateur)
+    public function setIdUtilisateur($id_utilisateur)
     {
-        $this->idUtilisateur = $idUtilisateur;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of nom
-     */ 
-    public function getNom()
-    {
-        return $this->nom;
-    }
-
-    /**
-     * Set the value of nom
-     *
-     * @return  self
-     */ 
-    public function setNom($nom)
-    {
-        $this->nom = $nom;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of prenom
-     */ 
-    public function getPrenom()
-    {
-        return $this->prenom;
-    }
-
-    /**
-     * Set the value of prenom
-     *
-     * @return  self
-     */ 
-    public function setPrenom($prenom)
-    {
-        $this->prenom = $prenom;
+        $this->id_utilisateur = $id_utilisateur;
 
         return $this;
     }
