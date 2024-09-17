@@ -15,10 +15,16 @@ class SecuriteController {
             $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_FULL_SPECIAL_CHARS, FILTER_VALIDATE_EMAIL);
             $motDePasse1 = filter_input(INPUT_POST, "motDePasse1", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $motDePasse2 = filter_input(INPUT_POST, "motDePasse2", FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $honeypot = filter_input(INPUT_POST, "honeypot", FILTER_SANITIZE_FULL_SPECIAL_CHARS);  // Récupère la valeur du champ honeypot
             $accepterConditions = isset($_POST['accepterConditions']);  // Récupère si la case est cochée ou non
     
-            // Regex pour valider le mot de passe (min. 8 caractères, majuscule, minuscule, specialchar et chiffre)
-            $regexMotDePasse = '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/';
+            // Vérifie si le honeypot est vide (un bot remplirait ce champ)
+            if (!empty($honeypot)) {
+                // Un bot a probablement rempli le formulaire
+                $_SESSION['MAJregister'] = 'Bot detecté';
+                header("Location: index.php?action=inscription");
+                exit;
+            }
     
             // Vérifie si l'utilisateur existe déjà
             if ($this->utilisateurManager->verifierUtilisateurExistant($email)) {
@@ -29,16 +35,15 @@ class SecuriteController {
     
             // Vérifie si tous les champs sont remplis, si la case est cochée et si les mots de passe correspondent
             if ($email && $motDePasse1 && $motDePasse2 && $accepterConditions) {
-                // Vérifie la correspondance des mots de passe et si le mot de passe respecte les critères
-                if ($motDePasse1 === $motDePasse2 && preg_match($regexMotDePasse, $motDePasse1)) {
+                if ($motDePasse1 === $motDePasse2 && preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/', $motDePasse1)) {
                     // Hash le mot de passe avant de le stocker
                     $hashedPassword = password_hash($motDePasse1, PASSWORD_BCRYPT);
                     $this->utilisateurManager->creerUtilisateur($email, $hashedPassword, $role);
                     header("Location: index.php?action=connexion");
                     exit;
                 } else {
-                    // Mots de passe ne correspondent pas ou ne respectent pas les critères de sécurité
-                    $_SESSION['MAJregister'] = 'Les mots de passe doivent être identiques et respecter les critères de sécurité (min. 8 caractères, majuscule, minuscule et chiffre).';
+                    // Mots de passe ne correspondent pas ou ne respectent pas les exigences
+                    $_SESSION['MAJregister'] = 'Les deux mots de passe ne sont pas identiques ou ne respectent pas les exigences (min. 8 caractères, incluant majuscule, minuscule, chiffre, caractère spécial).';
                     header("Location: index.php?action=inscription");
                     exit;
                 }
@@ -46,13 +51,15 @@ class SecuriteController {
                 // Gérer les cas où l'email, le mot de passe ou la case à cocher ne sont pas valides
                 if (!$accepterConditions) {
                     $_SESSION['MAJregister'] = 'Vous devez accepter les conditions d\'utilisation.';
+                    header("Location: index.php?action=inscription");
                 } else {
                     $_SESSION['MAJregister'] = 'Veuillez remplir tous les champs correctement.';
+                    header("Location: index.php?action=inscription");
                 }
-                header("Location: index.php?action=inscription");
             }
         }
     }
+    
     
     
     

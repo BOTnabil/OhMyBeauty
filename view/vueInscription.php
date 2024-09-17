@@ -23,6 +23,11 @@ if (!isset($_SESSION['MAJregister'])) {
             <input type="checkbox" name="accepterConditions" id="accepterConditions" required>
             J'accepte les <a href="#">conditions d'utilisation</a>.
         </label><br>
+
+        <div style="display:none;">
+            <label for="honeypot">Si vous êtes humain ignorez ce champ :</label>
+            <input type="text" id="honeypot" name="honeypot" value="">
+        </div>
         
         <p> <?php echo $_SESSION['MAJregister'] ?> </p>
         <input type="submit" name="submit" value="S'inscrire">
