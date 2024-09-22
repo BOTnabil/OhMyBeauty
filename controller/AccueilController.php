@@ -43,6 +43,11 @@ class AccueilController {
         // Charger et afficher la vue inscription
         require "view/vueInscription.php";
     }
+
+    public function afficherPanier() {
+        // Charger et afficher la vue inscription
+        require "view/vuePanier.php";
+    }
     
 
     public function envoyerMail() {

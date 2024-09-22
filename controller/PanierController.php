@@ -58,13 +58,13 @@ class PanierController {
     public function supprimerDuPanier($id) {
         unset($_SESSION['products'][$id]);
         $_SESSION['MAJpanier'] = "L'article a bien été supprimé";
-        header("Location:index.php?action=boutique");
+        header("Location:index.php?action=panier");
     }
 
     public function viderPanier() {
         unset($_SESSION['products']);
         $_SESSION['MAJpanier'] = "Tous les articles ont été supprimés";
-        header("Location:index.php?action=boutique");
+        header("Location:index.php?action=panier");
     }
 
     public function augmenterQttProduit($id) {
@@ -72,7 +72,7 @@ class PanierController {
             $_SESSION['products'][$id]['qtt']++;
             $_SESSION['products'][$id]['total'] = $_SESSION['products'][$id]['prix'] * $_SESSION['products'][$id]['qtt'];
         }
-        header("Location:index.php?action=boutique");
+        header("Location:index.php?action=panier");
     }
 
     public function diminuerQttProduit($id) {
@@ -84,7 +84,7 @@ class PanierController {
                 $_SESSION['MAJpanier'] = "L'article a bien été supprimé";
             }
         }
-        header("Location:index.php?action=boutique");
+        header("Location:index.php?action=panier");
 
     }
 

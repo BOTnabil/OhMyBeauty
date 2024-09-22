@@ -31,6 +31,7 @@ if(isset($_GET["action"])){
         case "recap": $ctrlAccueil->afficherRecap(); break;
         case "inscription": $ctrlAccueil->afficherInscription(); break;
         case "connexion": $ctrlAccueil->afficherConnexion(); break;
+        case "panier": $ctrlAccueil->afficherPanier(); break;
         // Envoi de mail
         case "envoyerMail": $ctrlAccueil->envoyerMail(); break;
         // Sécurité

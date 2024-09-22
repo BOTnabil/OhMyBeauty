@@ -3,11 +3,7 @@ ob_start();
 ?>
 
 <section class="home">
-    <div class="slider">
-        <img src="./public/img/banniere1.jpg" class="slide" alt="fond d'institut avec logo oh my beauty">
-        <img src="./public/img/banniere2.jpg" class="slide" alt="Second image description">
-        <img src="./public/img/banniere3.jpg" class="slide" alt="Third image description">
-    </div>
+    <img src="./public/img/banniere1.jpg" class="logo" alt="fond d'institut avec logo oh my beauty">
     <p class="citation">BIENVENUE CHEZ OH MY BEAUTY, L'INSTITUT QUI SAIT PRENDRE SOIN DE VOUS</p>
 </section>
 
@@ -26,16 +22,6 @@ ob_start();
         <a href="index.php?action=aPropos">EN SAVOIR PLUS</a>
     </article>
     <img src="./public/img/a_propos_1.png" class="imgOMBaPropos1" alt="Image de présentation">
-</section>
-
-<section class="aPropos2">
-    <img src="./public/img/a_propos_2.png" class="imgOMBaPropos2" alt="Image de présentation">
-    <div class="boxRightBot">
-        <h1>NOTRE HISTOIRE</h1>
-        <h2>Oh My Beauty, un rêve devenu réalité</h2>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur et natus consectetur iste sunt, commodi quis veritatis laboriosam ex?</p>
-        <a href="index.php?action=aPropos">EN SAVOIR PLUS</a>
-    </div>
 </section>
 
 <section class="contact">

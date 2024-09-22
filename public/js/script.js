@@ -12,43 +12,26 @@ userIcon.onclick = function() {
     userMenu.classList.toggle("active");
 };
 
-// Ajouter un événement de clic pour chaque section
-formToggles.forEach(function(toggle) {
-    toggle.addEventListener("click", function() {
-        var form = this.nextElementSibling;
-        form.style.display = (form.style.display === "block") ? "none" : "block";
+// toggle panier
+    document.addEventListener("DOMContentLoaded", function() {
+        var toggleCartBtn = document.getElementById("toggleCartBtn");
+        var cartContainer = document.getElementById("cartContainer");
+
+        toggleCartBtn.addEventListener("click", function() {
+            if (cartContainer.style.display === "none" || cartContainer.style.display === "") {
+                cartContainer.style.display = "block";
+            } else {
+                cartContainer.style.display = "none";
+            }
+        });
+
+        // Cacher le panier quand on clique en dehors de celui-ci
+        window.addEventListener("click", function(e) {
+            if (!cartContainer.contains(e.target) && !toggleCartBtn.contains(e.target)) {
+                cartContainer.style.display = "none";
+            }
+        });
     });
-});
-
-// Afficher notification mail
-
-
-
-// Navigation image defaultView
-
-var slideIndex = 0;
-
-function showSlides() {
-    var slides = document.getElementsByClassName("slide");
-    for (var i = 0; i < slides.length; i++) {
-        slides[i].className = slides[i].className.replace(" active-slide", ""); // Retirer la classe active-slide
-        slides[i].style.opacity = 0;  // Mettre l'opacité à 0
-    }
-
-    slideIndex++;
-    if (slideIndex > slides.length) {
-        slideIndex = 1; // Si on dépasse le nombre de slides, retourner au premier
-    }
-
-    slides[slideIndex - 1].style.opacity = 1; // Définir l'opacité à 1 pour le slide actuel
-    slides[slideIndex - 1].className += " active-slide"; // Ajouter la classe active-slide
-
-    setTimeout(showSlides, 7000); // Changer le slide toutes les 5 secondes
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-    showSlides(); // Appeler showSlides à la fin du chargement de la page
-});
 
 // deroulantCommande
 document.addEventListener('DOMContentLoaded', function () {
