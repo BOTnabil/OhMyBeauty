@@ -78,6 +78,12 @@ ob_start();
     </div>
 </section>
 
+<section class="sectionMap">
+    <div class="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2639.2003929882485!2d7.692440012735459!3d48.58686177117689!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796b73599eb8f55%3A0x64d5ef90b3ac93ce!2sOhmybeauty!5e0!3m2!1sfr!2sfr!4v1723337507434!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</section>
+
 <?php
 
 $titre = "À propos - Oh My Beauty";

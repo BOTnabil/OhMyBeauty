@@ -22,7 +22,7 @@
     <header>
         <a href="#" id="openBtn">
             <span class="burger-icon">
-                <span><i class="fa-solid fa-bars fa-2xl"></i></span>
+                <span><i class="fa-solid fa-bars fa-xl"></i></span>
             </span>
         </a>
         <a href="index.php?action=home" class="logoNav"><img src="./public/img/logo_header.png"  alt="image logo Oh My Beauty"></a>
@@ -44,7 +44,7 @@
         <!-- Panier toggle button -->
         <div class="header-cart-toggle">
             <button id="toggleCartBtn">
-                <i class="fa-solid fa-cart-shopping fa-xl"></i>
+                <i class="fa-solid fa-cart-shopping fa-l"></i>
                 <?php 
                 // Calcul du nombre total d'articles dans le panier (en tenant compte des quantités)
                 $totalItems = 0;
@@ -62,7 +62,7 @@
 
         <!-- User toggle button -->
         <div class="user">
-            <a href="#"><i class="fa-regular fa-user fa-xl"></i></a>
+            <a href="#"><i class="fa-regular fa-user fa-l"></i></a>
         </div>
 
         <!-- Menu utilisateur -->
@@ -146,7 +146,7 @@
             <h6 class="footer-heading text-uppercase text-white">Informations</h6>
             <ul class="footer-link mt-4">
                 <li><a href="#!">Notre institut</a></li>
-                <li><a href="#!">Notre equipe</a></li>
+                <li><a href="#!">Notre équipe</a></li>
                 <li><a href="#!">Conditions d'utilisations</a></li>
             </ul>
             </div>
@@ -173,7 +173,7 @@
         </div>
         <div class="text-center mt-5">
             <img src="./public/img/logo_footer.png" alt="logo ohmybeauty">
-            <p class="footer-alt">2022 © Society, All Rights Reserved</p>
+            <p class="footer-alt">2024 © OHMYBEAUTY, Tout droits réservés</p>
         </div>
     </footer>
 </body>

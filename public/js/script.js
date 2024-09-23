@@ -51,3 +51,58 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+// affichage de coté sur home
+const boxes = document.querySelectorAll('.box-about-us');
+
+window.addEventListener('scroll', checkBoxes);
+
+checkBoxes();
+
+function checkBoxes() {
+	const triggerBottom = window.innerHeight / 5 * 4;
+	boxes.forEach((box, idx) => {
+		const boxTop = box.getBoundingClientRect().top;
+		
+		if(boxTop < triggerBottom) {
+			box.classList.add('show');
+		} else {
+			box.classList.remove('show');
+		}
+	});
+}
+
+// test
+let img__slider = document.getElementsByClassName('img__slider');
+
+let etape = 0;
+
+let nbr__img = img__slider.length;
+
+let precedent = document.querySelector('.precedent');
+let suivant = document.querySelector('.suivant')
+
+function enleverActiveImage() {
+    for(let i = 0 ; i < nbr__img ; i++){
+        img__slider[i].classList.remove('active');
+    }
+}
+
+suivant.addEventListener('click', function() {
+    etape++;
+    if(etape >= nbr__img) {
+        etape = 0;
+    }
+    enleverActiveImage();
+    img__slider[etape].classList.add('active');
+})
+
+precedent.addEventListener('click', function() {
+    etape--;
+    enleverActiveImage();
+    if(etape < 0) {
+        etape = nbr__img - 1;
+    }
+    img__slider[etape].classList.add('active');
+})
+
