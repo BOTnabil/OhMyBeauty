@@ -27,7 +27,7 @@ html{
     font-size: 20px;
 }
 
-a{  color: var(--bcasse);
+a{  color: var(--blanc);
     text-decoration: none;
     font-family: var(--font);
     font-weight: 100;
@@ -76,6 +76,11 @@ nav{
 nav a{
     margin-right: 15px;
     margin-left: 15px;
+    transition: all 0.2s;
+}
+
+nav a:hover{
+    color: var(--or);
 }
 
 .user{
@@ -83,6 +88,14 @@ nav a{
     margin-right: 20px; 
     color: var(--or);
     z-index: 1000;
+}
+
+i{
+    transition: all 0.2s;
+}
+
+i:hover{
+    color: var(--or);
 }
 
 .user-menu {
@@ -94,7 +107,7 @@ nav a{
     top: 0px;
     right: -300px;
     background-color: rgba(61, 10, 1,0.8);
-    padding-top: 60px;
+    margin-top: 60px;
     transition: right 0.5s ease;
     overflow-y: auto;
 }
@@ -113,7 +126,7 @@ nav a{
 }
 
 .citation{
-    color: var(--bcasse);
+    color: var(--blanc);
     background-image: url(../img/fond.png);
     background-size: cover;
     font-family: var(--font);
@@ -670,7 +683,7 @@ footer img{
         margin-top: 13px;
         position: relative;
         z-index: 2; /* Pour le garder au-dessus du sidenav */
-        color: var(--bcasse);
+        color: var(--blanc);
     }
 
     .sidenav{
@@ -966,14 +979,18 @@ textarea{
 }
 
 .header-cart-toggle i{
-    color: var(--bcasse);
+    color: var(--blanc);
+}
+
+.header-cart-toggle i:hover{
+    color: var(--or);
 }
 
 #cartContainer {
     position: absolute;
     top: 60px;
     right: 0;
-    background-color: var(--bcasse);
+    background-color: var(--blanc);
     border: 1px solid #ccc;
     width: 400px;
     z-index: 100;
@@ -1041,7 +1058,7 @@ textarea{
   }
   
   .text-white {
-    color: #fff;
+    color: var(--blanc);
   }
   
   .text-center {
@@ -1083,7 +1100,7 @@ textarea{
       text-decoration-thickness: 2px;
   
       &:hover {
-        color: #E0952E;
+        color: var(--or);
       }
     }
   }

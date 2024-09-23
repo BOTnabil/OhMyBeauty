@@ -3,7 +3,7 @@ ob_start();
 ?>
 
 <section class="home">
-    <img src="./public/img/banniere1.jpg" class="logo" alt="fond d'institut avec logo oh my beauty">
+    <img src="./public/img/banniere2.jpg" class="logo" alt="fond d'institut avec logo oh my beauty">
     <p class="citation">BIENVENUE CHEZ OH MY BEAUTY, L'INSTITUT QUI SAIT PRENDRE SOIN DE VOUS</p>
 </section>
 

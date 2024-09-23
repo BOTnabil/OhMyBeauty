@@ -145,22 +145,22 @@
             <div>
             <h6 class="footer-heading text-uppercase text-white">Informations</h6>
             <ul class="footer-link mt-4">
-                <li><a href="#!">Sitemap</a></li>
-                <li><a href="#!">Our team</a></li>
-                <li><a href="#!">Terms of Services</a></li>
+                <li><a href="#!">Notre institut</a></li>
+                <li><a href="#!">Notre equipe</a></li>
+                <li><a href="#!">Conditions d'utilisations</a></li>
             </ul>
             </div>
             <div>
             <h6 class="footer-heading text-uppercase text-white">Help</h6>
             <ul class="footer-link mt-4">
-                <li><a href="#!">Register</a></li>
-                <li><a href="#!">Sign in</a></li>
-                <li><a href="#!">Privacy Policy</a></li>
+                <li><a href="#!">Inscription</a></li>
+                <li><a href="#!">Connexion</a></li>
+                <li><a href="#!">Conditions de vente</a></li>
             </ul>
             </div>
             <div class="footer-link">
             <h6 class="footer-heading text-uppercase text-white">Contact us</h6>
-            <p class="contact-info mt-4">Need help ?</p>
+            <p class="contact-info mt-4">Besoin d'aide ?</p>
             <p class="contact-info">+XX XX-XX-XX-XX-XX</p>
             <div>
                 <ul class="list-inline">
