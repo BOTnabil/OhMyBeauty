@@ -1252,7 +1252,8 @@ textarea{
 
     .about-us-content {
         flex: 100%;
-        padding : 50px
+        padding : 50px;
+        overflow: hidden
     }
 
   }
