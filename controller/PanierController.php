@@ -111,11 +111,24 @@ class PanierController {
                 foreach ($_SESSION['products'] as $produit) {
                     $prixTotal += $produit['total'];
                 }
-    
-                // Créer la commande avec infosCommande initialisé
+
+                // Vérification que tous les produits existent encore dans la base de données
+                foreach ($_SESSION['products'] as $produit) {
+                    // Vérifie si le produit existe encore en base de données
+                    $produitExistant = $this->produitManager->obtenirProduitParId($produit['id']);
+                    if (!$produitExistant) {
+                        // Si le produit n'existe plus, annuler la commande
+                        $_SESSION['MAJpanier'] = "Le produit '" . $produit['nom'] . "' n'existe plus. Veuillez mettre à jour votre panier.";
+                        header("Location: index.php?action=panier");
+                        exit; // Stopper l'exécution du script
+                    }
+                }
+
+                // Si tous les produits sont valides, créer la commande avec infosCommande initialisé
                 $id_commande = $this->commandeManager->creerCommande($prixTotal, $id_utilisateur, $infosCommande);
-    
-                // Ajouter les produits dans la commande
+
+                
+                // lier les produits et la commande avec les qtt dans Contenir
                 foreach ($_SESSION['products'] as $produit) {
                     $this->contenirManager->ajouterProduitACommande($id_commande, $produit['id'], $produit['qtt']);
                 }

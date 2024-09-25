@@ -53,7 +53,7 @@ ob_start();
 <!-- fin de team -->
 
 <!-- Features cards -->
-<article id="features">
+<article class="features">
 
     <div class="containerFeatures">
         <h1>NOS VALEURS ET PRINCIPES</h1>

@@ -72,7 +72,7 @@ function checkBoxes() {
 	});
 }
 
-// test
+// Slider homepage
 let img__slider = document.getElementsByClassName('img__slider');
 
 let etape = 0;
