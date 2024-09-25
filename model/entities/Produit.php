@@ -8,6 +8,7 @@ class Produit {
     private $image;
     private $id_categorie;
 
+// Permet de construire un objet avec les arguments cités
     public function __construct($id_produit, $designation, $prix, $image, $id_categorie) {
         $this->id_produit = $id_produit;
         $this->designation = $designation;
@@ -15,11 +16,6 @@ class Produit {
         $this->image = $image;
         $this->id_categorie = $id_categorie;
     }
-
-    public function __toString() {
-        return $this->designation;
-    }
-
 
 //Getters et setters
     /**
@@ -120,5 +116,10 @@ class Produit {
         $this->id_categorie = $id_categorie;
 
         return $this;
+    }
+
+//Méthodes
+    public function __toString() {
+        return $this->designation;
     }
 }

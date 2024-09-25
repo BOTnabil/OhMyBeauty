@@ -8,6 +8,7 @@ class Reservation {
     private $datePrestation;
     private $infosReservation;
 
+// Permet de construire un objet avec les arguments cités
     public function __construct($id_reservation, $id_utilisateur, $id_prestation, $datePrestation, $infosReservation) {
         $this->id_reservation = $id_reservation;
         $this->id_utilisateur = $id_utilisateur;

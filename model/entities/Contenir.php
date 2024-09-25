@@ -6,6 +6,7 @@ class Contenir {
     private $id_produit;
     private $quantite;
 
+// Permet de construire un objet avec les arguments cités
     public function __construct($id_commande, $id_produit, $quantite) {
         $this->id_commande = $id_commande;
         $this->id_produit = $id_produit;

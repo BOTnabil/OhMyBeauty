@@ -9,6 +9,7 @@ class Commande {
     private $id_utilisateur;
     private $infosCommande;
 
+// Permet de construire un objet avec les arguments cités
     public function __construct($id_commande, $dateCommande, $prixTotal, $id_utilisateur) {
         $this->id_commande = $id_commande;
         $this->numeroCommande = $numeroCommande;
@@ -17,7 +18,7 @@ class Commande {
         $this->id_utilisateur = $id_utilisateur;
         $this->infosCommande = $infosCommande;
     }
-    
+
 //Getters et setters
     /**
      * Get the value of infosCommande

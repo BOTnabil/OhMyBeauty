@@ -9,6 +9,7 @@ class Prestation {
     private $duree;
     private $description;
 
+// Permet de construire un objet avec les arguments cités
     public function __construct($id_prestation, $designation, $prix, $id_categorie, $description, $duree) {
         $this->id_prestation = $id_prestation;
         $this->designation = $designation;
@@ -17,11 +18,6 @@ class Prestation {
         $this->duree = $duree;
         $this->description = $description;
     }
-
-    public function __toString() {
-        return $this->designation;
-    }
-
 
 //Getters et setters
     /**
@@ -142,5 +138,10 @@ class Prestation {
         $this->id_prestation = $id_prestation;
 
         return $this;
+    }
+
+//Méthodes
+    public function __toString() {
+        return $this->designation;
     }
 }

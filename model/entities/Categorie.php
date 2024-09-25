@@ -5,12 +5,10 @@ class Categorie {
     private $id_categorie;
     private $designation;
 
+// Permet de construire un objet avec les arguments cités
     public function __construct($id_categorie, $designation) {
         $this->id_categorie = $id_categorie;
         $this->designation = $designation;
-    }
-    public function __toString() {
-        return $this->designation;
     }
 
 //Getters et setters
@@ -52,5 +50,10 @@ class Categorie {
         $this->id_categorie = $id_categorie;
 
         return $this;
+    }
+
+// Méthodes
+    public function __toString() {
+        return $this->designation;
     }
 }

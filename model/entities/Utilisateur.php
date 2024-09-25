@@ -7,6 +7,7 @@ class Utilisateur {
     private $motDePasse;
     private $role;
 
+// Permet de construire un objet avec les arguments cités
     public function __construct($id_utilisateur, $email, $motDePasse, $role) {
         $this->id_utilisateur = $id_utilisateur;
         $this->email = $email;
