@@ -13,6 +13,7 @@ class Categorie {
         return $this->designation;
     }
 
+//Getters et setters
     /**
      * Get the value of designation
      */ 

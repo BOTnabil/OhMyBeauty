@@ -81,6 +81,7 @@ class ReservationManager {
         $stmt->execute();
     }
 
+    //Vérifie si un utilisateur possede une reservation active sur une préstation
     public function verifierReservationExistante($id_utilisateur, $id_prestation) {
         $requete = "
             SELECT COUNT(*) 
@@ -106,6 +107,7 @@ class ReservationManager {
         $stmt->execute();
     }
 
+    // Récupérer les créneaux réservés par un utilisateur à une date
     public function obtenirCreneauxReservesUtilisateurParDate($id_utilisateur, $datePrestation) {
         $requete = "
             SELECT TIME(datePrestation) as creneauHoraire 

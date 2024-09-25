@@ -4,7 +4,9 @@ if (!isset($_SESSION['MAJlogin'])) {
 }
 ?>
 
-<div class="connexion-container">
+<!-- formulaire de connexion -->
+<section class="connexion-container">
+
     <h1>Connexion à votre compte</h1>
 
     <form method="POST" action="index.php?action=connexionProcess">
@@ -17,7 +19,9 @@ if (!isset($_SESSION['MAJlogin'])) {
     </form>
 
     <p>Pas encore de compte ? <a href="index.php?action=inscription">Inscrivez-vous ici</a></p>
-</div>
+    
+</section>
+<!-- fin de formulaire de connexion -->
 
 <?php 
 $titre = "Connexion - Oh My Beauty";

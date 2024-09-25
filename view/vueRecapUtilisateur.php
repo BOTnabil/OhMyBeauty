@@ -24,6 +24,8 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
 ?>
 
 <h1>Bonjour !</h1>
+
+<!-- Gérer commandes -->
 <h2>Historique de vos commandes</h2>
 
 <?php if (!empty($commandes)) { ?>
@@ -54,7 +56,9 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
 <?php } else { ?>
     <p>Vous n'avez aucune commande.</p>
 <?php } ?>
+<!-- fin de commandes -->
 
+<!-- Gérer RDV -->
 <h2>Vos rendez-vous</h2>
 
 <?php if (!empty($reservations)) { ?>
@@ -98,6 +102,7 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
 <?php } else { ?>
     <p>Vous n'avez aucun rendez-vous.</p>
 <?php } ?>
+<!-- fin des RDV -->
 
 <?php
 $contenu = ob_get_clean();

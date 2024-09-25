@@ -13,8 +13,8 @@ $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPres
 
 ?>
 
-
-<div class="prestations-container">
+<!-- affichage des prestations -->
+<section class="prestations-container">
     <?php foreach ($categoriesAvecPrestations as $categorieNom => $prestations) { ?>
         <div class="categorie">
             <h2><?= $categorieNom; ?></h2>
@@ -51,7 +51,8 @@ $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPres
             </div>
         </div>
     <?php } ?>
-</div>
+</section>
+<!-- fin de l'affichage des prestations -->
 
 <?php
 $titre = "Prestations - Oh My Beauty";

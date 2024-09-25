@@ -96,5 +96,4 @@ class SecuriteController {
         session_destroy();
         header("Location: index.php?action=home");
     }
-
 }

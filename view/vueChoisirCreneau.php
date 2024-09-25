@@ -31,10 +31,12 @@ $dateActuelle = date('Y-m-d');
 $heureActuelle = date('H:i');
 ?>
 
-<h2>Choisir un créneau horaire pour le <?= date('d/m/Y', strtotime($datePrestation)); ?></h2>
+<!-- form et créneaux -->
+<h1>Choisir un créneau horaire pour le <?= date('d/m/Y', strtotime($datePrestation)); ?></h1>
 
 <?php 
 if (!empty($creneauxDisponibles)) { ?>
+    <!-- Foumulaire nom prenom -->
     <form method="post" action="index.php?action=reserver">
         <input type="hidden" name="id_prestation" value="<?= $id_prestation; ?>">
         <input type="hidden" name="datePrestation" value="<?= $datePrestation; ?>">
@@ -46,6 +48,7 @@ if (!empty($creneauxDisponibles)) { ?>
         <input type="text" id="prenom" name="prenom" required><br><br>
     
         <div class="boutons-creneau-horaire">
+            <!-- Affichage des créneaux -->
             <?php foreach ($creneauxDisponibles as $creneau) { 
                 // Si la date de prestation est aujourd'hui, comparer les heures
                 if ($datePrestation == $dateActuelle && $creneau <= $heureActuelle) {
@@ -58,6 +61,7 @@ if (!empty($creneauxDisponibles)) { ?>
 <?php } else { ?>
     <p>Aucun créneau horaire disponible pour cette date.</p>
 <?php } ?>
+<!-- fin de form et créneaux -->
 
 <?php
 $contenu = ob_get_clean();

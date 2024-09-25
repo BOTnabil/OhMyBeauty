@@ -17,7 +17,8 @@ class Commande {
         $this->id_utilisateur = $id_utilisateur;
         $this->infosCommande = $infosCommande;
     }
-
+    
+//Getters et setters
     /**
      * Get the value of infosCommande
      */ 

@@ -12,6 +12,7 @@ class Contenir {
         $this->quantite = $quantite;
     }
 
+//Getters et setters
     /**
      * Get the value of quantite
      */ 

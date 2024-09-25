@@ -11,7 +11,7 @@ class ContenirManager {
         $this->db = Connect::seConnecter(); // Initialisation de la connexion à la base de données
     }
 
-    // Méthodes
+    // Méthodes pour lier un produit à une commande et préciser sa quantité, tout ceci dans la table Contenir
     public function ajouterProduitACommande($id_commande, $id_produit, $quantite) {
         $requete = "
             INSERT INTO contenir (id_commande, id_produit, quantite) 
@@ -24,6 +24,7 @@ class ContenirManager {
         $stmt->execute();
     }
 
+    //Nullifie les valeurs ayant l'id du produit qu'on supprime
     public function supprimerProduitDeContenir($id_produit) {
         $requete = "
             UPDATE contenir

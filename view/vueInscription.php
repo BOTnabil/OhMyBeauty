@@ -3,7 +3,9 @@ if (!isset($_SESSION['MAJregister'])) {
     $_SESSION['MAJregister'] = "";
 }?>
 
-<div class="inscription-container">
+<!-- Formulaire d'inscription -->
+<section class="inscription-container">
+    
     <h1>Créer un nouveau compte</h1>
 
     <form method="POST" action="index.php?action=inscriptionProcess">
@@ -33,8 +35,11 @@ if (!isset($_SESSION['MAJregister'])) {
         <input type="submit" name="submit" value="S'inscrire">
     </form>
 
+    <!-- lien pour si user a déjà un compte -->
     <p>Déjà inscrit ? <a href="index.php?action=connexion">Connectez-vous ici</a></p>
-</div>
+
+</section>
+<!-- Fin du formulaire d'inscription -->
 
 <?php 
 $titre = "Inscription - Oh My Beauty";

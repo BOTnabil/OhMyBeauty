@@ -16,6 +16,7 @@ class ReservationController {
         $this->reservationManager = new ReservationManager();
     }
 
+//Méthodes
     public function reserver() {
         // Réservation seulement si l'utilisateur est connecté
         if (isset($_SESSION['user_id'])) {
@@ -47,6 +48,7 @@ class ReservationController {
     
     
     public function choisirCreneau() {
+        //On récupère l'id de l'utilisateur, l'id de la presta et la date que l'on a choisi au préalable
         if (isset($_SESSION['user_id'])) {
             if (isset($_POST['id_prestation']) && isset($_POST['datePrestation'])) {
                 $id_prestation = $_POST['id_prestation'];
@@ -70,6 +72,7 @@ class ReservationController {
         if (isset($_POST['id_prestation'])) {
             $id_prestation = $_POST['id_prestation'];
 
+            //on supprime la ligne du tableau reservation
             $this->reservationManager->annulerReservation($id_prestation);
             $_SESSION['MAJrdv'] = "Réservation annulée avec succès!";
             

@@ -14,6 +14,8 @@ class Utilisateur {
         $this->role = $role;
     }
 
+
+//Getters et setters
     /**
      * Get the value of id_utilisateur
      */ 
@@ -94,6 +96,7 @@ class Utilisateur {
         return $this;
     }
 
+//Méthodes
     public function possedeRole($role) {
         return $this->role === $role;
     }

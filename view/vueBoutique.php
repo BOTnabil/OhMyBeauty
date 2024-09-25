@@ -12,7 +12,7 @@ $panierController = new PanierController();
 $categoriesAvecProduits = $produitManager->obtenirToutesCategoriesAvecProduits();
 
 ?>
-
+<!-- Boutique -->
 <div class="boutique-container">
     <div class="prestations-container">
         <?php foreach ($categoriesAvecProduits as $categorieNom => $produits) { ?>
@@ -47,6 +47,7 @@ $categoriesAvecProduits = $produitManager->obtenirToutesCategoriesAvecProduits()
         <?php } ?>
     </div>
 </div>
+<!-- fin boutique -->
 
 <?php
 $titre = "Boutique - Oh My Beauty";

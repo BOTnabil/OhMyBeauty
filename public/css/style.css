@@ -60,15 +60,17 @@ header {
 }
 
 .logoNav{
-    z-index: 2; /* Pour le garder au-dessus du sidenav */
     margin-left: 25px;
-    margin-top: 10px;
+    margin-top: 15px;
+}
+
+.logoNav img{
+    height: 30px;
 }
 
 nav{
     margin-top: 15px;
-    width: 100%;
-    text-align: center;
+    margin: auto;
     font-size:  20PX;
 }
 
@@ -119,10 +121,6 @@ i:hover{
 ========================= HOME ================================
 =================================================================
  */
-.logo{
-    max-width: 100%;
-    height: auto;
-}
 
 .citation{
     color: var(--blanc);
@@ -228,114 +226,6 @@ i:hover{
     filter: grayscale(1);
 }
 
- /*=================================================================
-========================= A PROPOS 1 ================================
-=================================================================
- */
-.aPropos1{
-    display: flex;
-    background-color: var(--blanc);
-}
-.boxLeftTop{
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 8vw;
-    margin-bottom: 8vw;
-    text-align: center;
-}
-
-.boxLeftTop h1{
-    font-family: var(--font);
-    font-weight: 400;
-    font-size: 5vw;
-}
-
-.boxLeftTop h2{
-    font-style: italic;
-    font-weight: 500;
-    font-size: 18px;
-}
-
-.boxLeftTop p{
-    margin-top: 4%;
-    font-weight: 300;
-    color: var(--bordeau);
-    font-family: var(--font);
-    font-size: clamp(0.5rem, 30% + 1.7vw, 20rem);
-}
-
-.boxLeftTop a{
-    display: inline-block;
-    margin-top: 3vw;
-    background-color: var(--bordeau);
-    padding: 2% 4% 2% 4%;
-    font-size: clamp(0.5rem, 30% + 1.7vw, 20rem);
-    border-radius: 10px;
-    transition:.3s;
-}
-
-.boxLeftTop a:hover{
-    background-color: var(--crimson);
-}
-
- /*=================================================================
-========================= A PROPOS 2 ================================
-=================================================================
- */
-.aPropos2{
-    display: flex;
-    background-color: var(--blanc);
-}
-.boxRightBot{
-    margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 8vw;
-    text-align: center;
-    max-width: 40%;
-}
-
-.boxRightBot h1{
-    font-family: var(--font);
-    font-weight: 400;
-    font-size: 5vw;
-    
-}
-
-.boxRightBot h2{
-    font-style: italic;
-    font-weight: 500;
-    font-size: 18px;
-}
-
-.boxRightBot p{
-    margin-top: 4%;
-    vertical-align: center;
-    color: var(--gris);
-    font-family: var(--font);
-    font-size: clamp(1rem, 30% + 1.7vw, 20rem);
-    font-weight: 300;
-}
-
-.boxRightBot a{
-    transition:.3s;
-    display: inline-block;
-    margin-top: 3vw;
-    background-color: var(--noir);
-    padding: 2% 4% 2% 4%;
-    font-size: clamp(0.5rem, 30% + 1.7vw, 20rem);
-    border-radius: 10px;
-}
-
-.boxRightBot a:hover{
-    background-color: var(--gris);
-}
-
-.imgOMBaPropos2{
-    display: flex;
-    width: 50%;
-    height: 50%;
-}
-
 
  /*=================================================================
 ========================= CONTACT ================================
@@ -379,7 +269,7 @@ i:hover{
     gap: 20px;
 }
 
-.logos-footer {
+.logos-contact {
     display: flex;
     color: grey;
     font-size: 20px;
@@ -392,7 +282,7 @@ i:hover{
     border-radius: 50%;
 }
 
-.logos-footer a {
+.logos-contact a {
     color: rgb(219, 219, 219);
     display: flex;
     text-decoration: none;
@@ -443,21 +333,6 @@ i:hover{
     mask: linear-gradient(transparent, black, transparent);
 }
 
-                            /* SECTION FOOTER */
-
-footer{
-    background-color: #0e0e0e;  
-}
-
-footer img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    height: auto;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
 
 
 /* 
@@ -471,7 +346,7 @@ footer img{
     margin-bottom: 40px;
  }
 
-#features h2 {
+#features h1 {
     font-family: var(--font);
     font-weight: 300;
     display: flex;
@@ -533,7 +408,7 @@ footer img{
     font-size: 40px;
 }
 
-.cards-1 h3 {
+.cards-1 h2 {
     font-family: var(--font);
     padding-bottom: 10px;
     font-size: 25px;
@@ -574,7 +449,7 @@ footer img{
     background-size: cover;
  }
 
- #team h2 {
+ #team h1 {
     font-family: var(--font);
     text-align: center;
     justify-content: justify;
@@ -612,7 +487,7 @@ footer img{
     opacity: 1;
 }
 
-.cards-2 h3 {
+.cards-2 h2 {
     font-size: 17px;
     font-weight: 500;
    
@@ -763,7 +638,7 @@ footer img{
     }
  
     
-     /*=================================================================
+/*=================================================================
 ========================= RESPONSIVE A PROPOS ================================
 =================================================================
  */
@@ -921,9 +796,7 @@ textarea{
     background-color: #333;
 }
 
-
-/* TEST */
-/* Style pour le panier dans le header */
+/* PANIER HEADER */
 .header-cart-toggle {
     position: relative;
     display: inline-block;
@@ -973,7 +846,7 @@ textarea{
 }
 
 .cart-count {
-    background-color: red;
+    background-color: rgb(253, 67, 67);
     color: white;
     border-radius: 50%;
     padding: 2px 6px;
@@ -984,19 +857,22 @@ textarea{
 }
 
 #toggleCartBtn {
-    background: none; /* Enlève le fond du bouton */
-    border: none; /* Supprime les bordures */
-    cursor: pointer; /* Garde le curseur de la souris pour pointer */
-    font-size: 1em; /* Ajuste la taille du texte */
-    padding: 0; /* Supprime le padding pour ressembler à du texte */
+    background: none; 
+    border: none; 
+    cursor: pointer;
+    font-size: 1em; 
+    padding: 0; 
 }
 
-/* TEST 2 */
+/* FOOTER */
 
 .container {
     padding-top: 20px;
     display: flex;
     justify-content: space-between;
+    max-width: 80%;
+    margin-right: auto;
+    margin-left: auto;
   }
   
   h6 {
@@ -1017,16 +893,17 @@ textarea{
   
   .text-center {
     text-align: center;
+    padding-bottom: 0.6rem;
   }
   
   .mt-4 {
-        margin: 0;
+    margin: 0;
     margin-top: 1.5rem;
   }
   
   .bg-footer {
     background-image: url(../img/fond.png);
-    backgroun-size: cover;
+    background-size: cover;
     font-family: 'Raleway', sans-serif;
     width: 100%;
     bottom: 0;
@@ -1108,6 +985,15 @@ textarea{
     background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
     color: #ffffff;
   }
+
+  footer img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
   
   /* HOVER */
   
@@ -1138,7 +1024,8 @@ textarea{
 
 
 
-/*ABOUT US*/
+/*A PROPOS MAIN PAGE*/
+
 .box-about-us {
 	transform: translateX(100%);
 	transition: transform 0.6s ease;
@@ -1153,7 +1040,6 @@ textarea{
 
 }
 
-/* about us */
 .about-us {
     display: flex;
     background-color: var(--blanc);
@@ -1257,12 +1143,8 @@ textarea{
     }
 
   }
-/* end of about us */
 
-// slider
-    .wrapper-slider{
-        
-    }
+/* slider */
 
     .slider {
     height: 90vh;

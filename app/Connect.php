@@ -8,7 +8,8 @@ abstract class Connect {
     const DB = "ohmybeauty";
     const USER = "root";
     const PASS = "";
-
+    
+// Méthodes
     public static function seConnecter(){
         try {
             return new \PDO(

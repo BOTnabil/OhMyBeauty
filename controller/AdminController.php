@@ -19,6 +19,7 @@ class AdminController {
         $this->contenirManager = new ContenirManager();
     } 
 
+// Méthodes
     public function supprimerProduit() {
         // Vérifier que l'utilisateur est administrateur
         if (!Session::estAdmin()) {

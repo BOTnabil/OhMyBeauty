@@ -47,6 +47,7 @@ class ProduitManager {
         return $categories;
     }
 
+    //On supprime la ligne du produit ayant l'id visé.
     public function supprimerProduit($id_produit) {
         $requete = "
             DELETE FROM produit 

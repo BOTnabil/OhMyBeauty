@@ -22,6 +22,8 @@ class Prestation {
         return $this->designation;
     }
 
+
+//Getters et setters
     /**
      * Get the value of description
      */ 

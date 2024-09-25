@@ -16,6 +16,8 @@ class Reservation {
         $this->infosReservation = $infosReservation;
     }
 
+
+//Getters et setters
     /**
      * Get the value of infosReservation
      */ 

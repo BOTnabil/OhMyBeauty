@@ -20,6 +20,8 @@ class Produit {
         return $this->designation;
     }
 
+
+//Getters et setters
     /**
      * Get the value of id_produit
      */ 

@@ -2,7 +2,8 @@
 ob_start();
 ?>
 
-<div class="panier-container">
+<!-- Panier -->
+<section class="panier-container">
         <h2>Votre Panier</h2>
         <?php if (!empty($_SESSION['products'])) { ?>
             <table>
@@ -60,7 +61,8 @@ ob_start();
             }
         ?>
 
-    </div>
+</section>
+<!-- Fin du panier -->
 
 <?php
 $titre = "Contact - Oh My Beauty";

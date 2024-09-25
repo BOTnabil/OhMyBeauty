@@ -20,10 +20,12 @@ class PanierController {
         $this->contenirManager = new ContenirManager();
     }
 
+// Méthodes
     public function ajouterAuPanier($id_produit) {
         $productData = $this->produitManager->obtenirProduitParId($id_produit);
 
         if ($productData) {
+            //On récupère les informations du produit obtenu par ID
             $nom = $productData['designation'];
             $prix = $productData['prix'];
             $qtt = 1;
@@ -36,6 +38,7 @@ class PanierController {
                 "total" => $prix * $qtt
             ];
             
+            //Si le produti existe on rajoute une quantité en plus et on re calcule le prix
             foreach ($_SESSION['products'] as &$produitExistant) {
                 if ($produitExistant['id'] === $id_produit) {
                     $produitExistant['qtt'] += $qtt;
@@ -44,7 +47,8 @@ class PanierController {
                     break;
                 }
             }
-
+            
+            //Si le roduit n'existe pas on ajoute le produit à l'array
             if (!$produitExiste) {
                 $_SESSION['products'][] = $produit;
             }
@@ -56,29 +60,35 @@ class PanierController {
     } 
 
     public function supprimerDuPanier($id) {
+        //On supprime l'article en session par son ID
         unset($_SESSION['products'][$id]);
         $_SESSION['MAJpanier'] = "L'article a bien été supprimé";
         header("Location:index.php?action=panier");
     }
 
     public function viderPanier() {
+        //On vide entièrement le panier en session
         unset($_SESSION['products']);
         $_SESSION['MAJpanier'] = "Tous les articles ont été supprimés";
         header("Location:index.php?action=panier");
     }
 
     public function augmenterQttProduit($id) {
+        //Pour un produit existant qu'on aura identifié par ID, on ajoute une qtt
         if (isset($_SESSION['products'][$id])) {
             $_SESSION['products'][$id]['qtt']++;
+            //on re calcule le prix total
             $_SESSION['products'][$id]['total'] = $_SESSION['products'][$id]['prix'] * $_SESSION['products'][$id]['qtt'];
         }
         header("Location:index.php?action=panier");
     }
 
     public function diminuerQttProduit($id) {
+        //Pour un produit existant qu'on aura identifié par ID, on diminue de 1 la qtt
         if (isset($_SESSION['products'][$id]) && $_SESSION['products'][$id]['qtt'] > 0) {
             $_SESSION['products'][$id]['qtt']--;
             $_SESSION['products'][$id]['total'] = $_SESSION['products'][$id]['prix'] * $_SESSION['products'][$id]['qtt'];
+            //si après diminution la qtt est à 0, on supprime le produit
             if ($_SESSION['products'][$id]['qtt'] == 0) {
                 unset($_SESSION['products'][$id]);
                 $_SESSION['MAJpanier'] = "L'article a bien été supprimé";

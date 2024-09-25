@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- favicon -->
@@ -17,9 +18,13 @@
     <!-- js -->
     <script src="./public/js/script.js" defer></script>
     <title><?= $titre ?></title>
+
 </head>
+
 <body>
     <header>
+
+        <!-- Menu burger -->
         <a href="#" id="openBtn">
             <span class="burger-icon">
                 <span><i class="fa-solid fa-bars fa-xl"></i></span>
@@ -40,8 +45,9 @@
             <a href="index.php?action=aPropos">À propos</a>
             <a href="index.php?action=contact">Contact</a>
         </nav>
+        <!-- fin du menu burger -->
 
-        <!-- Panier toggle button -->
+        <!-- Panier bouton -->
         <div class="header-cart-toggle">
             <button id="toggleCartBtn">
                 <i class="fa-solid fa-cart-shopping fa-l"></i>
@@ -59,11 +65,13 @@
                 <?php } ?>
             </button>
         </div>
+        <!-- fin du panier bouton -->
 
-        <!-- User toggle button -->
+        <!-- Menu utilisateur bouton -->
         <div class="user">
             <a href="#"><i class="fa-regular fa-user fa-l"></i></a>
         </div>
+        <!-- fin du menu utilisateur bouton -->
 
         <!-- Menu utilisateur -->
         <div class="user-menu">
@@ -89,6 +97,7 @@
                 }
             ?>
         </div>
+        <!-- fin du menu utilisateur -->
 
         <!-- Panier Container -->
         <div id="cartContainer" class="cart-container" style="display:none;">
@@ -130,17 +139,21 @@
                 <p>Votre panier est vide.</p>
             <?php } ?>
         </div>
+        <!-- fin du panier container -->
+
     </header>
 
-    <div id="wrapper">
-        <main>
-            <div id="contenu">
-                <?= $contenu ?>
-            </div>
-        </main>
-    </div>
+    <!-- Contenu de la page -->
+    <main>
+        <div id="contenu">
+            <?= $contenu ?>
+        </div>
+    </main>
+    <!-- fin du contenu -->
 
+    <!-- Footer -->
     <footer class="section bg-footer">
+
         <div class="container">
             <div>
             <h6 class="footer-heading text-uppercase text-white">Informations</h6>
@@ -175,6 +188,8 @@
             <img src="./public/img/logo_footer.png" alt="logo ohmybeauty">
             <p class="footer-alt">2024 © OHMYBEAUTY, Tout droits réservés</p>
         </div>
+
     </footer>
+    <!-- fin du footer -->
 </body>
 </html>

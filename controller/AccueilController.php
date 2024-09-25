@@ -4,6 +4,7 @@ namespace Controller;
 
 class AccueilController {
 
+//Méthodes
     public function afficherHome() {
         // Charger et afficher la vue par défaut
         require 'view/home.php';
@@ -45,7 +46,7 @@ class AccueilController {
     }
 
     public function afficherPanier() {
-        // Charger et afficher la vue inscription
+        // Charger et afficher la vue panier
         require "view/vuePanier.php";
     }
     

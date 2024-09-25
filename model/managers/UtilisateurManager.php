@@ -51,6 +51,7 @@ class UtilisateurManager{
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
+    //vérification d'un role
     public function possedeRole($role) {
         return $this->role === $role;
     }
