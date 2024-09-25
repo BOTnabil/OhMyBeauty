@@ -20,6 +20,8 @@ class AdminController {
     } 
 
 // Méthodes
+
+//Suppression
     public function supprimerProduit() {
         // Vérifier que l'utilisateur est administrateur
         if (!Session::estAdmin()) {
@@ -42,4 +44,9 @@ class AdminController {
             header("Location: index.php?action=boutique");
         }
     }
+
+//Ajout
+
+
+//Modifications
 }

@@ -322,7 +322,6 @@ i:hover{
 
 .map iframe{
     filter: grayscale(1) invert();
-    pointer-events: none;
     left:0;
     top:0;
     height:100%;
@@ -718,6 +717,7 @@ textarea{
     color: #f2f2f2;
     font-size: 1em;
     box-sizing: border-box;
+    font-family: var(--oxygen);
 }
 
 /* Focus sur les champs */
@@ -1179,3 +1179,5 @@ textarea{
     .precedent{
     left: 1rem;
     }
+
+/* TEST */

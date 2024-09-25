@@ -106,3 +106,4 @@ precedent.addEventListener('click', function() {
     img__slider[etape].classList.add('active');
 })
 
+//test

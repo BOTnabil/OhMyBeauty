@@ -12,7 +12,7 @@ class ContenirManager {
     }
 
     // Méthodes pour lier un produit à une commande et préciser sa quantité, tout ceci dans la table Contenir
-    public function ajouterProduitACommande($id_commande, $id_produit, $quantite) {
+    public function lierProduitACommande($id_commande, $id_produit, $quantite) {
         $requete = "
             INSERT INTO contenir (id_commande, id_produit, quantite) 
             VALUES (:id_commande, :id_produit, :quantite)

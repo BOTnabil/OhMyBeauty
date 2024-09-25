@@ -130,7 +130,7 @@ class PanierController {
                 
                 // lier les produits et la commande avec les qtt dans Contenir
                 foreach ($_SESSION['products'] as $produit) {
-                    $this->contenirManager->ajouterProduitACommande($id_commande, $produit['id'], $produit['qtt']);
+                    $this->contenirManager->lierProduitACommande($id_commande, $produit['id'], $produit['qtt']);
                 }
     
                 // Vider le panier
