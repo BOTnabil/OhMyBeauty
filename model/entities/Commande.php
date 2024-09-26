@@ -10,7 +10,7 @@ class Commande {
     private $infosCommande;
 
 // Permet de construire un objet avec les arguments cités
-    public function __construct($id_commande, $dateCommande, $prixTotal, $id_utilisateur) {
+    public function __construct($id_commande, $dateCommande, $prixTotal, $id_utilisateur, $numeroCommande, $infosCommande) {
         $this->id_commande = $id_commande;
         $this->numeroCommande = $numeroCommande;
         $this->dateCommande = $dateCommande;

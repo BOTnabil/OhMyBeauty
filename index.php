@@ -78,7 +78,12 @@ if(isset($_GET["action"])){
         case 'choisirCreneau': $ctrlReservation->choisirCreneau(); break;
         case 'annulerReservation': $ctrlReservation->annulerReservation(); break;
         // Admin
-        case 'supprimerProduit': $ctrlAdmin->supprimerProduit(); break;
+        case 'admin': $ctrlAdmin->afficherAdmin(); break;
+        case 'ajouterProduit': $ctrlAdmin->ajouterProduitProcess(); break;
+        case 'supprimerProduit': $ctrlAdmin->supprimerProduitProcess(); break;
+        case 'afficherModifierProduit': $ctrlAdmin->afficherModifierProduit(); break;
+        case 'modifierProduit': $ctrlAdmin->modifierProduitProcess($_GET['id_produit']); break;
+        case 'voirRendezVous': $ctrlAdmin->voirRendezVous();
     } 
 } else {
     // Si aucun paramètre "action" n'est défini, afficher la vue par défaut

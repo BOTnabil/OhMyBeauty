@@ -57,9 +57,7 @@ class ReservationController {
         
                 // Récupérer les créneaux réservés par tous les utilisateurs
                 $creneauxReserves = $this->reservationManager->obtenirCreneauxReservesParDate($id_prestation, $datePrestation);
-        
-                // Récupérer les créneaux réservés par l'utilisateur lui-même à cette date
-                $creneauxReservesUtilisateur = $this->reservationManager->obtenirCreneauxReservesUtilisateurParDate($id_utilisateur, $datePrestation);
+
         
                 require "view/vueChoisirCreneau.php"; // Page pour afficher les créneaux horaires disponibles
             } 
@@ -68,17 +66,21 @@ class ReservationController {
         }
     }
 
-    public function annulerReservation() {
-        if (isset($_POST['id_prestation'])) {
-            $id_prestation = $_POST['id_prestation'];
-
-            //on supprime la ligne du tableau reservation
-            $this->reservationManager->annulerReservation($id_prestation);
-            $_SESSION['MAJrdv'] = "Réservation annulée avec succès!";
-            
-            header("Location:index.php?action=recap");
-        }
+public function annulerReservation() {
+    if (isset($_POST['id_prestation']) && isset($_POST['datePrestation'])) {
+        $id_utilisateur = $_SESSION['user_id']; // Récupérer l'utilisateur connecté
+        $id_prestation = $_POST['id_prestation'];
+        $datePrestation = $_POST['datePrestation']; // La date et l'heure du créneau
+        
+        // Supprimer la réservation spécifique
+        $this->reservationManager->annulerReservation($id_utilisateur, $id_prestation, $datePrestation);
+        $_SESSION['MAJrdv'] = "Réservation annulée avec succès!";
+        
+        header("Location:index.php?action=recap");
+        exit;
     }
+}
+
 
     public function estAnnulable($datePrestation) {
         $dateActuelle = new DateTime();

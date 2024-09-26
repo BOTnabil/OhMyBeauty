@@ -81,8 +81,10 @@
                 if (isset($_SESSION['user_id'])) {
                     ?>
                     <div class="user-menu-item">
-                        <h3><a href="index.php?action=deconnexion">Se déconnecter</a></h3>
                         <h3><a href="index.php?action=recap">Votre espace</a></h3>
+                        <?php if (\App\Session::estAdmin()) { ?>
+                        <h3><a href="index.php?action=admin">Espace admin</a></h3> <?php } ?>
+                        <h3><a href="index.php?action=deconnexion">Se déconnecter</a></h3>
                     </div>
                     <?php
                 } else {

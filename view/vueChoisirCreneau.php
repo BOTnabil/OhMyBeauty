@@ -14,15 +14,8 @@ $creneauxReserves = array_map(
     }, $creneauxReserves
 );
 
-// Récupérer les créneaux réservés par l'utilisateur sous forme d'un tableau simple
-$creneauxReservesUtilisateur = array_map(
-    function($creneau) {
-        return substr($creneau['creneauHoraire'], 0, 5);  // Prendre seulement les 5 premiers caractères ("HH:MM")
-    }, $creneauxReservesUtilisateur
-);
-
 // Filtrer les créneaux horaires déjà réservés (par tous les utilisateurs et par l'utilisateur lui-même)
-$creneauxDisponibles = array_diff($creneauxHoraires, $creneauxReserves, $creneauxReservesUtilisateur);
+$creneauxDisponibles = array_diff($creneauxHoraires, $creneauxReserves);
 
 // Date et heure actuelles
 date_default_timezone_set('Europe/Paris');

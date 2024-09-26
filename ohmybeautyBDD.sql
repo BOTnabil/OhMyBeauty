@@ -71,9 +71,9 @@ CREATE TABLE IF NOT EXISTS `prestation` (
   `id_prestation` int NOT NULL AUTO_INCREMENT,
   `designation` varchar(50) NOT NULL,
   `prix` decimal(15,2) NOT NULL,
-  `duree` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT ' ',
+  `duree` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '40min',
   `id_categorie` int NOT NULL,
-  `description` varchar(255) NOT NULL DEFAULT ' ',
+  `description` varchar(500),
   PRIMARY KEY (`id_prestation`),
   KEY `id_categorie` (`id_categorie`),
   CONSTRAINT `prestation_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id_categorie`)
@@ -109,6 +109,7 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `designation` varchar(50) NOT NULL,
   `prix` decimal(15,2) NOT NULL,
   `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `description` varchar(500),
   `id_categorie` int NOT NULL,
   PRIMARY KEY (`id_produit`),
   KEY `id_categorie` (`id_categorie`),
@@ -163,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 -- Listage des données de la table ohmybeauty.utilisateur : ~1 rows (environ)
 DELETE FROM `utilisateur`;
 INSERT INTO `utilisateur` (`id_utilisateur`, `email`, `motDePasse`, `role`) VALUES
-	(1, 'assatour.nabil@gmail.com', '$2y$10$lmhrwZ9L74IoWPEiU.UjuOu41klSUxVfMMcWiCVtQ5jccA20I3DDm', 'user');
+	(1, 'assatour.nabil@gmail.com', '$2y$10$lmhrwZ9L74IoWPEiU.UjuOu41klSUxVfMMcWiCVtQ5jccA20I3DDm', 'ADMIN');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;

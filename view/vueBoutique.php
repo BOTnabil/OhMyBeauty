@@ -38,6 +38,13 @@ $categoriesAvecProduits = $produitManager->obtenirToutesCategoriesAvecProduits()
                                         <input type="hidden" name="id_produit" value="<?= $produit['id_produit']; ?>">
                                         <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?');">X</button>
                                     </form>
+
+                                    <!-- Bouton de modification visible uniquement pour les admins -->
+                                    <form method="get" action="index.php">
+                                        <input type="hidden" name="action" value="afficherModifierProduit">
+                                        <input type="hidden" name="id_produit" value="<?= $produit['id_produit']; ?>">
+                                        <button type="submit">Modifier</button>
+                                    </form>
                                 <?php } ?>
                             </div>
                         </div>

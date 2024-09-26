@@ -56,30 +56,21 @@ class ReservationManager {
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
-
-    // Méthode pour récupérer tous les créneaux réservés par l'utilisateur
-    public function obtenirCreneauxReservesUtilisateur($id_utilisateur) {
-        $requete = "
-            SELECT datePrestation 
-            FROM reservation 
-            WHERE id_utilisateur = :id_utilisateur
-        ";
-        $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':id_utilisateur', $id_utilisateur, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_COLUMN);
-    }
-
     // Méthode pour annuler une réservation
-    public function annulerReservation($id_prestation) {
+    public function annulerReservation($id_utilisateur, $id_prestation, $datePrestation) {
         $requete = "
             DELETE FROM reservation 
             WHERE id_prestation = :id_prestation
+            AND id_utilisateur = :id_utilisateur
+            AND datePrestation = :datePrestation
         ";
         $stmt = $this->db->prepare($requete);
         $stmt->bindParam(':id_prestation', $id_prestation, \PDO::PARAM_INT);
+        $stmt->bindParam(':id_utilisateur', $id_utilisateur, \PDO::PARAM_INT);
+        $stmt->bindParam(':datePrestation', $datePrestation, \PDO::PARAM_STR);
         $stmt->execute();
     }
+
 
     //Vérifie si un utilisateur possede une reservation active sur une préstation
     public function verifierReservationExistante($id_utilisateur, $id_prestation) {
@@ -116,9 +107,28 @@ class ReservationManager {
             AND DATE(datePrestation) = :datePrestation
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':id_utilisateur', $id_Utilisateur, \PDO::PARAM_INT);
+        $stmt->bindParam(':id_utilisateur', $id_utilisateur, \PDO::PARAM_INT);
         $stmt->bindParam(':datePrestation', $datePrestation, \PDO::PARAM_STR);
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);  // Renvoie les créneaux sous forme de tableau associatif
     }
+
+    public function obtenirRendezVousParPrestations($prestationsSelectionnees) {
+        $placeholders = implode(',', array_fill(0, count($prestationsSelectionnees), '?'));
+    
+        $requete = "
+            SELECT r.datePrestation, r.infosReservation, p.designation, c.designation AS categorie
+            FROM reservation r
+            JOIN prestation p ON r.id_prestation = p.id_prestation
+            JOIN categorie c ON p.id_categorie = c.id_categorie
+            WHERE r.id_prestation IN ($placeholders)
+            ORDER BY r.datePrestation
+        ";
+    
+        $stmt = $this->db->prepare($requete);
+        $stmt->execute($prestationsSelectionnees);
+        
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+    
 }

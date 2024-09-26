@@ -50,7 +50,6 @@ class AccueilController {
         require "view/vuePanier.php";
     }
     
-
     public function envoyerMail() {
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             // Récupérer et filtrer les données du formulaire

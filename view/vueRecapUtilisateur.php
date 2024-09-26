@@ -86,14 +86,15 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
                     <td><?= date('d/m/Y H:i', strtotime($reservation['datePrestation'])); ?></td>
                     <td><?= nl2br(htmlspecialchars($reservation['infosReservation'])); ?></td>
                     <td>
-                        <?php if ($estAnnulable) { ?>
-                            <form method="post" action="index.php?action=annulerReservation">
-                                <input type="hidden" name="id_prestation" value="<?= $reservation['id_prestation']; ?>">
-                                <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir annuler cette réservation ?');">Annuler</button>
-                            </form>
-                        <?php } else { ?>
-                            <span>Non annulable</span>
-                        <?php } ?>
+                    <?php if ($estAnnulable) { ?>
+                    <form method="post" action="index.php?action=annulerReservation">
+                        <input type="hidden" name="id_prestation" value="<?= $reservation['id_prestation']; ?>">
+                        <input type="hidden" name="datePrestation" value="<?= $reservation['datePrestation']; ?>"> <!-- Ajout de la date du créneau -->
+                        <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir annuler cette réservation ?');">Annuler</button>
+                    </form>
+                    <?php } else { ?>
+                        <span>Non annulable</span>
+                    <?php } ?>
                     </td>
                 </tr>
             <?php } ?>
