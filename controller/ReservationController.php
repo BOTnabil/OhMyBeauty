@@ -49,18 +49,15 @@ class ReservationController {
     
     public function choisirCreneau() {
         //On récupère l'id de l'utilisateur, l'id de la presta et la date que l'on a choisi au préalable
-        if (isset($_SESSION['user_id'])) {
-            if (isset($_POST['id_prestation']) && isset($_POST['datePrestation'])) {
-                $id_prestation = $_POST['id_prestation'];
-                $datePrestation = $_POST['datePrestation'];
-                $id_utilisateur = $_SESSION['user_id'];
-        
-                // Récupérer les créneaux réservés par tous les utilisateurs
-                $creneauxReserves = $this->reservationManager->obtenirCreneauxReservesParDate($id_prestation, $datePrestation);
-
-        
-                require "view/vueChoisirCreneau.php"; // Page pour afficher les créneaux horaires disponibles
-            } 
+        if (isset($_POST['id_prestation']) && isset($_POST['datePrestation']) && isset($_SESSION['user_id'])) {
+            $id_prestation = $_POST['id_prestation'];
+            $datePrestation = $_POST['datePrestation'];
+            $id_utilisateur = $_SESSION['user_id'];
+    
+            // Récupérer les créneaux réservés par tous les utilisateurs
+            $creneauxReserves = $this->reservationManager->obtenirCreneauxReservesParDate($id_prestation, $datePrestation);
+    
+            require "view/vueChoisirCreneau.php"; // Page pour afficher les créneaux horaires disponibles
         } else {
             header("Location: index.php?action=connexion");
         }
