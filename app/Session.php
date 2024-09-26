@@ -17,9 +17,4 @@ class Session {
         // Vérifie si le rôle de l'utilisateur est "ADMIN"
         return isset($_SESSION['user_role']) && $_SESSION['user_role'] === "ADMIN";
     }
-
-    public static function getRole() {
-        // Retourne le rôle de l'utilisateur connecté
-        return isset($_SESSION['user_role']) ? $_SESSION['user_role'] : null;
-    }
 }
