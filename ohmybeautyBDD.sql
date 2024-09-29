@@ -37,13 +37,13 @@ INSERT INTO `categorie` (`id_categorie`, `designation`) VALUES
 -- Listage de la structure de table ohmybeauty. commande
 CREATE TABLE IF NOT EXISTS `commande` (
   `id_commande` int NOT NULL AUTO_INCREMENT,
-  `numeroCommande` int,
+  `numeroCommande` bigint DEFAULT NULL,
   `dateCommande` date NOT NULL,
   `prixTotal` decimal(15,2) NOT NULL,
   `id_utilisateur` int NOT NULL,
-  `infosCommande` varchar(255) NOT NULL,
+  `infosCommande` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id_commande`),
-  UNIQUE KEY (`numeroCommande`),
+  UNIQUE KEY `numeroCommande` (`numeroCommande`),
   KEY `id_utilisateur` (`id_utilisateur`),
   CONSTRAINT `commande_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -54,11 +54,12 @@ DELETE FROM `commande`;
 -- Listage de la structure de table ohmybeauty. contenir
 CREATE TABLE IF NOT EXISTS `contenir` (
   `id_contenir` int NOT NULL AUTO_INCREMENT,
-  `id_commande` int,
-  `id_produit` int,
+  `id_commande` int DEFAULT NULL,
+  `id_produit` int DEFAULT NULL,
   `quantite` int NOT NULL,
   PRIMARY KEY (`id_contenir`),
   KEY `id_produit` (`id_produit`),
+  KEY `contenir_ibfk_1` (`id_commande`),
   CONSTRAINT `contenir_ibfk_1` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id_commande`),
   CONSTRAINT `contenir_ibfk_2` FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id_produit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -73,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `prestation` (
   `prix` decimal(15,2) NOT NULL,
   `duree` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '40min',
   `id_categorie` int NOT NULL,
-  `description` varchar(500),
+  `description` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id_prestation`),
   KEY `id_categorie` (`id_categorie`),
   CONSTRAINT `prestation_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id_categorie`)
@@ -109,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `designation` varchar(50) NOT NULL,
   `prix` decimal(15,2) NOT NULL,
   `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `description` varchar(500),
+  `description` varchar(500) DEFAULT NULL,
   `id_categorie` int NOT NULL,
   PRIMARY KEY (`id_produit`),
   KEY `id_categorie` (`id_categorie`),
@@ -118,33 +119,34 @@ CREATE TABLE IF NOT EXISTS `produit` (
 
 -- Listage des données de la table ohmybeauty.produit : ~16 rows (environ)
 DELETE FROM `produit`;
-INSERT INTO `produit` (`id_produit`, `designation`, `prix`, `image`, `id_categorie`) VALUES
-	(1, 'Lime à ongles', 4.29, NULL, 4),
-	(2, 'Kit de manucure', 9.50, NULL, 4),
-	(3, 'Kit vernis semi permanent', 24.99, NULL, 4),
-	(4, 'Ponceuse', 49.99, NULL, 4),
-	(5, 'Kit extension de cils', 11.49, NULL, 1),
-	(6, 'Faux cils (10 paires)', 8.99, NULL, 1),
-	(7, 'Sérum croissance', 22.99, NULL, 1),
-	(8, 'Faux cils magnétiques', 9.99, NULL, 1),
-	(9, 'Coffret skin care', 29.95, NULL, 3),
-	(10, 'Serre tête skin care', 2.00, NULL, 3),
-	(11, 'Masque au charbon', 4.50, NULL, 3),
-	(12, 'Masque hydratant', 3.50, NULL, 3),
-	(13, 'Masque réparateur', 12.90, NULL, 2),
-	(14, 'Kit lissage brésilien', 15.90, NULL, 2),
-	(15, 'Bonnet en satin', 7.99, NULL, 2),
-	(16, 'Elastiques (20 pièces)', 4.00, NULL, 2);
+INSERT INTO `produit` (`id_produit`, `designation`, `prix`, `image`, `description`, `id_categorie`) VALUES
+	(1, 'Lime à ongles', 4.29, NULL, NULL, 4),
+	(2, 'Kit de manucure', 9.50, NULL, NULL, 4),
+	(3, 'Kit vernis semi permanent', 24.99, NULL, NULL, 4),
+	(4, 'Ponceuse', 49.99, NULL, NULL, 4),
+	(5, 'Kit extension de cils', 11.49, NULL, NULL, 1),
+	(6, 'Faux cils (10 paires)', 8.99, NULL, NULL, 1),
+	(7, 'Sérum croissance', 22.99, NULL, NULL, 1),
+	(8, 'Faux cils magnétiques', 9.99, NULL, NULL, 1),
+	(9, 'Coffret skin care', 29.95, NULL, NULL, 3),
+	(10, 'Serre tête skin care', 2.00, NULL, NULL, 3),
+	(11, 'Masque au charbon', 4.50, NULL, NULL, 3),
+	(12, 'Masque hydratant', 3.50, NULL, NULL, 3),
+	(13, 'Masque réparateur', 12.90, NULL, NULL, 2),
+	(14, 'Kit lissage brésilien', 15.90, NULL, NULL, 2),
+	(15, 'Bonnet en satin', 7.99, NULL, NULL, 2),
+	(16, 'Elastiques (20 pièces)', 4.00, NULL, NULL, 2);
 
 -- Listage de la structure de table ohmybeauty. reservation
 CREATE TABLE IF NOT EXISTS `reservation` (
   `id_reservation` int NOT NULL AUTO_INCREMENT,
-  `id_utilisateur` int,
-  `id_prestation` int,
+  `id_utilisateur` int DEFAULT NULL,
+  `id_prestation` int DEFAULT NULL,
   `datePrestation` datetime NOT NULL,
-  `infosReservation` varchar(255) NOT NULL,
+  `infosReservation` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id_reservation`),
   KEY `id_prestation` (`id_prestation`),
+  KEY `reservation_ibfk_1` (`id_utilisateur`),
   CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`),
   CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`id_prestation`) REFERENCES `prestation` (`id_prestation`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
