@@ -50,9 +50,36 @@ $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPres
     <input type="submit" name="submit" value="Enregistrer">
 </form>
 
+<h1>Ajouter une prestation</h1>
+
+<form action= "index.php?action=ajouterPrestation" method="POST" enctype="multipart/form-data">
+    <label for="designation">Désignation :</label>
+    <input type="text" name="designation" required value="<?= $prestation['designation'] ?? ''; ?>"><br>
+
+    <label for="description">Description :</label>
+    <textarea name="description" required><?= $prestation['description'] ?? ''; ?></textarea><br>
+
+    <label for="duree">Durée (moins de 60min) :</label>
+    <input type="text" name="duree" required value="<?= $prestation['duree'] ?? ''; ?>"><br>
+
+    <label for="prix">Prix :</label>
+    <input type="number" step="0.01" name="prix" required value="<?= $prestation['prix'] ?? ''; ?>"><br>
+
+    <label for="categorie">Catégorie :</label>
+    <select name="id_categorie" required>
+        <?php foreach ($categories as $categorie): ?>
+            <option value="<?= $categorie['id_categorie'] ?>" <?= isset($prestation['id_categorie']) && $prestation['id_categorie'] == $categorie['id_categorie'] ? 'selected' : ''; ?>>
+                <?= $categorie['designation'] ?>
+            </option>
+        <?php endforeach; ?>
+    </select><br>
+
+    <input type="submit" name="submit" value="Enregistrer">
+</form>
+
 <h1>Gestion des rendez-vous</h1>
 
-<form method="post" action="index.php?action=voirRendezVous">
+<form method="get" action="index.php">
     <h2>Sélectionner les prestations à afficher</h2>
     
     <?php foreach ($categoriesAvecPrestations as $categorieNom => $prestations) { ?>
@@ -67,6 +94,7 @@ $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPres
         </div>
     <?php } ?>
     
+    <input type="hidden" name="action" value="voirRendezVous">
     <input type="submit" value="Voir les rendez-vous">
 </form>
 

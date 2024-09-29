@@ -7,20 +7,27 @@ ob_start();
 <table>
     <thead>
         <tr>
-            <th>Date et Heure</th>
-            <th>Prestation</th>
-            <th>Catégorie</th>
-            <th>Détails</th>
+            <th>Réservation</th>
+            <th>Action</th>
         </tr>
     </thead>
     <tbody>
         <?php if (!empty($rendezVous)) { ?>
             <?php foreach ($rendezVous as $rdv) { ?>
                 <tr>
-                    <td><?= date('d/m/Y H:i', strtotime($rdv['datePrestation'])); ?></td>
-                    <td><?= htmlspecialchars($rdv['designation']); ?></td>
-                    <td><?= htmlspecialchars($rdv['categorie']); ?></td>
                     <td><?= htmlspecialchars($rdv['infosReservation']); ?></td>
+                    <td>
+                        <form method="post" action="index.php?action=annulerReservation">
+                            <input type="hidden" name="id_reservation" value="<?= $rdv['id_reservation']; ?>">
+                            <input type="hidden" name="source" value="vueCalendrier">
+                            
+                            <?php foreach ($_GET['prestations'] as $prestation) { ?>
+                                <input type="hidden" name="prestations[]" value="<?= $prestation; ?>">
+                            <?php } ?>
+                            
+                            <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir annuler cette réservation ?');">Annuler</button>
+                        </form>
+                    </td>
                 </tr>
             <?php } ?>
         <?php } else { ?>

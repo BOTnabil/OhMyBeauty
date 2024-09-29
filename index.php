@@ -38,6 +38,7 @@ if(isset($_GET["action"])){
         case "deconnexion": $ctrlSecurite->deconnexion(); break;
         case "inscriptionProcess": $ctrlSecurite->inscription(); break;
         case "connexionProcess": $ctrlSecurite->connexion(); break;
+        case "supprimerUtilisateur": $ctrlSecurite->supprimerUtilisateurProcess(); break;
         // Panier
         case 'ajouterAuPanier':
             if (isset($_GET['id_produit'])) {
@@ -76,15 +77,23 @@ if(isset($_GET["action"])){
         // Réservation
         case 'reserver': $ctrlReservation->reserver(); break;
         case 'choisirCreneau': $ctrlReservation->choisirCreneau(); break;
-        case 'annulerReservation': $ctrlReservation->annulerReservation(); break;
+        case 'annulerReservation': $ctrlReservation->annulerReservationProcess(); break;
         // Admin
-        case 'admin': $ctrlAdmin->afficherAdmin(); break;
+            //ajout
         case 'ajouterProduit': $ctrlAdmin->ajouterProduitProcess(); break;
+        case 'ajouterPrestation': $ctrlAdmin->ajouterPrestationProcess(); break;
+            //suppression
         case 'supprimerProduit': $ctrlAdmin->supprimerProduitProcess(); break;
+        case 'supprimerPrestation': $ctrlAdmin->supprimerPrestationProcess(); break;
+            //modiffications
         case 'afficherModifierProduit': $ctrlAdmin->afficherModifierProduit(); break;
         case 'modifierProduit': $ctrlAdmin->modifierProduitProcess($_GET['id_produit']); break;
-        case 'voirRendezVous': $ctrlAdmin->voirRendezVous();
-    } 
+        case 'afficherModifierPrestation': $ctrlAdmin->afficherModifierPrestation(); break;
+        case 'modifierPrestation': $ctrlAdmin->modifierPrestationProcess($_GET['id_prestation']); break;
+            //affichage
+        case 'admin': $ctrlAdmin->afficherAdmin(); break;
+        case 'voirRendezVous': $ctrlAdmin->voirRendezVous(); break;
+        }
 } else {
     // Si aucun paramètre "action" n'est défini, afficher la vue par défaut
     $ctrlAccueil->afficherHome();

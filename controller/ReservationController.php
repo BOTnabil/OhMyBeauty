@@ -4,6 +4,7 @@ namespace Controller;
 
 use Model\Managers\PrestationManager;
 use Model\Managers\ReservationManager;
+use App\Session;
 use DateTime;
 
 class ReservationController {
@@ -63,20 +64,29 @@ class ReservationController {
         }
     }
 
-public function annulerReservation() {
-    if (isset($_POST['id_prestation']) && isset($_POST['datePrestation'])) {
-        $id_utilisateur = $_SESSION['user_id']; // Récupérer l'utilisateur connecté
-        $id_prestation = $_POST['id_prestation'];
-        $datePrestation = $_POST['datePrestation']; // La date et l'heure du créneau
-        
-        // Supprimer la réservation spécifique
-        $this->reservationManager->annulerReservation($id_utilisateur, $id_prestation, $datePrestation);
-        $_SESSION['MAJrdv'] = "Réservation annulée avec succès!";
-        
-        header("Location:index.php?action=recap");
-        exit;
+    public function annulerReservationProcess() {
+        if (isset($_POST['id_reservation'])) {
+            $id_reservation = $_POST['id_reservation'];
+            
+            // Supprimer la réservation spécifique
+            $this->reservationManager->annulerReservation($id_reservation);
+            $_SESSION['MAJrdv'] = "Réservation annulée avec succès!";
+            
+            // Vérifier la provenance de la requête
+            if (isset($_POST['source']) && $_POST['source'] === 'recapUtilisateur') {
+                // Si la requête provient de recapUtilisateur
+                header("Location:index.php?action=recap");
+            } else if (Session::estAdmin() && isset($_POST['source']) && $_POST['source'] === 'vueCalendrier') {
+                // Si la requête provient de vueCalendrier
+                if (isset($_POST['prestations'])) {
+                    $prestationsSelectionnees = implode('&prestations%5B%5D=', $_POST['prestations']);
+                    $prestationsSelectionnees .= "&action=voirRendezVous";
+                    header("Location: index.php?action=voirRendezVous&prestations%5B%5D=$prestationsSelectionnees");
+                }
+            }
+        }
     }
-}
+     
 
 
     public function estAnnulable($datePrestation) {

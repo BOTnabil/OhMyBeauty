@@ -14,38 +14,38 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'ADMIN') {
 $categorieManager = new CategorieManager();
 $categories = $categorieManager->obtenirToutesLesCategories();
 ?>
+ 
+<h1>Modification de prestation</h1>
 
-<h1>Modification du produit</h1>
-
-<form action="index.php?action=modifierProduit&id_produit=<?= $produit['id_produit'] ?>" method="POST" enctype="multipart/form-data">
+<form action="index.php?action=modifierPrestation&id_prestation=<?= $prestation['id_prestation'] ?>" method="POST" enctype="multipart/form-data">
     <label for="designation">Désignation :</label><br>
-    <input type="text" id="designation" name="designation" value="<?= htmlspecialchars($produit['designation']) ?>" required><br><br>
+    <input type="text" id="designation" name="designation" value="<?= htmlspecialchars($prestation['designation']) ?>" required><br><br>
     
     <label for="prix">Prix :</label><br>
-    <input type="number" id="prix" name="prix" step="0.01" value="<?= htmlspecialchars($produit['prix']) ?>" required><br><br>
+    <input type="number" id="prix" name="prix" step="0.01" value="<?= htmlspecialchars($prestation['prix']) ?>" required><br><br>
+
+    <label for="duree">Durée (moins de 60 min) :</label><br>
+    <input type="text" id="duree" name="duree" value="<?= htmlspecialchars($prestation['duree']) ?>" required><br><br>
     
     <label for="description">Description :</label><br>
-    <textarea id="description" name="description" required><?= htmlspecialchars($produit['description']) ?></textarea><br><br>
+    <textarea id="description" name="description" required><?= htmlspecialchars($prestation['description']) ?></textarea><br><br>
     
     <label for="categorie">Catégorie :</label><br>
     <select name="id_categorie" id="categorie" required>
         <?php foreach ($categories as $categorie) { ?>
-            <option value="<?= $categorie['id_categorie'] ?>" <?= $produit['id_categorie'] == $categorie['id_categorie'] ? 'selected' : '' ?>>
+            <option value="<?= $categorie['id_categorie'] ?>" <?= $prestation['id_categorie'] == $categorie['id_categorie'] ? 'selected' : '' ?>>
                 <?= htmlspecialchars($categorie['designation']) ?>
             </option>
         <?php } ?>
     </select><br><br>
-    
-    <label for="image">Image du produit (laisser vide pour ne pas changer) :</label><br>
-    <input type="file" id="image" name="image"><br><br>
 
-    <p> <?php echo $_SESSION['MAJproduit'] ?> </p>
+    <p> <?php echo $_SESSION['MAJprestation'] ?> </p>
     <button type="submit" name="submit">Enregistrer les modifications</button>
 </form>
 
 <?php
-if (!isset($_SESSION['MAJproduit'])) {
-    $_SESSION['MAJproduit'] = "";
+if (!isset($_SESSION['MAJprestation'])) {
+    $_SESSION['MAJprestation'] = "";
 }
 
 $titre = "Administration - Oh My Beauty";

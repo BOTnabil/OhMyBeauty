@@ -12,19 +12,21 @@ class CommandeManager {
     }
 
     // Méthode pour créer une nouvelle commande
-    public function creerCommande($prixTotal, $id_utilisateur, $infosCommande = '') {
+    public function creerCommande($prixTotal, $id_utilisateur, $infosCommande, $numeroCommande) {
         $requete = "
-            INSERT INTO commande (dateCommande, prixTotal, id_utilisateur, infosCommande) 
-            VALUES (NOW(), :prixTotal, :id_utilisateur, :infosCommande)
+            INSERT INTO commande (dateCommande, prixTotal, id_utilisateur, infosCommande, numeroCommande) 
+            VALUES (NOW(), :prixTotal, :id_utilisateur, :infosCommande, :numeroCommande)
         ";
         $stmt = $this->db->prepare($requete);
         $stmt->bindParam(':prixTotal', $prixTotal);
         $stmt->bindParam(':id_utilisateur', $id_utilisateur, \PDO::PARAM_INT);
-        $stmt->bindParam(':infosCommande', $infosCommande, \PDO::PARAM_STR);
+        $stmt->bindParam(':infosCommande', $infosCommande);
+        $stmt->bindParam(':numeroCommande', $numeroCommande);
         $stmt->execute();
     
         return $this->db->lastInsertId(); // Retourne l'ID de la nouvelle commande
     }
+    
 
     // Méthode pour obtenir les commandes d'un utilisateur spécifique
     public function obtenirCommandesParUtilisateur($id_utilisateur) {
@@ -70,4 +72,16 @@ class CommandeManager {
 
         return $stmt->fetchAll();
     }
+
+    public function rendreUtilisateurNullDansCommandes($id_utilisateur) {
+        $requete = "
+            UPDATE commande
+            SET id_utilisateur = NULL
+            WHERE id_utilisateur = :id_utilisateur
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':id_utilisateur', $id_utilisateur, \PDO::PARAM_INT);
+        $stmt->execute();
+    }
+    
 }

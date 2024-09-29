@@ -44,7 +44,7 @@ class ReservationManager {
     // Méthode pour récupérer les réservations d'un utilisateur spécifique
     public function obtenirReservationsParUtilisateur($id_utilisateur) {
         $requete = "
-            SELECT r.id_prestation, r.datePrestation, r.infosReservation
+            SELECT r.id_reservation, r.datePrestation, r.infosReservation
             FROM reservation r
             WHERE r.id_utilisateur = :id_utilisateur
             ORDER BY r.datePrestation
@@ -57,17 +57,13 @@ class ReservationManager {
     }
 
     // Méthode pour annuler une réservation
-    public function annulerReservation($id_utilisateur, $id_prestation, $datePrestation) {
+    public function annulerReservation($id_reservation) {
         $requete = "
             DELETE FROM reservation 
-            WHERE id_prestation = :id_prestation
-            AND id_utilisateur = :id_utilisateur
-            AND datePrestation = :datePrestation
+            WHERE id_reservation = :id_reservation
         ";
         $stmt = $this->db->prepare($requete);
-        $stmt->bindParam(':id_prestation', $id_prestation, \PDO::PARAM_INT);
-        $stmt->bindParam(':id_utilisateur', $id_utilisateur, \PDO::PARAM_INT);
-        $stmt->bindParam(':datePrestation', $datePrestation, \PDO::PARAM_STR);
+        $stmt->bindParam(':id_reservation', $id_reservation, \PDO::PARAM_INT);
         $stmt->execute();
     }
 
@@ -117,7 +113,7 @@ class ReservationManager {
         $placeholders = implode(',', array_fill(0, count($prestationsSelectionnees), '?'));
     
         $requete = "
-            SELECT r.datePrestation, r.infosReservation, p.designation, c.designation AS categorie
+            SELECT r.datePrestation, r.infosReservation, p.designation, c.designation AS categorie, r.id_reservation
             FROM reservation r
             JOIN prestation p ON r.id_prestation = p.id_prestation
             JOIN categorie c ON p.id_categorie = c.id_categorie
@@ -129,6 +125,29 @@ class ReservationManager {
         $stmt->execute($prestationsSelectionnees);
         
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+    
+    //Nullifie les valeurs ayant l'id de la prestation qu'on supprime
+    public function supprimerPrestationDeReservation($id_prestation) {
+        $requete = "
+            UPDATE reservation
+            SET id_prestation = NULL
+            WHERE id_prestation = :id_prestation
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':id_prestation', $id_prestation, \PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function rendreUtilisateurNullDansReservations($id_utilisateur) {
+        $requete = "
+            UPDATE reservation
+            SET id_utilisateur = NULL
+            WHERE id_utilisateur = :id_utilisateur
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':id_utilisateur', $id_utilisateur, \PDO::PARAM_INT);
+        $stmt->execute();
     }
     
 }

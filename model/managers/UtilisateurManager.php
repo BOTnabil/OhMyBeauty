@@ -50,4 +50,14 @@ class UtilisateurManager{
         $stmt->execute();
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
+
+    public function supprimerUtilisateur($id_utilisateur) {
+        $requete = "
+            DELETE FROM utilisateur
+            WHERE id_utilisateur = :id_utilisateur
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':id_utilisateur', $id_utilisateur, \PDO::PARAM_INT);
+        $stmt->execute();
+    }
 }

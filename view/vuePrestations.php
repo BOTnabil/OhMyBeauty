@@ -45,6 +45,20 @@ $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPres
                                 <input type="date" name="datePrestation" required min="<?= date('Y-m-d'); ?>">
                                 <button type="submit">Valider la date</button>
                             </form>
+                            <?php if (\App\Session::estAdmin()) { ?>
+                                    <!-- Bouton de suppression visible uniquement pour les admins -->
+                                    <form method="post" action="index.php?action=supprimerPrestation">
+                                        <input type="hidden" name="id_prestation" value="<?= $prestation['id_prestation']; ?>">
+                                        <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette prestation ?');">X</button>
+                                    </form>
+
+                                    <!-- Bouton de modification visible uniquement pour les admins -->
+                                    <form method="get" action="index.php">
+                                        <input type="hidden" name="action" value="afficherModifierPrestation">
+                                        <input type="hidden" name="id_prestation" value="<?= $prestation['id_prestation']; ?>">
+                                        <button type="submit">Modifier</button>
+                                    </form>
+                                <?php } ?>
                         </div>
                     </div>
                 <?php } ?>

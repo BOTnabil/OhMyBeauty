@@ -14,7 +14,7 @@ class PrestationManager {
     // Méthode pour récupérer une prestation par son ID
     public function obtenirPrestationParId($id_prestation) {
         $requete = "
-            SELECT id_prestation, designation, description, duree, prix
+            SELECT id_prestation, designation, description, duree, prix, id_categorie
             FROM prestation
             WHERE id_prestation = :id_prestation
         ";
@@ -47,5 +47,47 @@ class PrestationManager {
         }
 
         return $categories;
+    }
+
+    public function modifierPrestation($id_prestation, $designation, $description, $duree, $prix, $id_categorie) {
+        // Si une nouvelle image est fournie, on met à jour aussi le champ image
+        $requete = "
+            UPDATE prestation 
+            SET designation = :designation, description = :description, prix = :prix, id_categorie = :id_categorie, duree = :duree
+            WHERE id_prestation = :id_prestation
+        ";
+
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':designation', $designation);
+        $stmt->bindParam(':description', $description);
+        $stmt->bindParam(':prix', $prix);
+        $stmt->bindParam(':duree', $duree);
+        $stmt->bindParam(':id_categorie', $id_categorie);
+        $stmt->bindParam(':id_prestation', $id_prestation);
+        $stmt->execute();
+    }
+
+    public function ajouterPrestation($designation, $description, $prix, $duree, $id_categorie) {
+        $requete = "
+            INSERT INTO prestation (designation, prix, description, duree, id_categorie)
+            VALUES (:designation, :prix, :description, :duree, :id_categorie)
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':designation', $designation, \PDO::PARAM_STR);
+        $stmt->bindParam(':prix', $prix);
+        $stmt->bindParam(':description', $description, \PDO::PARAM_STR);
+        $stmt->bindParam(':duree', $duree, \PDO::PARAM_STR);
+        $stmt->bindParam(':id_categorie', $id_categorie, \PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function supprimerPrestation($id_prestation) {
+        $requete = "
+            DELETE FROM prestation
+            WHERE id_prestation = :id_prestation
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':id_prestation', $id_prestation, \PDO::PARAM_INT);
+        $stmt->execute();
     }
 }

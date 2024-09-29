@@ -2,12 +2,18 @@
 namespace Controller;
 
 use Model\Managers\UtilisateurManager;
+use Model\Managers\CommandeManager;
+use Model\Managers\ReservationManager;
 
 class SecuriteController {
     private $utilisateurManager;
+    private $commandeManager;
+    private $reservationManager;
 
     public function __construct() {
         $this->utilisateurManager = new UtilisateurManager();
+        $this->commandeManager = new CommandeManager();
+        $this->reservationManager = new ReservationManager();
     }
 
     public function inscription($role = 'user') {
@@ -94,6 +100,23 @@ class SecuriteController {
         session_start();
         session_unset();
         session_destroy();
+        header("Location: index.php?action=home");
+    }
+
+    public function supprimerUtilisateurProcess() {
+        $id_utilisateur = $_SESSION['user_id'];
+        
+        // Rendre l'ID utilisateur null dans les commandes et réservations
+        $this->commandeManager->rendreUtilisateurNullDansCommandes($id_utilisateur);
+        $this->reservationManager->rendreUtilisateurNullDansReservations($id_utilisateur);
+        
+        // Supprimer l'utilisateur
+        $this->utilisateurManager->supprimerUtilisateur($id_utilisateur);
+        
+        // Détruire la session
+        session_destroy();
+        
+        // Redirection après suppression
         header("Location: index.php?action=home");
     }
 }

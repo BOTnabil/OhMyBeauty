@@ -104,14 +104,17 @@ class PanierController {
             if (!empty($_SESSION['products'])) {
                 $prixTotal = 0;
                 $id_utilisateur = $_SESSION['user_id'];
-    
+        
+                // Génération du numéro de commande unique
+                $numeroCommande = $this->genererNumeroCommande();
+        
                 // Calcul du prix total et génération des informations de la commande
-                $infosCommande = $this->genererInfosCommandeTexte($_SESSION['products']);
+                $infosCommande = $this->genererInfosCommandeTexte($_SESSION['products'], $numeroCommande);
                 
                 foreach ($_SESSION['products'] as $produit) {
                     $prixTotal += $produit['total'];
                 }
-
+    
                 // Vérification que tous les produits existent encore dans la base de données
                 foreach ($_SESSION['products'] as $produit) {
                     // Vérifie si le produit existe encore en base de données
@@ -120,33 +123,32 @@ class PanierController {
                         // Si le produit n'existe plus, annuler la commande
                         $_SESSION['MAJpanier'] = "Le produit '" . $produit['nom'] . "' n'existe plus. Veuillez mettre à jour votre panier.";
                         header("Location: index.php?action=panier");
-                        exit; // Stopper l'exécution du script
+                        exit;
                     }
                 }
-
-                // Si tous les produits sont valides, créer la commande avec infosCommande initialisé
-                $id_commande = $this->commandeManager->creerCommande($prixTotal, $id_utilisateur, $infosCommande);
-
-                
+    
+                // Si tous les produits sont valides, créer la commande avec le numéro de commande
+                $id_commande = $this->commandeManager->creerCommande($prixTotal, $id_utilisateur, $infosCommande, $numeroCommande);
+    
                 // lier les produits et la commande avec les qtt dans Contenir
                 foreach ($_SESSION['products'] as $produit) {
                     $this->contenirManager->lierProduitACommande($id_commande, $produit['id'], $produit['qtt']);
                 }
-    
+        
                 // Vider le panier
                 unset($_SESSION['products']);
                 $_SESSION['MAJpanier'] = "Commande validée avec succès!";
-
                 header("Location:index.php?action=recap");
             }
         } else {
             header("Location: index.php?action=connexion");
         }
-    }    
+    }
+    
 
     // génère les informations sur la commande sous forme de texte
-    private function genererInfosCommandeTexte($produits) {
-        $infos = '';
+    private function genererInfosCommandeTexte($produits, $numeroCommande) {
+        $infos = 'Numéro de commande : '.$numeroCommande.'<br>';
         foreach ($produits as $produit) {
             $sousTotal = $produit['qtt'] * $produit['prix'];
 
@@ -158,6 +160,20 @@ class PanierController {
         }
         return rtrim($infos, '<br>');  // Supprime le dernier <br> s'il y en a un
     }
+
+    private function genererNumeroCommande() {
+        // Utilise la date et l'heure actuelles
+        $dateHeure = date('YmdHis'); // Format YYYYMMDDHHMMSS
+    
+        // Génère un nombre aléatoire pour garantir l'unicité
+        $random = rand(100, 999);
+    
+        // Combine la date, l'heure et le nombre aléatoire
+        $numeroCommande = $dateHeure . $random;
+    
+        return $numeroCommande;
+    }
+    
 
     public function voirDetailsCommande() {
         if (isset($_GET['id_commande'])) {
