@@ -148,7 +148,7 @@ class PanierController {
 
     // génère les informations sur la commande sous forme de texte
     private function genererInfosCommandeTexte($produits, $numeroCommande) {
-        $infos = 'Numéro de commande : '.$numeroCommande.'<br>';
+        $infos = '';
         foreach ($produits as $produit) {
             $sousTotal = $produit['qtt'] * $produit['prix'];
 
