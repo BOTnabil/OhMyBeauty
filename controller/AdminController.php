@@ -86,17 +86,6 @@ public function afficherAdmin() {
     require "view/vueAdmin.php";
 }
 
-public function afficherCalendrier() {
-    // Vérifier que l'utilisateur est administrateur
-    if (!Session::estAdmin()) {
-        header("Location: index.php?action=connexion");
-        exit;
-    }
-
-    // Charger et afficher la vue calendrier
-    require "view/vueCalendrier.php";
-}
-
 //Afficher la vue du formulaire de modification
 public function afficherModifierProduit() {
     // Vérifier que l'utilisateur est administrateur
@@ -154,6 +143,7 @@ public function voirRendezVous() {
         $_SESSION['MAJadmin'] = "Veuillez sélectionner au moins une prestation.";
         header("Location: index.php?action=admin");
     }
+    // IL FAUDRAIT LES TRIER PAR DATES voir Figma
 }
 
 
