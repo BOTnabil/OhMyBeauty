@@ -1,7 +1,4 @@
-<?php ob_start(); 
-if (!isset($_SESSION['MAJregister'])) {
-    $_SESSION['MAJregister'] = "";
-}?>
+<?php ob_start(); ?>
 
 <!-- Formulaire d'inscription -->
 <section class="inscription-container">
@@ -31,7 +28,12 @@ if (!isset($_SESSION['MAJregister'])) {
             <input type="text" id="honeypot" name="honeypot" value="">
         </div>
         
-        <p> <?php echo $_SESSION['MAJregister'] ?> </p>
+        <?php
+        // Message de confirmation ou d'erreur après l'ajout
+        if (isset($_SESSION['MAJregister'])) {
+            echo '<p>' . $_SESSION['MAJregister'] . '</p>';
+            unset($_SESSION['MAJregister']);  // Supprimer le message après l'affichage
+        } ?>
         <input type="submit" name="submit" value="S'inscrire">
     </form>
 

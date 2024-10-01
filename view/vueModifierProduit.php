@@ -39,13 +39,15 @@ $categories = $categorieManager->obtenirToutesLesCategories();
     <label for="image">Image du produit (laisser vide pour ne pas changer) :</label><br>
     <input type="file" id="image" name="image"><br><br>
 
-    <p> <?php echo $_SESSION['MAJproduit'] ?> </p>
     <button type="submit" name="submit">Enregistrer les modifications</button>
 </form>
 
 <?php
-if (!isset($_SESSION['MAJproduit'])) {
-    $_SESSION['MAJproduit'] = "";
+
+// Message de confirmation ou d'erreur après l'ajout
+if (isset($_SESSION['MAJproduit'])) {
+    echo '<p>' . $_SESSION['MAJproduit'] . '</p>';
+    unset($_SESSION['MAJproduit']);  // Supprimer le message après l'affichage
 }
 
 $titre = "Administration - Oh My Beauty";

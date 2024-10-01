@@ -39,13 +39,14 @@ $categories = $categorieManager->obtenirToutesLesCategories();
         <?php } ?>
     </select><br><br>
 
-    <p> <?php echo $_SESSION['MAJprestation'] ?> </p>
     <button type="submit" name="submit">Enregistrer les modifications</button>
 </form>
 
 <?php
-if (!isset($_SESSION['MAJprestation'])) {
-    $_SESSION['MAJprestation'] = "";
+// Message de confirmation ou d'erreur après l'ajout
+if (isset($_SESSION['MAJprestation'])) {
+    echo '<p>' . $_SESSION['MAJprestation'] . '</p>';
+    unset($_SESSION['MAJprestation']);  // Supprimer le message après l'affichage
 }
 
 $titre = "Administration - Oh My Beauty";

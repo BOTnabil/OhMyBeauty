@@ -1,9 +1,5 @@
 <?php
 ob_start();
-
-if (!isset($_SESSION['MAJcontact'])) {
-    $_SESSION['MAJcontact'] = "";
-} 
 ?>
 
 <!-- bannière -->
@@ -26,7 +22,12 @@ if (!isset($_SESSION['MAJcontact'])) {
     </div>
 <!-- fin de bannière -->
 
-    <p> <?php echo $_SESSION['MAJcontact'] ?> </p>
+    <?php
+    // Message de confirmation ou d'erreur après l'ajout
+    if (isset($_SESSION['MAJcontact'])) {
+        echo '<p>' . $_SESSION['MAJcontact'] . '</p>';
+        unset($_SESSION['MAJcontact']);  // Supprimer le message après l'affichage
+    } ?>
 
 <!-- Formulaire de contact -->
     <form action="index.php?action=envoyerMail" method="POST">
