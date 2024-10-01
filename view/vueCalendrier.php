@@ -1,5 +1,11 @@
 <?php
 ob_start();
+
+// Vérifier si l'utilisateur est admin
+if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'ADMIN') {
+    header("Location: index.php?action=connexion");
+    exit;
+}
 ?>
 
 <h2>Rendez-vous pour les prestations sélectionnées</h2>
