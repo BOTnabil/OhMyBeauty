@@ -3,11 +3,10 @@
 =================================================================
  */
  :root {
-    --bordeau : #691E22;
-    --or : #D9912B;
-    --crimson : #3D0A01;
-    --bcasse : #FAE3D3;
-    --blanc : #F8EFEC;
+    --marron : #3F362E;
+    --brun : #53300F;
+    --beige : #E1BB97;
+    --bcreme : #FEF2E7;
     --rufina : "Rufina", serif;;
     --oxygen : "Oxygen", sans-serif;
 }
@@ -43,7 +42,6 @@ html {
 header {
     z-index: 2;
     display: flex;
-    background-image: url("../img/fond.png");
     background-size: cover;
     top: 0;
     left: 0;
@@ -122,7 +120,6 @@ i:hover{
 
 .citation{
     color: var(--blanc);
-    background-image: url(../img/fond.png);
     background-size: cover;
     font-family: var(--rufina);
     font-weight: 300;
@@ -327,7 +324,6 @@ i:hover{
     height:100%;
     width:100%;
     position:absolute;
-    mask: linear-gradient(transparent, black, transparent);
 }
 
 
@@ -898,7 +894,6 @@ textarea{
   }
   
   .bg-footer {
-    background-image: url(../img/fond.png);
     background-size: cover;
     font-family: var(--oxygen);
     width: 100%;
