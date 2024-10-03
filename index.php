@@ -101,7 +101,7 @@ if(isset($_GET["action"])){
         case 'voirRendezVous': $ctrlAdmin->voirRendezVous(); break;
             //commandes
         case 'afficherCommandes': $ctrlAdmin->afficherCommandes(); break;
-        case 'annulerCommandes': $ctrlAdmin->annulerCommande(); break;
+        case 'annulerCommande': $ctrlAdmin->annulerCommande(); break;
         }
 } else {
     // Si aucun paramètre "action" n'est défini, afficher la vue par défaut

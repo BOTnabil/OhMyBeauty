@@ -35,5 +35,17 @@ class ContenirManager {
         $stmt->bindParam(':id_produit', $id_produit, \PDO::PARAM_INT);
         $stmt->execute();
     }
+
+        //Nullifie les valeurs ayant l'id_commande qu'on supprime
+        public function supprimerCommandeDeContenir($id_commande) {
+            $requete = "
+                UPDATE contenir
+                SET id_commande = NULL
+                WHERE id_commande = :id_commande
+            ";
+            $stmt = $this->db->prepare($requete);
+            $stmt->bindParam(':id_commande', $id_commande, \PDO::PARAM_INT);
+            $stmt->execute();
+        }
     
 }
