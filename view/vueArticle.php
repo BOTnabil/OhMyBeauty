@@ -4,7 +4,7 @@ ob_start();
 
 <h1><?= htmlspecialchars($article['designation']); ?></h1>
 <div class="article-details">
-    <img src="path/to/images/<?= $article['image']; ?>" alt="Image de <?= htmlspecialchars($article['designation']); ?>">
+    <img src="./public/img/<?= $article['image']; ?>" alt="Image de <?= htmlspecialchars($article['designation']); ?>">
     <p><strong>Prix :</strong> <?= $article['prix']; ?> €</p>
     <p><strong>Description :</strong> <?= htmlspecialchars($article['description']); ?></p>
     

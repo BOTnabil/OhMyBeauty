@@ -78,31 +78,41 @@ CREATE TABLE IF NOT EXISTS `prestation` (
   PRIMARY KEY (`id_prestation`),
   KEY `id_categorie` (`id_categorie`),
   CONSTRAINT `prestation_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table ohmybeauty.prestation : ~20 rows (environ)
+-- Listage des données de la table ohmybeauty.prestation : ~30 rows (environ)
 DELETE FROM `prestation`;
 INSERT INTO `prestation` (`id_prestation`, `designation`, `prix`, `duree`, `id_categorie`, `description`) VALUES
 	(1, 'Réhaussement', 35.00, '45min', 1, 'test description'),
 	(2, 'Extension pose naturelle', 50.00, '45min', 1, 'test description'),
 	(3, 'Extension pose mixte', 60.00, '45min', 1, 'test description'),
 	(4, 'Remplissage naturel', 30.00, '45min', 1, 'test description'),
-	(5, 'Remplissage mixte', 35.00, '', 1, ' '),
-	(6, 'Dépose', 10.00, '', 1, ' '),
-	(7, 'Lissage brésilien', 90.00, '', 2, ' '),
-	(8, 'Lissage Tanin', 100.00, '', 2, ' '),
-	(9, 'Lissage nano-indien', 130.00, '', 2, ' '),
-	(10, 'Soin botox', 50.00, '', 2, ' '),
-	(11, 'Soin basique', 45.00, '', 3, ' '),
-	(12, 'Soin hydrafacial', 70.00, '', 3, ' '),
-	(13, 'Dermaplaning', 70.00, '', 3, ' '),
-	(14, 'Microneedling', 80.00, '', 3, ' '),
-	(15, 'Soins spécifiques', 50.00, '', 3, ' '),
-	(16, 'Pose naturelle gel', 35.00, '', 4, ' '),
-	(17, 'Pose couleurs gel', 35.00, '', 4, ' '),
-	(18, 'Pose french gel', 35.00, '', 4, ' '),
-	(19, 'Pose nails art', 35.00, '', 4, ' '),
-	(20, 'Remplissage nails art', 30.00, '', 4, ' ');
+	(5, 'Remplissage mixte', 35.00, '60min', 1, 'test description'),
+	(6, 'Dépose', 10.00, '60min', 1, 'test description'),
+	(7, 'Lissage brésilien', 90.00, '60min', 2, 'test description'),
+	(8, 'Lissage Tanin', 100.00, '60min', 2, 'test description'),
+	(9, 'Lissage nano-indien', 130.00, '60min', 2, 'test description'),
+	(10, 'Soin botox', 50.00, '60min', 2, 'test description'),
+	(11, 'Soin basique', 45.00, '60min', 3, 'test description'),
+	(12, 'Soin hydrafacial', 70.00, '60min', 3, 'test description'),
+	(13, 'Dermaplaning', 70.00, '60min', 3, 'test description'),
+	(14, 'Microneedling', 80.00, '60min', 3, 'test description'),
+	(15, 'Soins spécifiques', 50.00, '60min', 3, 'test description'),
+	(16, 'Pose naturelle gel', 35.00, '60min', 4, 'test description'),
+	(17, 'Pose couleurs gel', 35.00, '60min', 4, 'test description'),
+	(18, 'Pose french gel', 35.00, '60min', 4, 'test description'),
+	(19, 'Pose nails art', 35.00, '60min', 4, 'test description'),
+	(20, 'Remplissage nails art', 30.00, '60min', 4, 'test description'),
+	(21, 'Massage relaxant', 60.00, '60min', 3, 'Massage pour relâcher les tensions musculaires'),
+	(22, 'Soin visage éclat', 80.00, '60min', 3, 'Soin pour redonner de l’éclat à la peau'),
+	(23, 'Manucure classique', 30.00, '45min', 4, 'Soin des mains avec pose de vernis classique'),
+	(24, 'Pédicure spa', 45.00, '60min', 4, 'Soin des pieds avec bain et massage'),
+	(25, 'Coloration cheveux', 70.00, '60min', 2, 'Coloration complète avec produits de soin'),
+	(26, 'Balayage capillaire', 100.00, '60min', 2, 'Technique de coloration partielle des cheveux'),
+	(27, 'Soin contour des yeux', 50.00, '30min', 3, 'Soin ciblé pour le contour des yeux'),
+	(28, 'Epilation sourcils', 15.00, '15min', 1, 'Epilation des sourcils à la cire ou à la pince'),
+	(29, 'Pose de faux cils', 80.00, '60min', 1, 'Pose de faux cils semi-permanents'),
+	(30, 'Soin capillaire profond', 40.00, '60min', 2, 'Soin intense pour cheveux abîmés');
 
 -- Listage de la structure de table ohmybeauty. produit
 CREATE TABLE IF NOT EXISTS `produit` (
@@ -115,27 +125,37 @@ CREATE TABLE IF NOT EXISTS `produit` (
   PRIMARY KEY (`id_produit`),
   KEY `id_categorie` (`id_categorie`),
   CONSTRAINT `produit_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table ohmybeauty.produit : ~16 rows (environ)
+-- Listage des données de la table ohmybeauty.produit : ~26 rows (environ)
 DELETE FROM `produit`;
 INSERT INTO `produit` (`id_produit`, `designation`, `prix`, `image`, `description`, `id_categorie`) VALUES
-	(1, 'Lime à ongles', 4.29, NULL, NULL, 4),
-	(2, 'Kit de manucure', 9.50, NULL, NULL, 4),
-	(3, 'Kit vernis semi permanent', 24.99, NULL, NULL, 4),
-	(4, 'Ponceuse', 49.99, NULL, NULL, 4),
-	(5, 'Kit extension de cils', 11.49, NULL, NULL, 1),
-	(6, 'Faux cils (10 paires)', 8.99, NULL, NULL, 1),
-	(7, 'Sérum croissance', 22.99, NULL, NULL, 1),
-	(8, 'Faux cils magnétiques', 9.99, NULL, NULL, 1),
-	(9, 'Coffret skin care', 29.95, NULL, NULL, 3),
-	(10, 'Serre tête skin care', 2.00, NULL, NULL, 3),
-	(11, 'Masque au charbon', 4.50, NULL, NULL, 3),
-	(12, 'Masque hydratant', 3.50, NULL, NULL, 3),
-	(13, 'Masque réparateur', 12.90, NULL, NULL, 2),
-	(14, 'Kit lissage brésilien', 15.90, NULL, NULL, 2),
-	(15, 'Bonnet en satin', 7.99, NULL, NULL, 2),
-	(16, 'Elastiques (20 pièces)', 4.00, NULL, NULL, 2);
+	(1, 'Lime à ongles', 4.29, 'a_propos_2.png', 'Lorem ipsum truc bidule', 4),
+	(2, 'Kit de manucure', 9.50, NULL, 'Lorem ipsum truc bidule', 4),
+	(3, 'Kit vernis semi permanent', 24.99, NULL, 'Lorem ipsum truc bidule', 4),
+	(4, 'Ponceuse', 49.99, NULL, 'Lorem ipsum truc bidule', 4),
+	(5, 'Kit extension de cils', 11.49, NULL, 'Lorem ipsum truc bidule', 1),
+	(6, 'Faux cils (10 paires)', 8.99, NULL, 'Lorem ipsum truc bidule', 1),
+	(7, 'Sérum croissance', 22.99, NULL, 'Lorem ipsum truc bidule', 1),
+	(8, 'Faux cils magnétiques', 9.99, NULL, 'Lorem ipsum truc bidule', 1),
+	(9, 'Coffret skin care', 29.95, NULL, 'Lorem ipsum truc bidule', 3),
+	(10, 'Serre tête skin care', 2.00, NULL, 'Lorem ipsum truc bidule', 3),
+	(11, 'Masque au charbon', 4.50, NULL, 'Lorem ipsum truc bidule', 3),
+	(12, 'Masque hydratant', 3.50, NULL, 'Lorem ipsum truc bidule', 3),
+	(13, 'Masque réparateur', 12.90, NULL, 'Lorem ipsum truc bidule', 2),
+	(14, 'Kit lissage brésilien', 15.90, NULL, 'Lorem ipsum truc bidule', 2),
+	(15, 'Bonnet en satin', 7.99, NULL, 'Lorem ipsum truc bidule', 2),
+	(16, 'Elastiques (20 pièces)', 4.00, NULL, 'Lorem ipsum truc bidule', 2),
+	(17, 'Shampooing nourrissant', 12.50, NULL, 'Shampooing pour cheveux secs et abîmés', 2),
+	(18, 'Crème hydratante visage', 25.00, NULL, 'Crème légère pour hydratation quotidienne', 3),
+	(19, 'Huile capillaire', 15.90, NULL, 'Huile réparatrice pour cheveux', 2),
+	(20, 'Vernis à ongles', 6.50, NULL, 'Vernis longue tenue, disponible en plusieurs couleurs', 4),
+	(21, 'Gel UV', 9.99, NULL, 'Gel UV pour la pose d’ongles', 4),
+	(22, 'Poudre à sourcils', 11.99, NULL, 'Poudre pour maquillage des sourcils', 1),
+	(23, 'Crème anti-âge', 45.00, NULL, 'Crème pour réduire les signes de l’âge', 3),
+	(24, 'Sérum vitaminé', 19.99, NULL, 'Sérum enrichi en vitamines pour la peau', 3),
+	(25, 'Lotion tonique', 7.50, NULL, 'Lotion tonifiante pour le visage', 3),
+	(26, 'Lait corporel', 13.90, NULL, 'Lait hydratant pour le corps', 3);
 
 -- Listage de la structure de table ohmybeauty. reservation
 CREATE TABLE IF NOT EXISTS `reservation` (
