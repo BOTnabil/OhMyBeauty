@@ -20,4 +20,17 @@ class CategorieManager {
         $stmt = $this->db->query($requete);
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    public function obtenirNomCategorie($id_categorie) {
+        $requete = "
+            SELECT designation
+            FROM categorie
+            WHERE id_categorie = :id_categorie
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':id_categorie', $id_categorie, \PDO::PARAM_INT);
+        $stmt->execute();
+        
+        return $stmt->fetchColumn();  // Retourne le nom de la catégorie
+    }    
 }

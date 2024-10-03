@@ -35,14 +35,14 @@
         <div id="mySidenav" class="sidenav">
             <ul>
                 <li><a href="index.php?action=prestations">Prestations</a></li>
-                <li><a href="index.php?action=boutique">Boutique</a></li>
+                <li><a href="index.php?action=categorie">Boutique</a></li>
                 <li><a href="index.php?action=aPropos">À propos</a></li>
                 <li><a href="index.php?action=contact">Contact</a></li>
             </ul>
         </div>
         <nav id="myLinks">
             <a href="index.php?action=prestations">Prestations</a>
-            <a href="index.php?action=boutique">Boutique</a>
+            <a href="index.php?action=categorie">Boutique</a>
             <a href="index.php?action=aPropos">À propos</a>
             <a href="index.php?action=contact">Contact</a>
         </nav>

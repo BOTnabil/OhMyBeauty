@@ -11,7 +11,7 @@ class ProduitManager {
         $this->db = Connect::seConnecter(); // Initialisation de la connexion à la base de données
     }
 
-    // Méthode pour obtenir un produit par son ID
+    // Méthode pour obtenir un produit par son ID ou par sa categorie
     public function obtenirProduitParId($id_produit) {
         $requete = "
             SELECT id_produit, designation, prix, description, image, id_categorie
@@ -25,27 +25,18 @@ class ProduitManager {
         return $stmt->fetch();
     }
 
-    // Méthode pour obtenir toutes les catégories avec leurs produits
-    public function obtenirToutesCategoriesAvecProduits() {
+    public function obtenirArticlesParCategorie($id_categorie) {
         $requete = "
-            SELECT c.id_categorie, c.designation AS categorie_designation, p.id_produit, p.designation, p.prix 
-            FROM categorie c
-            LEFT JOIN produit p ON c.id_categorie = p.id_categorie
-            ORDER BY c.id_categorie, p.id_produit
+            SELECT id_produit, designation, prix, image 
+            FROM produit
+            WHERE id_categorie = :id_categorie
         ";
-        $resultat = $this->db->query($requete);
-    
-        $categories = [];
-        while ($row = $resultat->fetch()) {
-            $categories[$row['categorie_designation']][] = [
-                'id_produit' => $row['id_produit'],
-                'designation' => $row['designation'],
-                'prix' => $row['prix']
-            ];
-        }
-    
-        return $categories;
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':id_categorie', $id_categorie, \PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll();
     }
+    
 
     //On supprime la ligne du produit ayant l'id visé.
     public function supprimerProduit($id_produit) {

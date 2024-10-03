@@ -1,6 +1,7 @@
 <?php
 
 use Controller\AccueilController;
+use Controller\BoutiqueController;
 use Controller\SecuriteController;
 use Controller\PanierController;
 use Controller\ReservationController;
@@ -12,6 +13,7 @@ spl_autoload_register(function($nom_classe){
 });
 
 $ctrlAccueil = new AccueilController();
+$ctrlBoutique = new BoutiqueController();
 $ctrlSecurite = new SecuriteController();
 $ctrlPanier = new PanierController();
 $ctrlReservation = new ReservationController();
@@ -78,6 +80,10 @@ if(isset($_GET["action"])){
         case 'reserver': $ctrlReservation->reserver(); break;
         case 'choisirCreneau': $ctrlReservation->choisirCreneau(); break;
         case 'annulerReservation': $ctrlReservation->annulerReservationProcess(); break;
+        //Boutique
+        case "categorie": $ctrlBoutique->afficherCategories(); break;
+        case "voirArticlesParCategorie": $ctrlBoutique->voirArticlesParCategorie(); break;
+        case "voirArticle": $ctrlBoutique->voirArticle(); break;
         // Admin
             //ajout
         case 'ajouterProduit': $ctrlAdmin->ajouterProduitProcess(); break;

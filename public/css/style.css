@@ -26,11 +26,7 @@ html {
     height: 100%;
 }
 
-a{  color: var(--blanc);
-    text-decoration: none;
-    font-family: var(--oxygen);
-    font-weight: 100;
-}
+
  /*=================================================================
 ========================= HEADER ================================
 =================================================================
@@ -76,6 +72,10 @@ nav a{
     margin-right: 15px;
     margin-left: 15px;
     transition: all 0.2s;
+color: var(--blanc);
+        text-decoration: none;
+        font-family: var(--oxygen);
+
 }
 
 nav a:hover{
