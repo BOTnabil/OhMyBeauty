@@ -7,6 +7,7 @@ use Model\Managers\ProduitManager;
 use Model\Managers\ReservationManager;
 use Model\Managers\ContenirManager;
 use Model\Managers\CategorieManager;
+use Model\Managers\CommandeManager;
 use App\Session;
 
 class AdminController {
@@ -15,6 +16,7 @@ class AdminController {
     private $contenirManager;
     private $categorieManager;
     private $prestationManager;
+    private $commandeManager;
     
 
     public function __construct() {
@@ -23,6 +25,7 @@ class AdminController {
         $this->contenirManager = new ContenirManager();
         $this->categorieManager = new CategorieManager();
         $this->prestationManager = new PrestationManager();
+        $this->commandeManager = new CommandeManager();
     } 
 
 // Méthodes
@@ -331,4 +334,27 @@ public function voirRendezVous() {
             exit;
         }
     }
+
+//COMMANDES
+        // Méthode pour afficher toutes les commandes
+        public function afficherCommandes() {
+            if (\App\Session::estAdmin()) {
+                $commandes = $this->commandeManager->obtenirToutesLesCommandes(); // Récupérer toutes les commandes
+                require 'view/vueCommandesAdmin.php'; // Charger la vue des commandes
+            } else {
+                header("Location: index.php?action=connexion");
+                exit;
+            }
+        }
+    
+        // Méthode pour annuler une commande
+        public function annulerCommande() {
+            if (\App\Session::estAdmin() && isset($_POST['id_commande'])) {
+                $id_commande = $_POST['id_commande'];
+                $this->commandeManager->annulerCommande($id_commande); // Annuler la commande dans le modèle
+                $_SESSION['MAJadmin'] = "Commande annulée avec succès!";
+                header("Location: index.php?action=afficherCommandes");
+                exit;
+            }
+        }
 }

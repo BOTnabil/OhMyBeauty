@@ -42,6 +42,30 @@ class CommandeManager {
     
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+
+    // Récupérer toutes les commandes
+    public function obtenirToutesLesCommandes() {
+        $requete = "
+            SELECT c.*, u.email 
+            FROM commande c
+            JOIN utilisateur u ON c.id_utilisateur = u.id_utilisateur
+            ORDER BY c.dateCommande DESC
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->execute();
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+
+    // Annuler une commande
+    public function annulerCommande($id_commande) {
+        $requete = "
+            DELETE FROM commande 
+            WHERE id_commande = :id_commande
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':id_commande', $id_commande, \PDO::PARAM_INT);
+        $stmt->execute();
+    }
     
     // Méthode pour obtenir les infos d'une commande
     public function obtenirInfosParCommande($id_utilisateur) {

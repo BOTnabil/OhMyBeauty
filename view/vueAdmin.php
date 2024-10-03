@@ -98,6 +98,8 @@ $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPres
     <input type="submit" value="Voir les rendez-vous">
 </form>
 
+<a href="index.php?action=afficherCommandes">Voir les commandes</a>
+
 <?php
 // Message de confirmation ou d'erreur après l'ajout
 if (isset($_SESSION['MAJadmin'])) {
