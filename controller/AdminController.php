@@ -353,7 +353,7 @@ public function voirRendezVous() {
                 $id_commande = $_POST['id_commande'];
                 $this->contenirManager->supprimerCommandeDeContenir($id_commande); // Annuler la commande dans le modèle
                 $this->commandeManager->annulerCommande($id_commande); // Annuler la commande dans le modèle
-                $_SESSION['MAJadmin'] = "Commande annulée avec succès!";
+                
                 header("Location: index.php?action=afficherCommandes");
                 exit;
             }
