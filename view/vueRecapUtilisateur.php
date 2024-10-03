@@ -33,6 +33,7 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
         <thead>
             <tr>
                 <th>Date</th>
+                <th>Numero commande</th>
                 <th>Prix Total</th>
                 <th>Action</th>
                 <th></th>
@@ -42,6 +43,7 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
             <?php foreach ($commandes as $commande) { ?>
                 <tr>
                     <td><?= $commande['dateCommande']; ?></td>
+                    <td><?= $commande['numeroCommande']; ?></td>
                     <td><?= $commande['prixTotal']; ?> €</td>
                     <td>
                         <a href="javascript:void(0);" class="voir-details" data-id="<?= $commande['id_commande']; ?>">Voir les détails</a>

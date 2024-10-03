@@ -167,7 +167,7 @@ public function voirRendezVous() {
             // Supprimer le produit de la table "produit"
             $this->produitManager->supprimerProduit($id_produit);
 
-            header("Location: index.php?action=boutique");
+            header("Location: index.php?action=categorie");
         }
     }
 

@@ -55,7 +55,7 @@ class PanierController {
 
             $_SESSION['MAJpanier'] = "Article ajouté";
         } 
-        header("Location:index.php?action=boutique");
+        header("Location:index.php?action=voirArticle&id_article=". $id_produit);
     
     } 
 

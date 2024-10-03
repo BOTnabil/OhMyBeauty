@@ -39,8 +39,6 @@ class BoutiqueController {
             $id_article = $_GET['id_article'];
             $article = $this->produitManager->obtenirProduitParId($id_article); // Récupère les informations de l'article
             require 'view/vueArticle.php'; // Charger la vue de l'article
-        } else {
-            header('Location: index.php?action=categorie'); // Rediriger si pas d'article
         }
     }
     
