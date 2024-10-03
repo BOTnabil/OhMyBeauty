@@ -41,14 +41,14 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `dateCommande` datetime NOT NULL,
   `prixTotal` decimal(15,2) NOT NULL,
   `id_utilisateur` int DEFAULT NULL,
-  `infosCommande` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `infosCommande` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id_commande`),
   UNIQUE KEY `numeroCommande` (`numeroCommande`),
   KEY `id_utilisateur` (`id_utilisateur`),
   CONSTRAINT `commande_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table ohmybeauty.commande : ~1 rows (environ)
+-- Listage des données de la table ohmybeauty.commande : ~0 rows (environ)
 DELETE FROM `commande`;
 
 -- Listage de la structure de table ohmybeauty. contenir
@@ -124,7 +124,7 @@ CREATE TABLE IF NOT EXISTS `produit` (
   `designation` varchar(50) NOT NULL,
   `prix` decimal(15,2) NOT NULL,
   `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
-  `description` varchar(500) DEFAULT NULL,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `id_categorie` int NOT NULL,
   PRIMARY KEY (`id_produit`),
   KEY `id_categorie` (`id_categorie`),
@@ -163,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   `id_utilisateur` int DEFAULT NULL,
   `id_prestation` int DEFAULT NULL,
   `datePrestation` datetime NOT NULL,
-  `infosReservation` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
+  `infosReservation` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id_reservation`),
   KEY `id_prestation` (`id_prestation`),
   KEY `reservation_ibfk_1` (`id_utilisateur`),
