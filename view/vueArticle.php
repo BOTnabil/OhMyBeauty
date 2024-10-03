@@ -15,7 +15,7 @@ ob_start();
 </div>
 
 <?php
-$titre = "[nom de l'article] - Oh My Beauty";
+$titre = $article['designation'] ."- Oh My Beauty";
 $contenu = ob_get_clean();
 require "template.php";
 ?>

@@ -16,7 +16,7 @@ ob_start();
 
 
 <?php
-$titre = "Boutique - Oh My Beauty";
+$titre = $categorieNom ." - Oh My Beauty";
 $contenu = ob_get_clean();
 require "template.php";
 ?>

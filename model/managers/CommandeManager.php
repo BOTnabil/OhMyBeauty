@@ -31,7 +31,7 @@ class CommandeManager {
     // Méthode pour obtenir les commandes d'un utilisateur spécifique
     public function obtenirCommandesParUtilisateur($id_utilisateur) {
         $requete = "
-            SELECT id_commande, dateCommande, prixTotal, infosCommande
+            SELECT id_commande, numeroCommande, dateCommande, prixTotal, infosCommande
             FROM commande
             WHERE id_utilisateur = :id_utilisateur
             ORDER BY dateCommande DESC

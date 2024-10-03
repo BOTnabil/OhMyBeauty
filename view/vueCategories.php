@@ -14,7 +14,7 @@ ob_start();
 </div>
 
 <?php
-$titre = "Catégories d'article - Oh My Beauty";
+$titre = "Catégories - Oh My Beauty";
 $contenu = ob_get_clean();
 require "template.php";
 ?>
