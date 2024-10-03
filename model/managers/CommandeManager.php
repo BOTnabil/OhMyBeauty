@@ -46,10 +46,9 @@ class CommandeManager {
     // Récupérer toutes les commandes
     public function obtenirToutesLesCommandes() {
         $requete = "
-            SELECT c.*, u.email 
-            FROM commande c
-            JOIN utilisateur u ON c.id_utilisateur = u.id_utilisateur
-            ORDER BY c.dateCommande DESC
+            SELECT *
+            FROM commande
+            ORDER BY dateCommande DESC
         ";
         $stmt = $this->db->prepare($requete);
         $stmt->execute();

@@ -15,7 +15,7 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'ADMIN') {
         <thead>
             <tr>
                 <th>Date</th>
-                <th>Client</th>
+                <th></th>
                 <th>Prix Total</th>
                 <th>Action</th>
             </tr>
@@ -24,7 +24,6 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'ADMIN') {
             <?php foreach ($commandes as $commande) { ?>
                 <tr>
                     <td><?= htmlspecialchars($commande['dateCommande']); ?></td>
-                    <td><?= htmlspecialchars($commande['email']); ?></td>
                     <td><?= $commande['infosCommande']; ?> €</td>
                     <td><?= htmlspecialchars($commande['prixTotal']); ?> €</td>
                     <td>
@@ -42,6 +41,6 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'ADMIN') {
 <?php } ?>
 
 <?php
-$titre = "Commandes - Oh My Beauty (Admin)";
+$titre = "Commandes - Oh My Beauty";
 $contenu = ob_get_clean();
 require "template.php";
