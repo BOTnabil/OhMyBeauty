@@ -2,25 +2,30 @@
 ob_start();
 ?>
 
-<!-- bannière -->
-<section class="wrapperContact">
+<div class="wrapperContact">
 
-    <h1>CONTACTEZ-NOUS</h1>
-    <div class="logos">
-        <div class="logos-contact">
-            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+<!-- contact -->
+    <section class="contact">
+
+        <h2>CONTACTEZ-NOUS</h2>
+        <div class="logos">
+            <div class="logos-contact">
+                <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            </div>
+            <div class="logos-contact">
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+            <div class="logos-contact">
+                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+            <div class="logos-contact">
+                <a href="#"><i class="fa-solid fa-p"></i></a>
+            </div>
         </div>
-        <div class="logos-contact">
-            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-        </div>
-        <div class="logos-contact">
-            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
-        </div>
-        <div class="logos-contact">
-            <a href="#"><i class="fa-solid fa-p"></i></a>
-        </div>
-    </div>
-<!-- fin de bannière -->
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium deleniti magni placeat dolorum.</p>
+
+    </section>
+<!-- fin de contact -->
 
     <?php
     // Message de confirmation ou d'erreur après l'ajout
@@ -43,7 +48,7 @@ ob_start();
         <input type="submit" value="Envoyer">
     </form>
 <!-- fin du formulaire de contact -->
-</section>
+</div>
 
 <?php
 $titre = "Contact - Oh My Beauty";

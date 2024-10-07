@@ -20,11 +20,7 @@
     box-sizing: border-box;
 }
 
-html {
-    font-size: 18px;
-    height: 100%;
-}
-
+a {text-decoration: none;}
 
  /*=================================================================
 ========================= HEADER ================================
@@ -42,13 +38,34 @@ html {
 header {
     z-index: 2;
     display: flex;
-    background-size: cover;
-    top: 0;
-    left: 0;
+    background-color: var(--marron);
     width: 100%;
     height: 60px;
-    padding: 0;
     position: sticky;
+    top: 0;
+}
+
+header button {
+    background: none; 
+    border: none; 
+    cursor: pointer;
+    font-size: 1em; 
+    margin-top: 4px; 
+    color: var(--bcreme);
+}
+
+header button:hover{
+    color: var(--beige);
+    transition: all 0.2s;
+}
+
+header li{
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: var(--bcreme);
+    padding: 10px;
+    text-align: center;
+    list-style-type: none
 }
 
 .logoNav{
@@ -63,21 +80,22 @@ header {
 nav{
     margin-top: 15px;
     margin: auto;
-    font-size:  20PX;
 }
 
 nav a{
     margin-right: 15px;
     margin-left: 15px;
     transition: all 0.2s;
-color: var(--blanc);
-        text-decoration: none;
-        font-family: var(--oxygen);
-
 }
 
-nav a:hover{
-    color: var(--or);
+header a{
+    font-family: var(--oxygen);
+    color: var(--bcreme);
+}
+
+header a:hover{
+    color: var(--beige);
+    transition: all 0.2s;
 }
 
 .user{
@@ -85,14 +103,6 @@ nav a:hover{
     margin-right: 20px; 
     color: var(--or);
     z-index: 1000;
-}
-
-i{
-    transition: all 0.2s;
-}
-
-i:hover{
-    color: var(--or);
 }
 
 .user-menu {
@@ -103,7 +113,7 @@ i:hover{
     z-index: 1;
     top: 0px;
     right: -300px;
-    background-color: rgba(61, 10, 1, 0.9);
+    background-color: var(--marron);
     margin-top: 60px;
     transition: right 0.5s ease;
     overflow-y: auto;
@@ -113,23 +123,63 @@ i:hover{
     right: 0;
 }
 
+
+/* PANIER HEADER */
+.header-cart-toggle {
+    position: relative;
+    display: inline-block;
+    margin-top: 20px;
+    margin-right: 15px;
+    z-index: 1000;
+}
+
+
+#cartContainer {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: white;
+    width: 100%;
+    z-index: 100;
+    padding: 20px;
+    display: none;
+}
+
+#cartContainer h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.cart-summary {
+    margin-top: 10px;
+}
+
+.btn-gerer-panier {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    background-color: var(--marron);
+    color: white;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.cart-count {
+    background-color: rgb(253, 67, 67);
+    color: var(--blanc);
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    position: absolute;
+    top: -10px;
+    right: -8px;
+}
+
  /*=========================MAIN PAGE========================================
 ========================= HOME ================================
 =================================================================
  */
 
-.citation{
-    color: var(--blanc);
-    background-size: cover;
-    font-family: var(--rufina);
-    font-weight: 300;
-    text-align: center;
-    font-size: 50PX;
-    padding-left: 10%;
-    padding-top: 3%;
-    padding-bottom: 3%;
-    padding-right: 10%;
-}
 
  /*=================================================================
 ========================= SERVICES ================================
@@ -266,19 +316,18 @@ i:hover{
 
 .logos-contact {
     display: flex;
-    color: grey;
     font-size: 20px;
     height: 50px;
     width: 50px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    border: 1px grey solid;
+    border: 1px var(--bcreme) solid;
     border-radius: 50%;
 }
 
 .logos-contact a {
-    color: var(--blanc);
+    color: var(--bcreme);
     display: flex;
     text-decoration: none;
     align-items: center;
@@ -336,7 +385,8 @@ i:hover{
 
 
 .features {
-    margin-bottom: 40px;
+    padding-bottom: 40px;
+    background-color: var(--bcreme);
  }
 
 .features h1 {
@@ -346,7 +396,8 @@ i:hover{
     padding-bottom: 10px;
     justify-content: center;
     text-align: justify;
-    color: var(--blanc);
+    color: var(--brun);
+    font-size: 3rem;
 }
 
 .titre {
@@ -354,7 +405,7 @@ i:hover{
     font-weight: 300;
     justify-content: center;
     text-align: center;
-    color: var(--blanc);
+    color: var(--brun);
 }
 
 .containerFeatures{
@@ -384,7 +435,7 @@ i:hover{
     flex-wrap: wrap;
     overflow: hidden;
     gap: 20px;
-    background-image: radial-gradient(var(--bordeau), var(--crimson) 70%);
+    background-color: var(--marron);
     width: 400px;
     height: 350px;
     border-radius: 10px;
@@ -397,7 +448,7 @@ i:hover{
 .cards-1 i {
     padding-top: 50px;
     height: 100px;
-    color: var(--blanc);
+    color: var(--bcreme);
     font-size: 40px;
 }
 
@@ -406,14 +457,14 @@ i:hover{
     padding-bottom: 10px;
     font-size: 25px;
     font-weight: 500;
-    color: var(--blanc);
+    color: var(--bcreme);
     
 }
 
 .cards-1 p {
     font-family: var(--oxygen);
     font-size: 17px;
-    color: var(--blanc);
+    color: var(--bcreme);
     font-weight: 300;
 }
 
@@ -443,11 +494,12 @@ i:hover{
  }
 
  #team h1 {
+    font-size: 3rem;
     font-family: var(--rufina);
     text-align: center;
     justify-content: justify;
     padding-bottom: 20px;
-    color: var(--blanc);
+    color: var(--bcreme);
 
  }
 
@@ -455,13 +507,13 @@ i:hover{
     font-family: var(--oxygen);
     justify-content: center;
     text-align: center;
-    color: var(--blanc);
+    color: var(--bcreme);
     font-weight: 300;
     padding-bottom: 50px;
  }
 
 .equipe {
-    color: var(--blanc);
+    color: var(--bcreme);
     display: flex;
     justify-content: space-evenly;
     padding-top: 20px;
@@ -512,25 +564,6 @@ i:hover{
 }
 
 
-.cards-2-header i {
-    display: flex;
-    height: 30px;
-    width: 30px;
-    align-items: center;
-    margin: 5px;
-    padding: 15px 25px 10px 10px;
-    background-color: var(--blanc);
-    padding-bottom: 20px;
-   border-radius: 50%;
-}
-
-
-.cards-2-header a {
-    text-decoration: none;
-    color: var(--crimson);
-}
-
-
  /*=================================================================
 ========================= RESPONSIVE MAIN ================================
 =================================================================
@@ -542,21 +575,19 @@ i:hover{
         display: table-header-group;
         margin-left: 5vw;
         margin-right: 9vw;
-        margin-top: 13px;
         position: relative;
         z-index: 2; /* Pour le garder au-dessus du sidenav */
-        color: var(--blanc);
     }
 
     .sidenav{
         display: block;
         height: 100%;
-        width: 150px;
+        width: 200px;
         position: fixed;
         z-index: 1;
         top: 0PX;
         left: -250px;
-        background-color: rgba(61, 10, 1,0.9);
+        background-color: var(--marron);
         margin-top: 60px;
         transition: left 0.5s ease;
     }
@@ -564,14 +595,6 @@ i:hover{
     .logoNav{
         margin-left: AUTO;
         margin-right: AUTO;
-    }
-
-
-    .sidenav li{
-        margin-top: 20px;
-        margin-bottom: 20px;
-        margin-left: 20PX;
-        list-style-type: none
     }
 
     .sidenav.active{
@@ -583,13 +606,6 @@ i:hover{
         top: 0;
         right: 25px;
         font-size: 36px;
-    }
-
-    .burger-icon span {
-        display: block;
-        width: 35px;
-        height: 5px;
-        margin: 6px 0;
     }
 
     #myLinks{
@@ -664,27 +680,20 @@ textarea{
 
 .wrapperContact {
     font-family: var(--oxygen);
-    background-color: #2c2c2c;
+    background-color: var(--bcreme);
     color: #e0e0e0;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     box-sizing: border-box;
     padding-bottom: 50px;
 }
 
-.wrapperContact h1 {
-    padding-top: 5px;
-    font-size: 2.5em;
-    color: #e6e6e6;
-    text-align: center;
-}
-
 /* Conteneur du formulaire */
 .wrapperContact form {
-    background-color: #1e1e1e;
+    background-color: var(--marron);
     margin-left: auto;
     margin-right: auto;
+    margin-top: 50px;
     border-radius: 8px;
     padding: 30px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
@@ -695,7 +704,7 @@ textarea{
 /* Labels */
 .wrapperContact label {
     font-size: 1.1em;
-    color: #f2f2f2;
+    color: var(--bcreme);
     display: block;
     margin-bottom: 8px;
 }
@@ -707,10 +716,10 @@ textarea{
     width: 100%;
     padding: 12px;
     margin-bottom: 15px;
-    border: 1px solid #444;
+    border: 1px solid var(--marron);
     border-radius: 4px;
-    background-color: #414141;
-    color: #f2f2f2;
+    background-color: var(--bcreme);
+    color: var(--marron);
     font-size: 1em;
     box-sizing: border-box;
     font-family: var(--oxygen);
@@ -720,14 +729,14 @@ textarea{
 .wrapperContact input[type="text"]:focus, 
 .wrapperContact input[type="email"]:focus,
 .wrapperContact textarea:focus {
-    border-color: #d8d8d8;
+    border-color: var(--brun);
     outline: none;
 }
 
 /* Bouton de soumission */
 .wrapperContact input[type="submit"] {
-    background-color: var(--crimson);
-    color: var(--blanc);
+    background-color: var(--brun);
+    color: var(--bcreme);
     padding: 12px 20px;
     border: none;
     border-radius: 4px;
@@ -738,7 +747,7 @@ textarea{
 }
 
 .wrapperContact input[type="submit"]:hover {
-    background-color: var(--bcasse);
+    background-color: var(--beige);
 }
 
 /* Service view */
@@ -790,71 +799,6 @@ textarea{
     background-color: var(var(--crimson));
 }
 
-/* PANIER HEADER */
-.header-cart-toggle {
-    position: relative;
-    display: inline-block;
-    margin-top: 20px;
-    margin-right: 15px;
-    z-index: 1000;
-}
-
-.header-cart-toggle i{
-    color: var(--blanc);
-}
-
-.header-cart-toggle i:hover{
-    color: var(--or);
-}
-
-#cartContainer {
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background-color: var(--blanc);
-    width: 100%;
-    z-index: 100;
-    padding: 20px;
-    display: none;
-}
-
-#cartContainer h2 {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-.cart-summary {
-    margin-top: 10px;
-}
-
-.btn-gerer-panier {
-    display: block;
-    text-align: center;
-    padding: 10px;
-    background-color: var(--crimson);
-    color: var(--blanc);
-    text-decoration: none;
-    margin-top: 10px;
-}
-
-.cart-count {
-    background-color: rgb(253, 67, 67);
-    color: var(--blanc);
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 12px;
-    position: absolute;
-    top: -10px;
-    right: -8px;
-}
-
-#toggleCartBtn {
-    background: none; 
-    border: none; 
-    cursor: pointer;
-    font-size: 1em; 
-    padding: 0; 
-}
 
 /* FOOTER */
 
@@ -880,7 +824,7 @@ textarea{
   }
   
   .text-white {
-    color: var(--blanc);
+    color: var(--bcreme);
   }
   
   .text-center {
@@ -894,7 +838,7 @@ textarea{
   }
   
   .bg-footer {
-    background-size: cover;
+    background-color: var(--marron);
     font-family: var(--oxygen);
     width: 100%;
     bottom: 0;
@@ -914,7 +858,7 @@ textarea{
     list-style: none;
   
     a {
-      color: #acacac;
+      color: var(--bcreme);
       line-height: 40px;
       font-size: 16px;
       transition: all 0.2s;
@@ -922,7 +866,7 @@ textarea{
       text-decoration-thickness: 2px;
   
       &:hover {
-        color: var(--or);
+        color: var(--beige);
       }
     }
   }
@@ -943,7 +887,7 @@ textarea{
   }
   
   .contact-info {
-    color: #acacac;
+    color: var(--bcreme);
     font-size: 16px;
     margin-top: 20px
   }
@@ -1009,132 +953,10 @@ textarea{
       right: 0;
       margin: auto;
       display: block;
-      border-bottom: 3px solid #E0952E;
+      border-bottom: 3px solid var(--beige)
     }
   }
 
-
-
-/*A PROPOS MAIN PAGE*/
-
-.box-about-us {
-	transform: translateX(100%);
-	transition: transform 0.6s ease;
-}
-
-.box-about-us:nth-of-type(even) {
-	transform: translateX(-100%);
-}
-
-.box-about-us.show {
-	transform: translateX(0);
-
-}
-
-.about-us {
-    display: flex;
-    background-color: var(--blanc);
-    scroll-snap-align: start;
-}
-
-.about-us-content {
-    flex: 0 1 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 10rem;
-    box-sizing: border-box;
-}
-
-.about-us-heading {
-    font-family: var(--oxygen);
-    font-size: 2rem;
-    font-weight: 300;
-    text-transform: uppercase;
-    color: var(--bordeau);
-}
-
-.sub-heading {
-    font-family: var(--rufina);
-    font-size: 3.5rem;
-    font-weight: 300;
-    letter-spacing: .2rem;
-    color: var(--or);
-}
-
-.about-us-paragraph {
-    font-size: 1rem;
-    font-style: italic;
-    font-weight: 300;
-    margin-bottom: 2rem;
-}
-
-.about-us-btn {
-    width: 10rem;
-    padding: .5rem .3rem;
-    font-size: 1rem;
-    text-transform: uppercase;
-    color: var(--or);
-    background-color: transparent;
-    border: .1rem solid var(--or);
-    outline: none;
-    cursor: pointer;
-}
-
-.btn-arrow {
-    margin-left: .5rem;
-    transition: margin-left .4s;
-}
-
-.about-us-btn:hover .btn-arrow {
-    margin-left: 1rem;
-}
-
-.about-us-images {
-    flex: 1;
-    position: relative;
-    margin: auto;
-}
-
-.image {
-    width: 22rem;
-    position: absolute;
-    top: 40%;
-    left: 40%;
-    box-shadow: 0 2rem 4rem rgba(0, 0, 0, .4);
-    border-radius: .3rem;
-    border: .2rem solid var(--or);
-}
-
-.image-1 {
-    transform: translate(-20%, -90%);
-}
-
-.image-2 {
-    transform: translate(-70%, -70%);
-}
-
-.image-3 {
-    transform: translate(-50%, -50%);
-}
-
-.image-4 {
-    transform: translate(-30%, -30%);
-}
-
-@media screen and (max-width: 1422px) {
-    .about-us-images {
-      display: none;
-    }
-
-    .about-us-content {
-        flex: 100%;
-        padding : 50px;
-        overflow: hidden
-    }
-
-  }
 
 /* slider */
 
@@ -1159,12 +981,16 @@ textarea{
         }
 
     .suivant, .precedent {
-        color: var(--blanc);
+        color: var(--bcreme);
         font-size: 3rem;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         cursor: pointer;
+    }
+
+    .suivant:hover, .precedent:hover {
+        color: var(--beige);
     }
 
     .suivant {
@@ -1174,5 +1000,3 @@ textarea{
     .precedent{
     left: 1rem;
     }
-
-/* TEST */

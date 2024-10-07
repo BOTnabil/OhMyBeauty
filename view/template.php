@@ -26,11 +26,9 @@
     <header>
 
         <!-- Menu burger -->
-        <a href="#" id="openBtn">
-            <span class="burger-icon">
-                <span><i class="fa-solid fa-bars fa-xl"></i></span>
-            </span>
-        </a>
+        <button id="openBtn">
+                <i class="fa-solid fa-bars fa-xl"></i>
+        </button>
         <a href="index.php?action=home" class="logoNav"><img src="./public/img/logo_header.png"  alt="image logo Oh My Beauty"></a>
         <div id="mySidenav" class="sidenav">
             <ul>
@@ -70,7 +68,9 @@
 
         <!-- Menu utilisateur bouton -->
         <div class="user">
-            <a href="#"><i class="fa-regular fa-user fa-l"></i></a>
+            <button>
+                <i class="fa-solid fa-user fa-l"></i>
+            </button>
         </div>
         <!-- fin du menu utilisateur bouton -->
 
@@ -80,23 +80,20 @@
                 // si l'utilisateur est connecté 
                 if (isset($_SESSION['user_id'])) {
                     ?>
-                    <div class="user-menu-item">
-                        <h3><a href="index.php?action=recap">Votre espace</a></h3>
+                    <ul class="user-menu-item">
+                        <li><a href="index.php?action=recap">Votre espace</a></li>
                         <?php if (\App\Session::estAdmin()) { ?>
-                        <h3><a href="index.php?action=admin">Espace admin</a></h3> <?php } ?>
-                        <h3><a href="index.php?action=deconnexion">Se déconnecter</a></h3>
-                        <h3><a href="index.php?action=supprimerUtilisateur" onclick="return confirm('Supprimer votre compte ? Vos rendez-vous et commandes ne seront pas annulés');">Supprimer mon compte</a></h3>
-                    </div>
+                        <li><a href="index.php?action=admin">Espace admin</a> <?php } ?></li>
+                        <li><a href="index.php?action=deconnexion">Se déconnecter</a></li>
+                        <li><a href="index.php?action=supprimerUtilisateur" onclick="return confirm('Supprimer votre compte ? Vos rendez-vous et commandes ne seront pas annulés');">Supprimer mon compte</a></li>
+                    </ul>
                     <?php
                 } else {
                     ?>
-                    <div class="user-menu-item">
-                        <a href='index.php?action=inscription'>S'inscrire</a>
-                    </div>
-
-                    <div class="user-menu-item">
-                        <a href='index.php?action=connexion'>Se connecter</a>
-                    </div>
+                    <ul class="user-menu-item">
+                        <li><a href='index.php?action=inscription'>S'inscrire</a></li>
+                        <li><a href='index.php?action=connexion'>Se connecter</a></li>
+                    </ul>
                 <?php
                 }
             ?>
