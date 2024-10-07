@@ -2,10 +2,10 @@
 ob_start();
 ?>
 
-<h1><?= htmlspecialchars($article['designation']); ?></h1>
+<h1><?= $article['designation']; ?></h1>
 <div class="article-details">
     <p>Prix : <?= htmlspecialchars($article['prix']); ?> €</p>
-    <p>Description : <?= htmlspecialchars($article['description']); ?></p>
+    <p>Description : <?= $article['description']; ?></p>
     
     <!-- Bouton Ajouter au panier -->
     <form method="get" action="index.php">

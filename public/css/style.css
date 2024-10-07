@@ -4,7 +4,7 @@
  */
  :root {
     --marron : #3F362E;
-    --brun : #53300F;
+    --brun : #7c5d41;
     --beige : #E1BB97;
     --bcreme : #FEF2E7;
     --rufina : "Rufina", serif;;
@@ -21,6 +21,10 @@
 }
 
 a {text-decoration: none;}
+
+h1 {
+    font-family: var(--rufina);
+}
 
  /*=================================================================
 ========================= HEADER ================================
@@ -999,4 +1003,140 @@ textarea{
 
     .precedent{
     left: 1rem;
+    }
+
+
+
+
+
+
+
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid var(--beige);
+        padding-bottom: 5px;
+    }
+    
+    .gestion-rdv {
+        padding-top: 20px;
+        margin-bottom: 40px;
+        margin: auto;
+        max-width: 90%;
+    }
+    
+    .categories {
+        justify-content: center;
+        display: flex;
+        gap: 7vw;
+        font-family: var(--oxygen);
+    }
+    
+    .categorie h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+    
+    .categorie label {
+        display: block;
+        margin-bottom: 5px;
+        margin: 10px;
+    }
+
+    #prestation-form{
+        font-family: var(--oxygen);
+        width: 70%;
+        margin: auto;
+        margin-bottom: 40px;
+    }
+    
+    .ajouter-prestation {
+        margin-bottom: 40px;
+        margin: auto;
+        max-width: 90%;
+    }
+    
+    .ajouter-prestation h2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #produit-form{
+        font-family: var(--oxygen);
+        width: 70%;
+        margin: auto;
+        margin-bottom: 40px;
+    }
+
+    .ajouter-produit {
+        margin: auto;
+        max-width: 90%;
+    }
+
+    .ajouter-produit h2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 0px solid;
+        background-color: #e0dfdf;
+        margin: auto
+    }
+    
+    .presta-form{
+        justify-content: center;
+    }
+    
+    .submit-btn {
+        background-color: var(--brun);
+        color: var(--bcreme);
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 7px;
+    }
+
+    .wrapper-input{
+        margin-left: 43%;
+    }
+
+    .toggle-btn{
+        cursor: pointer;
+    }
+
+    .voir-commandes{
+        max-width: 90%;
+        margin-bottom: 20px;
+        margin: auto;
+    }
+
+    .voir-commandes a{
+        font-weight: 100;
+        padding: 10px;
+        color: var(--bcreme);
+        border-radius: 7px;
+        background-color: var(--brun);
+    }
+
+    .voir-commandes h2{
+        margin: auto;
+        border: solid 0px;
     }

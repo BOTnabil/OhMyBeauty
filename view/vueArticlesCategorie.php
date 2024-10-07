@@ -7,7 +7,7 @@ ob_start();
     <?php foreach ($articles as $article) { ?>
         <div class="article">
             <a href="index.php?action=voirArticle&id_article=<?= $article['id_produit']; ?>">
-                <h3><?= htmlspecialchars($article['designation']); ?></h3>
+                <h3><?= $article['designation']; ?></h3>
                 <p>Prix : <?= $article['prix']; ?> €</p>
             </a>
         </div>

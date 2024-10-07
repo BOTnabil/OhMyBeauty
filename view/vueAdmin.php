@@ -22,83 +22,98 @@ $categories = $categorieManager->obtenirToutesLesCategories();
 $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPrestations();
 
 ?>
+<h1>Administration</h1>
 
-<h1>Ajouter un produit</h1>
+<div class="voir-commandes">
+    <h2><a href="index.php?action=afficherCommandes">Voir les commandes</a><h2>
+</div>    
 
-<form action= "index.php?action=ajouterProduit" method="POST" enctype="multipart/form-data">
-    <label for="designation">Désignation :</label>
-    <input type="text" name="designation" required value="<?= $produit['designation'] ?? ''; ?>"><br>
-
-    <label for="description">Description :</label>
-    <textarea name="description" required><?= $produit['description'] ?? ''; ?></textarea><br>
-
-    <label for="prix">Prix :</label>
-    <input type="number" step="0.01" name="prix" required value="<?= $produit['prix'] ?? ''; ?>"><br>
-
-    <label for="categorie">Catégorie :</label>
-    <select name="id_categorie" required>
-        <?php foreach ($categories as $categorie): ?>
-            <option value="<?= $categorie['id_categorie'] ?>" <?= isset($produit['id_categorie']) && $produit['id_categorie'] == $categorie['id_categorie'] ? 'selected' : ''; ?>>
-                <?= $categorie['designation'] ?>
-            </option>
-        <?php endforeach; ?>
-    </select><br>
-
-    <label for="image">Image :</label>
-    <input type="file" name="image"><br>
-
-    <input type="submit" name="submit" value="Enregistrer">
-</form>
-
-<h1>Ajouter une prestation</h1>
-
-<form action= "index.php?action=ajouterPrestation" method="POST" enctype="multipart/form-data">
-    <label for="designation">Désignation :</label>
-    <input type="text" name="designation" required value="<?= $prestation['designation'] ?? ''; ?>"><br>
-
-    <label for="description">Description :</label>
-    <textarea name="description" required><?= $prestation['description'] ?? ''; ?></textarea><br>
-
-    <label for="duree">Durée (moins de 60min) :</label>
-    <input type="text" name="duree" required value="<?= $prestation['duree'] ?? ''; ?>"><br>
-
-    <label for="prix">Prix :</label>
-    <input type="number" step="0.01" name="prix" required value="<?= $prestation['prix'] ?? ''; ?>"><br>
-
-    <label for="categorie">Catégorie :</label>
-    <select name="id_categorie" required>
-        <?php foreach ($categories as $categorie): ?>
-            <option value="<?= $categorie['id_categorie'] ?>" <?= isset($prestation['id_categorie']) && $prestation['id_categorie'] == $categorie['id_categorie'] ? 'selected' : ''; ?>>
-                <?= $categorie['designation'] ?>
-            </option>
-        <?php endforeach; ?>
-    </select><br>
-
-    <input type="submit" name="submit" value="Enregistrer">
-</form>
-
-<h1>Gestion des rendez-vous</h1>
-
-<form method="get" action="index.php">
-    <h2>Sélectionner les prestations à afficher</h2>
-    
-    <?php foreach ($categoriesAvecPrestations as $categorieNom => $prestations) { ?>
-        <div class="categorie">
-            <h3><?= $categorieNom; ?></h3>
-            <?php foreach ($prestations as $prestation) { ?>
-                <label>
-                    <input type="checkbox" name="prestations[]" value="<?= $prestation['id_prestation']; ?>">
-                    <?= $prestation['designation']; ?>
-                </label><br>
+<section class="gestion-rdv">
+    <form class="presta-form" method="get" action="index.php">
+        <h2>Sélectionner les prestations à afficher</h2>
+        <div class="categories">
+            <?php foreach ($categoriesAvecPrestations as $categorieNom => $prestations) { ?>
+                <div class="categorie">
+                    <h3><?= $categorieNom; ?></h3>
+                    <?php foreach ($prestations as $prestation) { ?>
+                        <label>
+                            <input type="checkbox" name="prestations[]" value="<?= $prestation['id_prestation']; ?>">
+                            <?= $prestation['designation']; ?>
+                        </label>
+                    <?php } ?>
+                </div>
             <?php } ?>
         </div>
-    <?php } ?>
-    
-    <input type="hidden" name="action" value="voirRendezVous">
-    <input type="submit" value="Voir les rendez-vous">
-</form>
+        <div class="wrapper-input">
+            <input type="hidden" name="action" value="voirRendezVous">
+            <input class="submit-btn" type="submit" value="Voir les rendez-vous">
+        </div>
+    </form>
+</section>
 
-<a href="index.php?action=afficherCommandes">Voir les commandes</a>
+<section class="ajouter-prestation">
+    <h2>Ajouter une prestation <span class="toggle-btn" id="toggle-prestation">+</span></h2>
+    <form id="prestation-form" action= "index.php?action=ajouterPrestation" method="POST" enctype="multipart/form-data" style="display: none;">
+        <div class="form-group">
+            <label for="designation">Désignation :</label>
+            <input type="text" name="designation" required><br>
+        </div>
+        <div class="form-group">
+            <label for="description">Description :</label>
+            <textarea name="description" required></textarea><br>
+        </div>
+        <div class="form-group">
+            <label for="duree">Durée (moins de 60min) :</label>
+            <input type="text" name="duree"><br>
+        </div>
+        <div class="form-group">
+            <label for="prix">Prix :</label>
+            <input type="number" step="0.01" name="prix" required ><br>
+        </div>
+        <div class="form-group">
+            <label for="categorie">Catégorie :</label>
+            <select name="id_categorie" required>
+                <?php foreach ($categories as $categorie): ?>
+                    <option value="<?= $categorie['id_categorie'] ?>" <?= isset($produit['id_categorie']) && $produit['id_categorie'] == $categorie['id_categorie'] ? 'selected' : ''; ?>>
+                        <?= $categorie['designation'] ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <input class="submit-btn" type="submit" name="submit" value="Ajouter une prestation">
+    </form>
+</section>
+
+<section class="ajouter-produit">
+    <h2>Ajouter un produit <span class="toggle-btn" id="toggle-produit">+</span></h2>
+    <form id="produit-form" action= "index.php?action=ajouterProduit" method="POST" enctype="multipart/form-data" style="display: none;">
+        <div class="form-group">
+            <label for="designation">Désignation :</label>
+            <input type="text" name="designation" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Description :</label>
+            <textarea name="description" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="prix">Prix :</label>
+            <input type="number" step="0.01" name="prix" required>
+        </div>
+        <div class="form-group">
+            <label for="categorie">Catégorie :</label>
+            <select name="id_categorie" required>
+                <?php foreach ($categories as $categorie): ?>
+                    <option value="<?= $categorie['id_categorie'] ?>" <?= isset($produit['id_categorie']) && $produit['id_categorie'] == $categorie['id_categorie'] ? 'selected' : ''; ?>>
+                        <?= $categorie['designation'] ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <label for="image">Image :</label><br><br>
+        <input type="file" name="image"><br><br>
+        <input class="submit-btn" type="submit" name="submit" value="Ajouter un produit">
+    </form>
+</section>
 
 <?php
 // Message de confirmation ou d'erreur après l'ajout
