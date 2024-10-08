@@ -3,6 +3,9 @@ ob_start();
 ?>
 
 <h1><?= $article['designation']; ?></h1>
+
+<img src="./public/img/<?= $article['image']; ?>" alt="image de l'article">
+
 <div class="article-details">
     <p>Prix : <?= htmlspecialchars($article['prix']); ?> €</p>
     <p>Description : <?= $article['description']; ?></p>

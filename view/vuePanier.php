@@ -3,36 +3,41 @@ ob_start();
 ?>
 
 <!-- Panier -->
-<section class="panier-container">
+<section class="cart-container">
         <h2>Votre Panier</h2>
         <?php if (!empty($_SESSION['products'])) { ?>
             <table>
                 <thead>
                     <tr>
-                        <th>Produit</th>
+                        <th>Article</th>
+                        <th></th>
                         <th>Prix Unitaire</th>
                         <th>Quantité</th>
                         <th>Total</th>
-                        <th>Actions</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($_SESSION['products'] as $index => $produit) { ?>
                         <tr>
+                            <td><img src="./public/img/<?= $produit['image']; ?>" alt="image de l'article"></td> <!-- image -->
                             <td><?= $produit['nom']; ?></td>
                             <td><?= $produit['prix']; ?> €</td>
-                            <td><?= $produit['qtt']; ?></td>
+                            <td>
+                            <a href="index.php?action=diminuerQttProduit&id=<?= $index; ?>">-</a>
+                            <?= $produit['qtt']; ?>
+                            <a href="index.php?action=augmenterQttProduit&id=<?= $index; ?>">+</a>
+                            </td>
                             <td><?= $produit['total']; ?> €</td>
                             <td>
-                                <a href="index.php?action=augmenterQttProduit&id=<?= $index; ?>">+</a>
-                                <a href="index.php?action=diminuerQttProduit&id=<?= $index; ?>">-</a>
                                 <a href="index.php?action=supprimerDuPanier&id=<?= $index; ?>">Supprimer</a>
                             </td>
+                            <td></td>
                         </tr>
                     <?php } ?>
                 </tbody>
             </table>
-            <div class="resume-panier">
+            <div class="cart-summary">
                 <p><strong>Total Général : </strong> 
                 <?php 
                     $totalGeneral = 0;

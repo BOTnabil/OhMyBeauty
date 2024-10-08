@@ -28,11 +28,13 @@ class PanierController {
             //On récupère les informations du produit obtenu par ID
             $nom = $productData['designation'];
             $prix = $productData['prix'];
+            $image = $productData['image'];
             $qtt = 1;
             $produitExiste = false;
             $produit = [
                 "id" => $id_produit,
                 "nom" => $nom,
+                "image" => $image,
                 "prix" => $prix,
                 "qtt" => $qtt,
                 "total" => $prix * $qtt
