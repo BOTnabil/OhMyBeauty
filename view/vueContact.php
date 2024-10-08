@@ -7,7 +7,7 @@ ob_start();
 <!-- contact -->
     <section class="contact">
 
-        <h2>CONTACTEZ-NOUS</h2>
+        <h1>CONTACTEZ-NOUS</h1>
         <div class="logos">
             <div class="logos-contact">
                 <a href="#"><i class="fa-brands fa-facebook-f"></i></a>

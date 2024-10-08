@@ -22,18 +22,16 @@ $categories = $categorieManager->obtenirToutesLesCategories();
 $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPrestations();
 
 ?>
-<h1>Administration</h1>
-
-<div class="voir-commandes">
-    <h2><a href="index.php?action=afficherCommandes">Voir les commandes</a><h2>
-</div>    
+<div class="admin">
+    <h1>Administration</h1>   
+</div>
 
 <section class="gestion-rdv">
     <form class="presta-form" method="get" action="index.php">
         <h2>Sélectionner les prestations à afficher</h2>
-        <div class="categories">
+        <div class="categories-admin">
             <?php foreach ($categoriesAvecPrestations as $categorieNom => $prestations) { ?>
-                <div class="categorie">
+                <div class="categorie-admin">
                     <h3><?= $categorieNom; ?></h3>
                     <?php foreach ($prestations as $prestation) { ?>
                         <label>
@@ -44,10 +42,8 @@ $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPres
                 </div>
             <?php } ?>
         </div>
-        <div class="wrapper-input">
-            <input type="hidden" name="action" value="voirRendezVous">
-            <input class="submit-btn" type="submit" value="Voir les rendez-vous">
-        </div>
+        <input type="hidden" name="action" value="voirRendezVous">
+        <input class="submit-btn" type="submit" value="Voir les rendez-vous">
     </form>
 </section>
 
@@ -114,6 +110,10 @@ $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPres
         <input class="submit-btn" type="submit" name="submit" value="Ajouter un produit">
     </form>
 </section>
+
+<div class="voir-commandes">
+    <h2><a href="index.php?action=afficherCommandes">Voir les commandes</a><h2>
+</div> 
 
 <?php
 // Message de confirmation ou d'erreur après l'ajout

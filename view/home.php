@@ -3,17 +3,12 @@ ob_start();
 ?>
 
 <!-- slider -->
-<section class="wrapper-slider">
+<section>
 
-    <div class="slider">
-        <img src="./public/img/img1.jpg" alt="img1" class="img__slider active"/> 
-        <img src="./public/img/img2.jpg" alt="img2" class="img__slider"/>
-        <img src="./public/img/img3.jpg" alt="img3" class="img__slider"/>
-        <div class="suivant">
-            <i class="fas fa-chevron-circle-right"></i>
-        </div>
-        <div class="precedent">
-            <i class="fas fa-chevron-circle-left"></i>
+    <div class="banner">
+        <img src="./public/img/img1.jpg" alt="img1" class="img-logo"/> 
+        <div class="logo">
+            <h1>OH MY BEAUTY</h1>
         </div>
     </div>
 

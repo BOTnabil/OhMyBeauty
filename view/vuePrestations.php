@@ -13,6 +13,10 @@ $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPres
 
 ?>
 
+<div class="presta-titre">
+    <h1> Prestations </h1>
+</div>
+
 <!-- affichage des prestations -->
 <section class="prestations-container">
     <?php foreach ($categoriesAvecPrestations as $categorieNom => $prestations) { ?>
@@ -49,14 +53,14 @@ $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPres
                                     <!-- Bouton de suppression visible uniquement pour les admins -->
                                     <form method="post" action="index.php?action=supprimerPrestation">
                                         <input type="hidden" name="id_prestation" value="<?= $prestation['id_prestation']; ?>">
-                                        <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette prestation ?');">X</button>
+                                        <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette prestation ?');"><i class="fa-solid fa-trash"></i></button>
                                     </form>
 
                                     <!-- Bouton de modification visible uniquement pour les admins -->
                                     <form method="get" action="index.php">
                                         <input type="hidden" name="action" value="afficherModifierPrestation">
                                         <input type="hidden" name="id_prestation" value="<?= $prestation['id_prestation']; ?>">
-                                        <button type="submit">Modifier</button>
+                                        <button type="submit"><i class="fa-solid fa-pen-to-square"></i></button>
                                     </form>
                                 <?php } ?>
                         </div>
