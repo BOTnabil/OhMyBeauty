@@ -11,7 +11,7 @@
         
         <label for="motDePasse1">Mot de passe :</label><br>
         <input type="password" id="motDePasse1" name="motDePasse1" required><br>
-        <small>Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.</small><br><br>
+        <small>Au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.</small><br><br>
     
 
         <label for="motDePasse2">Confirmez le mot de passe :</label><br>

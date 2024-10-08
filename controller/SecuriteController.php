@@ -49,7 +49,7 @@ class SecuriteController {
                     exit;
                 } else {
                     // Mots de passe ne correspondent pas ou ne respectent pas les exigences
-                    $_SESSION['MAJregister'] = 'Les deux mots de passe ne sont pas identiques ou ne respectent pas les exigences (min. 8 caractères, incluant majuscule, minuscule, chiffre, caractère spécial).';
+                    $_SESSION['MAJregister'] = 'Les deux mots de passe ne sont pas identiques ou ne respectent pas les exigences.';
                     header("Location: index.php?action=inscription");
                     exit;
                 }

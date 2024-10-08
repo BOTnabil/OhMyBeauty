@@ -28,6 +28,16 @@ h1 {
     padding: 6px;
 }
 
+th{
+    padding: 5px;
+    text-align: start;
+}
+
+td{
+    padding: 5px;
+}
+
+
  /*=================================================================
 ========================= HEADER ================================
 =================================================================
@@ -148,12 +158,11 @@ header a:hover{
     z-index: 1000;
     padding: 20px;
     display: none;
-    font-family: var(--oxygen);
-    text-align: center;
+    font-family: var(--oxygen);   
 }
 
 #cartContainer table{
-    width: 100%;
+    width: 90%;
     margin: auto;
 }
 
@@ -355,36 +364,15 @@ header a:hover{
  */
 
 
-.sectionMap{
-    position: relative;
-}
-
 .map{
     overflow:hidden;
     position:relative;
     height: 50vw;
-    background-color: #0e0e0e;
 }
 
-.sectionMap img{
-    height: auto;
-    max-width: 60px;
-}
-
-.sectionMap a{
-    z-index: 1;
-    display: inline-block;
-    position: absolute; 
-    margin-left: auto; 
-    margin-right: auto; 
-    left: 49%;
-    top: 45%;
-}
 
 .map iframe{
-    filter: grayscale(1) invert();
-    left:0;
-    top:0;
+    filter: grayscale(0.7) invert();
     height:100%;
     width:100%;
     position:absolute;
@@ -1204,3 +1192,153 @@ textarea{
         border: solid 0px;
         font-size: large;
     }
+
+/*=================================================================
+========================= FORMULAIRE DE CONNEXION ==================
+=================================================================
+*/
+
+.connexion-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 50px auto;
+    background-color: var(--bcreme);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.connexion-container h1 {
+    color: var(--marron);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.connexion-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.connexion-container label {
+    font-family: var(--oxygen);
+    color: var(--marron);
+    
+}
+
+.connexion-container input[type="email"],
+.connexion-container input[type="password"] {
+    padding: 10px;
+    border: 0px ;
+    border-radius: 5px;
+    font-family: var(--oxygen);
+    font-size: 14px;
+}
+
+.connexion-container input[type="submit"] {
+    background-color: var(--brun);
+    color: var(--bcreme);
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--oxygen);
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.connexion-container p {
+    text-align: center;
+    font-family: var(--oxygen);
+    margin-top: 15px;
+}
+
+.connexion-container p a {
+    color: var(--marron);
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.connexion-container p a:hover {
+    color: var(--beige);
+}
+
+/*=================================================================
+========================= FORMULAIRE D'INSCRIPTION =================
+=================================================================
+*/
+
+.inscription-container {
+    width: 100%;
+    max-width: 450px;
+    margin: 50px auto;
+    background-color: var(--bcreme);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.inscription-container h1 {
+    color: var(--marron);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.inscription-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.inscription-container label {
+    font-family: var(--oxygen);
+    color: var(--brun);
+
+}
+
+.inscription-container input[type="email"],
+.inscription-container input[type="password"],
+.inscription-container input[type="text"] {
+    padding: 10px;
+
+    border: 0px ;
+    border-radius: 5px;
+    background-color: #fff;
+    font-family: var(--oxygen);
+    font-size: 14px;
+    color: var(--marron);
+}
+
+.inscription-container input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.inscription-container small {
+    font-size: 15px;
+    color: var(--marron);
+}
+
+.inscription-container input[type="submit"] {
+    background-color: var(--brun);
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--oxygen);
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+
+.inscription-container p {
+    text-align: center;
+    font-family: var(--oxygen);
+    margin-top: 15px;
+}
+
+.inscription-container p a {
+    color: var(--marron);
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.inscription-container p a:hover {
+    color: var(--beige);
+}

@@ -91,8 +91,8 @@
                 } else {
                     ?>
                     <ul class="user-menu-item">
-                        <li><a href='index.php?action=inscription'>S'inscrire</a></li>
                         <li><a href='index.php?action=connexion'>Se connecter</a></li>
+                        <li><a href='index.php?action=inscription'>S'inscrire</a></li>
                     </ul>
                 <?php
                 }
