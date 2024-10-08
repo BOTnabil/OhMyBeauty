@@ -43,25 +43,29 @@ $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPres
                             <?php } ?>
 
                             <!-- Afficher le formulaire pour tout le monde -->
-                            <form method="post" action="index.php?action=choisirCreneau">
-                                <input type="hidden" name="id_prestation" value="<?= $prestation['id_prestation']; ?>">
-                                <label for="datePrestation">Choisir une date :</label>
-                                <input type="date" name="datePrestation" required min="<?= date('Y-m-d'); ?>">
-                                <button type="submit">Valider la date</button>
-                            </form>
+                            <div class = "date-form">
+                                <form method="post" action="index.php?action=choisirCreneau">
+                                    <input type="hidden" name="id_prestation" value="<?= $prestation['id_prestation']; ?>">
+                                    <label for="datePrestation">Choisir une date :</label>
+                                    <input type="date" name="datePrestation" required min="<?= date('Y-m-d'); ?>">
+                                    <button type="submit">Valider la date</button>
+                                </form>
+                            </div>
                             <?php if (\App\Session::estAdmin()) { ?>
-                                    <!-- Bouton de suppression visible uniquement pour les admins -->
-                                    <form method="post" action="index.php?action=supprimerPrestation">
-                                        <input type="hidden" name="id_prestation" value="<?= $prestation['id_prestation']; ?>">
-                                        <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette prestation ?');"><i class="fa-solid fa-trash"></i></button>
-                                    </form>
+                                    <div class = "admin-buttons-presta">    
+                                        <!-- Bouton de suppression visible uniquement pour les admins -->
+                                        <form method="post" action="index.php?action=supprimerPrestation">
+                                            <input type="hidden" name="id_prestation" value="<?= $prestation['id_prestation']; ?>">
+                                            <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette prestation ?');"><i class="fa-solid fa-trash"></i></button>
+                                        </form>
 
-                                    <!-- Bouton de modification visible uniquement pour les admins -->
-                                    <form method="get" action="index.php">
-                                        <input type="hidden" name="action" value="afficherModifierPrestation">
-                                        <input type="hidden" name="id_prestation" value="<?= $prestation['id_prestation']; ?>">
-                                        <button type="submit"><i class="fa-solid fa-pen-to-square"></i></button>
-                                    </form>
+                                        <!-- Bouton de modification visible uniquement pour les admins -->
+                                        <form method="get" action="index.php">
+                                            <input type="hidden" name="action" value="afficherModifierPrestation">
+                                            <input type="hidden" name="id_prestation" value="<?= $prestation['id_prestation']; ?>">
+                                            <button type="submit"><i class="fa-solid fa-pen-to-square"></i></button>
+                                        </form>
+                                    </div>
                                 <?php } ?>
                         </div>
                     </div>
