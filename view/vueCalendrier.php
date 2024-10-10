@@ -21,7 +21,7 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'ADMIN') {
         <?php if (!empty($rendezVous)) { ?>
             <?php foreach ($rendezVous as $rdv) { ?>
                 <tr>
-                    <td><?= htmlspecialchars($rdv['infosReservation']); ?></td>
+                    <td><?= $rdv['infosReservation']; ?></td>
                     <td>
                         <form method="post" action="index.php?action=annulerReservation">
                             <input type="hidden" name="id_reservation" value="<?= $rdv['id_reservation']; ?>">

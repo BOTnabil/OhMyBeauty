@@ -1,14 +1,22 @@
 <?php
-ob_start(); 
+ob_start();
 ?>
 
-<h1>Articles de la catégorie <?= htmlspecialchars($categorieNom); ?></h1>
-<div class="articles-container">
-    <?php foreach ($articles as $article) { ?>
-        <div class="article">
-            <a href="index.php?action=voirArticle&id_article=<?= $article['id_produit']; ?>">
-                <h3><?= $article['designation']; ?></h3>
-                <p>Prix : <?= $article['prix']; ?> €</p>
+<div class="titre-articles-categorie">
+    <h1><?= $categorieNom; ?></h1>
+</div>
+
+<div class="produits-container">
+    <?php foreach ($articles as $index => $produit) { ?>
+        <div class="produit">
+            <a href="index.php?action=voirArticle&id_produit=<?= $produit['id_produit']; ?>">
+                <div class="produit-image">
+                    <img src="./public/img/<?= $produit['image']; ?>" alt="<?= $produit['designation']; ?>">
+                </div>
+                <div class="produit-details">
+                    <h3><?= $produit['designation']; ?></h3>
+                    <p><?= htmlspecialchars($produit['prix']); ?> €</p>
+                </div>
             </a>
         </div>
     <?php } ?>
@@ -16,7 +24,8 @@ ob_start();
 
 
 <?php
-$titre = $categorieNom ." - Oh My Beauty";
+$titre = $categorieNom ."- Oh My Beauty";
 $contenu = ob_get_clean();
 require "template.php";
 ?>
+

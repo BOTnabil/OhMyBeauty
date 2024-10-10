@@ -86,7 +86,7 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
                 ?>
                 <tr>
                     <td><?= date('d/m/Y H:i', strtotime($reservation['datePrestation'])); ?></td>
-                    <td><?= nl2br(htmlspecialchars($reservation['infosReservation'])); ?></td>
+                    <td><?= nl2br($reservation['infosReservation']); ?></td>
                     <td>
                     <?php if ($estAnnulable) { ?>
                         <form method="post" action="index.php?action=annulerReservation">

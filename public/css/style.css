@@ -20,7 +20,16 @@
     box-sizing: border-box;
 }
 
+body{
+
+}
+
 a {text-decoration: none;}
+
+textarea{
+    resize: none;
+}
+
 
 h1 {
     font-family: var(--rufina);
@@ -592,7 +601,7 @@ header a:hover{
 
 
  /*=================================================================
-========================= RESPONSIVE MAIN ================================
+========================= RESPONSIVE ================================
 =================================================================
  */
 @media only screen and (max-width: 768px) {
@@ -705,9 +714,6 @@ header a:hover{
 ========================= PAGE CONTACT ================================
 =================================================================
  */
-textarea{
-    resize: none;
-}
 
 .wrapperContact {
     font-family: var(--oxygen);
@@ -1352,4 +1358,65 @@ textarea{
 
 .inscription-container p a:hover {
     color: var(--beige);
+}
+
+.titre-articles-categorie {
+    text-align: center;
+    color: var(--marron);
+    margin-bottom: 30px;
+    padding-top: 30px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.produits-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: space-around;
+}
+
+.produit {
+    transition: transform 0.3s;
+    width: 30%;
+    min-width: 200px;
+}
+
+.produit a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 15px;
+}
+
+.produit:hover {
+    transform: translateY(-5px);
+}
+
+.produit-image img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.produit-details h3 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: var(--marron);
+    text-align: center;
+}
+
+.produit-details p {
+    font-size: 16px;
+    color: var(--brun);
+    text-align: center;
+    margin: 5px 0;
+}
+
+.clear {
+    flex-basis: 100%;
+    height: 0;
 }
