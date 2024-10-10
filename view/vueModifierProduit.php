@@ -19,19 +19,19 @@ $categories = $categorieManager->obtenirToutesLesCategories();
 
 <form action="index.php?action=modifierProduit&id_produit=<?= $produit['id_produit'] ?>" method="POST" enctype="multipart/form-data">
     <label for="designation">Désignation :</label><br>
-    <input type="text" id="designation" name="designation" value="<?= htmlspecialchars($produit['designation']) ?>" required><br><br>
+    <input type="text" id="designation" name="designation" value="<?= $produit['designation'] ?>" required><br><br>
     
     <label for="prix">Prix :</label><br>
-    <input type="number" id="prix" name="prix" step="0.01" value="<?= htmlspecialchars($produit['prix']) ?>" required><br><br>
+    <input type="number" id="prix" name="prix" step="0.01" value="<?= $produit['prix'] ?>" required><br><br>
     
     <label for="description">Description :</label><br>
-    <textarea id="description" name="description" required><?= htmlspecialchars($produit['description']) ?></textarea><br><br>
+    <textarea id="description" name="description" required><?= $produit['description'] ?></textarea><br><br>
     
     <label for="categorie">Catégorie :</label><br>
     <select name="id_categorie" id="categorie" required>
         <?php foreach ($categories as $categorie) { ?>
             <option value="<?= $categorie['id_categorie'] ?>" <?= $produit['id_categorie'] == $categorie['id_categorie'] ? 'selected' : '' ?>>
-                <?= htmlspecialchars($categorie['designation']) ?>
+                <?= $categorie['designation'] ?>
             </option>
         <?php } ?>
     </select><br><br>
