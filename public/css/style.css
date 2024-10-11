@@ -557,122 +557,6 @@ header a:hover{
 }
 
 
- /*=================================================================
-========================= RESPONSIVE ================================
-=================================================================
- */
-@media only screen and (max-width: 768px) {
-
-
-    #openBtn{
-        display: table-header-group;
-        margin-left: 5vw;
-        margin-right: 9vw;
-        position: relative;
-        z-index: 1001; /* Pour le garder au-dessus du sidenav */
-    }
-
-    .sidenav{
-        display: block;
-        height: 100%;
-        width: 200px;
-        position: fixed;
-        z-index: 1000;
-        top: 0PX;
-        left: -250px;
-        background-color: var(--marron);
-        margin-top: 60px;
-        transition: left 0.5s ease;
-    }
-
-    .logoNav{
-        margin-left: AUTO;
-        margin-right: AUTO;
-    }
-
-    .sidenav.active{
-        left: 0;
-    }
-
-    .sidenav .close{
-        position: absolute;
-        top: 0;
-        right: 25px;
-        font-size: 36px;
-    }
-
-    #myLinks{
-        display: none;
-    }
-
-
-    .map{
-        height: 100vw;
-    }
-
-    .categories-admin{
-        flex-direction: column;
-    }
-
-    .image-article-panier{
-        display: none;
-    }
-
-    .product-detail-container{
-        flex-direction: column;
-    }
- 
-    .product-image{
-        margin: auto;
-    }
-
-    .product-info{
-        margin: 10px;
-    }
-
-    .nom-article{
-        padding: 0;
-    }
-
-    .container{
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .containerFeatures h1{
-        text-align: center;
-    }
-
-    .cards-1{
-        width: 90%;
-    }
-    
-/*=================================================================
-========================= RESPONSIVE A PROPOS ================================
-=================================================================
- */
-}
-
-@media screen and (max-width: 1259px) {
-
-    .equipe {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .cards-2 {
-        margin-top: 30px;
-    }
-    
-    #container {
-        flex-direction: column;
-    }
-
-    .sous-titre {
-        padding-bottom: 30px;
-    }
-
-}
 
 /*=================================================================
 ========================= PAGE CONTACT ================================
@@ -1508,12 +1392,13 @@ header a:hover{
 
 .product-purchase input[type="number"] {
     padding: 5px;
-    margin-right: 20px;
+    margin-right: 10px;
     border: 1px solid ;
     border-radius: 7px 0 0 7px;
     background-color: #fff;
     width:60px;
     height: 40px;
+    text-align: center;
 }
 
 .add-to-cart {
@@ -1869,7 +1754,10 @@ header a:hover{
 }
 
 .commande-container {
-    margin: 20px;
+    max-width: 80%;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 
 .jour-section {
@@ -1904,4 +1792,133 @@ header a:hover{
 
 .supprimer-compte a{
     color: var(--bcreme);
+}
+
+
+ /*=================================================================
+========================= RESPONSIVE ================================
+=================================================================
+ */
+ @media only screen and (max-width: 768px) {
+
+
+    #openBtn{
+        display: table-header-group;
+        margin-left: 5vw;
+        margin-right: 9vw;
+        position: relative;
+        z-index: 1001; /* Pour le garder au-dessus du sidenav */
+    }
+
+    .sidenav{
+        display: block;
+        height: 100%;
+        width: 200px;
+        position: fixed;
+        z-index: 1000;
+        top: 0PX;
+        left: -250px;
+        background-color: var(--marron);
+        margin-top: 60px;
+        transition: left 0.5s ease;
+    }
+
+    .logoNav{
+        margin-left: AUTO;
+        margin-right: AUTO;
+    }
+
+    .sidenav.active{
+        left: 0;
+    }
+
+    .sidenav .close{
+        position: absolute;
+        top: 0;
+        right: 25px;
+        font-size: 36px;
+    }
+
+    #myLinks{
+        display: none;
+    }
+
+
+    .map{
+        height: 100vw;
+    }
+
+    .categories-admin{
+        flex-direction: column;
+    }
+
+    .image-article-panier{
+        display: none;
+    }
+
+    .product-detail-container{
+        flex-direction: column;
+    }
+ 
+    .product-image{
+        margin: auto;
+    }
+
+    .product-info{
+        margin: 10px;
+    }
+
+    .nom-article{
+        padding: 0;
+    }
+
+    .container{
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .containerFeatures h1{
+        text-align: center;
+    }
+
+    .cards-1{
+        width: 90%;
+    }
+
+    .commande-container {
+        max-width: 100%;
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    
+    
+/*=================================================================
+========================= RESPONSIVE A PROPOS ================================
+=================================================================
+ */
+}
+
+@media screen and (max-width: 1259px) {
+
+    .equipe {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .cards-2 {
+        margin-top: 30px;
+    }
+    
+    #container {
+        flex-direction: column;
+    }
+
+    .sous-titre {
+        padding-bottom: 30px;
+    }
+
 }
