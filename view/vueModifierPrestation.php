@@ -14,10 +14,11 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'ADMIN') {
 $categorieManager = new CategorieManager();
 $categories = $categorieManager->obtenirToutesLesCategories();
 ?>
- 
-<h1>Modification de prestation</h1>
+<div class="titre-modification">
+    <h1>Modification de prestation</h1>
+</div>
 
-<form action="index.php?action=modifierPrestation&id_prestation=<?= $prestation['id_prestation'] ?>" method="POST" enctype="multipart/form-data">
+<form class= "modifier-presta" action="index.php?action=modifierPrestation&id_prestation=<?= $prestation['id_prestation'] ?>" method="POST" enctype="multipart/form-data">
     <label for="designation">Désignation :</label><br>
     <input type="text" id="designation" name="designation" value="<?= $prestation['designation'] ?>" required><br><br>
     

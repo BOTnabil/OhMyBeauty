@@ -44,17 +44,19 @@ class ReservationManager {
     // Méthode pour récupérer les réservations d'un utilisateur spécifique
     public function obtenirReservationsParUtilisateur($id_utilisateur) {
         $requete = "
-            SELECT r.id_reservation, r.datePrestation, r.infosReservation
+            SELECT r.id_reservation, r.datePrestation, r.infosReservation, p.designation
             FROM reservation r
+            JOIN prestation p ON r.id_prestation = p.id_prestation
             WHERE r.id_utilisateur = :id_utilisateur
             ORDER BY r.datePrestation
         ";
         $stmt = $this->db->prepare($requete);
         $stmt->bindParam(':id_utilisateur', $id_utilisateur, \PDO::PARAM_INT);
         $stmt->execute();
-
+    
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+    
 
     // Méthode pour annuler une réservation
     public function annulerReservation($id_reservation) {

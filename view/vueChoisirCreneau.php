@@ -25,12 +25,14 @@ $heureActuelle = date('H:i');
 ?>
 
 <!-- form et créneaux -->
-<h1>Choisir un créneau horaire pour le <?= date('d/m/Y', strtotime($datePrestation)); ?></h1>
+<div class="titre-creneau">
+    <h1>Choisir un créneau horaire pour le <?= date('d/m/Y', strtotime($datePrestation)); ?></h1>
+</div>
 
 <?php 
 if (!empty($creneauxDisponibles)) { ?>
     <!-- Foumulaire nom prenom -->
-    <form method="post" action="index.php?action=reserver">
+    <form class="form-reservation" method="post" action="index.php?action=reserver">
         <input type="hidden" name="id_prestation" value="<?= $id_prestation; ?>">
         <input type="hidden" name="datePrestation" value="<?= $datePrestation; ?>">
         

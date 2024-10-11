@@ -26,6 +26,12 @@ body{
 
 a {text-decoration: none;}
 
+table{
+    font-family: var(--oxygen);
+    width: 90%;
+    margin: auto;
+}
+
 textarea{
     resize: none;
 }
@@ -176,10 +182,6 @@ header a:hover{
     padding: 20px;
 }
 
-.cart-container table{
-    width: 90%;
-    margin: auto;
-}
 .identite-article {
     display: flex;
 }
@@ -627,6 +629,10 @@ header a:hover{
     .product-info{
         margin: 10px;
     }
+
+    .nom-article{
+        padding: 0;
+    }
     
 /*=================================================================
 ========================= RESPONSIVE A PROPOS ================================
@@ -722,10 +728,6 @@ header a:hover{
     cursor: pointer;
     transition: background-color 0.3s ease;
     width: 100%;
-}
-
-.wrapperContact input[type="submit"]:hover {
-    background-color: var(--beige);
 }
 
 /* Service view */
@@ -1524,4 +1526,337 @@ header a:hover{
     font-size: 14px;
     color: #666;
     line-height: 1.6;
+}
+
+
+
+
+
+.titre-user {
+    color: var(--marron);
+    margin-bottom: 30px;
+    padding-top: 30px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+ }
+
+
+
+
+ .titre-modification {
+    color: var(--marron);
+    margin-bottom: 30px;
+    padding-top: 30px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+ }
+
+ .modifier-produit {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid var(--beige);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modifier-produit label {
+    font-family: var(--oxygen), sans-serif;
+    color: var(--brun);
+    display: block;
+}
+
+.modifier-produit input[type="text"],
+.modifier-produit input[type="number"],
+.modifier-produit select,
+.modifier-produit textarea,
+.modifier-produit input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin: 0 0 20px;
+    border: 1px solid var(--beige);
+    border-radius: 4px;
+    background-color: #fff;
+    font-family: var(--oxygen), sans-serif;
+    font-size: 14px;
+    color: var(--marron);
+}
+
+.modifier-produit textarea {
+    resize: none;
+    height: 100px;
+
+}
+
+.modifier-produit button[type="submit"] {
+    background-color: var(--marron);
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--oxygen), sans-serif;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.modifier-produit button[type="submit"]:hover {
+    background-color: var(--brun);
+}
+
+
+
+
+.modifier-presta {
+    max-width: 600px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid var(--beige);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modifier-presta label {
+    font-family: var(--oxygen), sans-serif;
+    color: var(--brun);
+    display: block;
+}
+
+.modifier-presta input[type="text"],
+.modifier-presta input[type="number"],
+.modifier-presta select,
+.modifier-presta textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 0 0 20px;
+    border: 1px solid var(--beige);
+    border-radius: 4px;
+    background-color: #fff;
+    font-family: var(--oxygen), sans-serif;
+    font-size: 14px;
+    color: var(--marron);
+}
+
+.modifier-presta textarea {
+    resize: none;
+    height: 100px;
+
+}
+
+.modifier-presta button[type="submit"] {
+    background-color: var(--marron);
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--oxygen), sans-serif;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.modifier-presta button[type="submit"]:hover {
+    background-color: var(--brun);
+}
+
+
+.titre-creneau {
+    color: var(--marron);
+    margin-bottom: 30px;
+    padding-top: 30px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+ }
+
+
+.form-reservation {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    border: 1px solid var(--beige);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-reservation label {
+    font-family: var(--oxygen), sans-serif;
+    color: var(--brun);
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-reservation input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0 20px;
+    border: 1px solid var(--beige);
+    border-radius: 4px;
+    font-family: var(--oxygen), sans-serif;
+    font-size: 14px;
+    color: var(--marron);
+}
+
+.boutons-creneau-horaire {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.boutons-creneau-horaire button {
+    background-color: var(--marron);
+    color: var(--bcreme);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: var(--oxygen), sans-serif;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.boutons-creneau-horaire button:hover {
+    background-color: var(--brun);
+}
+
+
+
+
+
+.section-commandes, .section-rendezvous {
+    margin: 30px auto;
+    max-width: 800px;
+}
+
+.section-commandes h2, .section-rendezvous h2 {
+    font-family: var(--rufina), serif;
+    color: var(--marron);
+    border-bottom: 2px solid var(--beige);
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+}
+
+.details-link {
+    color: var(--marron);
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.details-text {
+
+    color: var(--marron);
+}
+
+.table-rendezvous button{
+    border-radius: 3px;
+    background-color: #c0392b;
+    cursor: pointer;
+    color: var(--bcreme);
+    padding: 10px;
+    border: none;
+}
+
+.table-rendezvous button:hover {
+    background-color: #c0392b;
+}
+
+
+
+
+
+.titre-calendrier{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+.calendrier-container {
+    margin: 30px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: var(--oxygen);
+}
+
+.jour-section {
+    margin-bottom: 20px;
+}
+
+.jour-section h3 {
+    padding: 10px;
+    font-size: 25px;
+    font-family: var(--oxygen);
+}
+
+.liste-rendez-vous {
+    list-style-type: none;
+    padding: 0;
+}
+
+.liste-rendez-vous li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.liste-rendez-vous button {
+    background-color: #e74c3c;
+    color: var(--bcreme);
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.liste-rendez-vous button:hover {
+    background-color: #c0392b;
+}
+
+.commande-admin button{
+    background-color: #e74c3c;
+    color: var(--bcreme);
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+.commande-admin button:hover {
+    background-color: #c0392b;
+}
+
+.commande-container {
+    margin: 20px;
+}
+
+.jour-section {
+    margin-bottom: 20px;
+}
+
+.commande-admin {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+
+.commande-admin th, .commande-admin td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
 }

@@ -107,10 +107,10 @@ class ReservationController {
 
     private function genererInfosReservationTexte($prestation, $datePrestation, $creneauHoraire, $nom, $prenom) {
         // Générer le texte pour infosReservation
-        $infos = "Nom : " . $nom . " " . $prenom . "\n";
-        $infos .= "Prestation : " . $prestation['designation'] . "\n";
-        $infos .= "Créneau horaire : " . $creneauHoraire . "\n";
-        $infos .= "Durée : " . $prestation['duree'] . "\n";
+        $infos = "Nom : " . $nom . " " . $prenom . " | ";
+        $infos .= "Prestation : " . $prestation['designation'] . " | ";
+        $infos .= "Créneau horaire : " . $creneauHoraire . " | ";
+        $infos .= "Durée : " . $prestation['duree'] . " | ";
         $infos .= "Prix : " . $prestation['prix'] . " €";
         
         return $infos;
