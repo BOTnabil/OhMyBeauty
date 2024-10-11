@@ -161,7 +161,9 @@ class PanierController {
     }
 
     private function genererNumeroCommande() {
+
         // Utilise la date et l'heure actuelles
+        date_default_timezone_set('Europe/Paris');
         $dateHeure = date('Hisdmy'); // Format HHMMSSDDMMYY
     
         // Génère un nombre aléatoire pour garantir l'unicité

@@ -633,6 +633,11 @@ header a:hover{
     .nom-article{
         padding: 0;
     }
+
+    .container{
+        flex-direction: column;
+        gap: 20px;
+    }
     
 /*=================================================================
 ========================= RESPONSIVE A PROPOS ================================
@@ -1877,6 +1882,7 @@ header a:hover{
     border-radius: 7px;
     margin: auto;
     margin-bottom: 30px;
+    font-family: var(--oxygen);
 }
 
 .supprimer-compte:hover{
