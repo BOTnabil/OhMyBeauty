@@ -57,7 +57,7 @@ ob_start();
 
     <div class="containerFeatures">
         <h1>NOS VALEURS ET PRINCIPES</h1>
-        <p class="titre">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur et natus consectetur iste sunt</p>
+        <p class="sous-titre">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur et natus consectetur iste sunt</p>
     </div>
     <div id="container">
         <div class="cards-1">

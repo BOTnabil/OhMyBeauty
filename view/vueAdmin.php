@@ -22,7 +22,7 @@ $categories = $categorieManager->obtenirToutesLesCategories();
 $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPrestations();
 
 ?>
-<div class="admin">
+<div class="titre-admin">
     <h1>Administration</h1>   
 </div>
 

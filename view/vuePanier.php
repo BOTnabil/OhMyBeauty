@@ -10,7 +10,6 @@ ob_start();
                 <thead>
                     <tr>
                         <th>Article</th>
-                        <th></th>
                         <th>Prix Unitaire</th>
                         <th>Quantité</th>
                         <th>Total</th>
@@ -20,17 +19,23 @@ ob_start();
                 <tbody>
                     <?php foreach ($_SESSION['products'] as $index => $produit) { ?>
                         <tr>
-                            <td><img src="./public/img/<?= $produit['image']; ?>" alt="image de l'article"></td> <!-- image -->
-                            <td><?= $produit['nom']; ?></td>
+                            <td >
+                                <div class="identite-article">
+                                <img class="image-article-panier" src="./public/img/<?= $produit['image']; ?>" alt="image de l'article">
+                                    <div class="nom-article">
+                                        <?= $produit['nom']; ?>
+                                    </div>
+                                </div>
+                            </td>
                             <td><?= $produit['prix']; ?> €</td>
                             <td>
-                            <a href="index.php?action=diminuerQttProduit&id=<?= $index; ?>">-</a>
+                            <a class="action-panier" href="index.php?action=diminuerQttProduit&id=<?= $index; ?>">-</a>
                             <?= $produit['qtt']; ?>
-                            <a href="index.php?action=augmenterQttProduit&id=<?= $index; ?>">+</a>
+                            <a class="action-panier" href="index.php?action=augmenterQttProduit&id=<?= $index; ?>">+</a>
                             </td>
                             <td><?= $produit['total']; ?> €</td>
                             <td>
-                                <a href="index.php?action=supprimerDuPanier&id=<?= $index; ?>">Supprimer</a>
+                                <a class="action-panier" href="index.php?action=supprimerDuPanier&id=<?= $index; ?>">X</a>
                             </td>
                             <td></td>
                         </tr>
@@ -47,13 +52,13 @@ ob_start();
                     echo $totalGeneral . " €";
                 ?>
                 </p>
-                    <form method="post" action="index.php?action=validerCommande">
-                        <input type="hidden" name="id_utilisateur" value="1"> <!-- Supposons que l'ID de l'utilisateur soit 1 pour l'instant -->
-                        <button type="submit">Valider la commande</button>
-                    </form>
                 <form method="get" action="index.php">
                     <input type="hidden" name="action" value="viderPanier">
-                    <button type="submit">Vider le panier</button>
+                    <button class="vider-panier" type="submit">Vider le panier</button>
+                </form>
+                <form method="post" action="index.php?action=validerCommande">
+                    <input type="hidden" name="id_utilisateur" value="1"> <!-- Supposons que l'ID de l'utilisateur soit 1 pour l'instant -->
+                    <button class="valider-panier" type="submit">Valider la commande</button>
                 </form>
             </div>
         <?php } else { ?>
@@ -70,7 +75,7 @@ ob_start();
 <!-- Fin du panier -->
 
 <?php
-$titre = "Contact - Oh My Beauty";
+$titre = "Panier - Oh My Beauty";
 $contenu = ob_get_clean();
 require "template.php";
 ?>

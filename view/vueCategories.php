@@ -6,15 +6,17 @@ ob_start();
     <h1>Nos Catégories</h1>
 </div>
 
-<div class="categories-container">
+<section class="categories-articles">
     <?php foreach ($categories as $categorie) { ?>
-        <div class="categorie">
-            <a href="index.php?action=voirArticlesParCategorie&id_categorie=<?= $categorie['id_categorie']; ?>">
-                <?= $categorie['designation']; ?>
+        <a href="index.php?action=voirArticlesParCategorie&id_categorie=<?= $categorie['id_categorie']; ?>" class="link-categorie">
+            <div class="categorie-absolute">
+                <h2><?= $categorie['designation']; ?></h2>
+            </div>
+            <img class="img-categorie" src="./public/img/<?= $categorie['designation']; ?>.jpg" alt="categorie d'articles">
             </a>
-        </div>
     <?php } ?>
-</div>
+</section>
+
 
 <?php
 $titre = "Catégories - Oh My Beauty";

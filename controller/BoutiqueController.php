@@ -37,7 +37,7 @@ class BoutiqueController {
     public function voirArticle() {
         if (isset($_GET['id_produit'])) {
             $id_produit = $_GET['id_produit'];
-            $article = $this->produitManager->obtenirProduitParId($id_produit); // Récupère les informations de l'article
+            $article = $this->produitManager->obtenirProduitEtSaCategorieParId($id_produit); // Récupère les informations de l'article
             require 'view/vueArticle.php'; // Charger la vue de l'article
         }
     }

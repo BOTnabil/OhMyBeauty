@@ -101,7 +101,7 @@ public function afficherModifierProduit() {
         $id_produit = filter_input(INPUT_GET, 'id_produit', FILTER_SANITIZE_NUMBER_INT);
 
         // Récupérer les informations actuelles du produit
-        $produit = $this->produitManager->obtenirProduitParId($id_produit);
+        $produit = $this->produitManager->obtenirProduitEtSaCategorieParId($id_produit);
 
         // Charger la vue avec les informations du produit
         require 'view/vueModifierProduit.php';
@@ -170,7 +170,7 @@ public function voirRendezVous() {
             // Supprimer le produit de la table "produit"
             $this->produitManager->supprimerProduit($id_produit);
 
-            header("Location: index.php?action=categorie");
+            header("Location: index.php?action=voirArticlesParCategorie&id_categorie=".$_POST['id_categorie']);
         }
     }
 
@@ -288,20 +288,17 @@ public function voirRendezVous() {
                     if (strpos($uploadResult, 'Erreur') === false) {
                         // Si l'upload est réussi, mise à jour du produit avec la nouvelle image
                         $this->produitManager->modifierProduit($id_produit, $designation, $description, $prix, $id_categorie, $uploadResult);
-                        $_SESSION['MAJproduit'] = "Produit modifié avec succès!";
-                    } else {
-                        $_SESSION['MAJproduit'] = $uploadResult;
+                        
                     }
                 } else {
                     // Si pas d'image uploadée, on ne modifie pas l'image
                     $this->produitManager->modifierProduit($id_produit, $designation, $description, $prix, $id_categorie, null);
-                    $_SESSION['MAJproduit'] = "Produit modifié avec succès (sans changer l'image)!";
                 }
             } else {
                 $_SESSION['MAJproduit'] = "Veuillez remplir tous les champs.";
             }
     
-            header("Location: index.php?action=afficherModifierProduit&id_produit=$id_produit");
+            header("Location: index.php?action=voirArticle&id_produit=$id_produit");
             exit;
         }
     }

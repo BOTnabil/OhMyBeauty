@@ -22,41 +22,39 @@ class PanierController {
 
 // Méthodes
     public function ajouterAuPanier($id_produit) {
-        $productData = $this->produitManager->obtenirProduitParId($id_produit);
-
+        $productData = $this->produitManager->obtenirProduitEtSaCategorieParId($id_produit);
+        $quantite = isset($_GET['quantite']) ? (int)$_GET['quantite'] : 1; // Récupère la quantité choisie
+    
         if ($productData) {
-            //On récupère les informations du produit obtenu par ID
             $nom = $productData['designation'];
             $prix = $productData['prix'];
             $image = $productData['image'];
-            $qtt = 1;
             $produitExiste = false;
             $produit = [
                 "id" => $id_produit,
                 "nom" => $nom,
-                "image" => $image,
                 "prix" => $prix,
-                "qtt" => $qtt,
-                "total" => $prix * $qtt
+                "image" => $image,
+                "qtt" => $quantite,
+                "total" => $prix * $quantite
             ];
-            
-            //Si le produti existe on rajoute une quantité en plus et on re calcule le prix
+    
             foreach ($_SESSION['products'] as &$produitExistant) {
                 if ($produitExistant['id'] === $id_produit) {
-                    $produitExistant['qtt'] += $qtt;
+                    $produitExistant['qtt'] += $quantite;
                     $produitExistant['total'] = $produitExistant['prix'] * $produitExistant['qtt'];
                     $produitExiste = true;
                     break;
                 }
             }
-            
-            //Si le roduit n'existe pas on ajoute le produit à l'array
+    
             if (!$produitExiste) {
                 $_SESSION['products'][] = $produit;
             }
-
-        } 
-        header("Location:index.php?action=voirArticle&id_article=". $id_produit);
+    
+            $_SESSION['MAJpanier'] = "Article ajouté";
+        }
+        header("Location:index.php?action=voirArticle&id_produit=". $id_produit);
     
     } 
 
@@ -119,7 +117,7 @@ class PanierController {
                 // Vérification que tous les produits existent encore dans la base de données
                 foreach ($_SESSION['products'] as $produit) {
                     // Vérifie si le produit existe encore en base de données
-                    $produitExistant = $this->produitManager->obtenirProduitParId($produit['id']);
+                    $produitExistant = $this->produitManager->obtenirProduitEtSaCategorieParId($produit['id']);
                     if (!$produitExistant) {
                         // Si le produit n'existe plus, annuler la commande
                         $_SESSION['MAJpanier'] = "Le produit '" . $produit['nom'] . "' n'existe plus. Veuillez mettre à jour votre panier.";

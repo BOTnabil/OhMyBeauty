@@ -58,6 +58,7 @@ userIcon.onclick = function() {
         });
 
 // deroulantCommande
+
 document.addEventListener('DOMContentLoaded', function () {
     const detailsLinks = document.querySelectorAll('.voir-details');
     

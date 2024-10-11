@@ -35,6 +35,7 @@ h1 {
     font-family: var(--rufina);
     border-bottom: solid 2px var(--beige);
     padding: 6px;
+    text-align: center;
 }
 
 th{
@@ -62,7 +63,7 @@ td{
 }
                 
 header {
-    z-index: 2;
+    z-index: 5;
     display: flex;
     background-color: var(--marron);
     width: 100%;
@@ -179,6 +180,14 @@ header a:hover{
     width: 90%;
     margin: auto;
 }
+.identite-article {
+    display: flex;
+}
+
+.nom-article{
+    padding-top:40px;
+    padding-left: 5px
+}
 
 .cart-container h2 {
     font-size: 18px;
@@ -187,9 +196,38 @@ header a:hover{
     border-bottom:solid 1px var(--brun) ;
 }
 
+.action-panier {
+ color: var(--brun);
+ font-weight: bold; 
+}
+
 .cart-summary {
-    
     margin-top: 10px;
+}
+
+.cart-summary p{
+    padding : 20px
+}
+
+.valider-panier{
+    margin-top: 10px;
+    background-color: var(--brun);
+    color: var(--bcreme);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.vider-panier{
+    padding: 8px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 5px;
+    color: var(--brun);
+    border: solid 2px var(--brun);
+    background-color: white;
 }
 
 .btn-gerer-panier {
@@ -197,7 +235,17 @@ header a:hover{
     text-align: center;
     padding: 10px;
     background-color: var(--marron);
-    color: white;
+    color: var(--bcreme);
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.btn-gerer-panier:hover {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    background-color: var(--marron);
+    color: var(--bcreme);
     text-decoration: none;
     margin-top: 10px;
 }
@@ -222,97 +270,6 @@ header a:hover{
 ========================= HOME ================================
 =================================================================
  */
-
-
- /*=================================================================
-========================= SERVICES ================================
-=================================================================
- */
-
-.services {
-    position: relative;
-    display: flex;
-    background-color: var(--crimson);
-}
-
-.link1-4{
-    overflow:hidden;
-    width: 100%;
-}
-
-.plus1 {
-    position: absolute;
-    width: 6vw;
-    filter: invert();
-    left: 9.6vw;
-    top: 37%;
-    transition: 0.5s ease;
-    opacity: 0;
-}
-
-.plus2 {
-    position: absolute;
-    width: 6vw;
-    filter: invert();
-    left: 33.5vw;
-    top: 37%;
-    transition: 0.5s ease;
-    opacity: 0;
-}
-
-.plus3 {
-    position: absolute;
-    width: 6vw;
-    filter: invert();
-    left: 58.5vw;
-    top: 37%;
-    transition: 0.5s ease;
-    opacity: 0;
-}
-
-.plus4 {
-    position: absolute;
-    width: 6vw;
-    filter: invert();
-    left: 83vw;
-    top: 37%;
-    transition: 0.5s ease;
-    opacity: 0;
-}
-
-.link1-4:hover .plus1{
-    opacity: 1;
-    transform: rotate(90deg);
-}
-
-.link1-4:hover .plus2{
-    opacity: 1;
-    transform: rotate(90deg);
-}
-.link1-4:hover .plus3{
-    opacity: 1;
-    transform: rotate(90deg);
-}
-.link1-4:hover .plus4{
-    opacity: 1;
-    transform: rotate(90deg);
-}
-
-.galerie img{ 
-    max-width: 100%;
-    height: auto;
-}
-
-.img1-4{
-    transition: 0.5s ease;
-    width: 100%;
-}
-
-.link1-4:hover .img1-4{
-    transform: scale(1.1);
-    opacity: 0.3;
-    filter: grayscale(1);
-}
 
 
  /*=================================================================
@@ -429,7 +386,7 @@ header a:hover{
     justify-content: center;
 }
 
-.titre {
+.sous-titre {
     font-family: var(--oxygen);
     font-weight: 300;
     justify-content: center;
@@ -440,8 +397,6 @@ header a:hover{
 .containerFeatures{
     background-color: var(--crimson);
     padding-top: 40px;
-    padding-bottom: 50px;
-    margin-bottom: 30px;
 }
 
 #container {
@@ -539,7 +494,7 @@ header a:hover{
  }
 
  .titre-team {
-
+    padding-top: 30px;
     font-family: var(--oxygen);
     justify-content: center;
     text-align: center;
@@ -648,35 +603,6 @@ header a:hover{
         display: none;
     }
 
-    .citation{
-        font-size: clamp(20px, 100% + 1.7vw, 40rem);
-    }
-
-    .services {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .link1-4 {
-        width: 100%;
-        aspect-ratio: 16 / 6; /* Par exemple, pour un ratio 16:9 */
-        overflow: hidden;
-        position: relative;
-    }
-
-    .img1-4 {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* Assure que l'image couvre bien le conteneur sans déformation */
-    }
-
-    .plus1, .plus2, .plus3, .plus4 {
-        position: absolute;
-        width: 20vw;
-        left: 40%;
-        top: 8vw;
-    }
 
     .map{
         height: 100vw;
@@ -685,7 +611,22 @@ header a:hover{
     .categories-admin{
         flex-direction: column;
     }
+
+    .image-article-panier{
+        display: none;
+    }
+
+    .product-detail-container{
+        flex-direction: column;
+    }
  
+    .product-image{
+        margin: auto;
+    }
+
+    .product-info{
+        margin: 10px;
+    }
     
 /*=================================================================
 ========================= RESPONSIVE A PROPOS ================================
@@ -789,6 +730,7 @@ header a:hover{
 
 /* Service view */
 .presta-titre {
+    padding-top: 30px;
     display: flex;
     width: 50%;
     margin: auto;
@@ -863,6 +805,7 @@ header a:hover{
 }
 
 .admin-buttons-presta button{
+    background-color: white;
     margin: 8px;
     border: none;
     cursor: pointer;
@@ -1030,7 +973,7 @@ header a:hover{
 /* banner */
 
     .banner {
-    height: 54vW;
+    height: 55vW;
     position: relative;
     z-index: 1;
     justify-content: center;
@@ -1057,13 +1000,12 @@ header a:hover{
 
 
 
-.admin {
-    display: flex;
-    width: 50%;
-    margin: auto;
-    justify-content: center;
-    color: var(--marron);
-}
+    .titre-admin {
+        padding-top: 30px;
+        display: flex;
+        justify-content: center;
+        color: var(--marron);
+    }
 
     .ajouter-produit h2 {
         color: var(--brun);
@@ -1361,7 +1303,6 @@ header a:hover{
 }
 
 .titre-articles-categorie {
-    text-align: center;
     color: var(--marron);
     margin-bottom: 30px;
     padding-top: 30px;
@@ -1416,7 +1357,171 @@ header a:hover{
     margin: 5px 0;
 }
 
-.clear {
-    flex-basis: 100%;
-    height: 0;
+.titre-categories{
+    color: var(--marron);
+    margin-bottom: 30px;
+    padding-top: 30px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.categories-articles {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin: auto;
+    gap: 40px;
+}
+
+.link-categorie{
+    background-color: black;
+    position: relative;
+    overflow:hidden;
+    width: 100%;
+    aspect-ratio: 16 / 6; /* Par exemple, pour un ratio 16:9 */
+    max-height: 400px;
+    border-radius: 9px;
+}
+
+.img-categorie{
+    transition: 0.5s ease;
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
+
+.link-categorie:hover .img-categorie{
+    transform: scale(1.1);
+    opacity: 0.5;
+}
+
+.link-categorie:hover .categorie-absolute{
+    transform: scale(0.9);
+}
+
+.categorie-absolute {
+    transition: all 0.5s;
+    position: absolute;
+    left: 0; 
+    right: 0; 
+    margin-inline: auto; 
+    width: fit-content;
+    top: 29%;
+    color: var(--beige);
+    font-size: 4VW;
+    border-bottom: 1px solid var(--beige);
+    z-index: 2;
+}
+
+
+
+
+
+
+.product-detail-container {
+    padding-top:13vw;
+    padding-bottom:13vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 40px;
+    font-family: var(--oxygen);
+}
+
+.product-image img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+
+.product-info {
+    flex: 1;
+}
+
+.product-info h1{
+    border: none;
+}
+
+.product-category {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    color: var(--brun);
+    border-bottom: 1px solid #e1bb97;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.edit-icons{
+    display: flex;
+    gap: 10px;
+}
+
+.edit-icons button {
+    background-color: white;
+    border: none;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+
+.product-price {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.product-purchase {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    justify-content: center;
+}
+
+
+.product-purchase input[type="number"] {
+    padding: 5px;
+    margin-right: 20px;
+    border: 1px solid ;
+    border-radius: 7px 0 0 7px;
+    background-color: #fff;
+    width:60px;
+    height: 40px;
+}
+
+.add-to-cart {
+    background-color: var(--brun);
+    color: var(--bcreme);
+    padding: 13px 20px;
+    border: none;
+    border-radius: 0 7px 7px 0;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart:hover {
+    background-color: var(--marron);
+}
+
+.product-description h3 {
+    font-size: 18px;
+    color: var(--brun);
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e1bb97;
+    padding-bottom: 5px;
+}
+
+.product-description p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
 }

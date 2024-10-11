@@ -12,16 +12,16 @@ class ProduitManager {
     }
 
     // Méthode pour obtenir un produit par son ID ou par sa categorie
-    public function obtenirProduitParId($id_produit) {
+    public function obtenirProduitEtSaCategorieParId($id_produit) {
         $requete = "
-            SELECT id_produit, designation, prix, description, image, id_categorie
-            FROM produit 
-            WHERE id_produit = :id_produit
+            SELECT p.id_produit, p.designation, p.prix, p.description, p.image, p.id_categorie, c.designation AS nom_categorie
+            FROM produit p
+            JOIN categorie c ON p.id_categorie = c.id_categorie
+            WHERE p.id_produit = :id_produit
         ";
         $stmt = $this->db->prepare($requete);
         $stmt->bindParam(':id_produit', $id_produit, \PDO::PARAM_INT);
         $stmt->execute();
-
         return $stmt->fetch();
     }
 
