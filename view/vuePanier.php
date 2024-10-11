@@ -13,7 +13,6 @@ ob_start();
                         <th>Prix Unitaire</th>
                         <th>Quantité</th>
                         <th>Total</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>

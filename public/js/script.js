@@ -1,12 +1,12 @@
 var sidenav = document.getElementById("mySidenav");
 var openBtn = document.getElementById("openBtn");
-var userMenu = document.querySelector(".user-menu");
-var userIcon = document.querySelector(".user i");
-var formToggles = document.querySelectorAll(".toggle-form");
 
 openBtn.onclick = function() {
     sidenav.classList.toggle("active");
 };
+
+var userMenu = document.querySelector(".user-menu");
+var userIcon = document.querySelector(".user i");
 
 userIcon.onclick = function() {
     userMenu.classList.toggle("active");
@@ -57,44 +57,5 @@ userIcon.onclick = function() {
             }
         });
 
-// deroulantCommande
-
-document.addEventListener('DOMContentLoaded', function () {
-    const detailsLinks = document.querySelectorAll('.voir-details');
-    
-    detailsLinks.forEach(link => {
-        link.addEventListener('click', function () {
-            const commandeId = this.getAttribute('data-id');
-            const detailsRow = document.getElementById('details-commande-' + commandeId);
-            
-            // Toggle l'affichage des détails de la commande
-            if (detailsRow.style.display === 'none') {
-                detailsRow.style.display = 'table-row'; // Afficher les détails
-            } else {
-                detailsRow.style.display = 'none'; // Masquer les détails
-            }
-        });
-    });
-});
-
-// affichage de coté sur home
-const boxes = document.querySelectorAll('.box-about-us');
-
-window.addEventListener('scroll', checkBoxes);
-
-checkBoxes();
-
-function checkBoxes() {
-	const triggerBottom = window.innerHeight / 5 * 4;
-	boxes.forEach((box, idx) => {
-		const boxTop = box.getBoundingClientRect().top;
-		
-		if(boxTop < triggerBottom) {
-			box.classList.add('show');
-		} else {
-			box.classList.remove('show');
-		}
-	});
-}
-
 //test
+

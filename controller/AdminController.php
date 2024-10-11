@@ -321,13 +321,11 @@ public function voirRendezVous() {
             // Vérification des champs obligatoires
             if ($designation && $description && $duree && $prix && $id_categorie) {
                 $this->prestationManager->modifierPrestation($id_prestation, $designation, $description, $duree,$prix, $id_categorie);
-                $_SESSION['MAJprestation'] = "Prestation modifié avec succès!";
- 
             } else {
                 $_SESSION['MAJprestation'] = "Veuillez remplir tous les champs.";
             }
     
-            header("Location: index.php?action=afficherModifierPrestation&id_prestation=$id_prestation");
+            header("Location: index.php?action=prestations");
             exit;
         }
     }

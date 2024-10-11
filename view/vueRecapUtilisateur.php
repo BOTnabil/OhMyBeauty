@@ -35,8 +35,7 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
                 <th>Date</th>
                 <th>Numero commande</th>
                 <th>Prix Total</th>
-                <th>Action</th>
-                <th></th>
+                <th>Détails</th>
             </tr>
         </thead>
         <tbody>
@@ -46,11 +45,9 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
                     <td><?= $commande['numeroCommande']; ?></td>
                     <td><?= $commande['prixTotal']; ?> €</td>
                     <td>
-                        <a href="javascript:void(0);" class="voir-details" data-id="<?= $commande['id_commande']; ?>">Voir les détails</a>
+                        <?= $commande['infosCommande'] ?? 'Aucun détail disponible.'; ?>
                     </td>
-                    <td class="details-commande" id="details-commande-<?= $commande['id_commande']; ?>" style="display:none;">
-                        <p><strong>Détails de la commande :<br></strong> <?= $commande['infosCommande'] ?? 'Aucun détail disponible.'; ?></p>
-                    </td>
+                    <!-- <td>telecharger facture</td> -->
                 </tr>
             <?php } ?>
         </tbody>
@@ -59,6 +56,7 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
     <p>Vous n'avez aucune commande.</p>
 <?php } ?>
 <!-- fin de commandes -->
+
 
 <!-- Gérer RDV -->
 <h2>Vos rendez-vous</h2>
@@ -69,7 +67,6 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
             <tr>
                 <th>Date et Heure</th>
                 <th>Prestation</th>
-                <th>Action</th>
             </tr>
         </thead>
         <tbody>
