@@ -638,6 +638,14 @@ header a:hover{
         flex-direction: column;
         gap: 20px;
     }
+
+    .containerFeatures h1{
+        text-align: center;
+    }
+
+    .cards-1{
+        width: 90%;
+    }
     
 /*=================================================================
 ========================= RESPONSIVE A PROPOS ================================
@@ -658,6 +666,10 @@ header a:hover{
     
     #container {
         flex-direction: column;
+    }
+
+    .sous-titre {
+        padding-bottom: 30px;
     }
 
 }
@@ -1744,6 +1756,7 @@ header a:hover{
 .section-commandes, .section-rendezvous {
     margin: 30px auto;
     max-width: 800px;
+    width: 95%;
 }
 
 .section-commandes h2, .section-rendezvous h2 {

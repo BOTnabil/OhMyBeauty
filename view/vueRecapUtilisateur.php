@@ -46,7 +46,7 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
                         <td><?= date('d/m/Y H:i', strtotime($commande['dateCommande'])) ?></td>
                         <td><?= $commande['numeroCommande']; ?></td>
                         <td><?= $commande['prixTotal']; ?> €</td>
-                        <td><a href="#" class="details-link" onclick="toggleDetails(this)">Détails</a></td>
+                        <td><a href="#!" class="details-link" onclick="toggleDetails(this)">Détails</a></td>
                         <!-- <td>telecharger facture</td> -->
                     </tr>
                     <tr class="details-text" style="display: none;">
@@ -100,7 +100,7 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
                             <span>Non annulable</span>
                             <?php } ?>
                         </td>
-                        <td><a href="#" class="details-link" onclick="toggleDetails(this)">Détails</a></td>
+                        <td><a href="#!" class="details-link" onclick="toggleDetails(this)">Détails</a></td>
                     </tr>
                     <tr class="details-text" style="display: none;">
                         <td colspan="4"><?= $reservation['infosReservation']; ?></td>
