@@ -162,7 +162,7 @@ class PanierController {
 
     private function genererNumeroCommande() {
         // Utilise la date et l'heure actuelles
-        $dateHeure = date('YmdHis'); // Format YYYYMMDDHHMMSS
+        $dateHeure = date('Hisdmy'); // Format HHMMSSDDMMYY
     
         // Génère un nombre aléatoire pour garantir l'unicité
         $random = rand(100, 999);

@@ -85,7 +85,6 @@
                         <?php if (\App\Session::estAdmin()) { ?>
                         <li><a href="index.php?action=admin">Espace admin</a> <?php } ?></li>
                         <li><a href="index.php?action=deconnexion">Se déconnecter</a></li>
-                        <li><a href="index.php?action=supprimerUtilisateur" onclick="return confirm('Supprimer votre compte ? Vos rendez-vous et commandes ne seront pas annulés');">Supprimer mon compte</a></li>
                     </ul>
                     <?php
                 } else {

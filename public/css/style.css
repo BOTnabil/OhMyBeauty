@@ -1762,7 +1762,7 @@ header a:hover{
 
 .table-rendezvous button{
     border-radius: 3px;
-    background-color: #c0392b;
+    background-color: #e74c3c;
     cursor: pointer;
     color: var(--bcreme);
     padding: 10px;
@@ -1868,4 +1868,21 @@ header a:hover{
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
+}
+
+.supprimer-compte{
+    padding: 10px;
+    background-color: #e74c3c;
+    width: fit-content;
+    border-radius: 7px;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.supprimer-compte:hover{
+    background-color: #c0392b;
+}
+
+.supprimer-compte a{
+    color: var(--bcreme);
 }

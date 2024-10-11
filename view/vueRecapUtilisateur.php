@@ -114,6 +114,11 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
 </section>
 <!-- fin des RDV -->
 
+<div class="supprimer-compte">
+    <a href="index.php?action=supprimerUtilisateur" onclick="return confirm('Supprimer votre compte ? Vos rendez-vous et commandes ne seront pas annulés');">Supprimer mon compte</a>
+</div>
+
+
     <script>
         function toggleDetails(element) {
             const detailsRow = element.closest('tr').nextElementSibling;
