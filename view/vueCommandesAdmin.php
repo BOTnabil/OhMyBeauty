@@ -8,8 +8,9 @@ if (!isset($_SESSION['user_role']) || $_SESSION['user_role'] !== 'ADMIN') {
 }
 
 ?>
-
-<h1>Liste des commandes</h1>
+<div class="titre-commande-admin">
+    <h1>Liste des commandes</h1>
+</div>
 
 <?php
 // Organiser les commandes par date
