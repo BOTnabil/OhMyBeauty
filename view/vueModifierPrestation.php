@@ -50,7 +50,7 @@ if (isset($_SESSION['MAJprestation'])) {
     unset($_SESSION['MAJprestation']);  // Supprimer le message après l'affichage
 }
 
-$titre = "Administration - Oh My Beauty";
+$titre = "Modifier une prestation - Oh My Beauty";
 $contenu = ob_get_clean();
 require "template.php";
 ?>

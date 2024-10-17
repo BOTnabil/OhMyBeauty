@@ -4,6 +4,8 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO meta description -->
+    <meta name="description" content="Oh My Beauty - Institut de beauté offrant des prestations de soin et une boutique en ligne. Découvrez nos services et produits.">
     <!-- favicon -->
     <link rel="icon" href="favicon.ico" type="image/x-icon" />
     <!-- css -->
@@ -106,7 +108,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Produit</th>
+                            <th>Article</th>
                             <th>Prix Unitaire</th>
                             <th>Quantité</th>
                             <th>Total</th>

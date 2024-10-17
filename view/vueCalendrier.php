@@ -54,5 +54,5 @@ foreach ($rendezVous as $rdv) {
 
 <?php
 $contenu = ob_get_clean();
-$titre = "Calendrier des rendez-vous - Oh My Beauty";
+$titre = "Rendez-vous - Oh My Beauty";
 require "template.php";

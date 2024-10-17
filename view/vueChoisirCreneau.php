@@ -60,6 +60,6 @@ if (!empty($creneauxDisponibles)) { ?>
 
 <?php
 $contenu = ob_get_clean();
-$titre = "Choisir un créneau horaire";
+$titre = "Choisir un créneau horaire - Oh My Beauty";
 require "template.php";
 ?>

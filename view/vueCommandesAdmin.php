@@ -33,8 +33,8 @@ foreach ($commandes as $commande) {
                             <th>Date</th>
                             <th>Numéro commande</th>
                             <th>Prix Total</th>
-                            <th>Détails</th>
-                            <th>Action</th>
+                            <th></th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>

@@ -894,7 +894,7 @@ header a:hover{
     .logo{
         font-size: 6vw;
         position: absolute;
-        top: 50%;
+        top: 40%;
         left: 15vw;
         transform: translateY(-50%);
         color: var(--beige);
@@ -1784,6 +1784,7 @@ header a:hover{
     margin: auto;
     margin-bottom: 30px;
     font-family: var(--oxygen);
+    cursor: pointer;
 }
 
 .supprimer-compte:hover{
@@ -1792,6 +1793,122 @@ header a:hover{
 
 .supprimer-compte a{
     color: var(--bcreme);
+}
+
+
+
+
+
+/*=================================================================
+========================= PAGE D'ACCUEIL ==========================
+=================================================================*/
+
+.container-home {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header-info {
+    background-color: var(--bcreme);
+    padding-top: 50px;
+    text-align: center;
+    font-family: var(--oxygen);
+}
+
+.header-info h2 {
+    font-size: 40px;
+    background: #BD9570;
+    background: linear-gradient(to right, #BD9570 0%, #53300F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+}
+
+.header-info p {
+    font-size: 16px;
+    color: var(--brun);
+}
+
+.intro-text {
+    font-size: 14px;
+    color: var(--brun);
+    line-height: 1.6;
+}
+
+.services {
+    background-color: #fff;
+    padding: 50px 0;
+    background-color:var(--bcreme);
+}
+
+.services .container-home {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.service {
+    font-family: var(--oxygen);
+}
+
+.service h3 {
+    font-size: 36px;
+    color: var(--brun);
+    margin-bottom: 15px;
+    
+}
+
+.service h4 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.service p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.app-design {
+    font-family: var(--oxygen);
+    background-image: url("../img/parallax2.jpg");
+    background-size: cover;
+    background-position: center;
+    padding: 70px 20px;
+    color: var(--bcreme);
+}
+
+.app-design h2 {
+    color: var(--beige);
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.app-design p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.creative-heads {
+    font-family:var(--oxygen);
+    background-color: var(--bcreme);
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.creative-heads h2 {
+    background: #BD9570;
+    background: linear-gradient(to right, #BD9570 0%, #53300F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.creative-heads p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--brun);
 }
 
 
