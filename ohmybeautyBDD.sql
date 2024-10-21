@@ -48,8 +48,10 @@ CREATE TABLE IF NOT EXISTS `commande` (
   CONSTRAINT `commande_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table ohmybeauty.commande : ~0 rows (environ)
+-- Listage des données de la table ohmybeauty.commande : ~1 rows (environ)
 DELETE FROM `commande`;
+INSERT INTO `commande` (`id_commande`, `numeroCommande`, `dateCommande`, `prixTotal`, `id_utilisateur`, `infosCommande`) VALUES
+	(10, 163450211024562, '2024-10-21 16:34:50', 107.91, 2, 'Poudre à sourcils (Quantité : 9, Prix unitaire : 11.99 €).<br> Sous-total : 107.91 €.');
 
 -- Listage de la structure de table ohmybeauty. contenir
 CREATE TABLE IF NOT EXISTS `contenir` (
@@ -64,8 +66,10 @@ CREATE TABLE IF NOT EXISTS `contenir` (
   CONSTRAINT `contenir_ibfk_2` FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id_produit`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table ohmybeauty.contenir : ~0 rows (environ)
+-- Listage des données de la table ohmybeauty.contenir : ~1 rows (environ)
 DELETE FROM `contenir`;
+INSERT INTO `contenir` (`id_contenir`, `id_commande`, `id_produit`, `quantite`) VALUES
+	(11, 10, 22, 9);
 
 -- Listage de la structure de table ohmybeauty. prestation
 CREATE TABLE IF NOT EXISTS `prestation` (
@@ -129,26 +133,26 @@ CREATE TABLE IF NOT EXISTS `produit` (
 -- Listage des données de la table ohmybeauty.produit : ~20 rows (environ)
 DELETE FROM `produit`;
 INSERT INTO `produit` (`id_produit`, `designation`, `prix`, `image`, `description`, `id_categorie`) VALUES
-	(1, 'Lime à ongles', 4.29, 'img_produit.png', 'Lime à ongles pour le façonnage et la finition des ongles', 4),
-	(3, 'Kit vernis semi permanent', 24.99, 'img_produit.png', 'Kit vernis semi-permanent pour des ongles brillants et durables', 4),
-	(4, 'Ponceuse', 49.99, 'img_produit.png', 'Ponceuse électrique pour préparer les ongles avant la pose de gel', 4),
-	(5, 'Kit extension de cils', 11.49, 'img_produit.png', 'Kit complet pour l’extension de cils avec tous les accessoires nécessaires', 1),
-	(6, 'Faux cils (10 paires)', 8.99, 'img_produit.png', 'Ensemble de 10 paires de faux cils pour un regard intense', 1),
-	(7, 'Sérum croissance', 22.99, 'img_produit.png', 'Sérum pour favoriser la croissance naturelle des cils', 1),
-	(8, 'Faux cils magnétiques', 9.99, 'img_produit.png', 'Faux cils magnétiques réutilisables pour une pose facile', 1),
-	(10, 'Serre tête skin care', 2.00, 'img_produit.png', 'Serre-tête doux et pratique pour les soins de la peau', 3),
-	(11, 'Masque au charbon', 4.50, 'img_produit.png', 'Masque au charbon pour purifier et désincruster les pores', 3),
-	(12, 'Masque hydratant', 3.50, 'img_produit.png', 'Masque hydratant pour nourrir et adoucir la peau', 3),
-	(13, 'Masque réparateur', 12.90, 'img_produit.png', 'Masque réparateur pour cheveux abîmés', 2),
-	(14, 'Kit lissage brésilien', 15.90, 'img_produit.png', 'Kit complet pour lissage brésilien à domicile', 2),
-	(16, 'Elastiques (20 pièces)', 4.00, 'img_produit.png', 'Élastiques résistants pour cheveux, pack de 20 pièces', 2),
-	(18, 'Crème hydratante visage', 25.00, 'img_produit.png', 'Crème légère pour hydratation quotidienne', 3),
-	(20, 'Vernis à ongles', 6.50, 'img_produit.png', 'Vernis longue tenue, disponible en plusieurs couleurs', 4),
-	(21, 'Gel UV', 9.99, 'img_produit.png', 'Gel UV pour la pose d’ongles', 4),
-	(22, 'Poudre à sourcils', 11.99, 'img_produit.png', 'Poudre pour maquillage des sourcils', 1),
-	(23, 'Crème anti-âge', 45.00, 'img_produit.png', 'Crème pour réduire les signes de l’âge', 3),
-	(24, 'Sérum vitaminé', 19.99, 'img_produit.png', 'Sérum enrichi en vitamines pour la peau', 3),
-	(26, 'Lait corporel', 13.90, 'img_produit.png', 'Lait hydratant pour le corps', 3);
+	(1, 'Lime à ongles', 4.29, 'img_produit.webp', 'Lime à ongles pour le façonnage et la finition des ongles', 4),
+	(3, 'Kit vernis semi permanent', 24.99, 'img_produit.webp', 'Kit vernis semi-permanent pour des ongles brillants et durables', 4),
+	(4, 'Ponceuse', 49.99, 'img_produit.webp', 'Ponceuse électrique pour préparer les ongles avant la pose de gel', 4),
+	(5, 'Kit extension de cils', 11.49, 'img_produit.webp', 'Kit complet pour l’extension de cils avec tous les accessoires nécessaires', 1),
+	(6, 'Faux cils (10 paires)', 8.99, 'img_produit.webp', 'Ensemble de 10 paires de faux cils pour un regard intense', 1),
+	(7, 'Sérum croissance', 22.99, 'img_produit.webp', 'Sérum pour favoriser la croissance naturelle des cils', 1),
+	(8, 'Faux cils magnétiques', 9.99, 'img_produit.webp', 'Faux cils magnétiques réutilisables pour une pose facile', 1),
+	(10, 'Serre tête skin care', 2.00, 'img_produit.webp', 'Serre-tête doux et pratique pour les soins de la peau', 3),
+	(11, 'Masque au charbon', 4.50, 'img_produit.webp', 'Masque au charbon pour purifier et désincruster les pores', 3),
+	(12, 'Masque hydratant', 3.50, 'img_produit.webp', 'Masque hydratant pour nourrir et adoucir la peau', 3),
+	(13, 'Masque réparateur', 12.90, 'img_produit.webp', 'Masque réparateur pour cheveux abîmés', 2),
+	(14, 'Kit lissage brésilien', 15.90, 'img_produit.webp', 'Kit complet pour lissage brésilien à domicile', 2),
+	(16, 'Elastiques (20 pièces)', 4.00, 'img_produit.webp', 'Élastiques résistants pour cheveux, pack de 20 pièces', 2),
+	(18, 'Crème hydratante visage', 25.00, 'img_produit.webp', 'Crème légère pour hydratation quotidienne', 3),
+	(20, 'Vernis à ongles', 6.50, 'img_produit.webp', 'Vernis longue tenue, disponible en plusieurs couleurs', 4),
+	(21, 'Gel UV', 9.99, 'img_produit.webp', 'Gel UV pour la pose d’ongles', 4),
+	(22, 'Poudre à sourcils', 11.99, 'img_produit.webp', 'Poudre pour maquillage des sourcils', 1),
+	(23, 'Crème anti-âge', 45.00, 'img_produit.webp', 'Crème pour réduire les signes de l’âge', 3),
+	(24, 'Sérum vitaminé', 19.99, 'img_produit.webp', 'Sérum enrichi en vitamines pour la peau', 3),
+	(26, 'Lait corporel', 13.90, 'img_produit.webp', 'Lait hydratant pour le corps', 3);
 
 -- Listage de la structure de table ohmybeauty. reservation
 CREATE TABLE IF NOT EXISTS `reservation` (
