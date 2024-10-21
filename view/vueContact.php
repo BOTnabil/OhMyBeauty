@@ -22,10 +22,10 @@ ob_start();
                 <a href="#"><i class="fa-solid fa-p"></i></a>
             </div>
         </div>
-        <p>
+        <adress>
         Adresse : 123 Rue de la Beauté, 75001 Paris<br>
         Horaires d'ouverture : Tout les jours de 9h à 18h<br>
-        </p>
+        </adress>
     </section>
 <!-- fin de contact -->
 

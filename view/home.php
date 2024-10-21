@@ -5,7 +5,7 @@ ob_start();
 <!-- Bannière -->
 <section>
     <div class="banner">
-        <img src="./public/img/img1.jpg" alt="image avec ecrit OH MY BEAUTY" class="img-logo"/> 
+        <img src="./public/img/img1.webp" alt="image avec ecrit OH MY BEAUTY" class="img-logo"/> 
         <div class="logo">
             <h1>OH MY BEAUTY</h1>
         </div>
@@ -60,14 +60,14 @@ ob_start();
     </div>
 
     <div class="gallery-container">
-        <div class="div1"><img src="./public/img/grid_1.jpg" alt="Image 1"></div>
-        <div class="div2"><img src="./public/img/grid_2.jpg" alt="Image 1"></div>
-        <div class="div3"><img src="./public/img/grid_3.jpg" alt="Image 1"></div>
-        <div class="div4"><img src="./public/img/grid_4.jpg" alt="Image 1"></div>
-        <div class="div5"><img src="./public/img/grid_5.jpg" alt="Image 1"></div>
-        <div class="div6"><img src="./public/img/grid_6.jpg" alt="Image 1"></div>
-        <div class="div7"><img src="./public/img/grid_7.jpg" alt="Image 1"></div>
-        <div class="div8"><img src="./public/img/grid_8.jpg" alt="Image 1"></div>
+        <div class="div1"><img src="./public/img/grid_1.webp" alt="Palette de maquillage"></div>
+        <div class="div2"><img src="./public/img/grid_2.webp" alt="maquillage en tout genre"></div>
+        <div class="div3"><img src="./public/img/grid_3.webp" alt="Manucure"></div>
+        <div class="div4"><img src="./public/img/grid_4.webp" alt="Fard à paupière"></div>
+        <div class="div5"><img src="./public/img/grid_5.webp" alt="Parfum"></div>
+        <div class="div6"><img src="./public/img/grid_6.webp" alt="Skincare"></div>
+        <div class="div7"><img src="./public/img/grid_7.webp" alt="Bureau avec huiles"></div>
+        <div class="div8"><img src="./public/img/grid_8.webp" alt="Materiel skin care"></div>
     </div>
 </section>
 

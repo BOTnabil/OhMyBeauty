@@ -31,7 +31,7 @@
         <button id="openBtn">
                 <i class="fa-solid fa-bars fa-xl"></i>
         </button>
-        <a href="index.php?action=home" class="logoNav"><img src="./public/img/logo_header.png"  alt="image logo Oh My Beauty"></a>
+        <a href="index.php?action=home" class="logoNav"><img src="./public/img/logo_header.webp"  alt="image logo Oh My Beauty"></a>
         <div id="mySidenav" class="sidenav">
             <ul>
                 <li><a href="index.php?action=prestations">Prestations</a></li>
@@ -188,7 +188,7 @@
             </div>
         </div>
         <div class="text-center mt-5">
-            <img src="./public/img/logo_footer.png" alt="logo ohmybeauty">
+            <img src="./public/img/logo_footer.webp" alt="logo ohmybeauty">
             <p class="footer-alt">2024 © OHMYBEAUTY, Tout droits réservés</p>
         </div>
 

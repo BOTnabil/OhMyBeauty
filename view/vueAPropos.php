@@ -15,7 +15,7 @@ ob_start();
         <div class="cards-2">    
             <strong>54 établissements</strong> <br> <p>ouverts en France</p>
             <div class="cards-2-header">
-                <img src="./public/img/person1.jpeg" alt="Jolyne Cujoh">
+                <img src="./public/img/person1.webp" alt="Jolyne Cujoh">
             </div>
             <h3>Jolyne Q. Joh</h3>
             <p>Gérante</p>
@@ -24,7 +24,7 @@ ob_start();
         <div class="cards-2">   
             <strong>10 ans d'expérience</strong> <br> <p>dans les mains</p>
             <div class="cards-2-header">
-                <img src="./public/img/person2.png" alt="Godrick D. Grafted">
+                <img src="./public/img/person2.webp" alt="Godrick D. Grafted">
             </div>
             <h3>Godrick D. Grafted</h3>
             <p>Coiffeur</p>
@@ -33,7 +33,7 @@ ob_start();
         <div class="cards-2">       
             <strong>9k+ manucures</strong> <br> <p>réalisées dans sa carrière</p>
             <div class="cards-2-header">
-                <img src="./public/img/person3.png" alt="Shaw T. Slay">
+                <img src="./public/img/person3.webp" alt="Shaw T. Slay">
             </div>
             <h3>Shaw T. Slay</h3>
             <p>Prothésiste ongulaire</p>
@@ -42,7 +42,7 @@ ob_start();
         <div class="cards-2">
             <strong>Son talent</strong> <br> <p>vous rendra aussi beau que lui</p>
             <div class="cards-2-header">
-                <img src="./public/img/person4.png" alt="Jig A. Chad">
+                <img src="./public/img/person4.webp" alt="Jig A. Chad">
             </div>
             <h3>Jig A. Chad</h3>
             <p>Esthéticien</p>

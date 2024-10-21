@@ -281,7 +281,7 @@ header a:hover{
 
 .contact{
     color:var(--blanc);
-    background-image: url("../img/parallax2.jpg");
+    background-image: url("../img/parallax2.webp");
     background-position: center;
     background-repeat: no-repeat;
     background-attachment:fixed;
@@ -292,7 +292,8 @@ header a:hover{
     padding-bottom: 7%;
 }
 
-.contact p{
+.contact adress{
+    display:block;
     margin-top: 0.5%;
     font-style: italic;
     font-weight: 200;
@@ -472,7 +473,7 @@ header a:hover{
  #team {
     min-height: 71vh;
     padding-top: 30px;
-    background-image: url("../img/parallax2.jpg");
+    background-image: url("../img/parallax2.webp");
     background-position: center;
     background-repeat: no-repeat;
     background-attachment:fixed;
@@ -1871,7 +1872,7 @@ header a:hover{
 
 .app-design {
     font-family: var(--oxygen);
-    background-image: url("../img/parallax2.jpg");
+    background-image: url("../img/parallax2.webp");
     background-size: cover;
     background-position: center;
     padding: 70px 20px;

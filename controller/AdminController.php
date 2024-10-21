@@ -39,14 +39,16 @@ public function uploadImage($file) {
     }
 
     // Types de fichiers autorisés
-    $allowedExtensions = ['jpg', 'jpeg', 'png'];
+    $allowedExtensions = ['webp'];
     $maxFileSize = 5 * 1024 * 1024; // 5 MB
 
     // Vérifie si un fichier a été téléchargé
     if ($file['error'] === UPLOAD_ERR_OK) {
         // Vérifie la taille du fichier
         if ($file['size'] > $maxFileSize) {
-            return "Erreur : la taille du fichier dépasse la limite autorisée.";
+            $_SESSION['MAJadmin'] = "Seuls le format WEBP est autorisé.";
+            header("Location: index.php?action=admin");
+            die;
         }
 
         // Récupère l'extension du fichier
@@ -54,8 +56,9 @@ public function uploadImage($file) {
 
         // Vérifie l'extension du fichier
         if (!in_array(strtolower($fileExtension), $allowedExtensions)) {
-            $_SESSION['MAJadmin'] = "Seuls les formats JPG JPEG et PNG sont autorisés.";
+            $_SESSION['MAJadmin'] = "Seuls le format WEBP est autorisé.";
             header("Location: index.php?action=admin");
+            die;
         }
 
         // Renomme le fichier avec un identifiant unique
@@ -70,6 +73,7 @@ public function uploadImage($file) {
         } else {
             $_SESSION['MAJadmin'] = "Echec du téléchargement du fichier.";
             header("Location: index.php?action=admin");
+            die;
         }
     } else {
         $_SESSION['MAJadmin'] = "Erreur lors du téléchargement.";

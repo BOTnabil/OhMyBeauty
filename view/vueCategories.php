@@ -12,7 +12,7 @@ ob_start();
             <div class="categorie-absolute">
                 <h2><?= $categorie['designation']; ?></h2>
             </div>
-            <img class="img-categorie" src="./public/img/<?= $categorie['designation']; ?>.jpg" alt="categorie d'articles">
+            <img class="img-categorie" src="./public/img/<?= $categorie['designation']; ?>.webp" alt="categorie d'articles">
             </a>
     <?php } ?>
 </section>
