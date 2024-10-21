@@ -37,7 +37,7 @@ INSERT INTO `categorie` (`id_categorie`, `designation`) VALUES
 -- Listage de la structure de table ohmybeauty. commande
 CREATE TABLE IF NOT EXISTS `commande` (
   `id_commande` int NOT NULL AUTO_INCREMENT,
-  `numeroCommande` bigint DEFAULT NULL,
+  `numeroCommande` bigint NOT NULL,
   `dateCommande` datetime NOT NULL,
   `prixTotal` decimal(15,2) NOT NULL,
   `id_utilisateur` int DEFAULT NULL,
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS `commande` (
   UNIQUE KEY `numeroCommande` (`numeroCommande`),
   KEY `id_utilisateur` (`id_utilisateur`),
   CONSTRAINT `commande_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table ohmybeauty.commande : ~0 rows (environ)
 DELETE FROM `commande`;
@@ -62,15 +62,10 @@ CREATE TABLE IF NOT EXISTS `contenir` (
   KEY `contenir_ibfk_1` (`id_commande`),
   CONSTRAINT `contenir_ibfk_1` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id_commande`),
   CONSTRAINT `contenir_ibfk_2` FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id_produit`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table ohmybeauty.contenir : ~4 rows (environ)
+-- Listage des données de la table ohmybeauty.contenir : ~0 rows (environ)
 DELETE FROM `contenir`;
-INSERT INTO `contenir` (`id_contenir`, `id_commande`, `id_produit`, `quantite`) VALUES
-	(1, NULL, 5, 1),
-	(2, NULL, 20, 5),
-	(3, NULL, 23, 5),
-	(4, NULL, 21, 6);
 
 -- Listage de la structure de table ohmybeauty. prestation
 CREATE TABLE IF NOT EXISTS `prestation` (
@@ -79,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `prestation` (
   `prix` decimal(15,2) NOT NULL,
   `duree` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT '40min',
   `id_categorie` int NOT NULL,
-  `description` varchar(500) DEFAULT NULL,
+  `description` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id_prestation`),
   KEY `id_categorie` (`id_categorie`),
   CONSTRAINT `prestation_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id_categorie`)
@@ -88,31 +83,31 @@ CREATE TABLE IF NOT EXISTS `prestation` (
 -- Listage des données de la table ohmybeauty.prestation : ~29 rows (environ)
 DELETE FROM `prestation`;
 INSERT INTO `prestation` (`id_prestation`, `designation`, `prix`, `duree`, `id_categorie`, `description`) VALUES
-	(1, 'Réhaussement', 35.00, '45min', 1, 'test description'),
-	(2, 'Extension pose naturelle', 50.00, '45min', 1, 'test description'),
-	(3, 'Extension pose mixte', 60.00, '45min', 1, 'test description'),
-	(4, 'Remplissage naturel', 30.00, '45min', 1, 'test description'),
-	(5, 'Remplissage mixte', 35.00, '30min', 1, 'Remplissage de cils naturel pour une apparence légère'),
-	(6, 'Dépose', 10.00, '20min', 1, 'Retrait complet des extensions de cils'),
-	(7, 'Lissage brésilien', 90.00, '50min', 2, 'Lissage brésilien pour des cheveux lisses et brillants'),
-	(8, 'Lissage Tanin', 100.00, '50min', 2, 'Lissage Tanin pour des cheveux renforcés et lisses'),
-	(9, 'Lissage nano-indien', 130.00, '50min', 2, 'Lissage nano-indien pour des cheveux ultra-lisses et brillants'),
-	(10, 'Soin botox', 50.00, '40min', 2, 'Soin capillaire revitalisant pour renforcer les cheveux'),
-	(11, 'Soin basique', 45.00, '35min', 3, 'Soin basique du visage pour une hydratation quotidienne'),
-	(12, 'Soin hydrafacial', 70.00, '40min', 3, 'Soin hydrafacial pour une peau éclatante et purifiée'),
-	(13, 'Dermaplaning', 70.00, '30min', 3, 'Dermaplaning pour exfoliation de la peau et élimination des cellules mortes'),
-	(14, 'Microneedling', 80.00, '45min', 3, 'Microneedling pour régénérer la peau et stimuler la production de collagène'),
-	(15, 'Soins spécifiques', 50.00, '30min', 3, 'Soins spécifiques adaptés à chaque type de peau'),
-	(16, 'Pose naturelle gel', 35.00, '30min', 4, 'Pose naturelle de gel sur les ongles pour une apparence élégante'),
-	(17, 'Pose couleurs gel', 35.00, '30min', 4, 'Pose de gel coloré pour des ongles aux couleurs vibrantes'),
-	(18, 'Pose french gel', 35.00, '30min', 4, 'Pose french gel pour un style classique et élégant'),
-	(19, 'Pose nails art', 35.00, '35min', 4, 'Pose de nail art pour un design personnalisé sur les ongles'),
-	(20, 'Remplissage nails art', 30.00, '25min', 4, 'Remplissage de nail art pour maintenir un design parfait'),
+	(1, 'Réhaussement', 35.00, '45min', 1, 'Réhaussement des cils pour un effet naturel et courbé sans utilisation de mascara'),
+	(2, 'Extension pose naturelle', 50.00, '45min', 1, 'Pose d’extensions de cils pour un effet naturel et discret'),
+	(3, 'Extension pose mixte', 60.00, '45min', 1, 'Pose d’extensions de cils avec un mélange de cils naturels et volumineux'),
+	(4, 'Remplissage naturel', 30.00, '45min', 1, 'Remplissage des extensions de cils pour maintenir un effet naturel'),
+	(5, 'Remplissage mixte', 35.00, '30min', 1, 'Remplissage des extensions de cils pour un effet mixte, entre naturel et volume'),
+	(6, 'Dépose', 10.00, '20min', 1, 'Retrait complet des extensions de cils pour retrouver les cils naturels'),
+	(7, 'Lissage brésilien', 90.00, '50min', 2, 'Lissage brésilien pour des cheveux plus lisses, brillants et sans frisottis'),
+	(8, 'Lissage Tanin', 100.00, '50min', 2, 'Lissage au Tanin pour renforcer les cheveux tout en leur apportant souplesse et brillance'),
+	(9, 'Lissage nano-indien', 130.00, '50min', 2, 'Lissage nano-indien pour des cheveux ultra-lisses et durablement soyeux'),
+	(10, 'Soin botox', 50.00, '40min', 2, 'Soin Botox capillaire pour nourrir et réparer intensément les cheveux abîmés'),
+	(11, 'Soin basique', 45.00, '35min', 3, 'Soin du visage basique pour nettoyer et hydrater la peau en profondeur'),
+	(12, 'Soin hydrafacial', 70.00, '40min', 3, 'Soin hydrafacial pour une hydratation en profondeur et une peau éclatante'),
+	(13, 'Dermaplaning', 70.00, '30min', 3, 'Dermaplaning pour exfolier la peau et éliminer les cellules mortes, laissant la peau douce et lisse'),
+	(14, 'Microneedling', 80.00, '45min', 3, 'Microneedling pour stimuler la production de collagène et renouveler la peau'),
+	(15, 'Soins spécifiques', 50.00, '30min', 3, 'Soins spécifiques personnalisés pour répondre aux besoins individuels de chaque type de peau'),
+	(16, 'Pose naturelle gel', 35.00, '30min', 4, 'Pose de gel naturel sur les ongles pour une apparence élégante et raffinée'),
+	(17, 'Pose couleurs gel', 35.00, '30min', 4, 'Pose de gel coloré pour des ongles éclatants et durables'),
+	(18, 'Pose french gel', 35.00, '30min', 4, 'Pose de gel french pour un look classique et sophistiqué des ongles'),
+	(19, 'Pose nails art', 35.00, '35min', 4, 'Pose de nail art personnalisé pour un design unique sur vos ongles'),
+	(20, 'Remplissage nails art', 30.00, '25min', 4, 'Remplissage de nail art pour prolonger la tenue et la beauté de vos ongles décorés'),
 	(21, 'Massage relaxant', 60.00, '60min', 3, 'Massage pour relâcher les tensions musculaires'),
 	(22, 'Soin visage éclat', 80.00, '60min', 3, 'Soin pour redonner de l’éclat à la peau'),
 	(23, 'Manucure classique', 30.00, '45min', 4, 'Soin des mains avec pose de vernis classique'),
 	(24, 'Pédicure spa', 45.00, '60min', 4, 'Soin des pieds avec bain et massage'),
-	(25, 'Coloration cheveux', 70.02, '60min', 2, 'Coloration compl&egrave;te avec produits de soin'),
+	(25, 'Coloration cheveux', 70.00, '60min', 2, 'Coloration compl&egrave;te avec produits de soin'),
 	(27, 'Soin contour des yeux', 50.00, '30min', 3, 'Soin ciblé pour le contour des yeux'),
 	(28, 'Epilation sourcils', 15.00, '15min', 1, 'Epilation des sourcils à la cire ou à la pince'),
 	(29, 'Pose de faux cils', 80.00, '60min', 1, 'Pose de faux cils semi-permanents'),
@@ -129,9 +124,9 @@ CREATE TABLE IF NOT EXISTS `produit` (
   PRIMARY KEY (`id_produit`),
   KEY `id_categorie` (`id_categorie`),
   CONSTRAINT `produit_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table ohmybeauty.produit : ~22 rows (environ)
+-- Listage des données de la table ohmybeauty.produit : ~20 rows (environ)
 DELETE FROM `produit`;
 INSERT INTO `produit` (`id_produit`, `designation`, `prix`, `image`, `description`, `id_categorie`) VALUES
 	(1, 'Lime à ongles', 4.29, 'img_produit.png', 'Lime à ongles pour le façonnage et la finition des ongles', 4),
@@ -146,10 +141,8 @@ INSERT INTO `produit` (`id_produit`, `designation`, `prix`, `image`, `descriptio
 	(12, 'Masque hydratant', 3.50, 'img_produit.png', 'Masque hydratant pour nourrir et adoucir la peau', 3),
 	(13, 'Masque réparateur', 12.90, 'img_produit.png', 'Masque réparateur pour cheveux abîmés', 2),
 	(14, 'Kit lissage brésilien', 15.90, 'img_produit.png', 'Kit complet pour lissage brésilien à domicile', 2),
-	(15, 'Bonnet en satin', 7.99, 'img_produit.png', 'Bonnet en satin pour protéger les cheveux pendant la nuit', 2),
 	(16, 'Elastiques (20 pièces)', 4.00, 'img_produit.png', 'Élastiques résistants pour cheveux, pack de 20 pièces', 2),
 	(18, 'Crème hydratante visage', 25.00, 'img_produit.png', 'Crème légère pour hydratation quotidienne', 3),
-	(19, 'Huile capillaire', 15.90, 'img_produit.png', 'Huile réparatrice pour cheveux', 2),
 	(20, 'Vernis à ongles', 6.50, 'img_produit.png', 'Vernis longue tenue, disponible en plusieurs couleurs', 4),
 	(21, 'Gel UV', 9.99, 'img_produit.png', 'Gel UV pour la pose d’ongles', 4),
 	(22, 'Poudre à sourcils', 11.99, 'img_produit.png', 'Poudre pour maquillage des sourcils', 1),
@@ -169,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   KEY `reservation_ibfk_1` (`id_utilisateur`),
   CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`),
   CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`id_prestation`) REFERENCES `prestation` (`id_prestation`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- Listage des données de la table ohmybeauty.reservation : ~0 rows (environ)
 DELETE FROM `reservation`;
