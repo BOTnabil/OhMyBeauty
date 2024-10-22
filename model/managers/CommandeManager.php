@@ -11,6 +11,21 @@ class CommandeManager {
         $this->db = Connect::seConnecter(); // Initialisation de la connexion à la base de données
     }
 
+    public function obtenirCommandeParId($id_commande) {
+        $requete = "
+            SELECT c.id_commande, c.numeroCommande, c.dateCommande, c.prixTotal, c.infosCommande, u.id_utilisateur
+            FROM commande c
+            JOIN utilisateur u ON c.id_utilisateur = u.id_utilisateur
+            WHERE c.id_commande = :id_commande
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':id_commande', $id_commande, \PDO::PARAM_INT);
+        $stmt->execute();
+    
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+    
+
     // Méthode pour créer une nouvelle commande
     public function creerCommande($prixTotal, $id_utilisateur, $infosCommande, $numeroCommande) {
         $requete = "

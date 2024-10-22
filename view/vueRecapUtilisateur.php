@@ -50,7 +50,12 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
                         <!-- <td>telecharger facture</td> -->
                     </tr>
                     <tr class="details-text" style="display: none;">
-                        <td colspan="4"><?= $commande['infosCommande']; ?></td>
+                        <td colspan="4"><?= $commande['infosCommande']; ?><br>
+                            <form action="index.php?action=telechargerFacture" method="POST">
+                                <input type="hidden" name="id_commande" value="<?= $commande['id_commande']; ?>">
+                                <button type="submit">Télécharger la facture</button>
+                            </form>
+                        </td>
                     </tr>
                 <?php } ?>
             </tbody>

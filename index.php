@@ -36,6 +36,8 @@ if(isset($_GET["action"])){
         case "panier": $ctrlAccueil->afficherPanier(); break;
         // Envoi de mail
         case "envoyerMail": $ctrlAccueil->envoyerMail(); break;
+        // DL facture
+        case 'telechargerFacture': $ctrlAccueil->telechargerFacture(); break;
         // Sécurité
         case "deconnexion": $ctrlSecurite->deconnexion(); break;
         case "inscriptionProcess": $ctrlSecurite->inscription(); break;

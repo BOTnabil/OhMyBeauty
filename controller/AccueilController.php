@@ -2,7 +2,18 @@
 
 namespace Controller;
 
+require_once './dompdf/autoload.inc.php';
+
+use Dompdf\Dompdf;
+use Model\Managers\CommandeManager;
+
 class AccueilController {
+
+    private $commandeManager;
+
+    public function __construct() {
+        $this->commandeManager = new CommandeManager();
+    }
 
 //Méthodes
     public function afficherHome() {
@@ -79,8 +90,35 @@ class AccueilController {
         }
     }
     
-
-    function genererRecuPDF($detailsCommande) {
-        // Implémentation de la génération du PDF de reçu
-    }
+    public function telechargerFacture() {
+        // Récupérer les informations de la commande
+        $id_commande = filter_input(INPUT_POST, 'id_commande', FILTER_VALIDATE_INT);
+        $commande = $this->commandeManager->obtenirCommandeParId($id_commande);
+        
+        if ($commande) {
+            // Initialise Dompdf
+            $dompdf = new Dompdf();
+    
+            // Crée le contenu HTML de la facture
+            $html = "<h1>Facture #" . $commande['numeroCommande'] . "</h1>";
+            $html .= "<p>Date : " . $commande['dateCommande'] . "</p>";
+            $html .= "<p>Détails : " . $commande['infosCommande'] . "</p>";
+            $html .= "<p>Total : " . $commande['prixTotal'] . " €</p>";
+    
+            // Charge le HTML dans Dompdf
+            $dompdf->loadHtml($html);
+    
+            // Option de taille du papier
+            $dompdf->setPaper('A4', 'portrait');
+    
+            // Rend le PDF
+            $dompdf->render();
+    
+            // Renomme le fichier avec le numéro de commande
+            $nomFichier = "facture_" . $commande['numeroCommande'] . ".pdf";
+    
+            // Sortie du PDF avec nom personnalisé
+            $dompdf->stream($nomFichier);
+        }
+    }    
 }

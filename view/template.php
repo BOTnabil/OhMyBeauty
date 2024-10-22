@@ -28,7 +28,7 @@
     <header>
 
         <!-- Menu burger -->
-        <button id="openBtn">
+        <button id="openBtn" aria-label="burger">
                 <i class="fa-solid fa-bars fa-xl"></i>
         </button>
         <a href="index.php?action=home" class="logoNav"><img src="./public/img/logo_header.webp"  alt="image logo Oh My Beauty"></a>
@@ -50,7 +50,7 @@
 
         <!-- Panier bouton -->
         <div class="header-cart-toggle">
-            <button id="toggleCartBtn">
+            <button id="toggleCartBtn" aria-label="panier">
                 <i class="fa-solid fa-cart-shopping fa-l"></i>
                 <?php 
                 // Calcul du nombre total d'articles dans le panier (en tenant compte des quantités)
@@ -70,7 +70,7 @@
 
         <!-- Menu utilisateur bouton -->
         <div class="user">
-            <button>
+            <button aria-label="user">
                 <i class="fa-solid fa-user fa-l"></i>
             </button>
         </div>
@@ -158,7 +158,7 @@
 
         <div class="container">
             <div>
-            <h6 class="footer-heading text-uppercase text-white">Informations</h6>
+            <h3 class="footer-heading text-uppercase text-white">Informations</h3>
             <ul class="footer-link mt-4">
                 <li><a href="index.php?action=aPropos">Notre institut</a></li>
                 <li><a href="#!">Conditions de vente</a></li>
@@ -166,7 +166,7 @@
             </ul>
             </div>
             <div>
-            <h6 class="footer-heading text-uppercase text-white">Aide</h6>
+            <h3 class="footer-heading text-uppercase text-white">Aide</h3>
             <ul class="footer-link mt-4">
                 <li><a href="index.php?action=inscription">Inscription</a></li>
                 <li><a href="index.php?action=connexion">Connexion</a></li>
@@ -175,7 +175,7 @@
             </ul>
             </div>
             <div class="footer-link">
-            <h6 class="footer-heading text-uppercase text-white">Contactez-nous</h6>
+            <h3 class="footer-heading text-uppercase text-white">Contactez-nous</h3>
             <p class="contact-info mt-4">Besoin d'aide ?</p>
             <p class="contact-info">+XX XX-XX-XX-XX-XX</p>
             <div>
