@@ -22,13 +22,13 @@ class PanierController {
 
 // Méthodes
     public function ajouterAuPanier($id_produit) {
-        $productData = $this->produitManager->obtenirProduitEtSaCategorieParId($id_produit);
+        $produitDonnees = $this->produitManager->obtenirProduitEtSaCategorieParId($id_produit);
         $quantite = isset($_GET['quantite']) ? (int)$_GET['quantite'] : 1; // Récupère la quantité choisie
     
-        if ($productData) {
-            $nom = $productData['designation'];
-            $prix = $productData['prix'];
-            $image = $productData['image'];
+        if ($produitDonnees) {
+            $nom = $produitDonnees['designation'];
+            $prix = $produitDonnees['prix'];
+            $image = $produitDonnees['image'];
             $produitExiste = false;
             $produit = [
                 "id" => $id_produit,
@@ -76,6 +76,7 @@ class PanierController {
         //Pour un produit existant qu'on aura identifié par ID, on ajoute une qtt
         if (isset($_SESSION['products'][$id])) {
             $_SESSION['products'][$id]['qtt']++;
+
             //on re calcule le prix total
             $_SESSION['products'][$id]['total'] = $_SESSION['products'][$id]['prix'] * $_SESSION['products'][$id]['qtt'];
         }
@@ -87,6 +88,7 @@ class PanierController {
         if (isset($_SESSION['products'][$id]) && $_SESSION['products'][$id]['qtt'] > 0) {
             $_SESSION['products'][$id]['qtt']--;
             $_SESSION['products'][$id]['total'] = $_SESSION['products'][$id]['prix'] * $_SESSION['products'][$id]['qtt'];
+
             //si après diminution la qtt est à 0, on supprime le produit
             if ($_SESSION['products'][$id]['qtt'] == 0) {
                 unset($_SESSION['products'][$id]);
@@ -94,7 +96,6 @@ class PanierController {
             }
         }
         header("Location:index.php?action=panier");
-
     }
 
     public function validerCommande() {
@@ -152,7 +153,8 @@ class PanierController {
             $sousTotal = $produit['qtt'] * $produit['prix'];
 
             if ($produit['qtt'] > 1) {  // Affiche le sous-total uniquement si la quantité est supérieure à 1
-                $infos .= $produit['nom'] . " (Quantité : " . $produit['qtt'] . ", Prix unitaire : " . $produit['prix'] . " €).<br> Sous-total : " . $sousTotal . " €.<br>";
+                $infos .= $produit['nom'] . " (Quantité : " . $produit['qtt'] . ", Prix unitaire : " . $produit['prix'] . " €).<br>
+                 Sous-total : " . $sousTotal . " €.<br>";
             } else {
                 $infos .= $produit['nom'] . " (Quantité : " . $produit['qtt'] . ", Prix unitaire : " . $produit['prix'] . " €)<br>";
             }

@@ -72,12 +72,6 @@ if(isset($_GET["action"])){
                 $ctrlPanier->validerCommande();
             }
             break;
-        case 'telechargerRecu':
-            if (isset($_GET['id_commande'])) {
-                $detailsCommande = $commandeManager->obtenirDetailsCommande($_GET['id_commande']);
-                $ctrlAccueil->genererRecuPDF($detailsCommande);
-            }
-            break;
         // Réservation
         case 'reserver': $ctrlReservation->reserver(); break;
         case 'choisirCreneau': $ctrlReservation->choisirCreneau(); break;

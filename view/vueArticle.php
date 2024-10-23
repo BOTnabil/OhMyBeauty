@@ -37,7 +37,7 @@ ob_start();
                     <input type="hidden" name="id_produit" value="<?= $article['id_produit']; ?>">
                     <input type="number" id="quantite" name="quantite" value="1" min="1" required>
                     <button class="add-to-cart" aria-label="ajouter au panier" type="submit">Ajouter au panier</button>
-                </for>
+                </form>
             </div>
 
             <div class="product-description">

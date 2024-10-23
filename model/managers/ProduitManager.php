@@ -11,10 +11,11 @@ class ProduitManager {
         $this->db = Connect::seConnecter(); // Initialisation de la connexion à la base de données
     }
 
-    // Méthode pour obtenir un produit par son ID ou par sa categorie
+    // Méthode pour obtenir un produit et sa categorie grâce à son ID
     public function obtenirProduitEtSaCategorieParId($id_produit) {
         $requete = "
-            SELECT p.id_produit, p.designation, p.prix, p.description, p.image, p.id_categorie, c.designation AS nom_categorie
+            SELECT p.id_produit, p.designation, p.prix, p.description, 
+            p.image, p.id_categorie, c.designation AS nom_categorie
             FROM produit p
             JOIN categorie c ON p.id_categorie = c.id_categorie
             WHERE p.id_produit = :id_produit
