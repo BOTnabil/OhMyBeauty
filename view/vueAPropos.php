@@ -87,12 +87,24 @@ ob_start();
 <!-- fin de features -->
 
 <!-- MAP -->
-<section class="sectionMap">
-    <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2639.2003929882485!2d7.692440012735459!3d48.58686177117689!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4796b73599eb8f55%3A0x64d5ef90b3ac93ce!2sOhmybeauty!5e0!3m2!1sfr!2sfr!4v1723337507434!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
+<section>
+    <div id="map"></div>
 </section>
 <!-- fin de map -->
+
+<!-- JS pour la map -->
+<script>
+    var map = L.map('map').setView([48.58683065087411, 7.694850481995183], 17);
+    var marker = L.marker([48.58683065087411, 7.694850481995183]).addTo(map);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+
+    marker.bindPopup("5 Rue Jean-Geoffroy Conrath<br>67200 Strasbourg").openPopup();
+    
+</script>
 
 <?php
 

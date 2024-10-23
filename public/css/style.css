@@ -344,20 +344,11 @@ header a:hover{
  */
 
 
-.map{
+#map{
     overflow:hidden;
-    position:relative;
     height: 50vw;
+    filter: grayscale(0.2);
 }
-
-
-.map iframe{
-    filter: grayscale(0.7) invert();
-    height:100%;
-    width:100%;
-    position:absolute;
-}
-
 
 
 /* 
@@ -2007,7 +1998,7 @@ header a:hover{
     }
 
 
-    .map{
+    #map{
         height: 100vw;
     }
 
