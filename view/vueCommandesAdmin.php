@@ -47,7 +47,7 @@ foreach ($commandes as $commande) {
                                 <td>
                                     <form method="post" action="index.php?action=annulerCommande">
                                         <input type="hidden" name="id_commande" value="<?= $commande['id_commande']; ?>">
-                                        <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir annuler cette commande ?');">Annuler</button>
+                                        <button type="submit" aria-label="annuler commande" onclick="return confirm('Êtes-vous sûr de vouloir annuler cette commande ?');">Annuler</button>
                                     </form>
                                 </td>
                             </tr>

@@ -53,7 +53,7 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
                         <td colspan="4"><?= $commande['infosCommande']; ?><br>
                             <form action="index.php?action=telechargerFacture" method="POST">
                                 <input type="hidden" name="id_commande" value="<?= $commande['id_commande']; ?>">
-                                <button type="submit">Télécharger la facture</button>
+                                <button type="submit" aria-label="télécharger facture">Télécharger la facture</button>
                             </form>
                         </td>
                     </tr>
@@ -99,7 +99,7 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
                             <form method="post" action="index.php?action=annulerReservation">
                                 <input type="hidden" name="id_reservation" value="<?= $reservation['id_reservation']; ?>">
                                 <input type="hidden" name="source" value="recapUtilisateur">
-                                <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir annuler cette réservation ?');">Annuler</button>
+                                <button type="submit" aria-label="annuler reservation" onclick="return confirm('Êtes-vous sûr de vouloir annuler cette réservation ?');">Annuler</button>
                             </form>
                             <?php } else { ?>
                             <span>Non annulable</span>

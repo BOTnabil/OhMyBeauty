@@ -16,14 +16,14 @@ ob_start();
                             <form method="get" action="index.php">
                                 <input type="hidden" name="action" value="afficherModifierProduit">
                                 <input type="hidden" name="id_produit" value="<?= $article['id_produit']; ?>">
-                                <button type="submit"><i class="fa-solid fa-pen-to-square"></i></button>
+                                <button type="submit" aria-label="modifier produit"><i class="fa-solid fa-pen-to-square"></i></button>
                             </form>
 
                             <!-- Bouton Supprimer le produit -->
                             <form method="post" action="index.php?action=supprimerProduit">
                                 <input type="hidden" name="id_produit" value="<?= $article['id_produit']; ?>">
                                 <input type="hidden" name="id_categorie" value="<?= $article['id_categorie']; ?>">
-                                <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?');"><i class="fa-solid fa-trash"></i></button>
+                                <button type="submit" aria-label="supprimer produit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?');"><i class="fa-solid fa-trash"></i></button>
                             </form>
                     <?php } ?>
                 </div>
@@ -36,7 +36,7 @@ ob_start();
                     <input type="hidden" name="action" value="ajouterAuPanier">
                     <input type="hidden" name="id_produit" value="<?= $article['id_produit']; ?>">
                     <input type="number" id="quantite" name="quantite" value="1" min="1" required>
-                    <button class="add-to-cart" type="submit">Ajouter au panier</button>
+                    <button class="add-to-cart" aria-label="ajouter au panier" type="submit">Ajouter au panier</button>
                 </for>
             </div>
 

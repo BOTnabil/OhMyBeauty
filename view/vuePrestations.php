@@ -48,7 +48,7 @@ $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPres
                                     <input type="hidden" name="id_prestation" value="<?= $prestation['id_prestation']; ?>">
                                     <label for="datePrestation">Choisir une date :</label>
                                     <input type="date" name="datePrestation" required min="<?= date('Y-m-d'); ?>">
-                                    <button type="submit">Valider la date</button>
+                                    <button type="submit" aria-label="valider date">Valider la date</button>
                                 </form>
                             </div>
                             <?php if (\App\Session::estAdmin()) { ?>
@@ -56,14 +56,14 @@ $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPres
                                         <!-- Bouton de suppression visible uniquement pour les admins -->
                                         <form method="post" action="index.php?action=supprimerPrestation">
                                             <input type="hidden" name="id_prestation" value="<?= $prestation['id_prestation']; ?>">
-                                            <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette prestation ?');"><i class="fa-solid fa-trash"></i></button>
+                                            <button type="submit" aria-label="supprimer prestation" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette prestation ?');"><i class="fa-solid fa-trash"></i></button>
                                         </form>
 
                                         <!-- Bouton de modification visible uniquement pour les admins -->
                                         <form method="get" action="index.php">
                                             <input type="hidden" name="action" value="afficherModifierPrestation">
                                             <input type="hidden" name="id_prestation" value="<?= $prestation['id_prestation']; ?>">
-                                            <button type="submit"><i class="fa-solid fa-pen-to-square"></i></button>
+                                            <button type="submit" aria-label="modifier prestation"><i class="fa-solid fa-pen-to-square"></i></button>
                                         </form>
                                     </div>
                                 <?php } ?>

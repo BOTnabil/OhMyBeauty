@@ -53,11 +53,11 @@ ob_start();
                 </p>
                 <form method="get" action="index.php">
                     <input type="hidden" name="action" value="viderPanier">
-                    <button class="vider-panier" type="submit">Vider le panier</button>
+                    <button class="vider-panier" aria-label="vider panier" type="submit">Vider le panier</button>
                 </form>
                 <form method="post" action="index.php?action=validerCommande">
                     <input type="hidden" name="id_utilisateur" value="1"> <!-- Supposons que l'ID de l'utilisateur soit 1 pour l'instant -->
-                    <button class="valider-panier" type="submit">Valider la commande</button>
+                    <button class="valider-panier" aria-label="valider panier" type="submit">Valider la commande</button>
                 </form>
             </div>
         <?php } else { ?>

@@ -40,7 +40,7 @@ foreach ($rendezVous as $rdv) {
                                     <input type="hidden" name="prestations[]" value="<?= $prestation; ?>">
                                 <?php } ?>
                                 
-                                <button type="submit" onclick="return confirm('Êtes-vous sûr de vouloir annuler cette réservation ?');">Annuler</button>
+                                <button type="submit" aria-label="annuler reservation" onclick="return confirm('Êtes-vous sûr de vouloir annuler cette réservation ?');">Annuler</button>
                             </form>
                         </li>
                     <?php } ?>
