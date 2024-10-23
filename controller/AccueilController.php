@@ -100,9 +100,9 @@ class AccueilController {
             $dompdf = new Dompdf();
     
             // Crée le contenu HTML de la facture
-            $html = "<h1>Facture #" . $commande['numeroCommande'] . "</h1>";
+            $html = "<h1>Facture de la commande n°" . $commande['numeroCommande'] . "</h1>";
             $html .= "<p>Date : " . $commande['dateCommande'] . "</p>";
-            $html .= "<p>Détails : " . $commande['infosCommande'] . "</p>";
+            $html .= "<p>" . $commande['infosCommande'] . "</p>";
             $html .= "<p>Total : " . $commande['prixTotal'] . " €</p>";
     
             // Charge le HTML dans Dompdf
