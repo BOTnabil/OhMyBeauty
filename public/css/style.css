@@ -24,7 +24,19 @@ body{
 
 }
 
-a {text-decoration: none;}
+::-moz-selection { /* Code for Firefox */
+    color: black;
+    background: var(--beige);
+  }
+  
+  ::selection {
+    color: black;
+    background: var(--beige);
+  }
+
+a {
+    text-decoration: none;
+}
 
 table{
     font-family: var(--oxygen);
