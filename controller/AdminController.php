@@ -150,7 +150,6 @@ public function voirRendezVous() {
         $_SESSION['MAJadmin'] = "Veuillez sélectionner au moins une prestation.";
         header("Location: index.php?action=admin");
     }
-    // IL FAUDRAIT LES TRIER PAR DATES voir Figma
 }
 
 

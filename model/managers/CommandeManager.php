@@ -69,10 +69,10 @@ class CommandeManager {
         $stmt->execute();
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
-
+    
     // Annuler une commande
     public function annulerCommande($id_commande) {
-        $requete = "
+    $requete = "
             DELETE FROM commande 
             WHERE id_commande = :id_commande
         ";
