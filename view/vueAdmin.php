@@ -118,7 +118,7 @@ $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPres
 <?php
 // Message de confirmation ou d'erreur après l'ajout
 if (isset($_SESSION['MAJadmin'])) {
-    echo '<p>' . $_SESSION['MAJadmin'] . '</p>';
+    echo "<p class = 'MAJ'>" . $_SESSION['MAJadmin'] . "</p>";
     unset($_SESSION['MAJadmin']);  // Supprimer le message après l'affichage
 }
 ?>

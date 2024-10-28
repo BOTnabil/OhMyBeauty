@@ -46,7 +46,7 @@ $categories = $categorieManager->obtenirToutesLesCategories();
 
 // Message de confirmation ou d'erreur après l'ajout
 if (isset($_SESSION['MAJproduit'])) {
-    echo '<p>' . $_SESSION['MAJproduit'] . '</p>';
+    echo "<p class = 'MAJ'>" . $_SESSION['MAJproduit'] . "</p>";
     unset($_SESSION['MAJproduit']);  // Supprimer le message après l'affichage
 }
 

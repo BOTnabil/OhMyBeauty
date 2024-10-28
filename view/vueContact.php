@@ -32,7 +32,7 @@ ob_start();
     <?php
     // Message de confirmation ou d'erreur après l'ajout
     if (isset($_SESSION['MAJcontact'])) {
-        echo '<p>' . $_SESSION['MAJcontact'] . '</p>';
+        echo "<p class = 'MAJ'>" . $_SESSION['MAJcontact'] . "</p>";
         unset($_SESSION['MAJcontact']);  // Supprimer le message après l'affichage
     } ?>
 

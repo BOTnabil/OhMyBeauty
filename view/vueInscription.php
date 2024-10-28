@@ -31,7 +31,7 @@
         <?php
         // Message de confirmation ou d'erreur après l'ajout
         if (isset($_SESSION['MAJregister'])) {
-            echo '<p>' . $_SESSION['MAJregister'] . '</p>';
+            echo "<p class = 'MAJ'>" . $_SESSION['MAJregister'] . "</p>";
             unset($_SESSION['MAJregister']);  // Supprimer le message après l'affichage
         } ?>
         <input type="submit" name="submit" value="S'inscrire">

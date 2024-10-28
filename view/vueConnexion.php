@@ -16,7 +16,7 @@
         <?php
         // Message de confirmation ou d'erreur après l'ajout
         if (isset($_SESSION['MAJlogin'])) {
-            echo '<p>' . $_SESSION['MAJlogin'] . '</p>';
+            echo "<p class = 'MAJ'>" . $_SESSION['MAJlogin'] . "</p>";
             unset($_SESSION['MAJlogin']);  // Supprimer le message après l'affichage
         } ?>
 

@@ -83,7 +83,7 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
                 <?php 
 
                 if (isset($_SESSION['MAJrdv'])) {
-                    echo '<p class="rdv">' . $_SESSION['MAJrdv'] . '</p>';
+                    echo '<p class="MAJ">' . $_SESSION['MAJrdv'] . '</p>';
                     unset($_SESSION['MAJrdv']); // Supprimer la MAJ après l'affichage
                 }
 
@@ -142,9 +142,15 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
 
     <label for="nouveauMotDePasse">Nouveau mot de passe :</label><br>
     <input type="password" name="nouveauMotDePasse" id="nouveauMotDePasse" required><br>
-    <small>Au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.</small><br><br>
+    <small>
+        Au moins 8 caractères, <br>
+        une majuscule, <br>
+        une minuscule, <br>
+        un chiffre, <br>
+        un caractère spécial.
+    </small><br><br>
 
-    <label for="confirmationMotDePasse">Confirmer le nouveau mot de passe :</label><br>
+    <label for="confirmationMotDePasse">Confirmer mot de passe :</label><br>
     <input type="password" name="confirmationMotDePasse" id="confirmationMotDePasse" required><br><br>
 
     <input type="submit" name="submit" value="Modifier mon mot de passe">
@@ -154,7 +160,7 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
     <?php
     // Message de confirmation ou d'erreur
     if (isset($_SESSION['MAJmodif'])) {
-        echo '<p>' . $_SESSION['MAJmodif'] . '</p>';
+        echo "<p class = 'MAJ'>" . $_SESSION['MAJmodif'] . "</p>";
         unset($_SESSION['MAJmodif']);  // Supprimer le message après l'affichage
     } ?>
 </section>

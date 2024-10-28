@@ -46,7 +46,7 @@ $categories = $categorieManager->obtenirToutesLesCategories();
 <?php
 // Message de confirmation ou d'erreur après l'ajout
 if (isset($_SESSION['MAJprestation'])) {
-    echo '<p>' . $_SESSION['MAJprestation'] . '</p>';
+    echo "<p class = 'MAJ'>" . $_SESSION['MAJprestation'] . "</p>";
     unset($_SESSION['MAJprestation']);  // Supprimer le message après l'affichage
 }
 
