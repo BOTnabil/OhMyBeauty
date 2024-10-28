@@ -42,6 +42,8 @@ if(isset($_GET["action"])){
         case "deconnexion": $ctrlSecurite->deconnexion(); break;
         case "inscriptionProcess": $ctrlSecurite->inscription(); break;
         case "connexionProcess": $ctrlSecurite->connexion(); break;
+        case "modifierMailProcess": $ctrlSecurite->modifierMailProcess(); break;
+        case "modifierMDPProcess": $ctrlSecurite->modifierMDPProcess(); break;
         case "supprimerUtilisateur": $ctrlSecurite->supprimerUtilisateurProcess(); break;
         // Panier
         case 'ajouterAuPanier':

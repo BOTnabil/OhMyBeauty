@@ -119,4 +119,60 @@ class SecuriteController {
         // Redirection après suppression
         header("Location: index.php?action=home");
     }
+
+    public function modifierMailProcess() {
+
+        if(isset($_POST["submit"])) {
+
+            // On récupère l'id et le nouvel email
+            $id_utilisateur = $_SESSION['user_id'];
+            $email = filter_input(INPUT_POST, "email", FILTER_VALIDATE_EMAIL);
+            
+            //On vérifie si le mail est déjà pris
+            if ($this->utilisateurManager->verifierUtilisateurExistant($email)) {
+                $_SESSION['MAJmodif'] = 'Un utilisateur utilise déjà cet email.';
+                header("Location: index.php?action=recap");
+            } else {
+                //On change le mail
+                $this->utilisateurManager->modifierMail($email, $id_utilisateur);
+                
+                //MAJ et redirection pour refresh
+                $_SESSION['MAJmodif'] = 'Votre email a bien été modifié.';
+                header("Location: index.php?action=recap");
+            }
+        }
+    }
+
+    public function modifierMDPProcess() {
+
+        // Récupération des informations envoyées par le formulaire
+        $motDePasseActuel = filter_input(INPUT_POST, 'motDePasseActuel', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $nouveauMotDePasse = filter_input(INPUT_POST, 'nouveauMotDePasse', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        $confirmationMotDePasse = filter_input(INPUT_POST, 'confirmationMotDePasse', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+        // Récupérer les informations de l'utilisateur dans la base de données
+        $id_utilisateur = $_SESSION['user_id'];
+        $utilisateur = $this->utilisateurManager->obtenirUtilisateurParId($id_utilisateur);
+
+        // Vérifie si le mot de passe actuel est correct
+        if ($utilisateur && password_verify($motDePasseActuel, $utilisateur['motDePasse'])) {
+            // Vérifie si le nouveau mot de passe et sa confirmation sont identiques et respectent les critères
+            if ($nouveauMotDePasse === $confirmationMotDePasse && preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/', $nouveauMotDePasse)) {
+                // Hache le nouveau mot de passe
+                $motDePasseHash = password_hash($nouveauMotDePasse, PASSWORD_BCRYPT);
+
+                // Met à jour le mot de passe dans la base de données
+                $this->utilisateurManager->modifierMDP($motDePasseHash, $id_utilisateur);
+                $_SESSION['MAJmodif'] = "Mot de passe modifié avec succès.";
+                header("Location: index.php?action=recap");
+            } else {
+                $_SESSION['MAJmodif'] = "Les nouveaux mots de passe ne correspondent pas ou ne sont pas valides.";
+                header("Location: index.php?action=recap");
+            }
+        } else {
+            $_SESSION['MAJmodif'] = "Le mot de passe actuel est incorrect.";
+            header("Location: index.php?action=recap");
+        }
+        exit;
+    }
 }

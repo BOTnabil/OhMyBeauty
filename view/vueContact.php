@@ -23,7 +23,7 @@ ob_start();
             </div>
         </div>
         <adress>
-        Adresse : 123 Rue de la Beauté, 75001 Paris<br>
+        Adresse : 5 Rue Jean-Geoffroy Conrath, 67200 Strasbourg<br>
         Horaires d'ouverture : Tout les jours de 9h à 18h<br>
         </adress>
     </section>

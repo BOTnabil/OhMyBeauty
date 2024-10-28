@@ -119,9 +119,50 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
 </section>
 <!-- fin des RDV -->
 
+<!-- Modifier infos -->
+<section class="section-modification">
+
+    <h2>Modifier mes informations</h2>
+
+    <h3>Modifier mon adresse email</h3>
+    <form method="POST" action="index.php?action=modifierMailProcess">
+
+    <label for="email">Email :</label><br>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <input type="submit" name="submit" value="Modifier mon mail">
+
+    </form><br>
+
+    <h3>Modifier mon mot de passe</h3>
+    <form method="POST" action="index.php?action=modifierMDPProcess">
+
+    <label for="motDePasseActuel">Mot de passe actuel :</label><br>
+    <input type="password" name="motDePasseActuel" id="motDePasseActuel" required><br><br>
+
+    <label for="nouveauMotDePasse">Nouveau mot de passe :</label><br>
+    <input type="password" name="nouveauMotDePasse" id="nouveauMotDePasse" required><br>
+    <small>Au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial.</small><br><br>
+
+    <label for="confirmationMotDePasse">Confirmer le nouveau mot de passe :</label><br>
+    <input type="password" name="confirmationMotDePasse" id="confirmationMotDePasse" required><br><br>
+
+    <input type="submit" name="submit" value="Modifier mon mot de passe">
+
+    </form>
+
+    <?php
+    // Message de confirmation ou d'erreur
+    if (isset($_SESSION['MAJmodif'])) {
+        echo '<p>' . $_SESSION['MAJmodif'] . '</p>';
+        unset($_SESSION['MAJmodif']);  // Supprimer le message après l'affichage
+    } ?>
+</section>
+
 <div class="supprimer-compte">
     <a href="index.php?action=supprimerUtilisateur" onclick="return confirm('Supprimer votre compte ? Vos rendez-vous et commandes ne seront pas annulés');">Supprimer mon compte</a>
 </div>
+<!-- Fin modifier infos -->
 
 
     <script>

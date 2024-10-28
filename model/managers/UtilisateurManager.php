@@ -12,6 +12,19 @@ class UtilisateurManager{
         $this->db = Connect::seConnecter();
     }
 
+    public function obtenirUtilisateurParId($id_utilisateur) {
+        $requete = "
+            SELECT id_utilisateur, email, motDePasse
+            FROM utilisateur
+            WHERE id_utilisateur = :id_utilisateur
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':id_utilisateur', $id_utilisateur, \PDO::PARAM_INT);
+        $stmt->execute();
+    
+        return $stmt->fetch(\PDO::FETCH_ASSOC); // Récupère les informations de l'utilisateur
+    }
+
     // Créer un nouvel utilisateur
     public function creerUtilisateur($email, $motDePasse, $role) {
         $requete = "
@@ -57,6 +70,30 @@ class UtilisateurManager{
             WHERE id_utilisateur = :id_utilisateur
         ";
         $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':id_utilisateur', $id_utilisateur, \PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function modifierMail($email, $id_utilisateur) {
+        $requete = "
+            UPDATE utilisateur
+            SET email = :email
+            WHERE id_utilisateur = :id_utilisateur
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':email', $email, \PDO::PARAM_STR);
+        $stmt->bindParam(':id_utilisateur', $id_utilisateur, \PDO::PARAM_INT);
+        $stmt->execute();
+    }
+
+    public function modifierMDP($motDePasseHash, $id_utilisateur) {
+        $requete = "
+            UPDATE utilisateur
+            SET motDePasse = :motDePasse
+            WHERE id_utilisateur = :id_utilisateur
+        ";
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':motDePasse', $motDePasseHash, \PDO::PARAM_STR);
         $stmt->bindParam(':id_utilisateur', $id_utilisateur, \PDO::PARAM_INT);
         $stmt->execute();
     }
