@@ -43,31 +43,48 @@ class CommandeManager {
     }
     
 
-    // Méthode pour obtenir les commandes d'un utilisateur spécifique
-    public function obtenirCommandesParUtilisateur($id_utilisateur) {
-        $requete = "
-            SELECT id_commande, numeroCommande, dateCommande, prixTotal, infosCommande
-            FROM commande
-            WHERE id_utilisateur = :id_utilisateur
-            ORDER BY dateCommande DESC
-        ";
+    // Méthodes pour obtenir les commandes d'un utilisateur spécifique
+    public function obtenirNombreCommandesUtilisateur($id_utilisateur) {
+        $requete = "SELECT COUNT(*) FROM commande WHERE id_utilisateur = :id_utilisateur";
         $stmt = $this->db->prepare($requete);
         $stmt->bindParam(':id_utilisateur', $id_utilisateur, \PDO::PARAM_INT);
         $stmt->execute();
     
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $stmt->fetchColumn();
     }
+    
+    public function obtenirCommandesUtilisateurAvecPagination($id_utilisateur, $offset, $limit) {
+        $requete = "SELECT * FROM commande WHERE id_utilisateur = :id_utilisateur ORDER BY dateCommande DESC LIMIT :offset, :limit";
+        $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':id_utilisateur', $id_utilisateur, \PDO::PARAM_INT);
+        $stmt->bindParam(':offset', $offset, \PDO::PARAM_INT);
+        $stmt->bindParam(':limit', $limit, \PDO::PARAM_INT);
+        $stmt->execute();
+    
+        return $stmt->fetchAll();
+    }
+    
 
-    // Récupérer toutes les commandes
-    public function obtenirToutesLesCommandes() {
+    // Récupérer toutes les commandes pour admin
+    public function obtenirCommandesParPage($offset, $limit) {
         $requete = "
-            SELECT *
+            SELECT id_commande, dateCommande, numeroCommande, prixTotal, infosCommande
             FROM commande
             ORDER BY dateCommande DESC
+            LIMIT :offset, :limit
         ";
         $stmt = $this->db->prepare($requete);
+        $stmt->bindParam(':offset', $offset, \PDO::PARAM_INT);
+        $stmt->bindParam(':limit', $limit, \PDO::PARAM_INT);
         $stmt->execute();
+    
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
+    
+    public function obtenirNombreTotalCommandes() {
+        $requete = "SELECT COUNT(*) FROM commande";
+        $stmt = $this->db->query($requete);
+        return $stmt->fetchColumn();
     }
     
     // Annuler une commande

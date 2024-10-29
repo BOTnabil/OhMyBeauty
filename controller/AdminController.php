@@ -337,8 +337,15 @@ public function voirRendezVous() {
         // Méthode pour afficher toutes les commandes
         public function afficherCommandes() {
             if (\App\Session::estAdmin()) {
-                $commandes = $this->commandeManager->obtenirToutesLesCommandes(); // Récupérer toutes les commandes
-                require 'view/vueCommandesAdmin.php'; // Charger la vue des commandes
+                $commandesParPage = 10; // Nombre de commandes par page
+                $pageActuelle = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+                $offset = ($pageActuelle - 1) * $commandesParPage;
+            
+                $commandes = $this->commandeManager->obtenirCommandesParPage($offset, $commandesParPage);
+                $nombreTotalCommandes = $this->commandeManager->obtenirNombreTotalCommandes();
+                $nombrePages = ceil($nombreTotalCommandes / $commandesParPage);
+            
+                require 'view/vueCommandesAdmin.php';
             } else {
                 header("Location: index.php?action=connexion");
                 exit;

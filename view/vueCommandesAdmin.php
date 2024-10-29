@@ -62,6 +62,30 @@ foreach ($commandes as $commande) {
     <?php } else { ?>
         <p>Aucune commande trouvée.</p>
     <?php } ?>
+
+    <div class="pagination">
+        <?php 
+        $pagesVisibles = 5; // Nombre de pages visibles autour de la page actuelle
+        $debut = max(1, $pageActuelle - floor($pagesVisibles / 2));
+        $fin = min($nombrePages, $pageActuelle + floor($pagesVisibles / 2));
+
+        // Bouton "Première page"
+        if ($pageActuelle > 1) {
+            echo '<a href="index.php?action=afficherCommandes&page=1"> &laquo; </a>';
+        }
+
+        // Pagination limitée autour de la page actuelle
+        for ($i = $debut; $i <= $fin; $i++) {
+            echo '<a href="index.php?action=afficherCommandes&page=' . $i . '" class="' . ($i == $pageActuelle ? 'active' : '') . '"> ' . $i . ' </a>';
+        }
+
+        // Bouton "Dernière page"
+        if ($pageActuelle < $nombrePages) {
+            echo '<a href="index.php?action=afficherCommandes&page=' . $nombrePages . '"> &raquo; </a>';
+        }
+        ?>
+    </div>
+
 </div>
 
 <script>

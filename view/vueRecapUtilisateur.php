@@ -5,19 +5,18 @@ ob_start();
 use Model\Managers\CommandeManager;
 use Model\Managers\ReservationManager;
 use Controller\ReservationController;
+use Controller\BoutiqueController;
 
 $commandeManager = new CommandeManager();
 $reservationManager = new ReservationManager();
 $reservationController = new ReservationController();
+$boutiqueController = new BoutiqueController();
 
 // Supprimer les réservations passées avant d'afficher les données
 $reservationController->supprimerReservationsPassees();
 
 // Récupération de l'ID de l'utilisateur depuis la session
 $id_utilisateur = $_SESSION['user_id']; 
-
-// Récupération de toutes les commandes de l'utilisateur
-$commandes = $commandeManager->obtenirCommandesParUtilisateur($id_utilisateur);
 
 // Récupération de toutes les réservations de l'utilisateur
 $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utilisateur);
@@ -63,6 +62,31 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
     <?php } else { ?>
         <p>Vous n'avez aucune commande.</p>
     <?php } ?>
+
+    <!-- Pagination -->
+    <div class="pagination">
+        <?php 
+        $pagesVisibles = 5; // Nombre de pages visibles autour de la page actuelle
+        $debut = max(1, $pageActuelle - floor($pagesVisibles / 2));
+        $fin = min($nombrePages, $pageActuelle + floor($pagesVisibles / 2));
+
+        // Bouton "Première page"
+        if ($pageActuelle > 1) {
+            echo '<a href="index.php?action=recap&page=1"> &laquo; </a>';
+        }
+
+        // Pagination limitée autour de la page actuelle
+        for ($i = $debut; $i <= $fin; $i++) {
+            echo '<a href="index.php?action=recap&page=' . $i . '" class="' . ($i == $pageActuelle ? 'active' : '') . '"> ' . $i . ' </a>';
+        }
+
+        // Bouton "Dernière page"
+        if ($pageActuelle < $nombrePages) {
+            echo '<a href="index.php?action=recap&page=' . $nombrePages . '"> &raquo; </a>';
+        }
+        ?>
+    </div>
+
 </section>
 <!-- fin de commandes -->
 

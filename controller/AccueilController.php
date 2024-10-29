@@ -42,8 +42,15 @@ class AccueilController {
     }
 
     public function afficherRecap() {
-        // Charger et afficher la vue récapitulatif
-        require "view/vueRecapUtilisateur.php";
+        $limit = 10; // Nombre de commandes par page
+        $pageActuelle = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $offset = ($pageActuelle - 1) * $limit;
+    
+        $commandes = $this->commandeManager->obtenirCommandesUtilisateurAvecPagination($_SESSION['user_id'], $offset, $limit);
+        $nombreTotalCommandes = $this->commandeManager->obtenirNombreCommandesUtilisateur($_SESSION['user_id']);
+        $nombrePages = ceil($nombreTotalCommandes / $limit);
+    
+        require 'view/vueRecapUtilisateur.php';
     }
     
     public function afficherConnexion() {
