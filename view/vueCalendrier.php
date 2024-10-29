@@ -50,6 +50,39 @@ foreach ($rendezVous as $rdv) {
     <?php } else { ?>
         <p>Aucun rendez-vous pour les prestations sélectionnées.</p>
     <?php } ?>
+
+    <div class="pagination">
+        <?php 
+        $pagesVisibles = 5; // Nombre de pages visibles autour de la page actuelle
+        $debut = max(1, $pageActuelle - floor($pagesVisibles / 2));
+        $fin = min($nombrePages, $pageActuelle + floor($pagesVisibles / 2));
+
+        // Récupérer toutes les prestations sélectionnées pour les ajouter à l'URL
+        $prestationsParam = '';
+        if (!empty($_GET['prestations'])) {
+            foreach ($_GET['prestations'] as $prestation) {
+                $prestationsParam .= '&prestations[]=' . urlencode($prestation);
+            }
+        }
+
+        // Bouton "Première page"
+        if ($pageActuelle > 1) {
+            echo '<a href="index.php?action=voirRendezVous&page=1' . $prestationsParam . '"> &laquo; </a>';
+        }
+
+        // Pagination limitée autour de la page actuelle
+        for ($i = $debut; $i <= $fin; $i++) {
+            echo '<a href="index.php?action=voirRendezVous&page=' . $i . $prestationsParam . '" class="' . ($i == $pageActuelle ? 'active' : '') . '"> ' . $i . ' </a>';
+        }
+
+        // Bouton "Dernière page"
+        if ($pageActuelle < $nombrePages) {
+            echo '<a href="index.php?action=voirRendezVous&page=' . $nombrePages . $prestationsParam . '"> &raquo; </a>';
+        }
+        ?>
+    </div>
+
+
 </div>
 
 <?php

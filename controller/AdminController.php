@@ -140,9 +140,14 @@ public function voirRendezVous() {
     
     if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['prestations'])) {
         $prestationsSelectionnees = $_GET['prestations']; // Contient les id des prestations sélectionnées
+        $limit = 10; // Nombre de commandes par page
+        $pageActuelle = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+        $offset = ($pageActuelle - 1) * $limit;
 
         // Récupérer les rendez-vous pour les prestations sélectionnées
-        $rendezVous = $this->reservationManager->obtenirRendezVousParPrestations($prestationsSelectionnees);
+        $rendezVous = $this->reservationManager->obtenirRendezVousParPrestationsParPage($prestationsSelectionnees, $offset, $limit);
+        $nombreTotalRendezVous = $this->reservationManager->obtenirNombreTotalRendezVous();
+        $nombrePages = ceil($nombreTotalRendezVous / $limit);
 
         // Afficher le calendrier avec les rendez-vous filtrés
         require 'view/vueCalendrier.php';
@@ -151,7 +156,6 @@ public function voirRendezVous() {
         header("Location: index.php?action=admin");
     }
 }
-
 
 
 //Suppression

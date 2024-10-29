@@ -111,7 +111,11 @@ class ReservationManager {
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);  // Renvoie les créneaux sous forme de tableau associatif
     }
 
-    public function obtenirRendezVousParPrestations($prestationsSelectionnees) {
+
+
+
+
+    public function obtenirRendezVousParPrestationsParPage($prestationsSelectionnees, $offset, $limit) {
         $placeholders = implode(',', array_fill(0, count($prestationsSelectionnees), '?'));
     
         $requete = "
@@ -121,13 +125,22 @@ class ReservationManager {
             JOIN categorie c ON p.id_categorie = c.id_categorie
             WHERE r.id_prestation IN ($placeholders)
             ORDER BY r.datePrestation
+            LIMIT $offset, $limit
         ";
-    
         $stmt = $this->db->prepare($requete);
         $stmt->execute($prestationsSelectionnees);
         
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+    
+    
+    public function obtenirNombreTotalRendezVous() {
+        $requete = "SELECT COUNT(*) FROM reservation";
+        $stmt = $this->db->query($requete);
+        return $stmt->fetchColumn();
+    }
+
+
     
     //Nullifie les valeurs ayant l'id de la prestation qu'on supprime
     public function supprimerPrestationDeReservation($id_prestation) {
