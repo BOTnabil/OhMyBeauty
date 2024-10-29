@@ -61,9 +61,12 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
         </table>
     <?php } else { ?>
         <p>Vous n'avez aucune commande.</p>
-    <?php } ?>
+    <?php } 
+    
+    if ($nombrePages > 1){ ?>
 
     <!-- Pagination -->
+    
     <div class="pagination">
         <?php 
         $pagesVisibles = 5; // Nombre de pages visibles autour de la page actuelle
@@ -87,6 +90,7 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
         ?>
     </div>
 
+    <?php } ?>
 </section>
 <!-- fin de commandes -->
 

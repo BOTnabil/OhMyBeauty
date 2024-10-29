@@ -61,7 +61,9 @@ foreach ($commandes as $commande) {
         <?php } ?>
     <?php } else { ?>
         <p>Aucune commande trouvée.</p>
-    <?php } ?>
+    <?php }  
+    
+    if ($nombrePages > 1){ ?>
 
     <div class="pagination">
         <?php 
@@ -85,7 +87,8 @@ foreach ($commandes as $commande) {
         }
         ?>
     </div>
-
+    <?php }  ?>
+    
 </div>
 
 <script>

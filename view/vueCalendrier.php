@@ -49,7 +49,9 @@ foreach ($rendezVous as $rdv) {
         <?php } ?>
     <?php } else { ?>
         <p>Aucun rendez-vous pour les prestations sélectionnées.</p>
-    <?php } ?>
+    <?php } 
+    
+    if ($nombrePages > 1){ ?>
 
     <div class="pagination">
         <?php 
@@ -81,7 +83,7 @@ foreach ($rendezVous as $rdv) {
         }
         ?>
     </div>
-
+    <?php } ?>
 
 </div>
 
