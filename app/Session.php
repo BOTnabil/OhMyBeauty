@@ -1,16 +1,8 @@
 <?php
+
 namespace App;
 
-class Session {
-
-// Setters et getters
-    public static function setUser($user) {
-        $_SESSION["user"] = $user;
-    }
-
-    public static function getUser() {
-        return isset($_SESSION['user']) ? $_SESSION['user'] : false;
-    }
+abstract class Session {
 
 // Méthodes
     public static function estAdmin() {

@@ -96,9 +96,4 @@ class Utilisateur {
 
         return $this;
     }
-
-//Méthodes
-    public function possedeRole($role) {
-        return $this->role === $role;
-    }
 }
