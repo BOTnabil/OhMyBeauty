@@ -116,23 +116,28 @@ class ReservationManager {
 
 
     public function obtenirRendezVousParPrestationsParPage($prestationsSelectionnees, $offset, $limit) {
+        // Génère une chaîne de caractères de "?" séparés par des virgules
+        // pour chaque élément dans $prestationsSelectionnees
         $placeholders = implode(',', array_fill(0, count($prestationsSelectionnees), '?'));
-    
+        
         $requete = "
-            SELECT r.datePrestation, r.infosReservation, p.designation, c.designation AS categorie, r.id_reservation
+            SELECT r.datePrestation, r.infosReservation, p.designation, c.designation AS categorie,
+                   r.id_reservation
             FROM reservation r
             JOIN prestation p ON r.id_prestation = p.id_prestation
             JOIN categorie c ON p.id_categorie = c.id_categorie
-            WHERE r.id_prestation IN ($placeholders)
+            WHERE r.id_prestation IN ($placeholders)  -- Filtre les prestations en fonction de $prestationsSelectionnees
             ORDER BY r.datePrestation
-            LIMIT $offset, $limit
+            LIMIT $offset, $limit  -- Pagination des résultats, avec un décalage ($offset) et une limite ($limit)
         ";
+    
         $stmt = $this->db->prepare($requete);
+
+        // Exécute la requête en passant les valeurs de $prestationsSelectionnees
+        // Ces valeurs sont associées aux "?" générés plus tôt
         $stmt->execute($prestationsSelectionnees);
-        
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
-    
     
     public function obtenirNombreTotalRendezVous() {
         $requete = "SELECT COUNT(*) FROM reservation";
