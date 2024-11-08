@@ -42,10 +42,10 @@
         <a href="index.php?action=home" class="logoNav"><img src="./public/img/logo_header.webp"  alt="image logo Oh My Beauty"></a>
         <div id="mySidenav" class="sidenav">
             <ul>
-                <li><a href="index.php?action=prestations">Prestations</a></li>
-                <li><a href="index.php?action=categorie">Boutique</a></li>
-                <li><a href="index.php?action=aPropos">À propos</a></li>
-                <li><a href="index.php?action=contact">Contact</a></li>
+                <li><a href="index.php?action=prestations"><i class="fa-solid fa-paintbrush"></i>Prestations</a></li>
+                <li><a href="index.php?action=categorie"><i class="fa-solid fa-bag-shopping"></i>Boutique</a></li>
+                <li><a href="index.php?action=aPropos"><i class="fa-solid fa-question"></i>À propos</a></li>
+                <li><a href="index.php?action=contact"><i class="fa-solid fa-address-book"></i>Contact</a></li>
             </ul>
         </div>
         <nav id="myLinks">
@@ -56,34 +56,35 @@
         </nav>
         <!-- fin du menu burger -->
 
-        <!-- Panier bouton -->
-        <div class="header-cart-toggle">
-            <button id="toggleCartBtn" aria-label="panier">
-                <i class="fa-solid fa-cart-shopping fa-l"></i>
-                <?php 
-                // Calcul du nombre total d'articles dans le panier (en tenant compte des quantités)
-                $totalItems = 0;
-                if (!empty($_SESSION['products'])) {
-                    foreach ($_SESSION['products'] as $produit) {
-                        $totalItems += $produit['qtt']; // Ajoute la quantité de chaque produit au total
+        <div class="buttons-header">
+            <!-- Panier bouton -->
+            <div class="header-cart-toggle">
+                <button id="toggleCartBtn" aria-label="panier">
+                    <i class="fa-solid fa-cart-shopping fa-l"></i>
+                    <?php 
+                    // Calcul du nombre total d'articles dans le panier (en tenant compte des quantités)
+                    $totalItems = 0;
+                    if (!empty($_SESSION['products'])) {
+                        foreach ($_SESSION['products'] as $produit) {
+                            $totalItems += $produit['qtt']; // Ajoute la quantité de chaque produit au total
+                        }
                     }
-                }
-                ?>
-                <?php if ($totalItems > 0) { ?>
-                    <span class="cart-count"><?= $totalItems; ?></span>
-                <?php } ?>
-            </button>
-        </div>
-        <!-- fin du panier bouton -->
+                    ?>
+                    <?php if ($totalItems > 0) { ?>
+                        <span class="cart-count"><?= $totalItems; ?></span>
+                    <?php } ?>
+                </button>
+            </div>
+            <!-- fin du panier bouton -->
 
-        <!-- Menu utilisateur bouton -->
-        <div class="user">
-            <button aria-label="user">
-                <i class="fa-solid fa-user fa-l"></i>
-            </button>
+            <!-- Menu utilisateur bouton -->
+            <div class="user">
+                <button aria-label="user">
+                    <i class="fa-solid fa-user fa-l"></i>
+                </button>
+            </div>
+            <!-- fin du menu utilisateur bouton -->
         </div>
-        <!-- fin du menu utilisateur bouton -->
-
         <!-- Menu utilisateur -->
         <div class="user-menu">
             <?php
@@ -91,17 +92,17 @@
                 if (isset($_SESSION['user_id'])) {
                     ?>
                     <ul class="user-menu-item">
-                        <li><a href="index.php?action=recap">Votre espace</a></li>
+                        <li><a href="index.php?action=recap"><i class="fa-solid fa-user-gear"></i>Votre espace</a></li>
                         <?php if (\App\Session::estAdmin()) { ?>
-                        <li><a href="index.php?action=admin">Espace admin</a> <?php } ?></li>
-                        <li><a href="index.php?action=deconnexion">Se déconnecter</a></li>
+                        <li><a href="index.php?action=admin"><i class="fa-solid fa-pen-nib"></i>Administrateur</a> <?php } ?></li>
+                        <li><a href="index.php?action=deconnexion"><i class="fa-solid fa-right-from-bracket"></i>Deconnexion</a></li>
                     </ul>
                     <?php
                 } else {
                     ?>
                     <ul class="user-menu-item">
-                        <li><a href='index.php?action=connexion'>Se connecter</a></li>
-                        <li><a href='index.php?action=inscription'>S'inscrire</a></li>
+                        <li><a href='index.php?action=connexion'><i class="fa-solid fa-right-to-bracket"></i>Connexion</a></li>
+                        <li><a href='index.php?action=inscription'><i class="fa-solid fa-pen-to-square"></i>Inscription</a></li>
                     </ul>
                 <?php
                 }

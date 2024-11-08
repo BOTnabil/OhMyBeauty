@@ -158,13 +158,19 @@ header li{
     list-style-type: none
 }
 
+.buttons-header {
+    display: flex;
+    gap: 25px;
+    padding-right: 10px;
+}
+
 .logoNav{
     margin-left: 25px;
-    margin-top: 15px;
+    margin-top: 19px;
 }
 
 .logoNav img{
-    height: 30px;
+    height: 25px;
 }
 
 nav{
@@ -197,7 +203,7 @@ header a:hover{
 .user-menu {
     display: block;
     height: 100%;
-    width: 200px;
+    width: 250px;
     position: fixed;
     z-index: 1000;
     top: 0px;
@@ -212,6 +218,14 @@ header a:hover{
     right: 0;
 }
 
+.user-menu i{
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+.sidenav i{
+    margin-right: 8px;
+}
 
 /* PANIER HEADER */
 .header-cart-toggle {
@@ -260,6 +274,14 @@ header a:hover{
  font-weight: bold; 
 }
 
+.action-panier-suppr {
+    color: rgb(208, 28, 28);
+    font-weight: bold; 
+    border: solid 1px rgb(193, 17, 17);
+    padding: 4px;
+    border-radius: 5px;
+   }
+
 .cart-summary {
     margin-top: 10px;
 }
@@ -277,6 +299,11 @@ header a:hover{
     border-radius: 5px;
     cursor: pointer;
     margin-top: 5px;
+    transition: all .2s;
+}
+
+.valider-panier:hover{
+    background-color: var(--marron);
 }
 
 .vider-panier{
@@ -290,23 +317,18 @@ header a:hover{
 }
 
 .btn-gerer-panier {
-    display: block;
     text-align: center;
     padding: 10px;
-    background-color: var(--marron);
-    color: var(--bcreme);
+    background-color: var(--brun);
+    color: white;
     text-decoration: none;
     margin-top: 10px;
+    border-radius: 7px;
 }
 
 .btn-gerer-panier:hover {
-    display: block;
-    text-align: center;
-    padding: 10px;
     background-color: var(--marron);
     color: var(--bcreme);
-    text-decoration: none;
-    margin-top: 10px;
 }
 
 .cart-count {
@@ -324,8 +346,6 @@ header a:hover{
     height: auto;
     width: 100px;
 }
-
-
 
 /* 
 =============================VIEW A PROPOS====================================
@@ -2058,6 +2078,11 @@ left: 0;
  @media only screen and (max-width: 768px) {
 
 
+    .buttons-header {
+        gap: 0px;
+        padding-right: 0px;
+    }
+
     #openBtn{
         display: table-header-group;
         margin-left: 5vw;
@@ -2069,7 +2094,7 @@ left: 0;
     .sidenav{
         display: block;
         height: 100%;
-        width: 200px;
+        width: 250px;
         position: fixed;
         z-index: 1000;
         top: 0PX;

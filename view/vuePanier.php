@@ -28,13 +28,13 @@ ob_start();
                             </td>
                             <td><?= $produit['prix']; ?> €</td>
                             <td>
-                            <a class="action-panier" href="index.php?action=diminuerQttProduit&id=<?= $index; ?>">-</a>
+                            <a class="action-panier" href="index.php?action=diminuerQttProduit&id=<?= $index; ?>">- &nbsp;</a>
                             <?= $produit['qtt']; ?>
-                            <a class="action-panier" href="index.php?action=augmenterQttProduit&id=<?= $index; ?>">+</a>
+                            <a class="action-panier" href="index.php?action=augmenterQttProduit&id=<?= $index; ?>">&nbsp; +</a>
                             </td>
                             <td><?= $produit['total']; ?> €</td>
                             <td>
-                                <a class="action-panier" href="index.php?action=supprimerDuPanier&id=<?= $index; ?>">X</a>
+                                <a class="action-panier-suppr" href="index.php?action=supprimerDuPanier&id=<?= $index; ?>">X</a>
                             </td>
                             <td></td>
                         </tr>
