@@ -59,7 +59,7 @@
         <div class="buttons-header">
             <!-- Panier bouton -->
             <div class="header-cart-toggle">
-                <button id="toggleCartBtn" aria-label="panier">
+                <a href="index.php?action=panier">
                     <i class="fa-solid fa-cart-shopping fa-l"></i>
                     <?php 
                     // Calcul du nombre total d'articles dans le panier (en tenant compte des quantités)
@@ -73,7 +73,7 @@
                     <?php if ($totalItems > 0) { ?>
                         <span class="cart-count"><?= $totalItems; ?></span>
                     <?php } ?>
-                </button>
+                </a>
             </div>
             <!-- fin du panier bouton -->
 
@@ -109,49 +109,6 @@
             ?>
         </div>
         <!-- fin du menu utilisateur -->
-
-        <!-- Panier Container -->
-        <div id="cartContainer" class="cart-container" style="display:none;">
-            <h2>Votre Panier</h2>
-            <?php if (!empty($_SESSION['products'])) { ?>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Article</th>
-                            <th>Prix Unitaire</th>
-                            <th>Quantité</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($_SESSION['products'] as $index => $produit) { ?>
-                            <tr>
-                                <td><?= $produit['nom']; ?></td>
-                                <td><?= $produit['prix']; ?> €</td>
-                                <td><?= $produit['qtt']; ?></td>
-                                <td><?= $produit['total']; ?> €</td>
-                            </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-                <div class="cart-summary">
-                    <p><strong>Total Général: </strong> 
-                    <?php 
-                        $totalGeneral = 0;
-                        foreach ($_SESSION['products'] as $produit) {
-                            $totalGeneral += $produit['total'];
-                        }
-                        echo $totalGeneral . " €";
-                    ?>
-                    </p>
-                    <a href="index.php?action=panier" class="btn-gerer-panier">Gérer le panier</a>
-                </div>
-            <?php } else { ?>
-                <p>Votre panier est vide.</p>
-            <?php } ?>
-        </div>
-        <!-- fin du panier container -->
-
     </header>
 
     <!-- Contenu de la page -->

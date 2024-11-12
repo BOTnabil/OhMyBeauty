@@ -12,27 +12,6 @@ userIcon.onclick = function() {
     userMenu.classList.toggle("active");
 };
 
-// toggle 
-    //toggle panier
-    document.addEventListener("DOMContentLoaded", function() {
-        var toggleCartBtn = document.getElementById("toggleCartBtn");
-        var cartContainer = document.getElementById("cartContainer");
-
-        toggleCartBtn.addEventListener("click", function() {
-            if (cartContainer.style.display === "none" || cartContainer.style.display === "") {
-                cartContainer.style.display = "block";
-            } else {
-                cartContainer.style.display = "none";
-            }
-        });
-
-        // Cacher le panier quand on clique en dehors de celui-ci
-        window.addEventListener("click", function(e) {
-            if (!cartContainer.contains(e.target) && !toggleCartBtn.contains(e.target)) {
-                cartContainer.style.display = "none";
-            }
-        });
-    });
 
     // Toggle Formulaires
         document.getElementById('toggle-prestation').addEventListener('click', function() {
@@ -56,6 +35,3 @@ userIcon.onclick = function() {
                 this.textContent = '+';
             }
         });
-
-//test
-

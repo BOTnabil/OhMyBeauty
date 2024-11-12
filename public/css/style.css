@@ -231,26 +231,17 @@ header a:hover{
 .header-cart-toggle {
     position: relative;
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 24px;
     margin-right: 15px;
     z-index: 1001;
 }
 
-
-#cartContainer {
-    position: absolute;
-    top: 60px;
-    right: 0;
-    background-color: white;
-    width: 100%;
-    z-index: 1000;
-    display: none;
-    
-}
-
 .cart-container {
+    margin-top: 10px;
+    Margin-bottom: 20px;
     font-family: var(--oxygen);
     padding: 20px;
+    min-height: 40VW;
 }
 
 .identite-article {
@@ -504,8 +495,9 @@ header a:hover{
 }
 
 .cards-2 p {
-    padding-bottom: 30px;
-    opacity: 0.7;
+    padding-bottom: 20px;
+    padding-top: 10px;
+    opacity: 0.8;
 }
 
 
@@ -526,8 +518,8 @@ header a:hover{
     height: 250px;
     overflow: hidden;
     border-radius: 50%;
-   
 }
+
 
 .cards-2-header img {
     transition: 0.5s;
@@ -1323,8 +1315,8 @@ header a:hover{
     position: relative;
     overflow:hidden;
     width: 100%;
-    aspect-ratio: 16 / 6;
-    max-height: 400px;
+    aspect-ratio: 16 / 5;
+    max-height: 250px;
     border-radius: 9px;
 }
 
@@ -1353,7 +1345,7 @@ header a:hover{
     width: fit-content;
     top: 29%;
     color: var(--beige);
-    font-size: 4VW;
+    font-size: 3.5vw;
     border-bottom: 1px solid var(--beige);
     z-index: 2;
 }
@@ -1419,6 +1411,7 @@ header a:hover{
     font-size: 24px;
     margin-bottom: 20px;
     text-align: center;
+    color: var(--brun);
 }
 
 .product-purchase {

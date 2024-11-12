@@ -13,39 +13,39 @@ ob_start();
 
     <div class="equipe">
         <div class="cards-2">    
-            <strong>54 établissements</strong> <br> <p>ouverts en France</p>
+            <h3>Jolyne Q. Joh</h3>
+            <p>Gérante</p>
             <div class="cards-2-header">
                 <img src="./public/img/person1.webp" alt="Jolyne Cujoh">
             </div>
-            <h3>Jolyne Q. Joh</h3>
-            <p>Gérante</p>
+            <p><strong>6 établissements</strong> <br> ouverts en France</p>
         </div>
 
         <div class="cards-2">   
-            <strong>10 ans d'expérience</strong> <br> <p>dans les mains</p>
+            <h3>Godrick D. Grafted</h3>
+            <p>Coiffeur</p>
             <div class="cards-2-header">
                 <img src="./public/img/person2.webp" alt="Godrick D. Grafted">
             </div>
-            <h3>Godrick D. Grafted</h3>
-            <p>Coiffeur</p>
+            <p><strong>10 ans d'expérience</strong> <br> dans les mains</p>
         </div>
 
         <div class="cards-2">       
-            <strong>9k+ manucures</strong> <br> <p>réalisées dans sa carrière</p>
+            <h3>Shaw T. Slay</h3>
+            <p>Prothésiste ongulaire</p>
             <div class="cards-2-header">
                 <img src="./public/img/person3.webp" alt="Shaw T. Slay">
             </div>
-            <h3>Shaw T. Slay</h3>
-            <p>Prothésiste ongulaire</p>
+            <p><strong>9k+ manucures</strong> <br> réalisées dans sa carrière</p>
         </div>
 
         <div class="cards-2">
-            <strong>Son talent</strong> <br> <p>vous rendra aussi beau que lui</p>
+            <h3>Jig A. Chad</h3>
+            <p>Esthéticien</p>
             <div class="cards-2-header">
                 <img src="./public/img/person4.webp" alt="Jig A. Chad">
             </div>
-            <h3>Jig A. Chad</h3>
-            <p>Esthéticien</p>
+            <p><strong>Son talent</strong> <br> vous rendra aussi beau que lui</p>
         </div>
     </div>
 
