@@ -1758,6 +1758,7 @@ header a:hover{
     background-color: var(--brun);
     border-radius: 7px;
     border: 0px;
+    cursor: pointer;
 }
 
 .MAJ{
