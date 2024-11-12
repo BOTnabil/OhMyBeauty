@@ -895,10 +895,6 @@ header a:hover{
   
   /* HOVER */
   
-  .facebook:hover, .twitter:hover, .instagram:hover {
-    transform: rotate(360deg);
-  }
-  
   .footer-alt {
     color: #acacac;
   }
@@ -1254,7 +1250,6 @@ header a:hover{
 }
 
 .produit {
-    transition: transform 0.3s;
     width: 30%;
     min-width: 200px;
 }
@@ -1266,11 +1261,13 @@ header a:hover{
     padding: 15px;
 }
 
-.produit:hover {
-    transform: translateY(-5px);
+.produit-image img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .produit-image img {
+    transition: all 0.3s;
     max-width: 100%;
     border-radius: 8px;
     margin-bottom: 10px;
@@ -1370,7 +1367,8 @@ header a:hover{
 }
 
 .product-image img {
-    max-width: 100%;
+    max-width: 500px;
+    max-height: 500px;
     border-radius: 8px;
 }
 

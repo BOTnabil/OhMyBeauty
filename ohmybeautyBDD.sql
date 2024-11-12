@@ -46,9 +46,9 @@ CREATE TABLE IF NOT EXISTS `commande` (
   UNIQUE KEY `numeroCommande` (`numeroCommande`),
   KEY `id_utilisateur` (`id_utilisateur`),
   CONSTRAINT `commande_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table ohmybeauty.commande : ~1 rows (environ)
+-- Listage des données de la table ohmybeauty.commande : ~0 rows (environ)
 DELETE FROM `commande`;
 INSERT INTO `commande` (`id_commande`, `numeroCommande`, `dateCommande`, `prixTotal`, `id_utilisateur`, `infosCommande`) VALUES
 	(10, 163450211024562, '2024-10-21 16:34:50', 107.91, 2, 'Poudre à sourcils (Quantité : 9, Prix unitaire : 11.99 €).<br> Sous-total : 107.91 €.');
@@ -64,9 +64,9 @@ CREATE TABLE IF NOT EXISTS `contenir` (
   KEY `contenir_ibfk_1` (`id_commande`),
   CONSTRAINT `contenir_ibfk_1` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id_commande`),
   CONSTRAINT `contenir_ibfk_2` FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id_produit`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table ohmybeauty.contenir : ~1 rows (environ)
+-- Listage des données de la table ohmybeauty.contenir : ~0 rows (environ)
 DELETE FROM `contenir`;
 INSERT INTO `contenir` (`id_contenir`, `id_commande`, `id_produit`, `quantite`) VALUES
 	(11, 10, 22, 9);
@@ -128,31 +128,34 @@ CREATE TABLE IF NOT EXISTS `produit` (
   PRIMARY KEY (`id_produit`),
   KEY `id_categorie` (`id_categorie`),
   CONSTRAINT `produit_ibfk_1` FOREIGN KEY (`id_categorie`) REFERENCES `categorie` (`id_categorie`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table ohmybeauty.produit : ~20 rows (environ)
+-- Listage des données de la table ohmybeauty.produit : ~23 rows (environ)
 DELETE FROM `produit`;
 INSERT INTO `produit` (`id_produit`, `designation`, `prix`, `image`, `description`, `id_categorie`) VALUES
-	(1, 'Lime à ongles', 4.29, 'img_produit.webp', 'Lime à ongles pour le façonnage et la finition des ongles', 4),
-	(3, 'Kit vernis semi permanent', 24.99, 'img_produit.webp', 'Kit vernis semi-permanent pour des ongles brillants et durables', 4),
-	(4, 'Ponceuse', 49.99, 'img_produit.webp', 'Ponceuse électrique pour préparer les ongles avant la pose de gel', 4),
-	(5, 'Kit extension de cils', 11.49, 'img_produit.webp', 'Kit complet pour l’extension de cils avec tous les accessoires nécessaires', 1),
-	(6, 'Faux cils (10 paires)', 8.99, 'img_produit.webp', 'Ensemble de 10 paires de faux cils pour un regard intense', 1),
-	(7, 'Sérum croissance', 22.99, 'img_produit.webp', 'Sérum pour favoriser la croissance naturelle des cils', 1),
-	(8, 'Faux cils magnétiques', 9.99, 'img_produit.webp', 'Faux cils magnétiques réutilisables pour une pose facile', 1),
-	(10, 'Serre tête skin care', 2.00, 'img_produit.webp', 'Serre-tête doux et pratique pour les soins de la peau', 3),
-	(11, 'Masque au charbon', 4.50, 'img_produit.webp', 'Masque au charbon pour purifier et désincruster les pores', 3),
-	(12, 'Masque hydratant', 3.50, 'img_produit.webp', 'Masque hydratant pour nourrir et adoucir la peau', 3),
-	(13, 'Masque réparateur', 12.90, 'img_produit.webp', 'Masque réparateur pour cheveux abîmés', 2),
-	(14, 'Kit lissage brésilien', 15.90, 'img_produit.webp', 'Kit complet pour lissage brésilien à domicile', 2),
-	(16, 'Elastiques (20 pièces)', 4.00, 'img_produit.webp', 'Élastiques résistants pour cheveux, pack de 20 pièces', 2),
-	(18, 'Crème hydratante visage', 25.00, 'img_produit.webp', 'Crème légère pour hydratation quotidienne', 3),
-	(20, 'Vernis à ongles', 6.50, 'img_produit.webp', 'Vernis longue tenue, disponible en plusieurs couleurs', 4),
-	(21, 'Gel UV', 9.99, 'img_produit.webp', 'Gel UV pour la pose d’ongles', 4),
-	(22, 'Poudre à sourcils', 11.99, 'img_produit.webp', 'Poudre pour maquillage des sourcils', 1),
-	(23, 'Crème anti-âge', 45.00, 'img_produit.webp', 'Crème pour réduire les signes de l’âge', 3),
-	(24, 'Sérum vitaminé', 19.99, 'img_produit.webp', 'Sérum enrichi en vitamines pour la peau', 3),
-	(26, 'Lait corporel', 13.90, 'img_produit.webp', 'Lait hydratant pour le corps', 3);
+	(1, 'Lime &agrave; ongles', 4.29, '67335bbaa3622.webp', 'Lime &agrave; ongles pour le fa&ccedil;onnage et la finition des ongles', 4),
+	(3, 'Kit vernis semi permanent', 24.99, '67335b863936f.webp', 'Kit vernis semi-permanent pour des ongles brillants et durables', 4),
+	(4, 'Ponceuse', 49.99, '67335b5fa36b9.webp', 'Ponceuse &eacute;lectrique pour pr&eacute;parer les ongles avant la pose de gel', 4),
+	(6, 'Faux cils', 8.99, '67334e657e892.webp', 'Ensemble de 10 paires de faux cils pour un regard intense', 1),
+	(7, 'S&eacute;rum croissance', 22.99, '67334ef5ed2b5.webp', 'S&eacute;rum pour favoriser la croissance naturelle des cils', 1),
+	(8, 'Faux cils magn&eacute;tiques', 9.99, '67334f06d1e64.webp', 'Faux cils magn&eacute;tiques r&eacute;utilisables pour une pose facile', 1),
+	(10, 'Serre t&ecirc;te skin care', 2.00, '6733564484e5d.webp', 'Serre-t&ecirc;te doux et pratique pour les soins de la peau', 3),
+	(11, 'Masque au charbon', 4.50, '6733560081dab.webp', 'Masque au charbon pour purifier et d&eacute;sincruster les pores', 3),
+	(12, 'Masque hydratant', 3.50, '673356535ecd8.webp', 'Masque hydratant pour nourrir et adoucir la peau', 3),
+	(13, 'Masque r&eacute;parateur', 12.90, '6733524135acf.webp', 'Masque r&eacute;parateur pour cheveux ab&icirc;m&eacute;s', 2),
+	(14, 'Kit lissage br&eacute;silien', 15.90, '673352a987574.webp', 'Kit complet pour lissage br&eacute;silien &agrave; domicile', 2),
+	(16, 'Elastiques', 4.00, '673352bd902de.webp', '&Eacute;lastiques r&eacute;sistants pour cheveux, pack de 20 pi&egrave;ces', 2),
+	(18, 'Cr&egrave;me hydratante visage', 25.00, '6733571e0d544.webp', 'Cr&egrave;me l&eacute;g&egrave;re pour hydratation quotidienne', 3),
+	(21, 'Gel UV', 9.99, '67335c793f600.webp', 'Gel UV pour la pose d&rsquo;ongles', 4),
+	(22, 'Crayon pour sourcils', 11.99, '6733512317bac.webp', 'Poudre pour maquillage des sourcils', 1),
+	(23, 'Cr&egrave;me anti-&acirc;ge', 45.00, '67335727edfab.webp', 'Cr&egrave;me pour r&eacute;duire les signes de l&rsquo;&acirc;ge', 3),
+	(29, 'Mascara volume', 12.99, '67335132cfc90.webp', 'Mascara pour volume et courbure intense', 1),
+	(30, 'Recourbe-cils', 8.99, '6733513d0fedd.webp', 'Accessoire pour recourber les cils', 1),
+	(32, 'Shampoing r&eacute;parateur', 10.90, '673353b0892b1.webp', 'Shampoing pour cheveux ab&icirc;m&eacute;s', 2),
+	(33, 'Conditionneur lissant', 12.50, '673353a33e4bf.webp', 'Conditionneur pour un lissage parfait', 2),
+	(34, 'Spray thermo-protecteur', 9.99, '6733537f55502.webp', 'Protection pour cheveux avant coiffage', 2),
+	(36, 'Tonique rafra&icirc;chissant', 7.99, '67335735e0682.webp', 'Tonique pour purifier et rafra&icirc;chir la peau', 3),
+	(38, 'Huile cuticules', 6.50, '67335b44822fb.webp', 'Huile pour hydrater et nourrir les cuticules', 4);
 
 -- Listage de la structure de table ohmybeauty. reservation
 CREATE TABLE IF NOT EXISTS `reservation` (
@@ -180,7 +183,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   PRIMARY KEY (`id_utilisateur`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table ohmybeauty.utilisateur : ~1 rows (environ)
+-- Listage des données de la table ohmybeauty.utilisateur : ~0 rows (environ)
 DELETE FROM `utilisateur`;
 INSERT INTO `utilisateur` (`id_utilisateur`, `email`, `motDePasse`, `role`) VALUES
 	(2, 'test@gmail.com', '$2y$10$l53hSsEXg0Tju0Lw5/wN2.NqARpGVEHqfypBPyvXuRmgvJpiZU35y', 'ADMIN');
