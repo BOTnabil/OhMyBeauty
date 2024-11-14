@@ -41,7 +41,7 @@ class SecuriteController {
     
             // Vérifie si tous les champs sont remplis, si la case est cochée et si les mots de passe correspondent
             if ($email && $motDePasse1 && $motDePasse2 && $accepterConditions) {
-                if ($motDePasse1 === $motDePasse2 && preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/', $motDePasse1)) {
+                if ($motDePasse1 === $motDePasse2 && preg_match('/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{12,}$/', $motDePasse1)) {
                     // Hash le mot de passe avant de le stocker
                     $hashedPassword = password_hash($motDePasse1, PASSWORD_BCRYPT);
                     $this->utilisateurManager->creerUtilisateur($email, $hashedPassword, $role);
