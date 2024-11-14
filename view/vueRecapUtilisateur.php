@@ -171,7 +171,7 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
     <label for="nouveauMotDePasse">Nouveau mot de passe :</label><br>
     <input type="password" name="nouveauMotDePasse" id="nouveauMotDePasse" required><br>
     <small>
-        Au moins 8 caractères, <br>
+        Au moins 12 caractères, <br>
         une majuscule, <br>
         une minuscule, <br>
         un chiffre, <br>
