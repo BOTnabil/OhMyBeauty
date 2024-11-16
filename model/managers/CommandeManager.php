@@ -45,7 +45,10 @@ class CommandeManager {
 
     // Méthodes pour obtenir les commandes d'un utilisateur spécifique
     public function obtenirNombreCommandesUtilisateur($id_utilisateur) {
-        $requete = "SELECT COUNT(*) FROM commande WHERE id_utilisateur = :id_utilisateur";
+        $requete = "
+        SELECT COUNT(*) 
+        FROM commande 
+        WHERE id_utilisateur = :id_utilisateur";
         $stmt = $this->db->prepare($requete);
         $stmt->bindParam(':id_utilisateur', $id_utilisateur, \PDO::PARAM_INT);
         $stmt->execute();
@@ -54,7 +57,11 @@ class CommandeManager {
     }
     
     public function obtenirCommandesUtilisateurAvecPagination($id_utilisateur, $offset, $limit) {
-        $requete = "SELECT * FROM commande WHERE id_utilisateur = :id_utilisateur ORDER BY dateCommande DESC LIMIT :offset, :limit";
+        $requete = "
+        SELECT * FROM commande 
+        WHERE id_utilisateur = :id_utilisateur 
+        ORDER BY dateCommande DESC 
+        LIMIT :offset, :limit";
         $stmt = $this->db->prepare($requete);
         $stmt->bindParam(':id_utilisateur', $id_utilisateur, \PDO::PARAM_INT);
         $stmt->bindParam(':offset', $offset, \PDO::PARAM_INT);
