@@ -21,42 +21,55 @@ class PanierController {
     }
 
 // Méthodes
-    public function ajouterAuPanier($id_produit) {
-        $produitDonnees = $this->produitManager->obtenirProduitEtSaCategorieParId($id_produit);
-        $quantite = isset($_GET['quantite']) ? (int)$_GET['quantite'] : 1; // Récupère la quantité choisie
+public function ajouterAuPanier($id_produit) {
+    // Récupère les données du produit et de sa catégorie
+    $produitDonnees = $this->produitManager->obtenirProduitEtSaCategorieParId($id_produit);
     
-        if ($produitDonnees) {
-            $nom = $produitDonnees['designation'];
-            $prix = $produitDonnees['prix'];
-            $image = $produitDonnees['image'];
-            $produitExiste = false;
-            $produit = [
-                "id" => $id_produit,
-                "nom" => $nom,
-                "prix" => $prix,
-                "image" => $image,
-                "qtt" => $quantite,
-                "total" => $prix * $quantite
-            ];
-    
-            foreach ($_SESSION['products'] as &$produitExistant) {
-                if ($produitExistant['id'] === $id_produit) {
-                    $produitExistant['qtt'] += $quantite;
-                    $produitExistant['total'] = $produitExistant['prix'] * $produitExistant['qtt'];
-                    $produitExiste = true;
-                    break;
-                }
+    // Définit la quantité par défaut à 1 si non spécifiée
+    $quantite = isset($_GET['quantite']) ? (int)$_GET['quantite'] : 1;
+
+    // Si les données ont bien été récupérées
+    if ($produitDonnees) {
+        // Préparation des données du produit
+        $nom = $produitDonnees['designation'];
+        $prix = $produitDonnees['prix'];
+        $image = $produitDonnees['image'];
+        $produitExiste = false;
+
+        // Structure du produit
+        $produit = [
+            "id" => $id_produit,
+            "nom" => $nom,
+            "prix" => $prix,
+            "image" => $image,
+            "qtt" => $quantite,
+            "total" => $prix * $quantite
+        ];
+
+        // Vérifie si le produit est déjà dans le panier
+        foreach ($_SESSION['products'] as &$produitExistant) {
+            if ($produitExistant['id'] === $id_produit) {
+                // Si oui, met à jour la quantité et le total
+                $produitExistant['qtt'] += $quantite;
+                $produitExistant['total'] = $produitExistant['prix'] * $produitExistant['qtt'];
+                $produitExiste = true;
+                break;
             }
-    
-            if (!$produitExiste) {
-                $_SESSION['products'][] = $produit;
-            }
-    
-            $_SESSION['MAJpanier'] = "Article ajouté";
         }
-        header("Location:index.php?action=voirArticle&id_produit=". $id_produit);
-    
-    } 
+
+        // Si le produit n'existe pas, on l'ajoute au panier
+        if (!$produitExiste) {
+            $_SESSION['products'][] = $produit;
+        }
+
+        // Message de confirmation pour mise à jour
+        $_SESSION['MAJpanier'] = "Article ajouté au panier.";
+    }
+
+    // Redirige vers la page du produit
+    header("Location:index.php?action=voirArticle&id_produit=" . $id_produit);
+}
+
 
     public function supprimerDuPanier($id) {
         //On supprime l'article en session par son ID
