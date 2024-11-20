@@ -59,8 +59,8 @@ $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPres
             <textarea name="description" required></textarea><br>
         </div>
         <div class="form-group">
-            <label for="duree">Durée (moins de 60min) :</label>
-            <input type="text" name="duree"><br>
+            <label for="duree">Durée (en min) :</label>
+            <input type="number" step="1" min="1" max="60" name="duree"><br>
         </div>
         <div class="form-group">
             <label for="prix">Prix :</label>
@@ -93,7 +93,7 @@ $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPres
         </div>
         <div class="form-group">
             <label for="prix">Prix :</label>
-            <input type="number" step="0.01" name="prix" required>
+            <input type="number" step="0.01" min="1" name="prix" required>
         </div>
         <div class="form-group">
             <label for="categorie">Catégorie :</label>

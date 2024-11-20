@@ -29,13 +29,6 @@ ob_start();
     </section>
 <!-- fin de contact -->
 
-    <?php
-    // Message de confirmation ou d'erreur après l'ajout
-    if (isset($_SESSION['MAJcontact'])) {
-        echo "<p class = 'MAJ'>" . $_SESSION['MAJcontact'] . "</p>";
-        unset($_SESSION['MAJcontact']);  // Supprimer le message après l'affichage
-    } ?>
-
 <!-- Formulaire de contact -->
     <form action="index.php?action=envoyerMail" method="POST">
         <label for="email">EMAIL :</label><br>
@@ -48,6 +41,13 @@ ob_start();
         <textarea id="message" name="message" rows="5" required></textarea><br><br>
 
         <input type="submit" value="Envoyer">
+
+        <?php
+        // Message de confirmation ou d'erreur après l'ajout
+        if (isset($_SESSION['MAJcontact'])) {
+            echo "<p class = 'MAJ' style = 'color: white'>" . $_SESSION['MAJcontact'] . "</p>";
+            unset($_SESSION['MAJcontact']);  // Supprimer le message après l'affichage
+        } ?>
     </form>
 <!-- fin du formulaire de contact -->
 </div>

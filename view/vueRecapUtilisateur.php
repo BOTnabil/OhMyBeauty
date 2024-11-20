@@ -46,13 +46,12 @@ $reservations = $reservationManager->obtenirReservationsParUtilisateur($id_utili
                         <td><?= $commande['numeroCommande']; ?></td>
                         <td><?= $commande['prixTotal']; ?> €</td>
                         <td><a href="#!" class="details-link" onclick="toggleDetails(this)">Détails</a></td>
-                        <!-- <td>telecharger facture</td> -->
                     </tr>
                     <tr class="details-text" style="display: none;">
                         <td colspan="4"><?= $commande['infosCommande']; ?><br>
                             <form action="index.php?action=telechargerFacture" method="POST">
                                 <input type="hidden" name="id_commande" value="<?= $commande['id_commande']; ?>">
-                                <button type="submit" aria-label="télécharger facture">Télécharger la facture</button>
+                                <button type="submit" aria-label="télécharger facture">Télécharger le recapitulatif</button>
                             </form>
                         </td>
                     </tr>

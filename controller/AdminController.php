@@ -30,7 +30,7 @@ class AdminController {
 
 // Méthodes
 
-//upload d'image sécurise
+// Upload d'image sécurisé avec vérification du type MIME
 public function uploadImage($file) {
     // Vérifier que l'utilisateur est administrateur
     if (!Session::estAdmin()) {
@@ -40,13 +40,14 @@ public function uploadImage($file) {
 
     // Types de fichiers autorisés
     $allowedExtensions = ['webp'];
+    $allowedMimeTypes = ['image/webp'];
     $maxFileSize = 5 * 1024 * 1024; // 5 MB
 
     // Vérifie si un fichier a été téléchargé
     if ($file['error'] === UPLOAD_ERR_OK) {
         // Vérifie la taille du fichier
         if ($file['size'] > $maxFileSize) {
-            $_SESSION['MAJadmin'] = "Seuls le format WEBP est autorisé.";
+            $_SESSION['MAJadmin'] = "Le fichier est trop volumineux (max : 5MB).";
             header("Location: index.php?action=admin");
             die;
         }
@@ -56,7 +57,15 @@ public function uploadImage($file) {
 
         // Vérifie l'extension du fichier
         if (!in_array(strtolower($fileExtension), $allowedExtensions)) {
-            $_SESSION['MAJadmin'] = "Seuls le format WEBP est autorisé.";
+            $_SESSION['MAJadmin'] = "Seuls les fichiers au format WEBP sont autorisés.";
+            header("Location: index.php?action=admin");
+            die;
+        }
+
+        // Vérifie le type MIME du fichier
+        $fileMimeType = mime_content_type($file['tmp_name']);
+        if (!in_array($fileMimeType, $allowedMimeTypes)) {
+            $_SESSION['MAJadmin'] = "Le type de fichier n'est pas valide.";
             header("Location: index.php?action=admin");
             die;
         }
@@ -71,7 +80,7 @@ public function uploadImage($file) {
         if (move_uploaded_file($file['tmp_name'], $uploadPath)) {
             return $newFileName;
         } else {
-            $_SESSION['MAJadmin'] = "Echec du téléchargement du fichier.";
+            $_SESSION['MAJadmin'] = "Échec du téléchargement du fichier.";
             header("Location: index.php?action=admin");
             die;
         }
@@ -80,6 +89,7 @@ public function uploadImage($file) {
         header("Location: index.php?action=admin");
     }
 }
+
 
 //Redirection
 public function afficherAdmin() {
@@ -169,10 +179,10 @@ public function voirRendezVous() {
 
         // Récupérer l'ID du produit
         if (isset($_POST['id_produit'])) {
-            $id_produit = $_POST['id_produit'];
+            $id_produit = filter_input(INPUT_POST, 'id_produit', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             // Supprimer toutes les lignes contenant ce produit dans la table "contenir"
-            $this->contenirManager->supprimerProduitDeContenir($id_produit);
+            $this->contenirManager->supprimerContenirParProduit($id_produit);
 
             // Supprimer le produit de la table "produit"
             $this->produitManager->supprimerProduit($id_produit);
@@ -191,7 +201,7 @@ public function voirRendezVous() {
 
         // Récupérer l'ID de la prestation
         if (isset($_POST['id_prestation'])) {
-            $id_prestation = $_POST['id_prestation'];
+            $id_prestation = filter_input(INPUT_POST, 'id_prestation', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
 
             // Supprimer toutes les lignes contenant cette prestation dans la table "reservation"
             $this->reservationManager->supprimerPrestationDeReservation($id_prestation);
@@ -359,7 +369,7 @@ public function voirRendezVous() {
         // Méthode pour annuler une commande
         public function annulerCommande() {
             if (\App\Session::estAdmin() && isset($_POST['id_commande'])) {
-                $id_commande = $_POST['id_commande'];
+                $id_commande = filter_input(INPUT_POST, 'id_commande', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $this->contenirManager->supprimerCommandeDeContenir($id_commande); // Annuler la commande dans le modèle
                 $this->commandeManager->annulerCommande($id_commande); // Annuler la commande dans le modèle
                 

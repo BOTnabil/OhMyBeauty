@@ -107,7 +107,7 @@ class AccueilController {
             $dompdf = new Dompdf();
     
             // Crée le contenu HTML de la facture
-            $html = "<h1>Facture de la commande n°" . $commande['numeroCommande'] . "</h1><br>
+            $html = "<h1>Recapitulatif de la commande n°" . $commande['numeroCommande'] . "</h1><br>
             <p>Date : " . $commande['dateCommande'] . "</p><br>
             <p>" . $commande['infosCommande'] . "</p><br>
             <p>Total : " . $commande['prixTotal'] . " €</p>";
@@ -122,7 +122,7 @@ class AccueilController {
             $dompdf->render();
     
             // Renomme le fichier avec le numéro de commande
-            $nomFichier = "facture_" . $commande['numeroCommande'] . ".pdf";
+            $nomFichier = "commande_" . $commande['numeroCommande'] . ".pdf";
     
             // Sortie du PDF avec nom personnalisé
             $dompdf->stream($nomFichier);

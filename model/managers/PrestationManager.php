@@ -76,7 +76,7 @@ class PrestationManager {
         $stmt->bindParam(':designation', $designation, \PDO::PARAM_STR);
         $stmt->bindParam(':prix', $prix);
         $stmt->bindParam(':description', $description, \PDO::PARAM_STR);
-        $stmt->bindParam(':duree', $duree, \PDO::PARAM_STR);
+        $stmt->bindParam(':duree', $duree, \PDO::PARAM_INT);
         $stmt->bindParam(':id_categorie', $id_categorie, \PDO::PARAM_INT);
         $stmt->execute();
     }

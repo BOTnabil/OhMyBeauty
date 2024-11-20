@@ -25,14 +25,19 @@ class ReservationController {
                 $id_utilisateur = $_SESSION['user_id'];  // ID de l'utilisateur connecté
                 $nom = filter_input(INPUT_POST, 'nom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
                 $prenom = filter_input(INPUT_POST, 'prenom', FILTER_SANITIZE_FULL_SPECIAL_CHARS);    
-                $id_prestation = $_POST['id_prestation'];
-                $datePrestation = $_POST['datePrestation'] . ' ' . $_POST['creneauHoraire'] . ':00';  // Combine la date et l'heure
+                $id_prestation = filter_input(INPUT_POST, 'id_prestation', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+                $datePrestation = filter_input(INPUT_POST, 'datePrestation', FILTER_SANITIZE_FULL_SPECIAL_CHARS) .
+                ' ' . filter_input(INPUT_POST, 'creneauHoraire', FILTER_SANITIZE_FULL_SPECIAL_CHARS) . ':00';  
+                // Combine la date et l'heure
     
                 // Récupérer les informations sur la prestation
                 $prestation = $this->prestationManager->obtenirPrestationParId($id_prestation);
     
                 // Générer les informations de la réservation
-                $infosReservation = $this->genererInfosReservationTexte($prestation, $_POST['datePrestation'], $_POST['creneauHoraire'], $nom, $prenom);
+                $infosReservation = $this->genererInfosReservationTexte($prestation
+                                           , filter_input(INPUT_POST, 'datePrestation', FILTER_SANITIZE_FULL_SPECIAL_CHARS)
+                                           , filter_input(INPUT_POST, 'creneauHoraire', FILTER_SANITIZE_FULL_SPECIAL_CHARS), 
+                                            $nom, $prenom);
     
                 // Créer la nouvelle réservation avec les infos générées
                 $this->reservationManager->creerReservation($id_utilisateur, $id_prestation, $datePrestation, $infosReservation);
@@ -51,8 +56,8 @@ class ReservationController {
     public function choisirCreneau() {
         //On récupère l'id de l'utilisateur, l'id de la presta et la date que l'on a choisi au préalable
         if (isset($_POST['id_prestation']) && isset($_POST['datePrestation']) && isset($_SESSION['user_id'])) {
-            $id_prestation = $_POST['id_prestation'];
-            $datePrestation = $_POST['datePrestation'];
+            $id_prestation = filter_input(INPUT_POST, 'id_prestation', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+            $datePrestation = filter_input(INPUT_POST, 'datePrestation', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             $id_utilisateur = $_SESSION['user_id'];
     
             // Récupérer les créneaux réservés par tous les utilisateurs
@@ -66,7 +71,7 @@ class ReservationController {
 
     public function annulerReservationProcess() {
         if (isset($_POST['id_reservation'])) {
-            $id_reservation = $_POST['id_reservation'];
+            $id_reservation = filter_input(INPUT_POST, 'id_reservation', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
             
             // Supprimer la réservation spécifique
             $this->reservationManager->annulerReservation($id_reservation);
@@ -106,13 +111,31 @@ class ReservationController {
     }
 
     private function genererInfosReservationTexte($prestation, $datePrestation, $creneauHoraire, $nom, $prenom) {
-        // Générer le texte pour infosReservation
-        $infos = "Nom : " . $nom . " " . $prenom . " | ";
-        $infos .= "Prestation : " . $prestation['designation'] . " | ";
-        $infos .= "Créneau horaire : " . $creneauHoraire . " | ";
-        $infos .= "Durée : " . $prestation['duree'] . " | ";
-        $infos .= "Prix : " . $prestation['prix'] . " €";
-        
-        return $infos;
+        // Générer le tableau HTML horizontal pour infosReservation
+        $tableau = '
+            <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; text-align: left;">
+                <thead>
+                    <tr>
+                        <th>Nom</th>
+                        <th>Prestation</th>
+                        <th>Date</th>
+                        <th>Créneau horaire</th>
+                        <th>Durée</th>
+                        <th>Prix</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>' . htmlspecialchars($nom) . ' ' . htmlspecialchars($prenom) . '</td>
+                        <td>' . htmlspecialchars($prestation['designation']) . '</td>
+                        <td>' . htmlspecialchars($datePrestation) . '</td>
+                        <td>' . htmlspecialchars($creneauHoraire) . '</td>
+                        <td>' . htmlspecialchars($prestation['duree']) . 'min</td>
+                        <td>' . htmlspecialchars($prestation['prix']) . ' €</td>
+                    </tr>
+                </tbody>
+            </table>
+        ';
+        return $tableau;
     }
 }

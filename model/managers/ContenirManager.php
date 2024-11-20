@@ -25,10 +25,9 @@ class ContenirManager {
     }
 
     //Nullifie les valeurs ayant l'id du produit qu'on supprime
-    public function supprimerProduitDeContenir($id_produit) {
+    public function supprimerContenirParProduit($id_produit) {
         $requete = "
-            UPDATE contenir
-            SET id_produit = NULL
+            DELETE FROM contenir
             WHERE id_produit = :id_produit
         ";
         $stmt = $this->db->prepare($requete);

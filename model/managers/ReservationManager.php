@@ -116,28 +116,42 @@ class ReservationManager {
 
 
     public function obtenirRendezVousParPrestationsParPage($prestationsSelectionnees, $offset, $limit) {
-        // Génère une chaîne de caractères de "?" séparés par des virgules
-        // pour chaque élément dans $prestationsSelectionnees
-        $placeholders = implode(',', array_fill(0, count($prestationsSelectionnees), '?'));
-        
+
+        // Génère des placeholders nommés pour chaque id_prestation
+        $placeholders = [];
+        foreach ($prestationsSelectionnees as $index => $id) {
+            $placeholders[] = ":id$index";
+        }
+        $placeholdersList = implode(',', $placeholders);
+    
+        // Requête SQL avec des paramètres nommés
         $requete = "
-            SELECT r.datePrestation, r.infosReservation, p.designation, c.designation AS categorie,
-                   r.id_reservation
+            SELECT r.datePrestation, r.infosReservation, p.designation, c.designation AS categorie, r.id_reservation
             FROM reservation r
             JOIN prestation p ON r.id_prestation = p.id_prestation
             JOIN categorie c ON p.id_categorie = c.id_categorie
-            WHERE r.id_prestation IN ($placeholders)  -- Filtre les prestations en fonction de $prestationsSelectionnees
+            WHERE r.id_prestation IN ($placeholdersList)
             ORDER BY r.datePrestation
-            LIMIT $offset, $limit  -- Pagination des résultats, avec un décalage ($offset) et une limite ($limit)
+            LIMIT :offset, :limit
         ";
     
         $stmt = $this->db->prepare($requete);
-
-        // Exécute la requête en passant les valeurs de $prestationsSelectionnees
-        // Ces valeurs sont associées aux "?" générés plus tôt
-        $stmt->execute($prestationsSelectionnees);
+    
+        // Associe les valeurs des prestations sélectionnées aux placeholders
+        foreach ($prestationsSelectionnees as $index => $id) {
+            $stmt->bindValue(":id$index", $id, \PDO::PARAM_INT);
+        }
+    
+        // Associe les paramètres de pagination
+        $stmt->bindValue(":offset", $offset, \PDO::PARAM_INT);
+        $stmt->bindValue(":limit", $limit, \PDO::PARAM_INT);
+    
+        // Exécute la requête
+        $stmt->execute();
+    
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
+    
     
     public function obtenirNombreTotalRendezVous() {
         $requete = "SELECT COUNT(*) FROM reservation";

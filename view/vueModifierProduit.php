@@ -22,7 +22,7 @@ $categories = $categorieManager->obtenirToutesLesCategories();
     <input type="text" id="designation" name="designation" value="<?= $produit['designation'] ?>" required><br><br>
     
     <label for="prix">Prix :</label><br>
-    <input type="number" id="prix" name="prix" step="0.01" value="<?= $produit['prix'] ?>" required><br><br>
+    <input type="number" id="prix" name="prix" step="0.01" min="1" value="<?= $produit['prix'] ?>" required><br><br>
     
     <label for="description">Description :</label><br>
     <textarea id="description" name="description" required><?= $produit['description'] ?></textarea><br><br>

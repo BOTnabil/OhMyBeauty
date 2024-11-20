@@ -28,7 +28,7 @@ $categoriesAvecPrestations = $prestationManager->obtenirToutesCategoriesAvecPres
                         <div class="details-prestation">
                             <h3><?= $prestation["designation"]; ?></h3>
                             <p><?= $prestation["description"]; ?></p>
-                            <span><?= $prestation["duree"]; ?> • <?= $prestation["prix"]; ?> €</span>
+                            <span><?= $prestation["duree"]; ?>min • <?= $prestation["prix"]; ?> €</span>
                         </div>
                         <div class="actions-prestation">
                             <?php
