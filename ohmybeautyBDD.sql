@@ -46,12 +46,28 @@ CREATE TABLE IF NOT EXISTS `commande` (
   UNIQUE KEY `numeroCommande` (`numeroCommande`),
   KEY `id_utilisateur` (`id_utilisateur`),
   CONSTRAINT `commande_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table ohmybeauty.commande : ~0 rows (environ)
+-- Listage des données de la table ohmybeauty.commande : ~17 rows (environ)
 DELETE FROM `commande`;
 INSERT INTO `commande` (`id_commande`, `numeroCommande`, `dateCommande`, `prixTotal`, `id_utilisateur`, `infosCommande`) VALUES
-	(10, 163450211024562, '2024-10-21 16:34:50', 107.91, 2, 'Poudre à sourcils (Quantité : 9, Prix unitaire : 11.99 €).<br> Sous-total : 107.91 €.');
+	(10, 163450211024562, '2024-10-21 16:34:50', 107.91, 2, 'Poudre à sourcils (Quantité : 9, Prix unitaire : 11.99 €).<br> Sous-total : 107.91 €.'),
+	(11, 215708201124141, '2024-11-18 21:57:08', 94.87, 2, 'Cr&egrave;me hydratante visage (Quantité : 2, Prix unitaire : 25.00 €).<br>\r\n                 Sous-total : 50 €.<br>Spray thermo-protecteur (Quantité : 3, Prix unitaire : 9.99 €).<br>\r\n                 Sous-total : 29.97 €.<br>Shampoing r&eacute;parateur (Quantité : 1, Prix unitaire : 10.90 €)<br>Elastiques (Quantité : 1, Prix unitaire : 4.00 €)'),
+	(12, 215735201124978, '2024-11-22 21:57:35', 2.00, 2, 'Serre t&ecirc;te skin care (Quantité : 1, Prix unitaire : 2.00 €)'),
+	(13, 215806201124394, '2024-11-15 21:58:06', 29.97, 2, 'Crayon pour sourcils (Quantité : 1, Prix unitaire : 11.99 €)<br>Recourbe-cils (Quantité : 2, Prix unitaire : 8.99 €).<br>\r\n                 Sous-total : 17.98 €.'),
+	(14, 220301201124317, '2024-11-22 22:03:01', 8.99, 2, 'Recourbe-cils (Quantité : 1, Prix unitaire : 8.99 €)'),
+	(15, 220317201124257, '2024-11-22 22:03:17', 2.00, 2, 'Serre t&ecirc;te skin care (Quantité : 1, Prix unitaire : 2.00 €)'),
+	(16, 220331201124281, '2024-11-21 22:03:31', 20.48, 2, 'Tonique rafra&icirc;chissant (Quantité : 2, Prix unitaire : 7.99 €).<br>\r\n                 Sous-total : 15.98 €.<br>Masque au charbon (Quantité : 1, Prix unitaire : 4.50 €)'),
+	(17, 222340201124721, '2024-11-21 22:23:40', 49.99, 2, 'Ponceuse (Quantité : 1, Prix unitaire : 49.99 €)'),
+	(18, 222350201124543, '2024-11-21 22:23:50', 10.50, 2, 'Masque hydratant (Quantité : 3, Prix unitaire : 3.50 €).<br>\r\n                 Sous-total : 10.5 €.'),
+	(19, 222431201124656, '2024-11-25 22:24:31', 32.00, 2, 'Elastiques (Quantité : 8, Prix unitaire : 4.00 €).<br>\r\n                 Sous-total : 32 €.'),
+	(20, 222457201124288, '2024-11-21 22:24:57', 49.95, 2, 'Gel UV (Quantité : 5, Prix unitaire : 9.99 €).<br>\r\n                 Sous-total : 49.95 €.'),
+	(21, 222514201124228, '2024-11-18 22:25:14', 135.00, 2, 'Cr&egrave;me anti-&acirc;ge (Quantité : 3, Prix unitaire : 45.00 €).<br>\r\n                 Sous-total : 135 €.'),
+	(22, 222909201124914, '2024-11-18 22:29:09', 45.69, 2, 'Mascara volume (Quantité : 1, Prix unitaire : 12.99 €)<br>Shampoing r&eacute;parateur (Quantité : 3, Prix unitaire : 10.90 €).<br>\r\n                 Sous-total : 32.7 €.'),
+	(23, 222923201124602, '2024-11-19 22:29:23', 59.46, 2, 'Gel UV (Quantité : 4, Prix unitaire : 9.99 €).<br>\r\n                 Sous-total : 39.96 €.<br>Huile cuticules (Quantité : 3, Prix unitaire : 6.50 €).<br>\r\n                 Sous-total : 19.5 €.'),
+	(24, 222931201124918, '2024-11-20 21:29:31', 63.60, 2, 'Kit lissage br&eacute;silien (Quantité : 4, Prix unitaire : 15.90 €).<br>\r\n                 Sous-total : 63.6 €.'),
+	(25, 222945201124946, '2024-11-21 22:29:45', 24.99, 2, 'Kit vernis semi permanent (Quantité : 1, Prix unitaire : 24.99 €)'),
+	(26, 222954201124459, '2024-11-20 22:29:54', 25.74, 2, 'Lime &agrave; ongles (Quantité : 6, Prix unitaire : 4.29 €).<br>\r\n                 Sous-total : 25.74 €.');
 
 -- Listage de la structure de table ohmybeauty. contenir
 CREATE TABLE IF NOT EXISTS `contenir` (
@@ -64,12 +80,35 @@ CREATE TABLE IF NOT EXISTS `contenir` (
   KEY `contenir_ibfk_1` (`id_commande`),
   CONSTRAINT `contenir_ibfk_1` FOREIGN KEY (`id_commande`) REFERENCES `commande` (`id_commande`),
   CONSTRAINT `contenir_ibfk_2` FOREIGN KEY (`id_produit`) REFERENCES `produit` (`id_produit`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table ohmybeauty.contenir : ~0 rows (environ)
+-- Listage des données de la table ohmybeauty.contenir : ~24 rows (environ)
 DELETE FROM `contenir`;
 INSERT INTO `contenir` (`id_contenir`, `id_commande`, `id_produit`, `quantite`) VALUES
-	(11, 10, 22, 9);
+	(11, 10, 22, 9),
+	(12, 11, 18, 2),
+	(13, 11, 34, 3),
+	(14, 11, 32, 1),
+	(15, 11, 16, 1),
+	(16, 12, 10, 1),
+	(17, 13, 22, 1),
+	(18, 13, 30, 2),
+	(19, 14, 30, 1),
+	(20, 15, 10, 1),
+	(21, 16, 36, 2),
+	(22, 16, 11, 1),
+	(23, 17, 4, 1),
+	(24, 18, 12, 3),
+	(25, 19, 16, 8),
+	(26, 20, 21, 5),
+	(27, 21, 23, 3),
+	(28, 22, 29, 1),
+	(29, 22, 32, 3),
+	(30, 23, 21, 4),
+	(31, 23, 38, 3),
+	(32, 24, 14, 4),
+	(33, 25, 3, 1),
+	(34, 26, 1, 6);
 
 -- Listage de la structure de table ohmybeauty. prestation
 CREATE TABLE IF NOT EXISTS `prestation` (
@@ -169,10 +208,26 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   KEY `reservation_ibfk_1` (`id_utilisateur`),
   CONSTRAINT `reservation_ibfk_1` FOREIGN KEY (`id_utilisateur`) REFERENCES `utilisateur` (`id_utilisateur`),
   CONSTRAINT `reservation_ibfk_2` FOREIGN KEY (`id_prestation`) REFERENCES `prestation` (`id_prestation`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table ohmybeauty.reservation : ~0 rows (environ)
+-- Listage des données de la table ohmybeauty.reservation : ~15 rows (environ)
 DELETE FROM `reservation`;
+INSERT INTO `reservation` (`id_reservation`, `id_utilisateur`, `id_prestation`, `datePrestation`, `infosReservation`) VALUES
+	(8, 2, 25, '2024-12-07 14:00:00', '\r\n            <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; text-align: left;">\r\n                <thead>\r\n                    <tr>\r\n                        <th>Nom</th>\r\n                        <th>Prestation</th>\r\n                        <th>Date</th>\r\n                        <th>Créneau horaire</th>\r\n                        <th>Durée</th>\r\n                        <th>Prix</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr>\r\n                        <td>Nabil Assatour</td>\r\n                        <td>Coloration cheveux</td>\r\n                        <td>2024-11-23</td>\r\n                        <td>14:00</td>\r\n                        <td>60min</td>\r\n                        <td>70.00 €</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        '),
+	(9, 2, 25, '2024-12-08 15:00:00', '\r\n            <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; text-align: left;">\r\n                <thead>\r\n                    <tr>\r\n                        <th>Nom</th>\r\n                        <th>Prestation</th>\r\n                        <th>Date</th>\r\n                        <th>Créneau horaire</th>\r\n                        <th>Durée</th>\r\n                        <th>Prix</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr>\r\n                        <td>Nabil Hasankocaoglu</td>\r\n                        <td>Coloration cheveux</td>\r\n                        <td>2024-11-27</td>\r\n                        <td>15:00</td>\r\n                        <td>60min</td>\r\n                        <td>70.00 €</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        '),
+	(10, 2, 6, '2024-12-08 17:00:00', '\r\n            <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; text-align: left;">\r\n                <thead>\r\n                    <tr>\r\n                        <th>Nom</th>\r\n                        <th>Prestation</th>\r\n                        <th>Date</th>\r\n                        <th>Créneau horaire</th>\r\n                        <th>Durée</th>\r\n                        <th>Prix</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr>\r\n                        <td>Loulout Mehdi</td>\r\n                        <td>Dépose</td>\r\n                        <td>2024-11-28</td>\r\n                        <td>17:00</td>\r\n                        <td>20min</td>\r\n                        <td>10.00 €</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        '),
+	(11, 2, 2, '2024-12-08 15:00:00', '\r\n            <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; text-align: left;">\r\n                <thead>\r\n                    <tr>\r\n                        <th>Nom</th>\r\n                        <th>Prestation</th>\r\n                        <th>Date</th>\r\n                        <th>Créneau horaire</th>\r\n                        <th>Durée</th>\r\n                        <th>Prix</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr>\r\n                        <td>Joestar Johnny</td>\r\n                        <td>Extension pose naturelle</td>\r\n                        <td>2024-11-30</td>\r\n                        <td>15:00</td>\r\n                        <td>45min</td>\r\n                        <td>50.00 €</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        '),
+	(12, 2, 24, '2024-12-08 11:00:00', '\r\n            <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; text-align: left;">\r\n                <thead>\r\n                    <tr>\r\n                        <th>Nom</th>\r\n                        <th>Prestation</th>\r\n                        <th>Date</th>\r\n                        <th>Créneau horaire</th>\r\n                        <th>Durée</th>\r\n                        <th>Prix</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr>\r\n                        <td>Kujo Jotaro</td>\r\n                        <td>Pédicure spa</td>\r\n                        <td>2024-11-21</td>\r\n                        <td>11:00</td>\r\n                        <td>60min</td>\r\n                        <td>45.00 €</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        '),
+	(13, 2, 28, '2024-12-07 09:00:00', '\r\n            <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; text-align: left;">\r\n                <thead>\r\n                    <tr>\r\n                        <th>Nom</th>\r\n                        <th>Prestation</th>\r\n                        <th>Date</th>\r\n                        <th>Créneau horaire</th>\r\n                        <th>Durée</th>\r\n                        <th>Prix</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr>\r\n                        <td>Higashikata Josuke</td>\r\n                        <td>Epilation sourcils</td>\r\n                        <td>2024-11-24</td>\r\n                        <td>09:00</td>\r\n                        <td>15min</td>\r\n                        <td>15.00 €</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        '),
+	(14, 2, 6, '2024-12-09 14:00:00', '\r\n            <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; text-align: left;">\r\n                <thead>\r\n                    <tr>\r\n                        <th>Nom</th>\r\n                        <th>Prestation</th>\r\n                        <th>Date</th>\r\n                        <th>Créneau horaire</th>\r\n                        <th>Durée</th>\r\n                        <th>Prix</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr>\r\n                        <td>Cujoh Jolyne</td>\r\n                        <td>Dépose</td>\r\n                        <td>2024-11-30</td>\r\n                        <td>14:00</td>\r\n                        <td>20min</td>\r\n                        <td>10.00 €</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        '),
+	(15, 2, 6, '2024-12-10 11:00:00', '\r\n            <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; text-align: left;">\r\n                <thead>\r\n                    <tr>\r\n                        <th>Nom</th>\r\n                        <th>Prestation</th>\r\n                        <th>Date</th>\r\n                        <th>Créneau horaire</th>\r\n                        <th>Durée</th>\r\n                        <th>Prix</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr>\r\n                        <td>Loulout Yassine</td>\r\n                        <td>Dépose</td>\r\n                        <td>2024-11-29</td>\r\n                        <td>11:00</td>\r\n                        <td>20min</td>\r\n                        <td>10.00 €</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        '),
+	(16, 2, 6, '2024-12-08 11:00:00', '\r\n            <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; text-align: left;">\r\n                <thead>\r\n                    <tr>\r\n                        <th>Nom</th>\r\n                        <th>Prestation</th>\r\n                        <th>Date</th>\r\n                        <th>Créneau horaire</th>\r\n                        <th>Durée</th>\r\n                        <th>Prix</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr>\r\n                        <td>Loulout Yassine</td>\r\n                        <td>Dépose</td>\r\n                        <td>2024-11-29</td>\r\n                        <td>11:00</td>\r\n                        <td>20min</td>\r\n                        <td>10.00 €</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        '),
+	(17, 2, 24, '2024-12-07 13:00:00', '\r\n            <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; text-align: left;">\r\n                <thead>\r\n                    <tr>\r\n                        <th>Nom</th>\r\n                        <th>Prestation</th>\r\n                        <th>Date</th>\r\n                        <th>Créneau horaire</th>\r\n                        <th>Durée</th>\r\n                        <th>Prix</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr>\r\n                        <td>Loulout Yassine</td>\r\n                        <td>Pédicure spa</td>\r\n                        <td>2024-12-08</td>\r\n                        <td>13:00</td>\r\n                        <td>60min</td>\r\n                        <td>45.00 €</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        '),
+	(18, 2, 13, '2024-12-09 09:00:00', '\r\n            <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; text-align: left;">\r\n                <thead>\r\n                    <tr>\r\n                        <th>Nom</th>\r\n                        <th>Prestation</th>\r\n                        <th>Date</th>\r\n                        <th>Créneau horaire</th>\r\n                        <th>Durée</th>\r\n                        <th>Prix</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr>\r\n                        <td>Joestar Joseph</td>\r\n                        <td>Dermaplaning</td>\r\n                        <td>2024-12-08</td>\r\n                        <td>09:00</td>\r\n                        <td>30min</td>\r\n                        <td>70.00 €</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        '),
+	(19, 2, 13, '2024-12-11 13:00:00', '\r\n            <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; text-align: left;">\r\n                <thead>\r\n                    <tr>\r\n                        <th>Nom</th>\r\n                        <th>Prestation</th>\r\n                        <th>Date</th>\r\n                        <th>Créneau horaire</th>\r\n                        <th>Durée</th>\r\n                        <th>Prix</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr>\r\n                        <td>Joestar Nabil</td>\r\n                        <td>Dermaplaning</td>\r\n                        <td>2024-12-08</td>\r\n                        <td>13:00</td>\r\n                        <td>30min</td>\r\n                        <td>70.00 €</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        '),
+	(20, 2, 25, '2024-12-07 10:00:00', '\r\n            <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; text-align: left;">\r\n                <thead>\r\n                    <tr>\r\n                        <th>Nom</th>\r\n                        <th>Prestation</th>\r\n                        <th>Date</th>\r\n                        <th>Créneau horaire</th>\r\n                        <th>Durée</th>\r\n                        <th>Prix</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr>\r\n                        <td>Loulout Assatour</td>\r\n                        <td>Coloration cheveux</td>\r\n                        <td>2024-12-08</td>\r\n                        <td>10:00</td>\r\n                        <td>60min</td>\r\n                        <td>70.00 €</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        '),
+	(21, 2, 25, '2024-12-09 11:00:00', '\r\n            <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; text-align: left;">\r\n                <thead>\r\n                    <tr>\r\n                        <th>Nom</th>\r\n                        <th>Prestation</th>\r\n                        <th>Date</th>\r\n                        <th>Créneau horaire</th>\r\n                        <th>Durée</th>\r\n                        <th>Prix</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr>\r\n                        <td>Joestar Hasansjdhfkjsdfhskdj</td>\r\n                        <td>Coloration cheveux</td>\r\n                        <td>2024-12-08</td>\r\n                        <td>11:00</td>\r\n                        <td>60min</td>\r\n                        <td>70.00 €</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        '),
+	(22, 2, 25, '2024-12-15 13:00:00', '\r\n            <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; text-align: left;">\r\n                <thead>\r\n                    <tr>\r\n                        <th>Nom</th>\r\n                        <th>Prestation</th>\r\n                        <th>Date</th>\r\n                        <th>Créneau horaire</th>\r\n                        <th>Durée</th>\r\n                        <th>Prix</th>\r\n                    </tr>\r\n                </thead>\r\n                <tbody>\r\n                    <tr>\r\n                        <td>Joestar Nabil</td>\r\n                        <td>Coloration cheveux</td>\r\n                        <td>2024-12-15</td>\r\n                        <td>13:00</td>\r\n                        <td>60min</td>\r\n                        <td>70.00 €</td>\r\n                    </tr>\r\n                </tbody>\r\n            </table>\r\n        ');
 
 -- Listage de la structure de table ohmybeauty. utilisateur
 CREATE TABLE IF NOT EXISTS `utilisateur` (
@@ -183,7 +238,7 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   PRIMARY KEY (`id_utilisateur`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- Listage des données de la table ohmybeauty.utilisateur : ~0 rows (environ)
+-- Listage des données de la table ohmybeauty.utilisateur : ~1 rows (environ)
 DELETE FROM `utilisateur`;
 INSERT INTO `utilisateur` (`id_utilisateur`, `email`, `motDePasse`, `role`) VALUES
 	(2, 'test@gmail.com', '$2y$10$l53hSsEXg0Tju0Lw5/wN2.NqARpGVEHqfypBPyvXuRmgvJpiZU35y', 'ADMIN');
